@@ -50,7 +50,6 @@ void Level::init()
 	mTileHandler = new TileHandler();
 	mTileHandler->loadTiles("tiles.xml");
 	mOffset = Vector(0, 0);
-	mCameraOffset = mOffset;
 
 	mTileWidth = 40;
 	mTileHeight = 40;
@@ -196,8 +195,8 @@ void Level::draw()
 	sprintf(buffer, "objects: %i", mObjectList.size());
 	gGraphics->drawText(buffer, 10, 300);
 
-	sprintf(buffer, "offset: %f", mCameraOffset.x);
-	gGraphics->drawText(buffer, 300, 300, CUSTOM, 20, 0xffff0000);
+	//sprintf(buffer, "offset: %f", mOffset.x*-1);
+	//gGraphics->drawText(buffer, 300, 300, CUSTOM, 20, 0xffff0000);
 }
 
 void Level::addObject(Object* object)
@@ -266,43 +265,30 @@ Object* Level::getObjectAt(Vector pos)
 
 void Level::moveObjects(float dx, float dy)
 {
-	mCameraOffset += Vector(-dx, -dy);
-	Vector newOffset = (mOffset + Vector(dx, dy)) *-1;
-
-	// NOTE: 400 is screenWidth/2 and 300 is screenHeight/2
-
-	// Horizontal camera movement
-	if(!isInEditor())
-	{
-		if(mCameraOffset.x < 0 || mCameraOffset.x + mWidth/2 > mWidth-400) {
-			if(mPlayer != NULL) mPlayer->move(-dx, 0);
-			dx = 0;
-		}
-
-		// Vertical camera movement
-		if(mCameraOffset.y < 0 || mCameraOffset.y + mHeight/2 > mHeight-300) {
-			if(mPlayer != NULL) mPlayer->move(0, -dy);
-			dy = 0;
-		}
-
-		for(int i = 0; i < mObjectList.size(); i++)
-			if(mObjectList[i]->getType() !=  PLAYER)
-				mObjectList[i]->move(dx, dy);
-	}
-	else
-	{
-		// +200 due to the editor gui
-		if(newOffset.x < 0 || newOffset.x + mWidth/2 > mWidth-400+200)
-			dx = 0;
-
-		if(newOffset.y < 0 || newOffset.y + mHeight/2 > mHeight-300) 
-			dy = 0;
-
-		for(int i = 0; i < mObjectList.size(); i++)	
+	for(int i = 0; i < mObjectList.size(); i++)	{
+		if(mObjectList[i]->getType() !=  PLAYER)
 			mObjectList[i]->move(dx, dy);
 	}
 
 	mOffset += Vector(dx, dy);
+
+	/*Vector newOffset = (mOffset + Vector(dx, dy)) *-1;
+
+	if(!isInEditor())
+	{
+		if((newOffset.x >= 0 && mPlayer->getPos().x > mWidth/2) )// || (newOffset.x <= mWidth-400 && mPlayer->getPos().x < mWidth/2))
+		//if(newOffset.x >= 0 && newOffset.y >= 0 && newOffset.x <= mWidth-400 && newOffset.y <= mHeight-300)
+		{
+			for(int i = 0; i < mObjectList.size(); i++)	{
+				if(mObjectList[i]->getType() !=  PLAYER)
+					mObjectList[i]->move(dx, dy);
+			}
+
+			mOffset += Vector(dx, dy);
+		}
+		else 
+			mPlayer->move(-dx, -dy);	
+	}*/
 }
 
 void Level::saveToFile(string file)

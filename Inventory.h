@@ -54,7 +54,6 @@ public:
 	void hide();
 
 	void addItem(string itemName);
-	void addGold(int gold = 1);
 	void removeItem(Item item);
 	void swapItems(Slot* from, Slot* to);
 private:
@@ -70,5 +69,4 @@ private:
 
 	Vector				mPosition;
 	int					mWidth, mHeight;
-	int					mGold;
 };

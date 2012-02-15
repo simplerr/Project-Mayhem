@@ -1,0 +1,137 @@
+﻿Build started 2011-11-28 13:26:58.
+     1>Project "C:\Users\Helena\Documents\Visual Studio 2010\Projects\Project Mayhem\Project Mayhem.vcxproj" on node 2 (build target(s)).
+     1>InitializeBuildStatus:
+         Creating "Release\Project Mayhem.unsuccessfulbuild" because "AlwaysCreate" was specified.
+       ClCompile:
+         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /Zi /nologo /W3 /WX- /O2 /Oi /Oy- /GL /D WIN32 /D NDEBUG /D _WINDOWS /D _UNICODE /D UNICODE /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Release\\" /Fd"Release\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt DirectInput.cpp Editor.cpp EditorState.cpp Game.cpp GfxStats.cpp Graphics.cpp Level.cpp Math.cpp Object.cpp Player.cpp PlayState.cpp cPolygon.cpp Projectile.cpp Runnable.cpp Structure.cpp Vertex.cpp wButton.cpp wComponent.cpp wContainer.cpp wDropDown.cpp WindowHandler.cpp wMessage.cpp wPanel.cpp
+         DirectInput.cpp
+     1>DirectInput.cpp(37): warning C4244: '=' : conversion from 'LONG' to 'float', possible loss of data
+     1>DirectInput.cpp(38): warning C4244: '=' : conversion from 'LONG' to 'float', possible loss of data
+     1>DirectInput.cpp(172): warning C4244: '=' : conversion from 'LONG' to 'float', possible loss of data
+     1>DirectInput.cpp(179): warning C4244: '=' : conversion from 'int' to 'float', possible loss of data
+     1>DirectInput.cpp(188): warning C4244: '=' : conversion from 'LONG' to 'float', possible loss of data
+     1>DirectInput.cpp(194): warning C4244: '=' : conversion from 'LONG' to 'float', possible loss of data
+     1>DirectInput.cpp(201): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+     1>DirectInput.cpp(201): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+     1>DirectInput.cpp(242): warning C4244: '=' : conversion from 'LONG' to 'float', possible loss of data
+     1>DirectInput.cpp(243): warning C4244: '=' : conversion from 'LONG' to 'float', possible loss of data
+         Editor.cpp
+     1>c:\users\helena\documents\visual studio 2010\projects\project mayhem\wButton.h(5): fatal error C1083: Cannot open include file: 'boost\function.hpp': No such file or directory
+         EditorState.cpp
+     1>EditorState.cpp(40): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+         Game.cpp
+         GfxStats.cpp
+     1>GfxStats.cpp(23): warning C4996: 'wcscpy': This function or variable may be unsafe. Consider using wcscpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\string.h(283) : see declaration of 'wcscpy'
+     1>GfxStats.cpp(114): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\stdio.h(371) : see declaration of 'sprintf'
+     1>GfxStats.cpp(117): error C2664: 'ID3DXFont::DrawTextW' : cannot convert parameter 2 from 'char [256]' to 'LPCWSTR'
+                 Types pointed to are unrelated; conversion requires reinterpret_cast, C-style cast or function-style cast
+         Graphics.cpp
+     1>Graphics.cpp(23): error C2664: 'MessageBoxW' : cannot convert parameter 2 from 'const char [36]' to 'LPCWSTR'
+                 Types pointed to are unrelated; conversion requires reinterpret_cast, C-style cast or function-style cast
+     1>Graphics.cpp(26): error C2664: 'MessageBoxW' : cannot convert parameter 2 from 'const char [33]' to 'LPCWSTR'
+                 Types pointed to are unrelated; conversion requires reinterpret_cast, C-style cast or function-style cast
+     1>Graphics.cpp(53): error C2664: 'D3DXCreateTextureFromFileExW' : cannot convert parameter 2 from 'const char *' to 'LPCWSTR'
+                 Types pointed to are unrelated; conversion requires reinterpret_cast, C-style cast or function-style cast
+     1>Graphics.cpp(76): warning C4996: 'wcscpy': This function or variable may be unsafe. Consider using wcscpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\wchar.h(988) : see declaration of 'wcscpy'
+     1>Graphics.cpp(90): error C2664: 'ID3DXFont::DrawTextW' : cannot convert parameter 2 from 'char *' to 'LPCWSTR'
+                 Types pointed to are unrelated; conversion requires reinterpret_cast, C-style cast or function-style cast
+     1>Graphics.cpp(146): warning C4244: '=' : conversion from 'float' to 'LONG', possible loss of data
+     1>Graphics.cpp(147): warning C4244: '=' : conversion from 'float' to 'LONG', possible loss of data
+     1>Graphics.cpp(148): warning C4244: '=' : conversion from 'float' to 'LONG', possible loss of data
+     1>Graphics.cpp(149): warning C4244: '=' : conversion from 'float' to 'LONG', possible loss of data
+     1>Graphics.cpp(236): warning C4244: '=' : conversion from 'float' to 'LONG', possible loss of data
+     1>Graphics.cpp(237): warning C4244: '=' : conversion from 'float' to 'LONG', possible loss of data
+     1>Graphics.cpp(238): warning C4244: '=' : conversion from 'float' to 'LONG', possible loss of data
+     1>Graphics.cpp(239): warning C4244: '=' : conversion from 'float' to 'LONG', possible loss of data
+     1>Graphics.cpp(289): warning C4018: '<' : signed/unsigned mismatch
+         Level.cpp
+     1>c:\users\helena\documents\visual studio 2010\projects\project mayhem\Collision.h(47): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\helena\documents\visual studio 2010\projects\project mayhem\Collision.h(60): warning C4244: '/=' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\helena\documents\visual studio 2010\projects\project mayhem\Collision.h(61): warning C4244: '/=' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\helena\documents\visual studio 2010\projects\project mayhem\Collision.h(65): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\helena\documents\visual studio 2010\projects\project mayhem\Collision.h(83): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\helena\documents\visual studio 2010\projects\project mayhem\Collision.h(132): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\helena\documents\visual studio 2010\projects\project mayhem\Collision.h(151): warning C4244: '/=' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\helena\documents\visual studio 2010\projects\project mayhem\Collision.h(152): warning C4244: '/=' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\helena\documents\visual studio 2010\projects\project mayhem\Collision.h(157): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\helena\documents\visual studio 2010\projects\project mayhem\Collision.h(175): warning C4018: '<' : signed/unsigned mismatch
+     1>Level.cpp(16): warning C4018: '<' : signed/unsigned mismatch
+     1>Level.cpp(105): warning C4018: '<' : signed/unsigned mismatch
+     1>Level.cpp(122): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\stdio.h(371) : see declaration of 'sprintf'
+     1>Level.cpp(128): warning C4018: '<' : signed/unsigned mismatch
+     1>Level.cpp(151): warning C4018: '<' : signed/unsigned mismatch
+         Math.cpp
+     1>Math.cpp(10): warning C4244: 'argument' : conversion from 'time_t' to 'unsigned int', possible loss of data
+         Object.cpp
+     1>Object.cpp(12): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+     1>Object.cpp(12): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+     1>Object.cpp(13): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+     1>Object.cpp(13): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+     1>Object.cpp(14): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+     1>Object.cpp(14): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+     1>Object.cpp(15): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+     1>Object.cpp(15): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+         Player.cpp
+     1>Player.cpp(58): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+     1>Player.cpp(58): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+         PlayState.cpp
+     1>PlayState.cpp(42): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+     1>PlayState.cpp(55): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\stdio.h(371) : see declaration of 'sprintf'
+         cPolygon.cpp
+     1>cPolygon.cpp(55): warning C4018: '<' : signed/unsigned mismatch
+     1>cPolygon.cpp(99): warning C4018: '<' : signed/unsigned mismatch
+         Projectile.cpp
+         Runnable.cpp
+     1>Runnable.cpp(54): error C2440: '=' : cannot convert from 'const char [16]' to 'LPCWSTR'
+                 Types pointed to are unrelated; conversion requires reinterpret_cast, C-style cast or function-style cast
+     1>Runnable.cpp(58): error C2664: 'MessageBoxW' : cannot convert parameter 2 from 'const char [21]' to 'LPCWSTR'
+                 Types pointed to are unrelated; conversion requires reinterpret_cast, C-style cast or function-style cast
+     1>Runnable.cpp(68): error C2664: 'CreateWindowExW' : cannot convert parameter 2 from 'const char [16]' to 'LPCWSTR'
+                 Types pointed to are unrelated; conversion requires reinterpret_cast, C-style cast or function-style cast
+     1>Runnable.cpp(72): error C2664: 'MessageBoxW' : cannot convert parameter 2 from 'const char [20]' to 'LPCWSTR'
+                 Types pointed to are unrelated; conversion requires reinterpret_cast, C-style cast or function-style cast
+     1>Runnable.cpp(89): error C2664: 'MessageBoxW' : cannot convert parameter 2 from 'const char [23]' to 'LPCWSTR'
+                 Types pointed to are unrelated; conversion requires reinterpret_cast, C-style cast or function-style cast
+     1>Runnable.cpp(326): error C2664: 'MessageBoxW' : cannot convert parameter 2 from 'const char [3]' to 'LPCWSTR'
+                 Types pointed to are unrelated; conversion requires reinterpret_cast, C-style cast or function-style cast
+     1>Runnable.cpp(329): error C2664: 'MessageBoxW' : cannot convert parameter 2 from 'const char [3]' to 'LPCWSTR'
+                 Types pointed to are unrelated; conversion requires reinterpret_cast, C-style cast or function-style cast
+     1>Runnable.cpp(354): error C2664: 'MessageBoxW' : cannot convert parameter 2 from 'const char [32]' to 'LPCWSTR'
+                 Types pointed to are unrelated; conversion requires reinterpret_cast, C-style cast or function-style cast
+     1>Runnable.cpp(372): error C2664: 'MessageBoxW' : cannot convert parameter 2 from 'const char *' to 'LPCWSTR'
+                 Types pointed to are unrelated; conversion requires reinterpret_cast, C-style cast or function-style cast
+     1>Runnable.cpp(390): error C2664: 'MessageBoxW' : cannot convert parameter 2 from 'const char *' to 'LPCWSTR'
+                 Types pointed to are unrelated; conversion requires reinterpret_cast, C-style cast or function-style cast
+         Structure.cpp
+         Vertex.cpp
+         wButton.cpp
+     1>c:\users\helena\documents\visual studio 2010\projects\project mayhem\wButton.h(5): fatal error C1083: Cannot open include file: 'boost\function.hpp': No such file or directory
+         wComponent.cpp
+     1>wComponent.cpp(8): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+     1>wComponent.cpp(8): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+         wContainer.cpp
+     1>wContainer.cpp(5): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+     1>wContainer.cpp(5): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+     1>wContainer.cpp(45): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+     1>wContainer.cpp(45): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+     1>wContainer.cpp(53): warning C4018: '<' : signed/unsigned mismatch
+         wDropDown.cpp
+     1>c:\users\helena\documents\visual studio 2010\projects\project mayhem\wDropDown.h(4): fatal error C1083: Cannot open include file: 'boost\function.hpp': No such file or directory
+         Compiling...
+         WindowHandler.cpp
+     1>WindowHandler.cpp(1): fatal error C1083: Cannot open include file: 'boost\lexical_cast.hpp': No such file or directory
+         wMessage.cpp
+     1>wMessage.cpp(2): fatal error C1083: Cannot open include file: 'boost\lexical_cast.hpp': No such file or directory
+         wPanel.cpp
+     1>wPanel.cpp(4): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+     1>wPanel.cpp(4): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+     1>Done Building Project "C:\Users\Helena\Documents\Visual Studio 2010\Projects\Project Mayhem\Project Mayhem.vcxproj" (build target(s)) -- FAILED.
+
+Build FAILED.
+
+Time Elapsed 00:00:15.50

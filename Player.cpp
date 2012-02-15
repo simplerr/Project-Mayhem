@@ -7,16 +7,12 @@
 #include "Projectile.h"
 #include "Inventory.h"
 #include "Loot.h"
-#include "Gold.h"
-#include "Gui.h"
 
 Player::Player(float x, float y) : Object (x, y, 40, 40, PLAYER,  "Data\\imgs\\terror.bmp") //change width/heigth/pic
 {
 	setCooldown(.1f);
 	setLayer(MIDDLE);
 
-	mEnergy = mMaxEnergy = 100;
-	mHealth = mMaxHealth = 100;
 	mInventory = new Inventory();
 	mInventory->addItem("Golden Sword");
 	mInventory->addItem("Golden Axe");
@@ -27,20 +23,17 @@ Player::Player(float x, float y) : Object (x, y, 40, 40, PLAYER,  "Data\\imgs\\t
 	mAnimation->setFrame(0);
 	mCounter = 0.0f;
 	mMoveSpeed = 5;
-	mGui = new Gui(this);
 }
 Player::~Player() 
 {
 	delete mAnimation;
 	delete mInventory;
-	delete mGui;
 }
 
 void Player::update(float dt)
 {
 	mInventory->update(dt);
 	mAnimation->animate(dt);
-	mGui->update(dt);
 	handleInput();
 	mCounter += dt;
 }
@@ -49,7 +42,6 @@ void Player::draw()
 {
 	gGraphics->drawTexturedPolygon(getPolygon(), getTexture(), &mAnimation->getSourceRect());
 	mInventory->draw();
-	mGui->draw();
 }
 
 void Player::handleInput()
@@ -57,17 +49,10 @@ void Player::handleInput()
 	// Mouse pressed
 	if(gInput->keyPressed(VK_LBUTTON))
 	{
-		mHealth -= 5;
-		mEnergy -= 15;
 		Object* object = getLevel()->getObjectAt(gInput->mousePosition());
 		if(object != NULL && object->getType() == LOOT) {
 			Loot* loot = dynamic_cast<Loot*>(object);
 			mInventory->addItem(loot->getName());
-			getLevel()->removeObjectAt(gInput->mousePosition().x, gInput->mousePosition().y);
-		}
-		else if(object != NULL && object->getType() == GOLD_COIN) {
-			Gold* gold = dynamic_cast<Gold*>(object);
-			mInventory->addGold(gold->getAmount());
 			getLevel()->removeObjectAt(gInput->mousePosition().x, gInput->mousePosition().y);
 		}
 	}
@@ -118,24 +103,4 @@ void Player::move(float dx, float dy)
 void Player::setCooldown(float cooldown)
 {
 	mCooldown = cooldown;
-}
-
-float Player::getHealth()
-{
-	return mHealth;
-}
-	
-float Player::getMaxHealth()
-{
-	return mMaxHealth;
-}
-
-float Player::getEnergy()
-{
-	return mEnergy;
-}
-	
-float Player::getMaxEnergy()
-{
-	return mMaxEnergy;
 }

@@ -170,7 +170,7 @@ enum TiXmlEncoding
 const TiXmlEncoding TIXML_DEFAULT_ENCODING = TIXML_ENCODING_UNKNOWN;
 
 /** TiXmlBase is a base class for every class in TinyXml.
-	It does little except to establish that TinyXml data
+	It does little except to establish that TinyXml classes
 	can be printed and provide some utility functions.
 
 	In XML, the document and elements can contain
@@ -201,7 +201,7 @@ public:
 	TiXmlBase()	:	userData(0)		{}
 	virtual ~TiXmlBase()			{}
 
-	/**	All TinyXml data can print themselves to a filestream
+	/**	All TinyXml classes can print themselves to a filestream
 		or the string class (TiXmlString in non-STL mode, std::string
 		in STL mode.) Either or both cfile and str can be null.
 		
@@ -482,7 +482,7 @@ public:
 		Text:		the text string
 		@endverbatim
 
-		The subdata will wrap this function.
+		The subclasses will wrap this function.
 	*/
 	const char *Value() const { return value.c_str (); }
 
@@ -892,7 +892,7 @@ private:
 	It is only used internally, both by the ELEMENT and the DECLARATION.
 	
 	The set can be changed transparent to the Element and Declaration
-	data that use it, but NOT transparent to the Attribute
+	classes that use it, but NOT transparent to the Attribute
 	which has to implement a next() and previous() method. Which makes
 	it a bit problematic and prevents the use of STL.
 

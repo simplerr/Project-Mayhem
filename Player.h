@@ -6,7 +6,6 @@
 
 class Level;
 class Inventory;
-class Gui;
 
 class Player : public Object 
 {
@@ -23,19 +22,10 @@ public:
 
 	void setCooldown(float cooldown);
 
-	float getHealth();
-	float getMaxHealth();
-	float getEnergy();
-	float getMaxEnergy();
-
 private:
-	Animation*	mAnimation;
-	Inventory*	mInventory;
-	Gui*		mGui;
+	Animation* mAnimation;
+	Inventory* mInventory;
 	float mHealth;
-	float mEnergy;
-	float mMaxHealth;
-	float mMaxEnergy;
 	float mMoveSpeed;
 	float mAngle;
 	float mCooldown;

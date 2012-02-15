@@ -20,8 +20,7 @@ enum ObjectType
 	SFX,		// Special effect, no collision detection
 	PROJECTILE,	// Projectile
 	PLAYER,		// Player
-	TILE,
-	GOLD_COIN
+	TILE
 };
 
 enum Layer {

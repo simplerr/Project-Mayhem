@@ -1,14 +1,11 @@
-#include <time.h>
-#include "tinyxml\tinystr.h"
-#include "tinyxml\tinyxml.h"
 #include "Enemy.h"
 #include "Graphics.h"
 #include "Level.h"
 #include "Player.h"
 #include "Projectile.h"
-#include "ItemHandler.h"
-#include "Loot.h"
-#include "Gold.h"
+#include "tinyxml\tinystr.h"
+#include "tinyxml\tinyxml.h"
+
 
 EnemyData::EnemyData(int w, int h, string n, string texture) 
 {
@@ -45,21 +42,6 @@ void Enemy::damage(float dHP)
 	modHP(-dHP);
 	if(mHp<=0) {
 		setAlive(false);
-
-		// Drop loot
-		// TODO: Add a drop effect, the loot should fly away from the enemy
-		// TODO: Add drop rate for different items
-		auto map = gItemHandler->getDataMap();
-		int loot = rand() % (map.size()+4);
-		int i = 0, distance = 0;
-		for(auto iter = map.begin(); iter != map.end(); iter++, i++) {
-			if(i == loot) {
-				float angle = (rand() % 340)/(float)100;
-				getLevel()->addObject(new Loot(iter->second.name, getPos().x + distance*cosf(angle), getPos().y + distance*sinf(angle)));
-			}
-		}
-
-		getLevel()->addObject(new Gold(getPos().x, getPos().y));
 	}
 }
 
@@ -84,7 +66,6 @@ void Enemies::init()
 	// Load all different items
 	TiXmlDocument doc("enemies.xml");
 	doc.LoadFile();
-	srand(time(0));
 
 	// Get the root element
 	TiXmlElement* root = doc.FirstChildElement();

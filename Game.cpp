@@ -117,7 +117,7 @@ void Game::draw()
 	gd3dDevice->SetRenderState(D3DRS_ALPHATESTENABLE, TRUE); */
 
 	mGameState->draw();
-	gInput->draw();
+	//gInput->draw();
 	mGfxStats->display();
 }
 

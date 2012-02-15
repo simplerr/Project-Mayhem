@@ -13,7 +13,6 @@ Inventory::Inventory()
 	mPosition = Vector(400, 300);
 	mWidth	= 500;
 	mHeight = 400;
-	mGold = 0;
 
 	// Load textures
 	mEquipSlot = gGraphics->loadTexture("Data\\imgs\\equip_slot.png");
@@ -185,11 +184,6 @@ void Inventory::draw()
 		{
 			gGraphics->drawTexture(mMovingItem->getData().texture, gInput->mousePosition().x, gInput->mousePosition().y, 50, 50);
 		}
-
-		// Display gold amount
-		char buffer[256];
-		sprintf(buffer, "%i", mGold);
-		gGraphics->drawText(buffer, mPosition.x + 50, mPosition.y + 200, SMALL_DX);
 	}
 }
 
@@ -231,11 +225,6 @@ void Inventory::addItem(string itemName)
 			break;
 		}
 	}
-}
-
-void Inventory::addGold(int gold)
-{
-	mGold += gold;
 }
 	
 void Inventory::removeItem(Item item)

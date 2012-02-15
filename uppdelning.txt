@@ -1,0 +1,21 @@
+UPPDELNING
+
+- Editor
+- AI (enemies)
+- Gameplay
+- Art, sound, resources
+- XML/custom object (filehandling)
+- Menues
+
+28/11/11
+
+Matte
+- Art, sound...
+
+Axel
+- XML....
+- Menues
+
+Viktor
+- Gameplay
+- AI/enemies

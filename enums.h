@@ -1,0 +1,25 @@
+#ifndef ENUMS_H
+#define ENUMS_H
+
+// Tile types
+enum TileType
+{
+	BACKGROUND_TILE,
+	GRASS_TILE,
+	WALL_TILE
+};
+
+// Identifies each window component
+enum wId
+{
+	WID_STANDARD,
+	WID_TESTBUTTON1,
+	WID_TESTBUTTON2,
+	WID_PANEL1,
+	WID_OBJECTTYPE,
+	WID_BUTTONCONTAINER,
+	WID_TILE_BUTTON,
+	WID_OBJECT_BUTTON
+};
+
+#endif

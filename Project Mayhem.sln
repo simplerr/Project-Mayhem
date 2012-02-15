@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Project Mayhem", "Project Mayhem.vcxproj", "{783EFEDF-2A3D-4B4C-B8AB-D16F3F0B3F37}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{E69E1AAC-D50B-4146-87EE-A5C6B6CA1306}"
+	ProjectSection(SolutionItems) = preProject
+		Performance1.psess = Performance1.psess
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{783EFEDF-2A3D-4B4C-B8AB-D16F3F0B3F37}.Debug|Win32.ActiveCfg = Debug|Win32
+		{783EFEDF-2A3D-4B4C-B8AB-D16F3F0B3F37}.Debug|Win32.Build.0 = Debug|Win32
+		{783EFEDF-2A3D-4B4C-B8AB-D16F3F0B3F37}.Release|Win32.ActiveCfg = Release|Win32
+		{783EFEDF-2A3D-4B4C-B8AB-D16F3F0B3F37}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

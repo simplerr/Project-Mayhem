@@ -1,0 +1,370 @@
+﻿Build started 2012-02-11 21:15:51.
+     1>Project "F:\Users\Axel\Documents\Visual Studio 2010\Projects\Project Mayhem\Project Mayhem.vcxproj" on node 2 (build target(s)).
+     1>InitializeBuildStatus:
+         Creating "Release\Project Mayhem.unsuccessfulbuild" because "AlwaysCreate" was specified.
+       ClCompile:
+         F:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /Id3d9.lib /Id3dx9d.lib /Idxguid.lib /IDxErr.lib /Idinput8.lib /Zi /nologo /W3 /WX- /O2 /Oi /Oy- /GL /D WIN32 /D NDEBUG /D _WINDOWS /D _MBCS /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Release\\" /Fd"Release\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt AI.cpp Animation.cpp Camera.cpp CameraManager_b.cpp Font.cpp Input.cpp Editor.cpp EditorState.cpp Enemy.cpp Game.cpp GfxStats.cpp Graphics.cpp Inventory.cpp Item.cpp ItemHandler.cpp Level.cpp Loot.cpp Math.cpp Menu.cpp MenuState.cpp Object.cpp Player.cpp PlayState.cpp cPolygon.cpp Projectile.cpp Runnable.cpp Stackwalker.cpp Structure.cpp Tile.cpp TileHandler.cpp tinyxml\tinystr.cpp tinyxml\tinyxml.cpp tinyxml\tinyxmlerror.cpp tinyxml\tinyxmlparser.cpp Vertex.cpp wButton.cpp wComponent.cpp wContainer.cpp wDropDown.cpp WindowHandler.cpp wMessage.cpp wPanel.cpp
+         AI.cpp
+         Animation.cpp
+         Camera.cpp
+     1>f:\users\axel\documents\visual studio 2010\projects\project mayhem\Camera.h(15): warning C4244: 'return' : conversion from 'FLOAT' to 'int', possible loss of data
+     1>f:\users\axel\documents\visual studio 2010\projects\project mayhem\Camera.h(16): warning C4244: 'return' : conversion from 'FLOAT' to 'int', possible loss of data
+     1>f:\users\axel\documents\visual studio 2010\projects\project mayhem\Camera.h(19): warning C4244: 'return' : conversion from 'FLOAT' to 'int', possible loss of data
+     1>f:\users\axel\documents\visual studio 2010\projects\project mayhem\Camera.h(21): warning C4244: '=' : conversion from 'int' to 'FLOAT', possible loss of data
+     1>f:\users\axel\documents\visual studio 2010\projects\project mayhem\Camera.h(22): warning C4244: '=' : conversion from 'int' to 'FLOAT', possible loss of data
+     1>Camera.cpp(16): warning C4244: '=' : conversion from 'int' to 'FLOAT', possible loss of data
+     1>Camera.cpp(17): warning C4244: '=' : conversion from 'int' to 'FLOAT', possible loss of data
+     1>Camera.cpp(18): warning C4244: '=' : conversion from 'int' to 'FLOAT', possible loss of data
+     1>Camera.cpp(19): warning C4244: '=' : conversion from 'int' to 'FLOAT', possible loss of data
+     1>Camera.cpp(59): warning C4244: 'argument' : conversion from 'int' to 'FLOAT', possible loss of data
+     1>Camera.cpp(59): warning C4244: 'argument' : conversion from 'int' to 'FLOAT', possible loss of data
+         CameraManager_b.cpp
+         Font.cpp
+     1>Font.cpp(36): warning C4244: '=' : conversion from 'DWORD' to 'float', possible loss of data
+     1>Font.cpp(37): warning C4244: '=' : conversion from 'DWORD' to 'float', possible loss of data
+     1>Font.cpp(38): warning C4244: '=' : conversion from 'DWORD' to 'float', possible loss of data
+     1>Font.cpp(49): warning C4018: '<' : signed/unsigned mismatch
+     1>Font.cpp(54): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+     1>Font.cpp(54): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+     1>Font.cpp(59): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+     1>Font.cpp(59): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+         Input.cpp
+     1>Input.cpp(14): warning C4244: '=' : conversion from 'LONG' to 'float', possible loss of data
+     1>Input.cpp(15): warning C4244: '=' : conversion from 'LONG' to 'float', possible loss of data
+     1>Input.cpp(44): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 F:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\stdio.h(371) : see declaration of 'sprintf'
+     1>Input.cpp(47): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 F:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\stdio.h(371) : see declaration of 'sprintf'
+     1>Input.cpp(98): warning C4800: 'int' : forcing value to bool 'true' or 'false' (performance warning)
+         Editor.cpp
+     1>f:\users\axel\documents\visual studio 2010\projects\project mayhem\wButton.h(5): fatal error C1083: Cannot open include file: 'boost\function.hpp': No such file or directory
+         EditorState.cpp
+     1>EditorState.cpp(44): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+         Enemy.cpp
+     1>Enemy.cpp(26): warning C4244: '=' : conversion from 'int' to 'float', possible loss of data
+     1>Enemy.cpp(27): warning C4244: '=' : conversion from 'int' to 'float', possible loss of data
+     1>Enemy.cpp(28): warning C4244: '=' : conversion from 'int' to 'float', possible loss of data
+     1>Enemy.cpp(29): warning C4244: '=' : conversion from 'int' to 'float', possible loss of data
+     1>Enemy.cpp(79): error C2143: syntax error : missing ';' before '.'
+     1>Enemy.cpp(79): error C2143: syntax error : missing ';' before '.'
+     1>Enemy.cpp(80): error C2143: syntax error : missing ';' before '.'
+     1>Enemy.cpp(80): error C2143: syntax error : missing ';' before '.'
+     1>Enemy.cpp(81): error C2143: syntax error : missing ';' before '.'
+     1>Enemy.cpp(81): error C2143: syntax error : missing ';' before '.'
+     1>Enemy.cpp(82): error C2143: syntax error : missing ';' before '.'
+     1>Enemy.cpp(82): error C2143: syntax error : missing ';' before '.'
+     1>Enemy.cpp(83): error C2143: syntax error : missing ';' before '.'
+     1>Enemy.cpp(83): error C2143: syntax error : missing ';' before '.'
+     1>Enemy.cpp(84): error C2143: syntax error : missing ';' before '.'
+     1>Enemy.cpp(84): error C2143: syntax error : missing ';' before '.'
+     1>Enemy.cpp(85): error C2143: syntax error : missing ';' before '.'
+     1>Enemy.cpp(85): error C2143: syntax error : missing ';' before '.'
+     1>Enemy.cpp(88): error C2039: 'texture' : is not a member of 'EnemyData'
+                 f:\users\axel\documents\visual studio 2010\projects\project mayhem\Enemy.h(13) : see declaration of 'EnemyData'
+     1>Enemy.cpp(90): error C2039: 'texture' : is not a member of 'EnemyData'
+                 f:\users\axel\documents\visual studio 2010\projects\project mayhem\Enemy.h(13) : see declaration of 'EnemyData'
+     1>Enemy.cpp(92): error C2065: 'SlotId' : undeclared identifier
+     1>Enemy.cpp(92): error C2146: syntax error : missing ';' before identifier 'slotId'
+     1>Enemy.cpp(92): error C2065: 'slotId' : undeclared identifier
+     1>Enemy.cpp(94): error C2065: 'slotId' : undeclared identifier
+     1>Enemy.cpp(94): error C2065: 'HEAD' : undeclared identifier
+     1>Enemy.cpp(95): error C2065: 'slotId' : undeclared identifier
+     1>Enemy.cpp(95): error C2065: 'WEAPON' : undeclared identifier
+     1>Enemy.cpp(96): error C2065: 'slotId' : undeclared identifier
+     1>Enemy.cpp(96): error C2065: 'CHEST' : undeclared identifier
+     1>Enemy.cpp(97): error C2065: 'slotId' : undeclared identifier
+     1>Enemy.cpp(97): error C2065: 'LEGS' : undeclared identifier
+     1>Enemy.cpp(98): error C2065: 'slotId' : undeclared identifier
+     1>Enemy.cpp(98): error C2065: 'SHIELD' : undeclared identifier
+     1>Enemy.cpp(99): error C2065: 'slotId' : undeclared identifier
+     1>Enemy.cpp(99): error C2065: 'MISC1' : undeclared identifier
+     1>Enemy.cpp(100): error C2065: 'slotId' : undeclared identifier
+     1>Enemy.cpp(100): error C2065: 'MISC2' : undeclared identifier
+     1>Enemy.cpp(102): error C2039: 'slot' : is not a member of 'EnemyData'
+                 f:\users\axel\documents\visual studio 2010\projects\project mayhem\Enemy.h(13) : see declaration of 'EnemyData'
+     1>Enemy.cpp(102): error C2065: 'slotId' : undeclared identifier
+     1>Enemy.cpp(104): error C2065: 'mDataMap' : undeclared identifier
+     1>Enemy.cpp(139): warning C4305: '=' : truncation from 'double' to 'float'
+     1>Enemy.cpp(201): warning C4305: '=' : truncation from 'double' to 'float'
+     1>Enemy.cpp(210): warning C4305: '=' : truncation from 'double' to 'float'
+         Game.cpp
+     1>f:\users\axel\documents\visual studio 2010\projects\project mayhem\Camera.h(15): warning C4244: 'return' : conversion from 'FLOAT' to 'int', possible loss of data
+     1>f:\users\axel\documents\visual studio 2010\projects\project mayhem\Camera.h(16): warning C4244: 'return' : conversion from 'FLOAT' to 'int', possible loss of data
+     1>f:\users\axel\documents\visual studio 2010\projects\project mayhem\Camera.h(19): warning C4244: 'return' : conversion from 'FLOAT' to 'int', possible loss of data
+     1>f:\users\axel\documents\visual studio 2010\projects\project mayhem\Camera.h(21): warning C4244: '=' : conversion from 'int' to 'FLOAT', possible loss of data
+     1>f:\users\axel\documents\visual studio 2010\projects\project mayhem\Camera.h(22): warning C4244: '=' : conversion from 'int' to 'FLOAT', possible loss of data
+         GfxStats.cpp
+     1>GfxStats.cpp(23): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 F:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\string.h(105) : see declaration of 'strcpy'
+     1>GfxStats.cpp(114): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 F:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\stdio.h(371) : see declaration of 'sprintf'
+         Graphics.cpp
+     1>Graphics.cpp(70): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 F:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\stdio.h(371) : see declaration of 'sprintf'
+     1>Graphics.cpp(93): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+     1>Graphics.cpp(93): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+     1>Graphics.cpp(94): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+     1>Graphics.cpp(94): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+     1>Graphics.cpp(95): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+     1>Graphics.cpp(95): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+     1>Graphics.cpp(96): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+     1>Graphics.cpp(96): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+     1>Graphics.cpp(122): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 F:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\string.h(105) : see declaration of 'strcpy'
+     1>Graphics.cpp(433): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+     1>Graphics.cpp(433): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+     1>Graphics.cpp(520): warning C4244: 'initializing' : conversion from 'float' to 'int', possible loss of data
+     1>Graphics.cpp(522): warning C4244: '=' : conversion from 'int' to 'float', possible loss of data
+     1>Graphics.cpp(584): warning C4305: '-=' : truncation from 'double' to 'float'
+     1>Graphics.cpp(627): warning C4305: '-=' : truncation from 'double' to 'float'
+         Inventory.cpp
+     1>f:\users\axel\documents\visual studio 2010\projects\project mayhem\Inventory.h(21): warning C4244: '=' : conversion from 'int' to 'float', possible loss of data
+     1>f:\users\axel\documents\visual studio 2010\projects\project mayhem\Inventory.h(22): warning C4244: '=' : conversion from 'int' to 'float', possible loss of data
+     1>f:\users\axel\documents\visual studio 2010\projects\project mayhem\Inventory.h(23): warning C4244: '=' : conversion from 'int' to 'float', possible loss of data
+     1>f:\users\axel\documents\visual studio 2010\projects\project mayhem\Inventory.h(24): warning C4244: '=' : conversion from 'int' to 'float', possible loss of data
+     1>Inventory.cpp(24): warning C4244: 'initializing' : conversion from 'float' to 'int', possible loss of data
+     1>Inventory.cpp(25): warning C4244: 'initializing' : conversion from 'float' to 'int', possible loss of data
+     1>Inventory.cpp(26): warning C4482: nonstandard extension used: enum 'SlotId' used in qualified name
+     1>Inventory.cpp(27): warning C4482: nonstandard extension used: enum 'SlotId' used in qualified name
+     1>Inventory.cpp(28): warning C4482: nonstandard extension used: enum 'SlotId' used in qualified name
+     1>Inventory.cpp(29): warning C4482: nonstandard extension used: enum 'SlotId' used in qualified name
+     1>Inventory.cpp(30): warning C4482: nonstandard extension used: enum 'SlotId' used in qualified name
+     1>Inventory.cpp(61): warning C4018: '<' : signed/unsigned mismatch
+     1>Inventory.cpp(77): warning C4018: '<' : signed/unsigned mismatch
+     1>Inventory.cpp(93): warning C4018: '<' : signed/unsigned mismatch
+     1>Inventory.cpp(130): warning C4018: '<' : signed/unsigned mismatch
+     1>Inventory.cpp(139): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+     1>Inventory.cpp(139): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+     1>Inventory.cpp(145): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+     1>Inventory.cpp(145): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+     1>Inventory.cpp(150): warning C4018: '<' : signed/unsigned mismatch
+     1>Inventory.cpp(158): warning C4244: 'initializing' : conversion from 'float' to 'int', possible loss of data
+     1>Inventory.cpp(159): warning C4244: 'initializing' : conversion from 'float' to 'int', possible loss of data
+     1>Inventory.cpp(166): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 F:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\stdio.h(371) : see declaration of 'sprintf'
+     1>Inventory.cpp(171): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 F:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\stdio.h(371) : see declaration of 'sprintf'
+     1>Inventory.cpp(175): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 F:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\stdio.h(371) : see declaration of 'sprintf'
+     1>Inventory.cpp(221): warning C4018: '<' : signed/unsigned mismatch
+         Item.cpp
+         ItemHandler.cpp
+     1>ItemHandler.cpp(1): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+     1>f:\users\axel\documents\visual studio 2010\projects\project mayhem\Inventory.h(21): warning C4244: '=' : conversion from 'int' to 'float', possible loss of data
+     1>f:\users\axel\documents\visual studio 2010\projects\project mayhem\Inventory.h(22): warning C4244: '=' : conversion from 'int' to 'float', possible loss of data
+     1>f:\users\axel\documents\visual studio 2010\projects\project mayhem\Inventory.h(23): warning C4244: '=' : conversion from 'int' to 'float', possible loss of data
+     1>f:\users\axel\documents\visual studio 2010\projects\project mayhem\Inventory.h(24): warning C4244: '=' : conversion from 'int' to 'float', possible loss of data
+         Level.cpp
+     1>Level.cpp(1): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+     1>f:\users\axel\documents\visual studio 2010\projects\project mayhem\Collision.h(51): warning C4018: '<' : signed/unsigned mismatch
+     1>f:\users\axel\documents\visual studio 2010\projects\project mayhem\Collision.h(64): warning C4244: '/=' : conversion from 'double' to 'float', possible loss of data
+     1>f:\users\axel\documents\visual studio 2010\projects\project mayhem\Collision.h(65): warning C4244: '/=' : conversion from 'double' to 'float', possible loss of data
+     1>f:\users\axel\documents\visual studio 2010\projects\project mayhem\Collision.h(69): warning C4018: '<' : signed/unsigned mismatch
+     1>f:\users\axel\documents\visual studio 2010\projects\project mayhem\Collision.h(87): warning C4018: '<' : signed/unsigned mismatch
+     1>f:\users\axel\documents\visual studio 2010\projects\project mayhem\Collision.h(136): warning C4018: '<' : signed/unsigned mismatch
+     1>f:\users\axel\documents\visual studio 2010\projects\project mayhem\Collision.h(155): warning C4244: '/=' : conversion from 'double' to 'float', possible loss of data
+     1>f:\users\axel\documents\visual studio 2010\projects\project mayhem\Collision.h(156): warning C4244: '/=' : conversion from 'double' to 'float', possible loss of data
+     1>f:\users\axel\documents\visual studio 2010\projects\project mayhem\Collision.h(161): warning C4018: '<' : signed/unsigned mismatch
+     1>f:\users\axel\documents\visual studio 2010\projects\project mayhem\Collision.h(179): warning C4018: '<' : signed/unsigned mismatch
+     1>Level.cpp(32): warning C4018: '<' : signed/unsigned mismatch
+     1>Level.cpp(39): warning C4018: '<' : signed/unsigned mismatch
+     1>Level.cpp(88): warning C4018: '<' : signed/unsigned mismatch
+     1>Level.cpp(127): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+     1>Level.cpp(127): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+     1>Level.cpp(136): warning C4018: '<' : signed/unsigned mismatch
+     1>Level.cpp(139): warning C4018: '<' : signed/unsigned mismatch
+     1>Level.cpp(166): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+     1>Level.cpp(166): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+     1>Level.cpp(168): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+     1>Level.cpp(168): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+     1>Level.cpp(180): warning C4018: '<' : signed/unsigned mismatch
+     1>Level.cpp(186): warning C4018: '<' : signed/unsigned mismatch
+     1>Level.cpp(188): warning C4018: '<' : signed/unsigned mismatch
+     1>Level.cpp(192): warning C4018: '<' : signed/unsigned mismatch
+     1>Level.cpp(197): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 F:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\stdio.h(371) : see declaration of 'sprintf'
+     1>Level.cpp(225): warning C4018: '<' : signed/unsigned mismatch
+     1>Level.cpp(244): warning C4018: '<' : signed/unsigned mismatch
+     1>Level.cpp(255): warning C4018: '<' : signed/unsigned mismatch
+     1>Level.cpp(267): warning C4018: '<' : signed/unsigned mismatch
+     1>Level.cpp(295): warning C4018: '<' : signed/unsigned mismatch
+     1>Level.cpp(309): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+     1>Level.cpp(310): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+     1>Level.cpp(324): warning C4018: '<' : signed/unsigned mismatch
+     1>Level.cpp(328): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+     1>Level.cpp(329): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+     1>Level.cpp(358): warning C4482: nonstandard extension used: enum 'ObjectType' used in qualified name
+     1>Level.cpp(359): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+     1>Level.cpp(359): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+     1>Level.cpp(362): warning C4482: nonstandard extension used: enum 'ObjectType' used in qualified name
+     1>Level.cpp(363): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+     1>Level.cpp(363): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+     1>Level.cpp(375): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+     1>Level.cpp(375): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+     1>Level.cpp(396): warning C4244: '=' : conversion from 'int' to 'float', possible loss of data
+     1>Level.cpp(397): warning C4244: '=' : conversion from 'int' to 'float', possible loss of data
+     1>Level.cpp(402): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+     1>Level.cpp(402): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+     1>Level.cpp(405): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+     1>Level.cpp(405): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+     1>Level.cpp(415): warning C4244: '=' : conversion from 'int' to 'float', possible loss of data
+     1>Level.cpp(416): warning C4244: '=' : conversion from 'int' to 'float', possible loss of data
+     1>Level.cpp(440): warning C4018: '<' : signed/unsigned mismatch
+     1>Level.cpp(442): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+     1>Level.cpp(442): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+     1>Level.cpp(457): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+     1>Level.cpp(457): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+         Loot.cpp
+     1>Loot.cpp(5): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+     1>Loot.cpp(5): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+         Math.cpp
+     1>Math.cpp(10): warning C4244: 'argument' : conversion from 'time_t' to 'unsigned int', possible loss of data
+         Menu.cpp
+     1>f:\users\axel\documents\visual studio 2010\projects\project mayhem\Menu.h(12): fatal error C1083: Cannot open include file: 'boost\function.hpp': No such file or directory
+         MenuState.cpp
+     1>f:\users\axel\documents\visual studio 2010\projects\project mayhem\Menu.h(12): fatal error C1083: Cannot open include file: 'boost\function.hpp': No such file or directory
+         Compiling...
+         Object.cpp
+     1>Object.cpp(10): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+     1>Object.cpp(10): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+     1>Object.cpp(11): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+     1>Object.cpp(11): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+     1>Object.cpp(12): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+     1>Object.cpp(12): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+     1>Object.cpp(13): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+     1>Object.cpp(13): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+         Player.cpp
+     1>f:\users\axel\documents\visual studio 2010\projects\project mayhem\Inventory.h(21): warning C4244: '=' : conversion from 'int' to 'float', possible loss of data
+     1>f:\users\axel\documents\visual studio 2010\projects\project mayhem\Inventory.h(22): warning C4244: '=' : conversion from 'int' to 'float', possible loss of data
+     1>f:\users\axel\documents\visual studio 2010\projects\project mayhem\Inventory.h(23): warning C4244: '=' : conversion from 'int' to 'float', possible loss of data
+     1>f:\users\axel\documents\visual studio 2010\projects\project mayhem\Inventory.h(24): warning C4244: '=' : conversion from 'int' to 'float', possible loss of data
+         PlayState.cpp
+     1>PlayState.cpp(53): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+         cPolygon.cpp
+     1>cPolygon.cpp(57): warning C4018: '<' : signed/unsigned mismatch
+     1>cPolygon.cpp(101): warning C4018: '<' : signed/unsigned mismatch
+         Projectile.cpp
+         Runnable.cpp
+         Stackwalker.cpp
+     1>Stackwalker.cpp(397): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 F:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\stdio.h(234) : see declaration of 'fopen'
+     1>Stackwalker.cpp(399): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 F:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\stdio.h(234) : see declaration of 'fopen'
+     1>Stackwalker.cpp(410): warning C4996: '_strdate': This function or variable may be unsafe. Consider using _strdate_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 F:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\time.h(177) : see declaration of '_strdate'
+     1>Stackwalker.cpp(411): warning C4996: '_strtime': This function or variable may be unsafe. Consider using _strtime_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 F:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\time.h(181) : see declaration of '_strtime'
+     1>Stackwalker.cpp(1729): warning C4996: 'strdup': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _strdup. See online help for details.
+                 F:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\string.h(238) : see declaration of 'strdup'
+     1>Stackwalker.cpp(1730): warning C4996: 'strdup': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _strdup. See online help for details.
+                 F:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\string.h(238) : see declaration of 'strdup'
+     1>Stackwalker.cpp(1856): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 F:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\stdio.h(371) : see declaration of 'sprintf'
+     1>Stackwalker.cpp(1866): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 F:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\string.h(105) : see declaration of 'strcpy'
+     1>Stackwalker.cpp(1868): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 F:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\string.h(110) : see declaration of 'strcat'
+     1>Stackwalker.cpp(1870): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 F:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\string.h(110) : see declaration of 'strcat'
+     1>Stackwalker.cpp(1873): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 F:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\string.h(110) : see declaration of 'strcat'
+     1>Stackwalker.cpp(1875): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 F:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\string.h(110) : see declaration of 'strcat'
+     1>Stackwalker.cpp(1880): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 F:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\string.h(105) : see declaration of 'strcpy'
+     1>Stackwalker.cpp(1882): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 F:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\string.h(105) : see declaration of 'strcpy'
+     1>Stackwalker.cpp(1954): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 F:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\string.h(105) : see declaration of 'strcpy'
+     1>Stackwalker.cpp(1956): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 F:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\string.h(110) : see declaration of 'strcat'
+     1>Stackwalker.cpp(1958): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 F:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\string.h(110) : see declaration of 'strcat'
+     1>Stackwalker.cpp(1961): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 F:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\string.h(110) : see declaration of 'strcat'
+     1>Stackwalker.cpp(1963): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 F:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\string.h(110) : see declaration of 'strcat'
+     1>Stackwalker.cpp(1968): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 F:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\string.h(105) : see declaration of 'strcpy'
+     1>Stackwalker.cpp(1970): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 F:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\string.h(105) : see declaration of 'strcpy'
+     1>Stackwalker.cpp(2020): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 F:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\stdio.h(371) : see declaration of 'sprintf'
+     1>Stackwalker.cpp(2023): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 F:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\stdio.h(371) : see declaration of 'sprintf'
+     1>Stackwalker.cpp(2094): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 F:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\stdio.h(234) : see declaration of 'fopen'
+     1>Stackwalker.cpp(2103): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 F:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\string.h(105) : see declaration of 'strcpy'
+     1>Stackwalker.cpp(2104): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 F:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\string.h(110) : see declaration of 'strcat'
+     1>Stackwalker.cpp(2107): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 F:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\stdio.h(234) : see declaration of 'fopen'
+     1>Stackwalker.cpp(2154): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 F:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\stdio.h(234) : see declaration of 'fopen'
+     1>Stackwalker.cpp(2163): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 F:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\string.h(105) : see declaration of 'strcpy'
+     1>Stackwalker.cpp(2164): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 F:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\string.h(110) : see declaration of 'strcat'
+     1>Stackwalker.cpp(2167): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 F:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\stdio.h(234) : see declaration of 'fopen'
+     1>Stackwalker.cpp(2297): warning C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 F:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\string.h(188) : see declaration of 'strncpy'
+     1>Stackwalker.cpp(2406): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 F:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\string.h(105) : see declaration of 'strcpy'
+     1>Stackwalker.cpp(2470): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 F:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\string.h(105) : see declaration of 'strcpy'
+     1>Stackwalker.cpp(2473): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 F:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\string.h(105) : see declaration of 'strcpy'
+     1>Stackwalker.cpp(2476): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 F:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\string.h(105) : see declaration of 'strcpy'
+     1>Stackwalker.cpp(2479): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 F:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\string.h(105) : see declaration of 'strcpy'
+     1>Stackwalker.cpp(2482): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 F:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\string.h(105) : see declaration of 'strcpy'
+     1>Stackwalker.cpp(2485): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 F:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\string.h(105) : see declaration of 'strcpy'
+     1>Stackwalker.cpp(2488): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 F:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\string.h(105) : see declaration of 'strcpy'
+     1>Stackwalker.cpp(2492): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 F:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\string.h(105) : see declaration of 'strcpy'
+     1>Stackwalker.cpp(2496): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 F:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\stdio.h(363) : see declaration of '_snprintf'
+         Structure.cpp
+         Tile.cpp
+     1>Tile.cpp(7): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+     1>Tile.cpp(7): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+         TileHandler.cpp
+     1>TileHandler.cpp(1): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+     1>TileHandler.cpp(43): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+         tinystr.cpp
+         tinyxml.cpp
+         tinyxmlerror.cpp
+         tinyxmlparser.cpp
+         Vertex.cpp
+         wButton.cpp
+     1>f:\users\axel\documents\visual studio 2010\projects\project mayhem\wButton.h(5): fatal error C1083: Cannot open include file: 'boost\function.hpp': No such file or directory
+         wComponent.cpp
+     1>wComponent.cpp(8): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+     1>wComponent.cpp(8): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+         wContainer.cpp
+     1>wContainer.cpp(6): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+     1>wContainer.cpp(6): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+     1>wContainer.cpp(46): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+     1>wContainer.cpp(46): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+     1>wContainer.cpp(55): warning C4018: '<' : signed/unsigned mismatch
+         wDropDown.cpp
+     1>f:\users\axel\documents\visual studio 2010\projects\project mayhem\wDropDown.h(4): fatal error C1083: Cannot open include file: 'boost\function.hpp': No such file or directory
+         WindowHandler.cpp
+     1>WindowHandler.cpp(1): fatal error C1083: Cannot open include file: 'boost\lexical_cast.hpp': No such file or directory
+         Compiling...
+         wMessage.cpp
+     1>wMessage.cpp(2): fatal error C1083: Cannot open include file: 'boost\lexical_cast.hpp': No such file or directory
+         wPanel.cpp
+     1>wPanel.cpp(4): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+     1>wPanel.cpp(4): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+     1>Done Building Project "F:\Users\Axel\Documents\Visual Studio 2010\Projects\Project Mayhem\Project Mayhem.vcxproj" (build target(s)) -- FAILED.
+
+Build FAILED.
+
+Time Elapsed 00:00:23.28

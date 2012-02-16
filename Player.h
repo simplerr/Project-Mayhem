@@ -8,6 +8,7 @@
 class Level;
 class Inventory;
 class Gui;
+class Item;
 
 class Player : public Object 
 {
@@ -21,8 +22,8 @@ public:
 	void handleInput();
 	void attack(/*KEY/WPN used*/);
 	void move(float dx, float dy);
-
 	bool handleCollision(Object* collider, MTV* mtv);
+	void itemEquipped(Item* item, bool equiped);
 
 	void setCooldown(float cooldown);
 
@@ -32,17 +33,25 @@ public:
 	float getMaxEnergy();
 
 private:
+	IDirect3DTexture9*	mWeapon;
 	Animation*	mAnimation;
 	Inventory*	mInventory;
 	Gui*		mGui;
-	float mHealth;
-	float mEnergy;
-	float mMaxHealth;
-	float mMaxEnergy;
-	float mMoveSpeed;
 	float mAngle;
 	float mCooldown;
 	float mCounter;
+
+	// Stats
+	float mHealth;
+	float mEnergy;
+	
+	// HACK::::::
+public:
+	float mMaxHealth;
+	float mMaxEnergy;
+	float mArmor;
+	float mBaseArmor;
+	float mMoveSpeed;
 };
 
 #endif

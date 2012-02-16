@@ -6,13 +6,17 @@ using namespace std;
 
 struct ItemData
 {
+	ItemData() {
+		armor = health = energy = weight = damage = moveSpeed = 0;
+	}
 	string name;
 	int armor;
 	int health;
 	int damage;
-	int mana;
+	int energy;
 	int weight;
 	int slot;
+	float moveSpeed;
 	IDirect3DTexture9* texture;
 	string textureSource;
 	// Etc..

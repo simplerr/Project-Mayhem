@@ -4,10 +4,11 @@
 #include "Inventory.h"
 #include "Item.h"
 #include "enums.h"
+#include "Player.h"
 
 using namespace std;
 
-Inventory::Inventory() : Container(400, 300, 500, 400)
+Inventory::Inventory() : Container(400, 300, 675, 400)
 {
 	mGold = 0;
 	mHooverBkgd = gGraphics->loadTexture("Data\\imgs\\hoover_bkgd.png");
@@ -115,7 +116,19 @@ void Inventory::draw()
 		// Display gold amount
 		char buffer[256];
 		sprintf(buffer, "%i", mGold);
-		gGraphics->drawText(buffer, getPosition().x + 50, getPosition().y + 200, SMALL_DX);
+		gGraphics->drawText(buffer, getPosition().x + 500, getPosition().y + 20, SMALL_DX);
+
+		sprintf(buffer, "Health: %i", (int)mPlayer->mMaxHealth);
+		gGraphics->drawText(buffer, getPosition().x + 500, getPosition().y + 45, SMALL_DX);
+
+		sprintf(buffer, "MoveSpeed: %.2f", mPlayer->mMoveSpeed);
+		gGraphics->drawText(buffer, getPosition().x + 500, getPosition().y + 65, SMALL_DX);
+
+		sprintf(buffer, "Armor: %i", (int)mPlayer->mArmor);
+		gGraphics->drawText(buffer, getPosition().x + 500, getPosition().y + 85, SMALL_DX);
+
+		sprintf(buffer, "Energy: %i", (int)mPlayer->mMaxEnergy);
+		gGraphics->drawText(buffer, getPosition().x + 500, getPosition().y + 105, SMALL_DX);
 	}
 }
 
@@ -135,7 +148,43 @@ void Inventory::addItem(string itemName)
 	}
 }
 
+void Inventory::itemMoved(SlotItem* item, SlotId from, SlotId to)
+{
+	if(from == BAG && to != BAG)
+		mPlayer->itemEquipped((Item*)item, true);
+	else if(from != BAG && to == BAG)
+		mPlayer->itemEquipped((Item*)item, false);
+}
+
 void Inventory::addGold(int gold)
 {
 	mGold += gold;
+}
+
+ItemData Inventory::getAllStats()
+{
+	ItemData itemData;
+	for(int i = 0; i < mSlotList.size(); i++)
+	{
+		// Don't count bag items
+		if(mSlotList[i].slotId == BAG)
+			continue;
+
+		Item* item = (Item*)mSlotList[i].item;
+		if(item != NULL) {
+			itemData.armor += item->getData().armor;	
+			itemData.health += item->getData().health;
+			itemData.energy += item->getData().energy;
+			itemData.weight += item->getData().weight;
+			itemData.damage += item->getData().damage;
+			itemData.moveSpeed += item->getData().moveSpeed;
+		}
+	}
+
+	return itemData;
+}
+
+void Inventory::setPlayer(Player* player)
+{
+	mPlayer = player;
 }

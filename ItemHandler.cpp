@@ -20,9 +20,10 @@ ItemHandler::ItemHandler()
 		ItemData.name = item->Attribute("name") == NULL ? "#NOVALUE" : item->Attribute("name");
 		ItemData.armor = item->Attribute("armor") == NULL ? 0 : atoi(item->Attribute("armor"));
 		ItemData.health = item->Attribute("health") == NULL ? 0 : atoi(item->Attribute("health"));
-		ItemData.mana = item->Attribute("mana") == NULL ? 0 : atoi(item->Attribute("mana"));
+		ItemData.energy = item->Attribute("energy") == NULL ? 0 : atoi(item->Attribute("energy"));
 		ItemData.weight = item->Attribute("weight") == NULL ? 0 : atoi(item->Attribute("weight"));
 		ItemData.damage = item->Attribute("damage") == NULL ? 0 : atoi(item->Attribute("damage"));
+		ItemData.moveSpeed = item->Attribute("moveSpeed") == NULL ? 0 : atoi(item->Attribute("moveSpeed"));
 		ItemData.textureSource = item->Attribute("texture");
 
 		if(item->Attribute("texture") != NULL)

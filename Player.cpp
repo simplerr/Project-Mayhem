@@ -10,14 +10,17 @@
 #include "Gold.h"
 #include "Gui.h"
 
-Player::Player(float x, float y) : Object (x, y, 40, 40, PLAYER,  "Data\\imgs\\terror.bmp") //change width/heigth/pic
+Player::Player(float x, float y) : Object (x, y, 40, 40, PLAYER,  "Data\\imgs\\spelaren.png") //change width/heigth/pic
 {
 	setCooldown(.1f);
 	setLayer(MIDDLE);
 
 	mEnergy = mMaxEnergy = 100;
 	mHealth = mMaxHealth = 100;
+	mArmor = mBaseArmor = 3;
+	mMoveSpeed = 5;
 	mInventory = new Inventory();
+	mInventory->setPlayer(this);
 	mInventory->addItem("Golden Sword");
 	mInventory->addItem("Golden Axe");
 	mInventory->addItem("Golden Helmet");
@@ -26,9 +29,10 @@ Player::Player(float x, float y) : Object (x, y, 40, 40, PLAYER,  "Data\\imgs\\t
 	mAnimation = new Animation(64, 54, .2f, 2, 2);
 	mAnimation->setFrame(0);
 	mCounter = 0.0f;
-	mMoveSpeed = 5;
 	mGui = new Gui(this);
 	mGui->setTexture("Data\\imgs\\gui_bkgd.png");
+
+	mWeapon = gGraphics->loadTexture("Data\\imgs\\vapen1.png");
 }
 Player::~Player() 
 {
@@ -48,7 +52,11 @@ void Player::update(float dt)
 
 void Player::draw()
 {
-	gGraphics->drawTexturedPolygon(getPolygon(), getTexture(), &mAnimation->getSourceRect());
+	static Vector offset(30, 16);
+
+	gGraphics->drawTexturedPolygon(getPolygon(), getTexture());
+	gGraphics->drawTexture(mWeapon, getPos().x + cosf(getRotation())*offset.x - sinf(getRotation())*offset.y, getPos().y + sinf(getRotation())*offset.x + cosf(getRotation())*offset.y, 64, 16, getRotation());
+	//gGraphics->drawTexturedPolygon(getPolygon(), getTexture(), &mAnimation->getSourceRect());
 	mInventory->draw();
 	mGui->draw();
 }
@@ -113,6 +121,17 @@ bool Player::handleCollision(Object* collider, MTV* mtv)
 		getLevel()->moveObjects(-mtv->pushX, -mtv->pushY);
 	}
 	return false;
+}
+
+void Player::itemEquipped(Item* item, bool equiped)
+{
+	int x = equiped ? 1 : -1;
+
+	ItemData data = item->getData();
+	mArmor += data.armor*x;
+	mMaxHealth += data.health*x;
+	mMoveSpeed += data.moveSpeed*x;
+	mMaxEnergy += data.energy*x;
 }
 
 void Player::attack(/*KEY/WPN used*/)

@@ -117,9 +117,11 @@ void Container::draw()
 
 void Container::swapItems(Slot* from, Slot* to)
 {
+	itemMoved((*from).item, from->slotId, to->slotId);
 	// Ugly swapping method.. Also checks if one slot is empty or not
 	Slot tmp = *from;
 	if((*to).taken) {
+		itemMoved((*to).item, to->slotId, from->slotId);
 		(*from).item = (*to).item;
 		(*from).taken = true;
 	}

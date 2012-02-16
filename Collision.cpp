@@ -1,9 +1,20 @@
 #include "Collision.h"
 
-MTV checkCollision (cPolygon poly1, cPolygon poly2) 
+MTV checkCollision(cPolygon& poly1, cPolygon& poly2, bool detailed) 
 {
 	MTV mtv;
 	mtv.collision = false;
+
+	Rect Rect1 = poly1.getBoundingBox();
+	Rect Rect2 = poly2.getBoundingBox();
+
+	if(Rect1.left > Rect2.right || Rect1.right < Rect2.left || Rect1.bottom < Rect2.top || Rect1.top > Rect2.bottom) {
+		return mtv;
+	}
+	else if(!detailed) {
+		mtv.collision = true;
+		return mtv;
+	}
 
 	cPolygon tmp1 = poly1;
 	cPolygon tmp2 = poly2;
@@ -11,16 +22,12 @@ MTV checkCollision (cPolygon poly1, cPolygon poly2)
 	tmp1.rotate(-tmp1.getRotation());
 	tmp2.rotate(-tmp2.getRotation());
 
-	Rect Rect1 = poly1.getBoundingBox();
-	Rect Rect2 = poly2.getBoundingBox();
 	Vector axis;			// Axis we will project onto
 	Vector projection;	// The direction of the projection
 	int i;			// Current i 
 	double minA, maxA, minB, maxB, axisLen, tmp, minLen = 999999, tmpDepth = 1;
 
-	if(Rect1.left > Rect2.right || Rect1.right < Rect2.left || Rect1.bottom < Rect2.top || Rect1.top > Rect2.bottom) {
-		return mtv;
-	}
+	
 
 	for( int i = 0; i < poly1.mVertices.size(); i++) 
 	{

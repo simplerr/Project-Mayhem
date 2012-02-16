@@ -14,7 +14,7 @@ Inventory::Inventory() : Container(400, 300, 675, 400)
 	mHooverBkgd = gGraphics->loadTexture("Data\\imgs\\hoover_bkgd.png");
 
 	// Create the equip slots
-	int x = getPosition().x - getWidth()/2;
+	int x = getPosition().x - getWidth()/2 + 20;
 	int y = getPosition().y - getHeight()/2 + 35;
 	
 	addSlot(x + 50, y + 50, SlotId::WEAPON);
@@ -81,7 +81,8 @@ void Inventory::draw()
 		Container::draw();
 
 		// Draw the item information overlay
-		for(int i = 0; i < mSlotList.size(); i++)
+
+		for(int i = 0; i < mSlotList.size() && 0; i++)
 		{
 			Rect rect = mSlotList[i].rect;
 			// Show item information?
@@ -115,20 +116,27 @@ void Inventory::draw()
 
 		// Display gold amount
 		char buffer[256];
-		sprintf(buffer, "%i", mGold);
-		gGraphics->drawText(buffer, getPosition().x + 500, getPosition().y + 20, SMALL_DX);
 
-		sprintf(buffer, "Health: %i", (int)mPlayer->mMaxHealth);
-		gGraphics->drawText(buffer, getPosition().x + 500, getPosition().y + 45, SMALL_DX);
+		sprintf(buffer, "Level: %i", mPlayer->getCharacterLevel());
+		gGraphics->drawText(buffer, getPosition().x + 160, getPosition().y - 140, SMALL_DX);
 
-		sprintf(buffer, "MoveSpeed: %.2f", mPlayer->mMoveSpeed);
-		gGraphics->drawText(buffer, getPosition().x + 500, getPosition().y + 65, SMALL_DX);
+		sprintf(buffer, "Experiece: %i/%i", mPlayer->getExperience(), mPlayer->getLevelExp());
+		gGraphics->drawText(buffer, getPosition().x + 160, getPosition().y - 120, SMALL_DX);
 
-		sprintf(buffer, "Armor: %i", (int)mPlayer->mArmor);
-		gGraphics->drawText(buffer, getPosition().x + 500, getPosition().y + 85, SMALL_DX);
+		sprintf(buffer, "Gold: %i", mGold);
+		gGraphics->drawText(buffer, getPosition().x + 160, getPosition().y - 100, SMALL_DX);
 
-		sprintf(buffer, "Energy: %i", (int)mPlayer->mMaxEnergy);
-		gGraphics->drawText(buffer, getPosition().x + 500, getPosition().y + 105, SMALL_DX);
+		sprintf(buffer, "Health: %i", (int)mPlayer->getMaxHealth());
+		gGraphics->drawText(buffer, getPosition().x + 160, getPosition().y - 80, SMALL_DX);
+
+		sprintf(buffer, "MoveSpeed: %.2f", mPlayer->getMoveSpeed());
+		gGraphics->drawText(buffer, getPosition().x + 160, getPosition().y - 60, SMALL_DX);
+
+		sprintf(buffer, "Armor: %i", (int)mPlayer->getArmor());
+		gGraphics->drawText(buffer, getPosition().x + 160, getPosition().y - 40, SMALL_DX);
+
+		sprintf(buffer, "Energy: %i", (int)mPlayer->getMaxEnergy());
+		gGraphics->drawText(buffer, getPosition().x + 160, getPosition().y - 20, SMALL_DX);
 	}
 }
 

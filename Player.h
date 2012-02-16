@@ -27,26 +27,34 @@ public:
 
 	void setCooldown(float cooldown);
 
-	float getHealth();
-	float getMaxHealth();
-	float getEnergy();
-	float getMaxEnergy();
+	void addExperience(int experience);
+	void addGold(int amount);
+
+	float getMoveSpeed();
+	int getHealth();
+	int getMaxHealth();
+	int getEnergy();
+	int getMaxEnergy();
+	int getArmor();
+	int getExperience();
+	int getCharacterLevel();
+	int	getLevelExp();	
 
 private:
 	IDirect3DTexture9*	mWeapon;
 	Animation*	mAnimation;
 	Inventory*	mInventory;
 	Gui*		mGui;
+	vector<int> mExpPerLevel;
 	float mAngle;
 	float mCooldown;
 	float mCounter;
 
 	// Stats
+	int	mLevel;
+	int mExperience;
 	float mHealth;
 	float mEnergy;
-	
-	// HACK::::::
-public:
 	float mMaxHealth;
 	float mMaxEnergy;
 	float mArmor;

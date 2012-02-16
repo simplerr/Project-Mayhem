@@ -17,6 +17,8 @@ Player::Player(float x, float y) : Object (x, y, 40, 40, PLAYER,  "Data\\imgs\\s
 
 	mEnergy = mMaxEnergy = 100;
 	mHealth = mMaxHealth = 100;
+	mLevel = 1;
+	mExperience = 0;
 	mArmor = mBaseArmor = 3;
 	mMoveSpeed = 5;
 	mInventory = new Inventory();
@@ -33,6 +35,13 @@ Player::Player(float x, float y) : Object (x, y, 40, 40, PLAYER,  "Data\\imgs\\s
 	mGui->setTexture("Data\\imgs\\gui_bkgd.png");
 
 	mWeapon = gGraphics->loadTexture("Data\\imgs\\vapen1.png");
+
+	// Experience per level
+	mExpPerLevel.push_back(100);
+	mExpPerLevel.push_back(250);
+	mExpPerLevel.push_back(500);
+	mExpPerLevel.push_back(1000);
+	mExpPerLevel.push_back(2000);
 }
 Player::~Player() 
 {
@@ -139,6 +148,21 @@ void Player::attack(/*KEY/WPN used*/)
 
 }
 
+void Player::addExperience(int experience)
+{
+	if(getExperience() + experience >= mExpPerLevel[mLevel-1] && mLevel != mExpPerLevel.size()) {
+		mExperience = getExperience() + experience - mExpPerLevel[mLevel-1];
+		mLevel++;
+	}
+	else
+		mExperience += experience;
+}
+
+void Player::addGold(int amount)
+{
+	mInventory->addGold(amount);
+}
+
 void Player::move(float dx, float dy) 
 {
 	Object::move(dx, dy);
@@ -149,22 +173,47 @@ void Player::setCooldown(float cooldown)
 	mCooldown = cooldown;
 }
 
-float Player::getHealth()
+int Player::getHealth()
 {
 	return mHealth;
 }
 	
-float Player::getMaxHealth()
+int Player::getMaxHealth()
 {
 	return mMaxHealth;
 }
 
-float Player::getEnergy()
+int Player::getEnergy()
 {
 	return mEnergy;
 }
 	
-float Player::getMaxEnergy()
+int Player::getMaxEnergy()
 {
 	return mMaxEnergy;
+}
+
+float Player::getMoveSpeed()
+{
+	return mMoveSpeed;
+}
+	
+int Player::getArmor()
+{
+	return mArmor;
+}
+
+int Player::getExperience()
+{
+	return mExperience;
+}
+
+int Player::getCharacterLevel()
+{
+	return mLevel;
+}
+
+int Player::getLevelExp()
+{
+	return mExpPerLevel[mLevel-1];
 }

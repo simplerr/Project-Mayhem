@@ -16,6 +16,7 @@
 #include "Projectile.h"
 #include "Scrap.h"
 #include "Collision.h"
+#include "Gold.h"
 
 Level::Level()
 {
@@ -78,6 +79,9 @@ void Level::update(float dt)
 				objectA->update(dt);
 		}
 		else	{
+			if(objectA->getType() == ENEMY)
+				getPlayer()->addExperience(dynamic_cast<Enemy*>(objectA)->getExperience());
+
 			removeObject(objectA);
 			size--;
 			i--;
@@ -96,7 +100,7 @@ void Level::update(float dt)
 			if(objectA->getID() == objectB->getOwnerId() || objectB->getID() == objectA->getOwnerId())
 				continue;
 
-			mtv = checkCollision(objectA->getPolygon(), objectB->getPolygon());
+			mtv = checkCollision(objectA->getPolygon(), objectB->getPolygon(), objectA->detailedCollision() && objectB->detailedCollision());
 
 			// If there's a collision
 			if(mtv.collision)
@@ -157,8 +161,11 @@ void Level::draw()
 		if(mObjectList[i]->getLayer()==BOTTOM) mObjectList[i]->draw();
 	for(int i = 0; i < mObjectList.size(); i++)
 		if(mObjectList[i]->getLayer()==MIDDLE) mObjectList[i]->draw();
+
 	// NOTE: HACK!
-	//mPlayer->draw();
+	if(!isInEditor())
+		mPlayer->draw();
+
 	for(int i = 0; i < mObjectList.size(); i++)
 		if(mObjectList[i]->getLayer()==TOP) mObjectList[i]->draw();
 

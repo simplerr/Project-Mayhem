@@ -6,7 +6,11 @@
 class MTV
 {
 public:
-	MTV(){};
+	MTV(){
+		pushX = pushY = 0;
+		normal = Vector(0, 0);
+	};
+
 	MTV(double d, Vector axis)	{
 		pushX = d*axis.x;
 		pushY = d*axis.y;
@@ -26,6 +30,6 @@ public:
 	Vector  normal;
 };
 
-MTV checkCollision (cPolygon poly1, cPolygon poly2);
+MTV checkCollision(cPolygon& poly1, cPolygon& poly2, bool detailed = true);
 
 #endif

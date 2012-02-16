@@ -26,6 +26,7 @@ EnemyData::~EnemyData()
 
 Enemy::Enemy(float x, float y, EnemyData* type) : Object (x, y, type->width, type->height, ENEMY,  type->textureSource)
 {
+	mExperience = type->experience;
 	mRange = type->range;//ptr
 	mHp = type->hp;//ptr
 	mSpeed = type->speed;
@@ -59,7 +60,10 @@ void Enemy::damage(float dHP)
 			}
 		}
 
-		getLevel()->addObject(new Gold(getPos().x, getPos().y));
+		getLevel()->addObject(new Gold(getPos().x, getPos().y+15));
+		getLevel()->addObject(new Gold(getPos().x-15, getPos().y));
+		getLevel()->addObject(new Gold(getPos().x-15, getPos().y-15));
+		getLevel()->addObject(new Gold(getPos().x+15, getPos().y));
 	}
 }
 
@@ -102,6 +106,7 @@ void Enemies::init()
 		enemyData->width = atoi(item->Attribute("width"));
 		enemyData->height = atoi(item->Attribute("height"));
 		enemyData->weaponRate = item->Attribute("weaponRate") == NULL ? 1000 : atoi(item->Attribute("weaponRate"));
+		enemyData->experience = item->Attribute("xp") == NULL ? 5 : atoi(item->Attribute("xp"));
 		enemyData->ai_data.init();
 
 		data[enemyData->name] = enemyData;

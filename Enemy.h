@@ -4,6 +4,7 @@
 #include "d3dUtil.h"
 #include "Object.h"
 #include "AI.h"
+#include "Collision.h"
 #include <map>
 #include <string>
 
@@ -60,7 +61,7 @@ public:
 
 	void update(float dt);
 	void draw();
-	void handleCollision(Object* collider, MTV* mtv);
+	bool handleCollision(Object* collider, MTV* mtv);
 
 	EnemyData* getClass()			{return mClass;}
 	float getHP()					{return mHp;}

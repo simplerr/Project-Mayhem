@@ -10,7 +10,7 @@ public:
 	~Projectile();
 	void draw();
 	void update(float dt);
-	void handleCollision(Object* collider, MTV* mtv);
+	bool handleCollision(Object* collider, MTV* mtv);
 
 	void setVelocity(float velocity)	{mVelocity = velocity;}
 

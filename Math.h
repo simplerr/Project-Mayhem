@@ -1,6 +1,8 @@
 #ifndef MATH_H
 #define MATH_H
 
+
+
 class Vector;
 class Rect;
 

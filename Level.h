@@ -53,6 +53,7 @@ private:
 	TileHandler*			mTileHandler;		// NOTE: Maybe combine TileHandler and the tile array
 	Player*					mPlayer;
 	Vector					mOffset;		// TODO: Use this for all objects!
+	Vector					mCameraOffset;
 	bool					mEditorMode;
 
 	int mWidth, mHeight;

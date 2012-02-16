@@ -7,6 +7,9 @@
 #include "Projectile.h"
 #include "Inventory.h"
 #include "Loot.h"
+#include "Collision.h"
+
+
 
 Player::Player(float x, float y) : Object (x, y, 40, 40, PLAYER,  "Data\\imgs\\terror.bmp") //change width/heigth/pic
 {
@@ -103,4 +106,12 @@ void Player::move(float dx, float dy)
 void Player::setCooldown(float cooldown)
 {
 	mCooldown = cooldown;
+}
+
+bool Player::handleCollision(Object* collider, MTV* mtv)
+{
+	if(collider->getType() == ENEMY || collider->getType() == STRUCTURE) {
+		getLevel()->moveObjects(-mtv->pushX, -mtv->pushY);
+	}
+	return false;
 }

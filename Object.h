@@ -20,7 +20,8 @@ enum ObjectType
 	SFX,		// Special effect, no collision detection
 	PROJECTILE,	// Projectile
 	PLAYER,		// Player
-	TILE
+	TILE,
+	REGION
 };
 
 enum Layer {
@@ -49,7 +50,7 @@ public:
 	virtual void update(float dt);
 	virtual void draw();
 	virtual void move(float dx, float dy);
-	virtual void handleCollision(Object* collider, MTV* mtv) {};
+	virtual bool handleCollision(Object* collider, MTV* mtv) {return false;};
 
 	void setPolygon(cPolygon polygon)	{mPolygon = polygon;}
 

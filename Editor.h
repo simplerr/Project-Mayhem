@@ -50,6 +50,8 @@ private:
 	WindowHandler*	mWindowHandler;
 	wDropDown*		mDropDown;
 	wContainer*		mButtonContainer;
+
+	Vector			mClickedPos;
 };
 
 #endif

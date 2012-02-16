@@ -14,6 +14,8 @@
 #include "Structure.h"
 #include "Loot.h"
 #include "Projectile.h"
+#include "Scrap.h"
+#include "Collision.h"
 
 Level::Level()
 {
@@ -50,6 +52,7 @@ void Level::init()
 	mTileHandler = new TileHandler();
 	mTileHandler->loadTiles("tiles.xml");
 	mOffset = Vector(0, 0);
+	mCameraOffset = mOffset;
 
 	mTileWidth = 40;
 	mTileHeight = 40;
@@ -69,105 +72,71 @@ void Level::update(float dt)
 
 	for(int i = 0; i < size; i++)
 	{
-		if(mObjectList[i]->getAlive()) {
+		Object* objectA = mObjectList[i];
+		if(objectA->getAlive()) {
 			if(!isInEditor()) 
-				mObjectList[i]->update(dt);
+				objectA->update(dt);
 		}
 		else	{
-			removeObject(mObjectList[i]);
+			removeObject(objectA);
 			size--;
 			i--;
 			continue;
 		}
 
-		for(int j = 0; j < mObjectList.size(); j++)
+		for(int j = i+1; j < mObjectList.size(); j++)
 		{
-			if(mObjectList[i]->getType() == PROJECTILE && mObjectList[j]->getType() == PROJECTILE)
+			Object* objectB = mObjectList[j];
+			if(objectA->getType() == PROJECTILE && objectB->getType() == PROJECTILE)
 				continue;
 
-			// Get collision information
-			//if (usesCollision() == true)
-			mtv = checkCollision(mObjectList[i]->getPolygon(), mObjectList[j]->getPolygon());
+			if(!objectA->getColides() && !objectB->getColides())
+				continue;
+
+			mtv = checkCollision(objectA->getPolygon(), objectB->getPolygon());
 
 			// If there's a collision
-			if(mtv.collision == true && mObjectList[i]->getID() != mObjectList[j]->getID())	
+			if(mtv.collision)
 			{
-				//If Type == projectile
-				if((mObjectList[i]->getType() == PROJECTILE || mObjectList[j]->getType() == PROJECTILE))
-				{
-					// No shooter collision
-					if (!(mObjectList[j]->getOwnerId() == mObjectList[i]->getID() || mObjectList[i]->getOwnerId() == mObjectList[j]->getID()))
-					{
-						// Find out which one is the projectile
-						if(mObjectList[i]->getType() != PROJECTILE) 
-						{
-							// Kill the projectile
-							mObjectList[j]->setAlive(false);
-							if(mObjectList[i]->getType() == ENEMY)
-								mObjectList[i]->handleCollision(mObjectList[j], &mtv);
-						}
-						else 
-						{
-							// Kill the projectile
-							mObjectList[i]->setAlive(false);
-							if(mObjectList[j]->getType() == ENEMY)
-								mObjectList[j]->handleCollision(mObjectList[i], &mtv);
-						}
-					}
-				}
-				else
-				{
-					// Move the object out of collision
-					if(mObjectList[i]->getType() == PLAYER) 
-						moveObjects(mtv.pushX, mtv.pushY);
-					else
-						mObjectList[i]->move(-mtv.pushX, -mtv.pushY);
-
-					mObjectList[i]->handleCollision(mObjectList[j], &mtv);
-				}
+				if(objectA->handleCollision(objectB,&mtv) && objectB->getType() != PLAYER)
+					objectA->move(-mtv.pushX/2, -mtv.pushY/2);
+				if(objectB->handleCollision(objectA,&mtv) && objectA->getType() != PLAYER)
+					objectB->move(mtv.pushX/2, mtv.pushY/2);
 			}
 
 		}
-	}
-
-	// Check players collision with tiles
-	for(int i = 0; i < mObjectList.size(); i++)
-	{
-		Object* object = mObjectList[i];
+	
 		for(int j = 0; j < mTileList.size(); j++)
 		{
 			Tile* tile = mTileList[j];
+
+			// Collidable?
+			if(!tile->getData()->obstacle)
+				continue;
+			if(!objectA->getColides())
+				continue;
+			gScrap->tileObject->setPos(Vector(mOffset.x + tile->getPosition().x, mOffset.y + tile->getPosition().y));
 			// Players bounding box
-			Rect boundingBox = object->getBoundingBox();
-			Rect tileRect;
-			tileRect.left = tile->getPosition().x - mTileWidth/2 + mOffset.x;
-			tileRect.right = tile->getPosition().x + mTileWidth/2 + mOffset.x;
-			tileRect.top = tile->getPosition().y - mTileHeight/2 + mOffset.y;
-			tileRect.bottom = tile->getPosition().y + mTileHeight/2 + mOffset.y;
+			Rect boundingBox = objectA->getBoundingBox();
+			gScrap->rect->setPos(Vector(tile->getPosition().x + mOffset.x, tile->getPosition().y + mOffset.y));
 
 			// Check bounding boxes
-			if(boundingBox.left > tileRect.right || boundingBox.right < tileRect.left || boundingBox.top > tileRect.bottom || boundingBox.bottom < tileRect.top)
+			if(boundingBox.left > gScrap->rect->right || boundingBox.right < gScrap->rect->left || boundingBox.top > gScrap->rect->bottom || boundingBox.bottom < gScrap->rect->top)
 				continue;
-			// Collidable?
-			if(!mTileHandler->getData(tile->getName())->obstacle)
-				continue;
-
-			// Temporary test object, with position and dimensions of the tile
-			Object* tileObject = new Object(mOffset.x + tile->getPosition().x, mOffset.y + tile->getPosition().y, mTileWidth, mTileHeight, STRUCTURE, "Data\\imgs\\standard_box.bmp");
 
 			// Get information about the collision
-			mtv = checkCollision(object->getPolygon(), tileObject->getPolygon());
-						
+			mtv = checkCollision(objectA->getPolygon(), gScrap->tileObject->getPolygon());
+
 			// Move the player out of the tile if there's a collision
 			if(mtv.collision)	{
-				if(object->getType() == PLAYER) 
+				if(objectA->getType() == PLAYER) 
 					moveObjects(mtv.pushX, mtv.pushY);
-				else
-					object->move(-mtv.pushX, -mtv.pushY);
-
-				object->handleCollision(tileObject, &mtv);
+				else 
+				{
+					objectA->move(-mtv.pushX, -mtv.pushY);
+					objectA->handleCollision(gScrap->tileObject, &mtv);
+				}
 			}
-			delete tileObject;
 		}
 	}
 }
@@ -195,8 +164,8 @@ void Level::draw()
 	sprintf(buffer, "objects: %i", mObjectList.size());
 	gGraphics->drawText(buffer, 10, 300);
 
-	//sprintf(buffer, "offset: %f", mOffset.x*-1);
-	//gGraphics->drawText(buffer, 300, 300, CUSTOM, 20, 0xffff0000);
+	sprintf(buffer, "offset: %f", mCameraOffset.x);
+	gGraphics->drawText(buffer, 300, 300, CUSTOM, 20, 0xffff0000);
 }
 
 void Level::addObject(Object* object)
@@ -265,30 +234,43 @@ Object* Level::getObjectAt(Vector pos)
 
 void Level::moveObjects(float dx, float dy)
 {
-	for(int i = 0; i < mObjectList.size(); i++)	{
-		if(mObjectList[i]->getType() !=  PLAYER)
+	mCameraOffset += Vector(-dx, -dy);
+	Vector newOffset = (mOffset + Vector(dx, dy)) *-1;
+
+	// NOTE: 400 is screenWidth/2 and 300 is screenHeight/2
+
+	// Horizontal camera movement
+	if(!isInEditor())
+	{
+		if(mCameraOffset.x < 0 || mCameraOffset.x + mWidth/2 > mWidth-400) {
+			if(mPlayer != NULL) mPlayer->move(-dx, 0);
+			dx = 0;
+		}
+
+		// Vertical camera movement
+		if(mCameraOffset.y < 0 || mCameraOffset.y + mHeight/2 > mHeight-300) {
+			if(mPlayer != NULL) mPlayer->move(0, -dy);
+			dy = 0;
+		}
+
+		for(int i = 0; i < mObjectList.size(); i++)
+			if(mObjectList[i]->getType() !=  PLAYER)
+				mObjectList[i]->move(dx, dy);
+	}
+	else
+	{
+		// +200 due to the editor gui
+		if(newOffset.x < 0 || newOffset.x + mWidth/2 > mWidth-400+200)
+			dx = 0;
+
+		if(newOffset.y < 0 || newOffset.y + mHeight/2 > mHeight-300) 
+			dy = 0;
+
+		for(int i = 0; i < mObjectList.size(); i++)	
 			mObjectList[i]->move(dx, dy);
 	}
 
 	mOffset += Vector(dx, dy);
-
-	/*Vector newOffset = (mOffset + Vector(dx, dy)) *-1;
-
-	if(!isInEditor())
-	{
-		if((newOffset.x >= 0 && mPlayer->getPos().x > mWidth/2) )// || (newOffset.x <= mWidth-400 && mPlayer->getPos().x < mWidth/2))
-		//if(newOffset.x >= 0 && newOffset.y >= 0 && newOffset.x <= mWidth-400 && newOffset.y <= mHeight-300)
-		{
-			for(int i = 0; i < mObjectList.size(); i++)	{
-				if(mObjectList[i]->getType() !=  PLAYER)
-					mObjectList[i]->move(dx, dy);
-			}
-
-			mOffset += Vector(dx, dy);
-		}
-		else 
-			mPlayer->move(-dx, -dy);	
-	}*/
 }
 
 void Level::saveToFile(string file)

@@ -11,6 +11,7 @@
 #include "Vector.h"
 #include "Item.h"
 #include "ItemHandler.h"
+#include "Scrap.h"
 #include <stdlib.h>
 #include <crtdbg.h>
 
@@ -21,6 +22,7 @@ IDirect3DDevice9*	gd3dDevice		= NULL;
 Math*				gMath			= NULL;
 Enemies*			gEnemies		= NULL;
 ItemHandler*		gItemHandler	= NULL;
+Scrap*				gScrap			= NULL;
 
 bool operator==(const Item& a, const Item& b)
 {
@@ -63,6 +65,7 @@ Game::Game(HINSTANCE hInstance, std::string caption, int width, int height, D3DD
 	changeState(MenuState::Instance());
 	mGameState->init(this);
 	mGfxStats = new GfxStats();
+	gScrap = new Scrap();
 }
 
 Game::~Game()
@@ -117,7 +120,7 @@ void Game::draw()
 	gd3dDevice->SetRenderState(D3DRS_ALPHATESTENABLE, TRUE); */
 
 	mGameState->draw();
-	//gInput->draw();
+	gInput->draw();
 	mGfxStats->display();
 }
 

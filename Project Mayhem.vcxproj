@@ -109,7 +109,9 @@
     <ClInclude Include="cPolygon.h" />
     <ClInclude Include="Projectile.h" />
     <ClInclude Include="Rect.h" />
+    <ClInclude Include="Region.h" />
     <ClInclude Include="Runnable.h" />
+    <ClInclude Include="Scrap.h" />
     <ClInclude Include="Stackwalker.h" />
     <ClInclude Include="Structure.h" />
     <ClInclude Include="Tile.h" />
@@ -131,6 +133,7 @@
     <ClCompile Include="Animation.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="CameraManager.cpp" />
+    <ClCompile Include="Collision.cpp" />
     <ClCompile Include="DirectInput.cpp" />
     <ClCompile Include="Editor.cpp" />
     <ClCompile Include="EditorState.cpp" />
@@ -153,7 +156,9 @@
     <ClCompile Include="PlayState.cpp" />
     <ClCompile Include="cPolygon.cpp" />
     <ClCompile Include="Projectile.cpp" />
+    <ClCompile Include="Region.cpp" />
     <ClCompile Include="Runnable.cpp" />
+    <ClCompile Include="Scrap.cpp" />
     <ClCompile Include="Stackwalker.cpp" />
     <ClCompile Include="Structure.cpp" />
     <ClCompile Include="Tile.cpp" />

@@ -20,10 +20,12 @@ enum AI_action
 struct AIflags {
 	bool seen_enemy;
 	bool returnToOrigin;
+	bool patrol;
 
 	void init() {
 		seen_enemy = false;
 		returnToOrigin = false;
+		patrol = false;
 	}
 };
 
@@ -57,17 +59,19 @@ public:
 	float getVisionRange()		{return visionRange;}
 	float getRange()			{return range;}
 	Vector getPatrolPos()		{return ai_patrolOrigin;}
-	Vector getTargetPos();
+	Vector getObjectTarget();
+	Vector getActionTarget();
 	AI_action getAction();
 
-	bool seenEnemy()			{return flagAI.seen_enemy;}
-	void setSeenEnemy(bool b)	{flagAI.seen_enemy = b;}
+	bool seenEnemy()			{return flags.seen_enemy;}
+	void setSeenEnemy(bool b)	{flags.seen_enemy = b;}
 
-	AIflags flagAI;
+	AIflags flags;
 
 private:
-	Object *ai_target;
+	Object *ai_objectTarget;
 	Vector ai_patrolOrigin;
+	Vector ai_actionTarget;
 	float patrolSize;
 	std::vector<AI_action> ai_list;
 	

@@ -3,6 +3,7 @@
 
 #include "Object.h"
 #include "Animation.h"
+#include "Collision.h"
 
 class Level;
 class Inventory;
@@ -19,6 +20,7 @@ public:
 	void handleInput();
 	void attack(/*KEY/WPN used*/);
 	void move(float dx, float dy);
+	bool handleCollision(Object* collider, MTV* mtv);
 
 	void setCooldown(float cooldown);
 

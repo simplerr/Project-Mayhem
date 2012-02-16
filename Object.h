@@ -21,7 +21,8 @@ enum ObjectType
 	PROJECTILE,	// Projectile
 	PLAYER,		// Player
 	TILE,
-	GOLD_COIN
+	GOLD_COIN,
+	REGION
 };
 
 enum Layer {
@@ -50,7 +51,7 @@ public:
 	virtual void update(float dt);
 	virtual void draw();
 	virtual void move(float dx, float dy);
-	virtual void handleCollision(Object* collider, MTV* mtv) {};
+	virtual bool handleCollision(Object* collider, MTV* mtv) {return false;};
 
 	void setPolygon(cPolygon polygon)	{mPolygon = polygon;}
 

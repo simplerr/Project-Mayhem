@@ -63,23 +63,24 @@ void Enemy::damage(float dHP)
 	}
 }
 
-void Enemy::handleCollision(Object* collider, MTV* mtv)
+bool Enemy::handleCollision(Object* collider, MTV* mtv)
 {
-	if(collider->getType() == PROJECTILE)
-		damage(1);//wpndamage
+	if (collider->getOwnerId() != getID()) 
+	{
+		if(collider->getType() == PROJECTILE)
+			damage(1);
+		if(collider->getType() == ENEMY)
+			ai->flags.patrol = false;
+		if(collider->getType() == TILE)
+			ai->flags.patrol = false;
+		if((collider->getType() == ENEMY || collider->getType() == STRUCTURE))
+			return true;
+	}
+	return false;
 }
-
 
 void Enemies::init() 
 {
-	//The default enemies
-	/*EnemyData *spider = new EnemyData(32, 32, "spider", "Data\\imgs\\spider.png");
-	spider->hp = 10;
-	spider->range = 5;
-	spider->speed = 10;
-	spider->weaponRate = 20;
-	spider->ai_data.init();*/
-	
 	//Load enemies
 	// Load all different items
 	TiXmlDocument doc("enemies.xml");
@@ -94,7 +95,7 @@ void Enemies::init()
 	{
 		EnemyData* enemyData = new EnemyData();
 		enemyData->name = item->Attribute("name") == NULL ? "#NOVALUE" : item->Attribute("name");
-		enemyData->hp = item->Attribute("hp") == NULL ? 0 : atoi(item->Attribute("name"));
+		enemyData->hp = item->Attribute("hp") == NULL ? 0 : atoi(item->Attribute("hp"));
 		enemyData->range = item->Attribute("range") == NULL ? 0 : atoi(item->Attribute("range"));
 		enemyData->textureSource = item->Attribute("texture");
 		enemyData->speed = item->Attribute("speed") == NULL ? 0 : atoi(item->Attribute("speed"));
@@ -105,11 +106,6 @@ void Enemies::init()
 
 		data[enemyData->name] = enemyData;
 	}
-
-	//Add enemies
-	//data[spider->name]=spider;
-
-	//delete spider;
 }
 
 Enemies::~Enemies() 
@@ -157,14 +153,14 @@ void Enemy::doAI(float dt)
 	switch (swiAI) 
 	{
 	case AI_MOVEATTACK:
-		v = gMath->calculateAngle(getPos(), ai->getTargetPos());
-		if(gMath->distance(getPos(), ai->getTargetPos())>ai->getRange()) 
+		v = gMath->calculateAngle(getPos(), ai->getObjectTarget());
+		if(gMath->distance(getPos(), ai->getObjectTarget())>ai->getRange()) 
 		{
-			move((cos(v)*getSpeed()*10*dt), (sin(v)*getSpeed()*10*dt));
+			move((cos(v)*getSpeed()*17*dt), (sin(v)*getSpeed()*17*dt));
 		}
 		else { //Attack
 			if(mAttackTimer < 0) {
-				getLevel()->addProjectile(this, ai->getTargetPos(), 10);
+				getLevel()->addProjectile(this, ai->getObjectTarget(), 10);
 				mAttackTimer = (float)(mWeaponRate/100);
 			}
 			else 
@@ -178,7 +174,16 @@ void Enemy::doAI(float dt)
 			move((cos(v)*getSpeed()*10*dt), (sin(v)*getSpeed()*10*dt));
 		}
 		else
-			ai->flagAI.returnToOrigin = false;
+			ai->flags.returnToOrigin = false;
+		break;
+	case AI_PATROL:
+		v = gMath->calculateAngle(getPos(), ai->getActionTarget());
+		if(gMath->distance(getPos(), ai->getActionTarget())>10) 
+		{
+			move((cos(v)*getSpeed()*10*dt), (sin(v)*getSpeed()*10*dt));
+		}
+		else
+			ai->flags.patrol = false;
 		break;
 	default:
 		break;
@@ -208,12 +213,11 @@ void Enemy::calcAI(float dt)
 	if(mLostSightTimer < 0 && ai->seenEnemy()) 
 	{
 		ai->setSeenEnemy(false);
-		ai->flagAI.returnToOrigin = true;
+		ai->flags.returnToOrigin = true;
 		mLostSightTimer = .7;
 	}
-	
-	
 }
+
 void Enemy::initAI(AIdata data, Vector v) 
 {
 	ai = new AI(data);

@@ -14,6 +14,8 @@
 #include "Enemy.h"
 #include "ItemHandler.h"
 #include "Loot.h"
+#include "Region.h"
+#include "Math.h"
 
 Editor::Editor(std::string levelName)
 {
@@ -46,20 +48,21 @@ Editor::Editor()
 	// Init the GUI stuff
 	mWindowHandler = new WindowHandler();
 
-	wPanel* panel = new wPanel(700, 300, 210, 600, WID_PANEL1, "Data\\imgs\\panel.bmp");
+	wPanel* panel = new wPanel(1024-105, 300, 210, 900, WID_PANEL1, "Data\\imgs\\panel.bmp");
 	mWindowHandler->addWindow(panel);
 
-	mDropDown = new wDropDown(700, 20, 210, 20, WID_OBJECTTYPE);
+	mDropDown = new wDropDown(1024-105, 20, 210, 20, WID_OBJECTTYPE);
 	mDropDown->add("Tiles");
 	mDropDown->add("Props");
 	mDropDown->add("Enemies");
 	mDropDown->add("Loot");
 	mDropDown->add("SFX");
+	mDropDown->add("Regions");
 	mDropDown->setZ(2);
 	mDropDown->connect(&Editor::messageHandler, this);
 	mWindowHandler->addWindow(mDropDown);
 
-	mButtonContainer = new wContainer(700, 230, 210, 300, WID_BUTTONCONTAINER);
+	mButtonContainer = new wContainer(1024-105, 230, 210, 300, WID_BUTTONCONTAINER);
 	mButtonContainer->setItemDimensions(40, 40);
 	mButtonContainer->setPadding(5, 5);
 	mWindowHandler->addWindow(mButtonContainer);
@@ -90,6 +93,9 @@ void Editor::update(float dt)
 		else if(mActiveObject.type == LOOT) {
 			mLevel->addObject(new Loot(mActiveObject.name, pos.x, pos.y));
 		}
+		else if(mActiveObject.type == REGION) {
+			mClickedPos = Vector(pos.x - mLevel->getOffset().x, pos.y - mLevel->getOffset().y);
+		}
 	}
 	if(gInput->keyDown(VK_RBUTTON))
 	{
@@ -100,6 +106,15 @@ void Editor::update(float dt)
 		else {
 			mLevel->removeObjectAt(pos.x, pos.y);
 		}
+	}
+	if(gInput->keyReleased(VK_LBUTTON) && mActiveObject.type == REGION)
+	{
+		Vector tP = pos;
+		pos.x-=mLevel->getOffset().x;
+		pos.y-=mLevel->getOffset().y;
+		int h = gMath->delta(mClickedPos.y, pos.y);
+		int w = gMath->delta(mClickedPos.x, pos.x);
+		mLevel->addObject(new Region(mClickedPos.x, mClickedPos.y, w, h));
 	}
 
 	if(gInput->keyDown('W'))	
@@ -172,6 +187,9 @@ bool Editor::messageHandler(wId id, wMessage msg)
 		}
 		else if(msg.getString() == "SFX")	{
 			mActiveObject.type = SFX;
+		}
+		else if(msg.getString() == "Regions")	{
+			mActiveObject.type = REGION;
 		}
 	}
 	else if(id == WID_TILE_BUTTON || WID_OBJECT_BUTTON)

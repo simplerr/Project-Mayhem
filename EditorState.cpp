@@ -50,7 +50,7 @@ void EditorState::update(double dt)
 void EditorState::draw()
 {
 	// Draw the background
-	gGraphics->drawTexture(mBgkd, 400, 300, 800, 600);
+	gGraphics->drawTexture(mBgkd, 1024/2, 768/2, 1024, 768);
 
 	// Draw all objects in the level
 	mEditor->draw();

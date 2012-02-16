@@ -43,13 +43,15 @@ public:
 	bool messageHandler(wId id, wMessage msg);
 
 private:
-	Level		*mLevel;
+	Level			*mLevel;
 	ActiveObject	mActiveObject;
 
 	// GUI stuff
 	WindowHandler*	mWindowHandler;
 	wDropDown*		mDropDown;
 	wContainer*		mButtonContainer;
+
+	Vector			mClickedPos;
 };
 
 #endif

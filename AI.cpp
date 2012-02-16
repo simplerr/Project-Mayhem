@@ -1,6 +1,8 @@
 #include "AI.h"
 #include "Object.h"
 #include "Vector.h"
+#include "Math.h"
+
 
 AI::AI(AIdata data)
 {
@@ -15,29 +17,48 @@ AI::AI(AIdata data)
 
 	patrolSize = data.patrolareasize;
 	int bravery = data.bravery;
-	flagAI.init();
+	flags.init();
 }
 
 void AI::setTarget(Object *target) {
-	ai_target= target;
-	flagAI.seen_enemy= true;
+	ai_objectTarget= target;
+	flags.seen_enemy= true;
 }
 
-Vector AI::getTargetPos() {
-	return ai_target->getPos();
+Vector AI::getObjectTarget() {
+	return ai_objectTarget->getPos();
+}
+
+Vector AI::getActionTarget() {
+	return ai_actionTarget;
 }
 
 AI_action AI::getAction() {
-	if(flagAI.seen_enemy)
+	if(flags.seen_enemy)
 	{
 		return AI_MOVEATTACK;
 	}
 	else
 	{
-		if(flagAI.returnToOrigin) 
+		if(flags.returnToOrigin) 
 		{
 			return AI_RETURN;
 		}
+		else
+		{
+			if(gMath->random(0,1000) < 5) {
+				float v = gMath->random(0, 2*PI*360)/360;
+				ai_actionTarget = Vector(cos(v), sin(v));
+				ai_actionTarget.multiply(patrolSize);
+				ai_actionTarget.add(ai_patrolOrigin);
+				flags.patrol = true;
+			}
+			if(flags.patrol == true) 
+			{
+				return AI_PATROL;
+			}
+
 		return AI_IDLE;
+		}
 	}
 }

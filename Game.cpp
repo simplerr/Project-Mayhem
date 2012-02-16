@@ -11,6 +11,7 @@
 #include "Vector.h"
 #include "Item.h"
 #include "ItemHandler.h"
+#include "Scrap.h"
 #include <stdlib.h>
 #include <crtdbg.h>
 
@@ -21,6 +22,7 @@ IDirect3DDevice9*	gd3dDevice		= NULL;
 Math*				gMath			= NULL;
 Enemies*			gEnemies		= NULL;
 ItemHandler*		gItemHandler	= NULL;
+Scrap*				gScrap			= NULL;
 
 bool operator==(const Item& a, const Item& b)
 {
@@ -41,7 +43,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE prevInstance,
 		_CrtSetDbgFlag( _CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF );
 	#endif
 
-	Game app(hInstance, "Project Mayhem", 800, 600, D3DDEVTYPE_HAL, D3DCREATE_HARDWARE_VERTEXPROCESSING);
+	Game app(hInstance, "Project Mayhem", 1024, 768, D3DDEVTYPE_HAL, D3DCREATE_HARDWARE_VERTEXPROCESSING);
 	gGame = &app;
 
 	gInput = new Input();
@@ -63,6 +65,7 @@ Game::Game(HINSTANCE hInstance, std::string caption, int width, int height, D3DD
 	changeState(MenuState::Instance());
 	mGameState->init(this);
 	mGfxStats = new GfxStats();
+	gScrap = new Scrap();
 }
 
 Game::~Game()
@@ -106,18 +109,8 @@ void Game::update(float t, float dt)
 
 void Game::draw()
 {
-	/*HR(gd3dDevice->SetRenderState(D3DRS_CULLMODE, D3DCULL_NONE));
-	HR(gd3dDevice->SetRenderState(D3DRS_LIGHTING, FALSE));
-	HR(gd3dDevice->SetTextureStageState(0, D3DTSS_TEXTURETRANSFORMFLAGS, D3DTTFF_COUNT2));
-
-	// Enable alpha in textures
-	gd3dDevice->SetRenderState(D3DRS_ALPHABLENDENABLE, TRUE); 
-	gd3dDevice->SetRenderState(D3DRS_ALPHAFUNC, D3DCMP_GREATEREQUAL); 
-	gd3dDevice->SetRenderState(D3DRS_ALPHAREF, (DWORD)8); 
-	gd3dDevice->SetRenderState(D3DRS_ALPHATESTENABLE, TRUE); */
-
 	mGameState->draw();
-	gInput->draw();
+	//gInput->draw();
 	mGfxStats->display();
 }
 
@@ -126,6 +119,6 @@ LRESULT Game::msgProc(UINT msg, WPARAM wParam, LPARAM lParam)
 {
 	LRESULT result = gInput->msgProc(msg, wParam, lParam);
 	result = Runnable::msgProc(msg, wParam, lParam);
-	
+
 	return result;
 }

@@ -1,14 +1,30 @@
 #include "Graphics.h"
 #include "Gui.h"
 #include "Player.h"
+#include "Input.h"
+#include "Skill.h"
 
-Gui::Gui(Player* player)
+Gui::Gui(Player* player) : Container(300, 700, 600, 90)
 {
+	// Load the slot texture
 	mSlotTexture = gGraphics->loadTexture("Data\\imgs\\skill_slot.png");
+
+	// Set the player
 	mPlayer = player;
-	mPos = Vector(300, 528);
-	mWidth = 600;
-	mHeight = 90;
+
+	// Init skill slots
+	for(int i = 0; i < 6; i++) {
+		addSlot(getPosition().x + i*50, getPosition().y, SKILL);
+	}
+
+	// Add some test skills
+	addSkill(new Skill());
+	Skill* skill = new Skill();
+	skill->setTexture("Data\\imgs\\fire_bolt.png");
+	addSkill(skill);
+
+	// Set visible
+	show();
 }
 	
 Gui::~Gui()
@@ -18,33 +34,48 @@ Gui::~Gui()
 
 void Gui::update(float dt)
 {
-	// Check for key presses 1-9
-	// Let the player perform the skills
-	// mPlayer->skill(num)
+	// Standard update
+	Container::update(dt);
+
+	// Check if a slot with a skill in it was pressed
+	// Keys 1-6
+	// TODO: Check for right press with the mouse
+	for(int i = 0; i < mSlotList.size(); i++) {
+		if(gInput->keyPressed(49 + i) && mSlotList[i].taken)
+			((Skill*)mSlotList[i].item)->performSkill(mPlayer);
+	}
 }
 	
 void Gui::draw()
 {
-	char buffer[256];
-	gGraphics->drawRect(mPos.x, mPos.y, mWidth, mHeight, 0xff999999);
-	//gGraphics->drawText("Health: ", 150, 500, SMALL_DX);
+	// Standard draw
+	Container::draw();
 
-	Vector hpPos(mPos.x - 200, mPos.y - 10);
+	// Position of hp and energy bars
+	Vector hpPos(getPosition().x - 200, getPosition().y - 10);
 	Vector energyPos(hpPos.x, hpPos.y + 25);
 
-	// HP and mana bar bkgd
+	// Their bkgds
 	gGraphics->drawRect(hpPos.x, hpPos.y, 150, 25, 0xff000000);
 	gGraphics->drawRect(energyPos.x, energyPos.y, 150, 25, 0xff000000);
 
-	float hp = mPlayer->getHealth() / mPlayer->getMaxHealth();
-	gGraphics->drawRect(hpPos.x - (float)145/2 + 145*hp/2, hpPos.y, 145*hp, 20, 0xffff0000);
+	// Draw the hp and energy bars
+	float filledPercent = mPlayer->getHealth() / mPlayer->getMaxHealth();
+	gGraphics->drawRect(hpPos.x - (float)145/2 + 145*filledPercent/2, hpPos.y, 145*filledPercent, 20, 0xffff0000);
 
-	float energy = mPlayer->getEnergy() / mPlayer->getMaxEnergy();
-	gGraphics->drawRect(energyPos.x - (float)145/2 + 145*energy/2, energyPos.y, 145*energy, 20, 0xff0000ff);
+	filledPercent = mPlayer->getEnergy() / mPlayer->getMaxEnergy();
+	gGraphics->drawRect(energyPos.x - (float)145/2 + 145*filledPercent/2, energyPos.y, 145*filledPercent, 20, 0xff0000ff);
+}
 
-	// Skill slots
-	int x = mPos.x - 60;
-	for(int i = 0; i < 7; i++) {
-		gGraphics->drawTexture(mSlotTexture, x + i * 50, mPos.y, 40, 40);
+void Gui::addSkill(Skill* skill)
+{
+	// Adds a new skill to the first free slot
+	for(int i = 0; i < mSlotList.size(); i++) 
+	{
+		if(!mSlotList[i].taken) {
+			mSlotList[i].item = skill;
+			mSlotList[i].taken = true;
+			break;
+		}
 	}
 }

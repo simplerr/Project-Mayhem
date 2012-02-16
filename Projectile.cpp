@@ -33,8 +33,15 @@ void Projectile::draw()
 	gGraphics->drawTexturedPolygon(getPolygon(), getTexture());
 }
 
-void Projectile::handleCollision(Object* collider, MTV* mtv)
+bool Projectile::handleCollision(Object* collider, MTV* mtv)
 {
-	if(collider->getType() == STRUCTURE || collider->getType() == PLAYER || collider->getType() == ENEMY)
-		setAlive(false);
+	if (getOwnerId() != collider->getID()) 
+	{
+		if((collider->getType() == STRUCTURE || collider->getType() == PLAYER || collider->getType() == ENEMY))
+			setAlive(false);
+		if(collider->getType() == ENEMY)
+			collider->handleCollision(this, mtv);
+		
+	}
+	return false;
 }

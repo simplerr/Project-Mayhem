@@ -28,6 +28,7 @@ Player::Player(float x, float y) : Object (x, y, 40, 40, PLAYER,  "Data\\imgs\\t
 	mCounter = 0.0f;
 	mMoveSpeed = 5;
 	mGui = new Gui(this);
+	mGui->setTexture("Data\\imgs\\gui_bkgd.png");
 }
 Player::~Player() 
 {
@@ -92,9 +93,9 @@ void Player::handleInput()
 	Vector mousePos = gInput->mousePosition();
 	float angle = gMath->calculateAngle(getPos(), mousePos);
 
-	if(gInput->keyDown(VK_LBUTTON))	// :NOTE: && 0
+	if(mCounter >= mCooldown)	// :NOTE: && 0
 	{
-		if(mCounter >= mCooldown)	{
+		if(gInput->keyDown(VK_LBUTTON))	{
 			Vector pos = gInput->mousePosition();
 			getLevel()->addProjectile(this, pos, 10);
 			mCounter = 0.0f;
@@ -105,6 +106,15 @@ void Player::handleInput()
 	rotate(angle);
 	mAngle = angle;
 }
+
+bool Player::handleCollision(Object* collider, MTV* mtv)
+{
+	if(collider->getType() == ENEMY || collider->getType() == STRUCTURE) {
+		getLevel()->moveObjects(-mtv->pushX, -mtv->pushY);
+	}
+	return false;
+}
+
 void Player::attack(/*KEY/WPN used*/)
 {
 

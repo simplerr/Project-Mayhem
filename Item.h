@@ -1,6 +1,7 @@
 #pragma once
 #include <string>
 #include "d3dUtil.h"
+#include "SlotItem.h"
 using namespace std;
 
 struct ItemData
@@ -17,19 +18,19 @@ struct ItemData
 	// Etc..
 };
 
-class Item
+class Item : public SlotItem
 {
 public:
 	Item(string name);
 	Item(){};
-	virtual ~Item();
+	~Item();
 
-	void setId(int id);
 	void setData(ItemData attributes);
 
 	ItemData		getData();
 	int				getId();
+	SlotId			getSlotId();
+	IDirect3DTexture9* getTexture();
 private:
 	ItemData		mAttributes;
-	int				mId;
 };

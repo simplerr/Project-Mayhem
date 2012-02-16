@@ -1,6 +1,6 @@
 #include "Item.h"
 
-Item::Item(string name)
+Item::Item(string name) : SlotItem()
 {
 	// Load attributes
 }
@@ -8,11 +8,6 @@ Item::Item(string name)
 Item::~Item()
 {
 
-}
-
-void Item::setId(int id)
-{
-	mId = id;
 }
 
 void Item::setData(ItemData attributes)
@@ -25,7 +20,12 @@ ItemData Item::getData()
 	return mAttributes;
 }
 
-int Item::getId()
+IDirect3DTexture9* Item::getTexture()
 {
-	return mId;
+	return mAttributes.texture;
+}
+
+SlotId Item::getSlotId()
+{
+	return (SlotId)mAttributes.slot;
 }

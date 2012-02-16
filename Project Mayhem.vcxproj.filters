@@ -67,6 +67,12 @@
     <Filter Include="Header Files\Common">
       <UniqueIdentifier>{70cba14c-b3fd-4539-99cc-f439271e645b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\UI">
+      <UniqueIdentifier>{d2733c1a-e901-44ae-a521-34ebfad64b52}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\UI">
+      <UniqueIdentifier>{d2998715-0c6e-4417-97b5-d0dd409b7e59}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Game.cpp">
@@ -189,16 +195,34 @@
     <ClCompile Include="Item.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Inventory.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Loot.cpp">
       <Filter>Source Files\Game objects</Filter>
     </ClCompile>
     <ClCompile Include="Gold.cpp">
       <Filter>Source Files\Game objects</Filter>
     </ClCompile>
+    <ClCompile Include="Skill.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="Gui.cpp">
+      <Filter>Source Files\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Inventory.cpp">
+      <Filter>Source Files\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="SlotItem.cpp">
+      <Filter>Source Files\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Container.cpp">
+      <Filter>Source Files\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Collision.cpp">
+      <Filter>Source Files\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Region.cpp">
+      <Filter>Source Files\Game objects</Filter>
+    </ClCompile>
+    <ClCompile Include="Scrap.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -335,16 +359,31 @@
     <ClInclude Include="Item.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Inventory.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Loot.h">
       <Filter>Header Files\Game objects</Filter>
     </ClInclude>
     <ClInclude Include="Gold.h">
       <Filter>Header Files\Game objects</Filter>
     </ClInclude>
+    <ClInclude Include="Skill.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="Gui.h">
+      <Filter>Header Files\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Inventory.h">
+      <Filter>Header Files\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="SlotItem.h">
+      <Filter>Header Files\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Container.h">
+      <Filter>Header Files\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Region.h">
+      <Filter>Header Files\Game objects</Filter>
+    </ClInclude>
+    <ClInclude Include="Scrap.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

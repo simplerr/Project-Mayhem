@@ -39,8 +39,8 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>D:\boost_1_46_1;D:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include;$(VCInstallDir)include;$(VCInstallDir)atlmfc\include;$(WindowsSdkDir)include;$(FrameworkSDKDir)\include</IncludePath>
-    <LibraryPath>D:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Lib\x86;$(VCInstallDir)lib;$(VCInstallDir)atlmfc\lib;$(WindowsSdkDir)lib;$(FrameworkSDKDir)\lib</LibraryPath>
+    <IncludePath>D:\irrKlang\include;D:\boost_1_46_1;D:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include;$(VCInstallDir)include;$(VCInstallDir)atlmfc\include;$(WindowsSdkDir)include;$(FrameworkSDKDir)\include</IncludePath>
+    <LibraryPath>D:\irrKlang\lib\Win32-visualStudio;D:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Lib\x86;$(VCInstallDir)lib;$(VCInstallDir)atlmfc\lib;$(WindowsSdkDir)lib;$(FrameworkSDKDir)\lib</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -80,9 +80,12 @@
   <ItemGroup>
     <ClInclude Include="AI.h" />
     <ClInclude Include="Animation.h" />
+    <ClInclude Include="AudioHandler.h" />
+    <ClInclude Include="Blink.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="CameraManager.h" />
     <ClInclude Include="Collision.h" />
+    <ClInclude Include="Container.h" />
     <ClInclude Include="d3dUtil.h" />
     <ClInclude Include="DirectInput.h" />
     <ClInclude Include="Editor.h" />
@@ -90,10 +93,13 @@
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="enums.h" />
     <ClInclude Include="Font.h" />
+    <ClInclude Include="FX.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameState.h" />
     <ClInclude Include="GfxStats.h" />
+    <ClInclude Include="Gold.h" />
     <ClInclude Include="Graphics.h" />
+    <ClInclude Include="Gui.h" />
     <ClInclude Include="Input.h" />
     <ClInclude Include="Inventory.h" />
     <ClInclude Include="Item.h" />
@@ -112,12 +118,15 @@
     <ClInclude Include="Region.h" />
     <ClInclude Include="Runnable.h" />
     <ClInclude Include="Scrap.h" />
+    <ClInclude Include="Skill.h" />
+    <ClInclude Include="SlotItem.h" />
     <ClInclude Include="Stackwalker.h" />
     <ClInclude Include="Structure.h" />
     <ClInclude Include="Tile.h" />
     <ClInclude Include="TileHandler.h" />
     <ClInclude Include="tinyxml\tinystr.h" />
     <ClInclude Include="tinyxml\tinyxml.h" />
+    <ClInclude Include="Trigger.h" />
     <ClInclude Include="Vector.h" />
     <ClInclude Include="Vertex.h" />
     <ClInclude Include="wButton.h" />
@@ -127,21 +136,28 @@
     <ClInclude Include="WindowHandler.h" />
     <ClInclude Include="wMessage.h" />
     <ClInclude Include="wPanel.h" />
+    <ClInclude Include="Wrath.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AI.cpp" />
     <ClCompile Include="Animation.cpp" />
+    <ClCompile Include="AudioHandler.cpp" />
+    <ClCompile Include="Blink.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="CameraManager.cpp" />
     <ClCompile Include="Collision.cpp" />
+    <ClCompile Include="Container.cpp" />
     <ClCompile Include="DirectInput.cpp" />
     <ClCompile Include="Editor.cpp" />
     <ClCompile Include="EditorState.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="Font.cpp" />
+    <ClCompile Include="FX.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GfxStats.cpp" />
+    <ClCompile Include="Gold.cpp" />
     <ClCompile Include="Graphics.cpp" />
+    <ClCompile Include="Gui.cpp" />
     <ClCompile Include="Input.cpp" />
     <ClCompile Include="Inventory.cpp" />
     <ClCompile Include="Item.cpp" />
@@ -159,6 +175,8 @@
     <ClCompile Include="Region.cpp" />
     <ClCompile Include="Runnable.cpp" />
     <ClCompile Include="Scrap.cpp" />
+    <ClCompile Include="Skill.cpp" />
+    <ClCompile Include="SlotItem.cpp" />
     <ClCompile Include="Stackwalker.cpp" />
     <ClCompile Include="Structure.cpp" />
     <ClCompile Include="Tile.cpp" />
@@ -167,6 +185,7 @@
     <ClCompile Include="tinyxml\tinyxml.cpp" />
     <ClCompile Include="tinyxml\tinyxmlerror.cpp" />
     <ClCompile Include="tinyxml\tinyxmlparser.cpp" />
+    <ClCompile Include="Trigger.cpp" />
     <ClCompile Include="Vertex.cpp" />
     <ClCompile Include="wButton.cpp" />
     <ClCompile Include="wComponent.cpp" />
@@ -175,6 +194,7 @@
     <ClCompile Include="WindowHandler.cpp" />
     <ClCompile Include="wMessage.cpp" />
     <ClCompile Include="wPanel.cpp" />
+    <ClCompile Include="Wrath.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="level.xml">

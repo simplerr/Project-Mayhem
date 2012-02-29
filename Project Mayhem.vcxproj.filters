@@ -73,6 +73,30 @@
     <Filter Include="Header Files\Game objects\Items">
       <UniqueIdentifier>{c18ee836-cf0d-4135-8c27-522526b8fd3c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\UI">
+      <UniqueIdentifier>{a36abeef-b767-4a57-8b82-36763c5e3174}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\UI">
+      <UniqueIdentifier>{5730e2ba-0fa7-47d2-90c4-4762c904e5f9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Skills">
+      <UniqueIdentifier>{9bb7bf4a-43fb-4f4b-8c12-2c2964c368f3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Skill">
+      <UniqueIdentifier>{9fa16631-dc7f-4eb7-9140-26d77625dd8e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Common\Audio">
+      <UniqueIdentifier>{d38218e8-aacf-4e50-b5d3-2f5ad94b8407}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Common\Audio">
+      <UniqueIdentifier>{72fbc8fb-4e25-4e40-ae03-ef98bda9d0b8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Skill\Skills">
+      <UniqueIdentifier>{d40056a0-8689-47d2-aece-8a44376ed5be}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Skills\Skills">
+      <UniqueIdentifier>{f428ce51-3055-47c7-93f1-3151a6cba934}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="DirectInput.cpp">
@@ -189,9 +213,6 @@
     <ClCompile Include="Input.cpp">
       <Filter>Source Files\Common</Filter>
     </ClCompile>
-    <ClCompile Include="Inventory.cpp">
-      <Filter>Source Files\Game objects\Items</Filter>
-    </ClCompile>
     <ClCompile Include="Item.cpp">
       <Filter>Source Files\Game objects\Items</Filter>
     </ClCompile>
@@ -210,8 +231,41 @@
     <ClCompile Include="Scrap.cpp">
       <Filter>Source Files\Common</Filter>
     </ClCompile>
+    <ClCompile Include="Gold.cpp">
+      <Filter>Source Files\Game objects</Filter>
+    </ClCompile>
+    <ClCompile Include="Container.cpp">
+      <Filter>Source Files\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Gui.cpp">
+      <Filter>Source Files\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="SlotItem.cpp">
+      <Filter>Source Files\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Inventory.cpp">
+      <Filter>Source Files\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Blink.cpp">
+      <Filter>Source Files\Skills\Skills</Filter>
+    </ClCompile>
+    <ClCompile Include="Skill.cpp">
+      <Filter>Source Files\Skills</Filter>
+    </ClCompile>
     <ClCompile Include="Collision.cpp">
       <Filter>Source Files\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="AudioHandler.cpp">
+      <Filter>Source Files\Common\Audio</Filter>
+    </ClCompile>
+    <ClCompile Include="FX.cpp">
+      <Filter>Source Files\Game objects</Filter>
+    </ClCompile>
+    <ClCompile Include="Trigger.cpp">
+      <Filter>Source Files\Game objects</Filter>
+    </ClCompile>
+    <ClCompile Include="Wrath.cpp">
+      <Filter>Source Files\Skills\Skills</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -341,9 +395,6 @@
     <ClInclude Include="Input.h">
       <Filter>Header Files\Common</Filter>
     </ClInclude>
-    <ClInclude Include="Inventory.h">
-      <Filter>Header Files\Game objects\Items</Filter>
-    </ClInclude>
     <ClInclude Include="Item.h">
       <Filter>Header Files\Game objects\Items</Filter>
     </ClInclude>
@@ -361,6 +412,39 @@
     </ClInclude>
     <ClInclude Include="Scrap.h">
       <Filter>Header Files\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="Inventory.h">
+      <Filter>Header Files\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Container.h">
+      <Filter>Header Files\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Gui.h">
+      <Filter>Header Files\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="SlotItem.h">
+      <Filter>Header Files\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Gold.h">
+      <Filter>Header Files\Game objects</Filter>
+    </ClInclude>
+    <ClInclude Include="Blink.h">
+      <Filter>Header Files\Skill\Skills</Filter>
+    </ClInclude>
+    <ClInclude Include="Skill.h">
+      <Filter>Header Files\Skill</Filter>
+    </ClInclude>
+    <ClInclude Include="FX.h">
+      <Filter>Header Files\Game objects</Filter>
+    </ClInclude>
+    <ClInclude Include="AudioHandler.h">
+      <Filter>Header Files\Common\Audio</Filter>
+    </ClInclude>
+    <ClInclude Include="Trigger.h">
+      <Filter>Header Files\Game objects</Filter>
+    </ClInclude>
+    <ClInclude Include="Wrath.h">
+      <Filter>Header Files\Skill\Skills</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

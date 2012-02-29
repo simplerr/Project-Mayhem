@@ -7,6 +7,7 @@
 #include "PlayState.h"
 #include "EditorState.h"
 #include "Vector.h"
+#include "AudioHandler.h"
 #include "enums.h"
 
 MenuState MenuState::mMenuState;
@@ -18,12 +19,14 @@ void MenuState::init(Game *game)
 	mBgkd = gGraphics->loadTexture("Data\\imgs\\bkgd.bmp");
 
 	mMenu = new Menu("MainMenu", MOUSE, HOR, 1);
-	mMenu->setMenuBackground("none", 400, 300, 256, 512);
+	mMenu->setMenuBackground("none", 1024/2, 768/2, 256, 512);
 	mMenu->addMenuItem("play", "Data\\imgs\\play_button.bmp", "Data\\imgs\\play_button.bmp");
 	mMenu->addMenuItem("build", "Data\\imgs\\build_button.bmp", "Data\\imgs\\build_button.bmp");
 	
 	mMenu->buildMenu2(256, 128);
 	mMenu->connect(&MenuState::menuHandler, this);
+
+	//gAudio->ambientPlay(false);
 
 	// Important when we later need to switch state
 	setGame(game);
@@ -55,7 +58,7 @@ void MenuState::update(double dt)
 void MenuState::draw()
 {
 	// Draw the background
-	gGraphics->drawTexture(mBgkd, 400, 300, 810, 610);
+	gGraphics->drawTexture(mBgkd, 1024/2, 768/2, 1024, 768);
 	mMenu->draw();
 }
 

@@ -3,38 +3,32 @@
 #include "Graphics.h"
 #include "Inventory.h"
 #include "Item.h"
+#include "enums.h"
+#include "Player.h"
 
-Inventory::Inventory()
+using namespace std;
+
+Inventory::Inventory() : Container(400, 300, 675, 400)
 {
-	// Create the item handler, NOTE: Could be static since it's suppose to never be more than one!
-	mMovingItem = NULL;
-	mIdCounter = 0;
-	mMovedFrom = 0;
-	mPosition = Vector(400, 300);
-	mWidth	= 500;
-	mHeight = 400;
-
-	// Load textures
-	mEquipSlot = gGraphics->loadTexture("Data\\imgs\\equip_slot.png");
-	mBagSlot = gGraphics->loadTexture("Data\\imgs\\bag_slot.png");
-	mBkgd = gGraphics->loadTexture("Data\\imgs\\inventory_bkgd.png");
+	mGold = 0;
 	mHooverBkgd = gGraphics->loadTexture("Data\\imgs\\hoover_bkgd.png");
 
 	// Create the equip slots
-	int x = mPosition.x - mWidth/2;
-	int y = mPosition.y - mHeight/2 + 35;
-	mSlotList.push_back(Slot(x + 50, y + 50, SlotId::WEAPON));
-	mSlotList.push_back(Slot(x + 120, y + 50, SlotId::SHIELD));
-	mSlotList.push_back(Slot(x + 85, y + 130, SlotId::HEAD));
-	mSlotList.push_back(Slot(x + 85, y + 200, SlotId::CHEST));
-	mSlotList.push_back(Slot(x + 85, y + 270, SlotId::LEGS));
+	int x = getPosition().x - getWidth()/2 + 20;
+	int y = getPosition().y - getHeight()/2 + 35;
+	
+	addSlot(x + 50, y + 50, SlotId::WEAPON);
+	addSlot(x + 120, y + 50, SlotId::SHIELD);
+	addSlot(x + 85, y + 130, SlotId::HEAD);
+	addSlot(x + 85, y + 200, SlotId::CHEST);
+	addSlot(x + 85, y + 270, SlotId::LEGS);
 
 	// Create the bag slots
 	x += 215;
 	y += 50;
 	for(int i = 0; i < 5; i++)
 		for(int j = 0; j < 5; j++)
-			mSlotList.push_back(Slot(x + 55*j, y + 55*i, BAG));
+			addSlot(x + 55*j, y + 55*i, BAG);
 
 	// Not visible to start with
 	hide();
@@ -43,68 +37,29 @@ Inventory::Inventory()
 Inventory::~Inventory()
 {
 	// Cleanup
-	ReleaseCOM(mEquipSlot);
-	ReleaseCOM(mBagSlot);
-	ReleaseCOM(mBkgd);
 	ReleaseCOM(mHooverBkgd);
 }
 
 void Inventory::update(float dt)
 {
 	// Visible?
-	if(mVisible)
+	if(getVisible())
 	{
-		// Move if left clicked
-		if(gInput->keyPressed(VK_LBUTTON))
-		{
-			// Find out if a item was pressed
-			for(int i = 0; i < mSlotList.size(); i++) 
-			{
-				// Pressed, not moving an item, item in the slot
-				if(gMath->pointInsideRect(gInput->mousePosition(), mSlotList[i].rect) && mMovingItem == NULL && mSlotList[i].taken)
-				{
-					mSlotList[i].taken = false;
-					mMovingItem = mSlotList[i].item;
-					mMovedFrom = i;
-					break;
-				}
-			}
-		}
+		Container::update(dt);
 		// Equip if right clicked
-		else if(gInput->keyPressed(VK_RBUTTON))
+		if(gInput->keyPressed(VK_RBUTTON))
 		{
 			// Find out if a item was pressed
 			for(int i = 0; i < mSlotList.size(); i++) 
 			{
 				// Pressed, not moving an item, item in the slot
-				if(gMath->pointInsideRect(gInput->mousePosition(), mSlotList[i].rect) && mMovingItem == NULL && mSlotList[i].taken)
+				if(gMath->pointInsideRect(gInput->mousePosition(), mSlotList[i].rect) && getMovingItem() == NULL && mSlotList[i].taken)
 				{
 					// TODO: Remove hacks!
-					swapItems(&mSlotList[i], & mSlotList[mSlotList[i].item->getData().slot]);
+					int iii = mSlotList[i].item->getSlotId();
+					swapItems(&mSlotList[i], & mSlotList[mSlotList[i].item->getSlotId()]);
 					break;
 				}
-			}
-		}
-
-		// Left mouse button released
-		if(gInput->keyReleased(VK_LBUTTON) && mMovingItem != NULL)
-		{
-			bool any = false;
-			for(int i = 0; i < mSlotList.size(); i++) 
-			{
-				// Inside any slot?
-				if(gMath->pointInsideRect(gInput->mousePosition(), mSlotList[i].rect) && (mSlotList[i].slotId == BAG || mSlotList[i].slotId == mMovingItem->getData().slot))
-				{
-					swapItems(&mSlotList[mMovedFrom], &mSlotList[i]);
-					mMovingItem = NULL;
-					any = true;
-				}
-			}
-
-			// Not inside a slot, move back to original slot
-			if(!any) {
-				mSlotList[mMovedFrom].taken = true;
-				mMovingItem = NULL;
 			}
 		}
 
@@ -121,43 +76,23 @@ void Inventory::update(float dt)
 void Inventory::draw()
 {
 	// Visible?
-	if(mVisible)
+	if(getVisible())
 	{
-		// Background
-		gGraphics->drawTexture(mBkgd, mPosition.x, mPosition.y, mWidth, mHeight);
+		Container::draw();
 
-		// Loop through all slots
-		for(int i = 0; i < mSlotList.size(); i++)
-		{
-			Rect rect = mSlotList[i].rect;
+		// Draw the item information overlay
 
-			// A equip slot
-			if(mSlotList[i].slotId != BAG) {
-				gGraphics->drawTexture(mEquipSlot, mSlotList[i].rect);
-				
-				if(mSlotList[i].taken)
-					gGraphics->drawTexture(mSlotList[i].item->getData().texture, rect.left + rect.getWidth()/2, rect.top + rect.getHeight()/2, rect.getWidth()-10, rect.getHeight()-10);	
-			}
-			// A bag slot
-			else {
-				gGraphics->drawTexture(mBagSlot, mSlotList[i].rect);
-				if(mSlotList[i].taken)
-					gGraphics->drawTexture(mSlotList[i].item->getData().texture, rect.left + rect.getWidth()/2, rect.top + rect.getHeight()/2, rect.getWidth()-5, rect.getHeight()-5);	
-			}
-		}
-
-		// Draw the item information over all
-		for(int i = 0; i < mSlotList.size(); i++)
+		for(int i = 0; i < mSlotList.size() && 0; i++)
 		{
 			Rect rect = mSlotList[i].rect;
 			// Show item information?
-			if(mSlotList[i].taken && mMovingItem == NULL && gMath->pointInsideRect(gInput->mousePosition(), rect)) 
+			if(mSlotList[i].taken && getMovingItem() == NULL && gMath->pointInsideRect(gInput->mousePosition(), rect)) 
 			{
 				Vector pos = Vector(rect.left + rect.getWidth()/2 + 100, rect.top + rect.getHeight()/2 + 125);
 
 				int x = pos.x - rect.getWidth()/2 + - 60;
 				int y = pos.y - rect.getHeight()/2 - 120;
-				ItemData attributes = mSlotList[i].item->getData();
+				ItemData attributes = ((Item*)mSlotList[i].item)->getData();
 				gGraphics->drawTexture(mHooverBkgd, pos.x, pos.y, 200, 250);
 
 				char buffer[256];
@@ -179,36 +114,30 @@ void Inventory::draw()
 			}
 		}
 
-		// The moving item
-		if(mMovingItem != NULL)
-		{
-			gGraphics->drawTexture(mMovingItem->getData().texture, gInput->mousePosition().x, gInput->mousePosition().y, 50, 50);
-		}
+		// Display gold amount
+		char buffer[256];
+
+		sprintf(buffer, "Level: %i", mPlayer->getCharacterLevel());
+		gGraphics->drawText(buffer, getPosition().x + 160, getPosition().y - 140, SMALL_DX);
+
+		sprintf(buffer, "Experiece: %i/%i", mPlayer->getExperience(), mPlayer->getLevelExp());
+		gGraphics->drawText(buffer, getPosition().x + 160, getPosition().y - 120, SMALL_DX);
+
+		sprintf(buffer, "Gold: %i", mGold);
+		gGraphics->drawText(buffer, getPosition().x + 160, getPosition().y - 100, SMALL_DX);
+
+		sprintf(buffer, "Health: %i", (int)mPlayer->getMaxHealth());
+		gGraphics->drawText(buffer, getPosition().x + 160, getPosition().y - 80, SMALL_DX);
+
+		sprintf(buffer, "MoveSpeed: %.2f", mPlayer->getMoveSpeed());
+		gGraphics->drawText(buffer, getPosition().x + 160, getPosition().y - 60, SMALL_DX);
+
+		sprintf(buffer, "Armor: %i", (int)mPlayer->getArmor());
+		gGraphics->drawText(buffer, getPosition().x + 160, getPosition().y - 40, SMALL_DX);
+
+		sprintf(buffer, "Energy: %i", (int)mPlayer->getMaxEnergy());
+		gGraphics->drawText(buffer, getPosition().x + 160, getPosition().y - 20, SMALL_DX);
 	}
-}
-
-void Inventory::swapItems(Slot* from, Slot* to)
-{
-	Slot tmp = *from;
-	if((*to).taken) {
-		(*from).item = (*to).item;
-		(*from).taken = true;
-	}
-	else
-		(*from).taken = false;
-
-	(*to).item = tmp.item;
-	(*to).taken = true;
-}
-
-void Inventory::show()
-{
-	mVisible = true;
-}
-	
-void Inventory::hide()
-{
-	mVisible = false;
 }
 
 void Inventory::addItem(string itemName)
@@ -226,17 +155,44 @@ void Inventory::addItem(string itemName)
 		}
 	}
 }
-	
-void Inventory::removeItem(Item item)
+
+void Inventory::itemMoved(SlotItem* item, SlotId from, SlotId to)
 {
-	return;
+	if(from == BAG && to != BAG)
+		mPlayer->itemEquipped((Item*)item, true);
+	else if(from != BAG && to == BAG)
+		mPlayer->itemEquipped((Item*)item, false);
+}
 
-	// TODO...
+void Inventory::addGold(int gold)
+{
+	mGold += gold;
+}
 
-	/*int index = 0;
-	for(int i = 0; i < mItemList.size(); i++)
-		if(mItemList[i].getId() == item.getId())
-			index = i;
+ItemData Inventory::getAllStats()
+{
+	ItemData itemData;
+	for(int i = 0; i < mSlotList.size(); i++)
+	{
+		// Don't count bag items
+		if(mSlotList[i].slotId == BAG)
+			continue;
 
-	mItemList.erase(std::remove(mItemList.begin(), mItemList.end(), mItemList[index]), mItemList.end());*/
+		Item* item = (Item*)mSlotList[i].item;
+		if(item != NULL) {
+			itemData.armor += item->getData().armor;	
+			itemData.health += item->getData().health;
+			itemData.energy += item->getData().energy;
+			itemData.weight += item->getData().weight;
+			itemData.damage += item->getData().damage;
+			itemData.moveSpeed += item->getData().moveSpeed;
+		}
+	}
+
+	return itemData;
+}
+
+void Inventory::setPlayer(Player* player)
+{
+	mPlayer = player;
 }

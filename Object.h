@@ -21,6 +21,7 @@ enum ObjectType
 	PROJECTILE,	// Projectile
 	PLAYER,		// Player
 	TILE,
+	GOLD_COIN,
 	REGION
 };
 
@@ -66,19 +67,22 @@ public:
 	void setAlive(bool alive)			{mAlive = alive;}
 	void setType(ObjectType type)		{mType = type;}
 	void setOwnerId	(int id)			{mOwnerId = id;}
+	void setDetailedCollision(bool detailed) {mDetailedCollision = detailed;}
 
 	IDirect3DTexture9*	getTexture();
 	string				getTextureSource();
 	Vector		getPos();
 	int			getID();
 	bool		getColides()		{return mCollidable;}
-	cPolygon	getPolygon()		{return mPolygon;}
+	cPolygon&	getPolygon()		{return mPolygon;}
 	Layer		getLayer()			{return mLayer;}
 	Level*		getLevel()			{return mActiveLevel;}
 	float		getRotation()		{return mPolygon.getRotation();}
 	bool		getAlive()			{return mAlive;}
 	ObjectType	getType()			{return mType;}
 	int			getOwnerId()		{return mOwnerId;}
+	bool		detailedCollision() {return mDetailedCollision;}
+	
 	Rect		getRect();
 	Rect		getBoundingBox();
 
@@ -99,6 +103,7 @@ private:
 	ObjectType			mType;
 	int					mOwnerId;
 	string				mTextureSource;
+	bool				mDetailedCollision;
 };	// Class
 
 #endif

@@ -1,35 +1,40 @@
 #pragma once
 #include <string>
 #include "d3dUtil.h"
+#include "SlotItem.h"
 using namespace std;
 
 struct ItemData
 {
+	ItemData() {
+		armor = health = energy = weight = damage = moveSpeed = 0;
+	}
 	string name;
 	int armor;
 	int health;
 	int damage;
-	int mana;
+	int energy;
 	int weight;
 	int slot;
+	float moveSpeed;
 	IDirect3DTexture9* texture;
 	string textureSource;
 	// Etc..
 };
 
-class Item
+class Item : public SlotItem
 {
 public:
 	Item(string name);
 	Item(){};
-	virtual ~Item();
+	~Item();
 
-	void setId(int id);
 	void setData(ItemData attributes);
 
 	ItemData		getData();
 	int				getId();
+	SlotId			getSlotId();
+	IDirect3DTexture9* getTexture();
 private:
 	ItemData		mAttributes;
-	int				mId;
 };

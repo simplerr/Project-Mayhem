@@ -7,6 +7,8 @@
 
 class Level;
 class Inventory;
+class Gui;
+class Item;
 
 class Player : public Object 
 {
@@ -21,17 +23,47 @@ public:
 	void attack(/*KEY/WPN used*/);
 	void move(float dx, float dy);
 	bool handleCollision(Object* collider, MTV* mtv);
+	void itemEquipped(Item* item, bool equiped);
 
 	void setCooldown(float cooldown);
 
+	void addExperience(int experience);
+	void addGold(int amount);
+
+	float getMoveSpeed();
+	int getHealth();
+	int getMaxHealth();
+	int getEnergy();
+	int getMaxEnergy();
+	int getArmor();
+	int getExperience();
+	int getCharacterLevel();
+	int	getLevelExp();	
+
+	//void setEnergy(float nrg)	{mEnergy = nrg;}
+	void costEnergy(float dnrg)	{mEnergy-=dnrg;}
+	void damage(float dmg);
+
 private:
-	Animation* mAnimation;
-	Inventory* mInventory;
-	float mHealth;
-	float mMoveSpeed;
+	IDirect3DTexture9*	mWeapon;
+	Animation*	mAnimation;
+	Inventory*	mInventory;
+	Gui*		mGui;
+	vector<int> mExpPerLevel;
 	float mAngle;
 	float mCooldown;
 	float mCounter;
+
+	// Stats
+	int	mLevel;
+	int mExperience;
+	float mHealth;
+	float mEnergy;
+	float mMaxHealth;
+	float mMaxEnergy;
+	float mArmor;
+	float mBaseArmor;
+	float mMoveSpeed;
 };
 
 #endif

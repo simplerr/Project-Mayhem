@@ -20,6 +20,7 @@ Object::Object(float x, float y, int width, int height, ObjectType type, std::st
 	setAlive(true);
 	setType(type);
 	setLayer(MIDDLE);
+	setDetailedCollision(true);
 }
 
 Object::~Object()

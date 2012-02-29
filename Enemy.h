@@ -3,8 +3,8 @@
 
 #include "d3dUtil.h"
 #include "Object.h"
-#include "AI.h"
 #include "Collision.h"
+#include "AI.h"
 #include <map>
 #include <string>
 
@@ -18,13 +18,12 @@ public:
 	~EnemyData();
 
 	string name;
+	string textureSource;
+	int experience;
 	int hp; 
 	int range;
-	string textureSource;
-
 	int height;
 	int width;
-
 	int speed;
 	int weaponRate;
 
@@ -67,11 +66,13 @@ public:
 	float getHP()					{return mHp;}
 	float getRange()				{return mRange;}
 	float getSpeed()				{return mSpeed;}
+	float getExperience()			{return mExperience;}
 
 	void setClass(EnemyData* Class)	{mClass = Class;} //ptr
 	void setHP(float HP)				{mHp = HP;}
 	void setAI(AI* new_ai)				{ai = new_ai;}
 	void setSpeed(float speed)			{mSpeed = speed;}
+	void setExperience(int exp)			{mExperience = exp;}
 
 	void modHP(float dHP)				{mHp+=dHP;}
 	void damage(float dHP);
@@ -80,13 +81,14 @@ public:
 	void calcAI(float dt);
 	void initAI(AIdata data, Vector v);
 private:
-	AI *ai;
+	EnemyData* mClass;
+	AI* ai;
 	float mHp;
 	float mRange;
 	float mSpeed;
 	float mWeaponRate;
-	EnemyData* mClass;
-
+	int mExperience;
+	
 	//Timers
 	float mTime;
 	float mAttackTimer;

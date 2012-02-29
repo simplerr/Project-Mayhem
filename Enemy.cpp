@@ -1,12 +1,14 @@
+#include <time.h>
+#include "tinyxml\tinystr.h"
+#include "tinyxml\tinyxml.h"
 #include "Enemy.h"
 #include "Graphics.h"
 #include "Level.h"
 #include "Player.h"
 #include "Projectile.h"
-
-#include "tinyxml\tinystr.h"
-#include "tinyxml\tinyxml.h"
-
+#include "ItemHandler.h"
+#include "Loot.h"
+#include "Gold.h"
 
 EnemyData::EnemyData(int w, int h, string n, string texture) 
 {
@@ -24,6 +26,7 @@ EnemyData::~EnemyData()
 
 Enemy::Enemy(float x, float y, EnemyData* type) : Object (x, y, type->width, type->height, ENEMY,  type->textureSource)
 {
+	mExperience = type->experience;
 	mRange = type->range;//ptr
 	mHp = type->hp;//ptr
 	mSpeed = type->speed;
@@ -43,6 +46,24 @@ void Enemy::damage(float dHP)
 	modHP(-dHP);
 	if(mHp<=0) {
 		setAlive(false);
+
+		// Drop loot
+		// TODO: Add a drop effect, the loot should fly away from the enemy
+		// TODO: Add drop rate for different items
+		auto map = gItemHandler->getDataMap();
+		int loot = rand() % (map.size()+4);
+		int i = 0, distance = 0;
+		for(auto iter = map.begin(); iter != map.end(); iter++, i++) {
+			if(i == loot) {
+				float angle = (rand() % 340)/(float)100;
+				getLevel()->addObject(new Loot(iter->second.name, getPos().x + distance*cosf(angle), getPos().y + distance*sinf(angle)));
+			}
+		}
+
+		getLevel()->addObject(new Gold(getPos().x, getPos().y+15));
+		getLevel()->addObject(new Gold(getPos().x-15, getPos().y));
+		getLevel()->addObject(new Gold(getPos().x-15, getPos().y-15));
+		getLevel()->addObject(new Gold(getPos().x+15, getPos().y));
 	}
 }
 
@@ -51,7 +72,7 @@ bool Enemy::handleCollision(Object* collider, MTV* mtv)
 	if (collider->getOwnerId() != getID()) 
 	{
 		if(collider->getType() == PROJECTILE)
-			damage(1);
+			damage(dynamic_cast<Projectile*>(collider)->getDamage());
 		if(collider->getType() == ENEMY)
 			ai->flags.patrol = false;
 		if(collider->getType() == TILE)
@@ -62,14 +83,13 @@ bool Enemy::handleCollision(Object* collider, MTV* mtv)
 	return false;
 }
 
-
 void Enemies::init() 
 {
-	
 	//Load enemies
 	// Load all different items
 	TiXmlDocument doc("enemies.xml");
 	doc.LoadFile();
+	srand(time(0));
 
 	// Get the root element
 	TiXmlElement* root = doc.FirstChildElement();
@@ -86,6 +106,7 @@ void Enemies::init()
 		enemyData->width = atoi(item->Attribute("width"));
 		enemyData->height = atoi(item->Attribute("height"));
 		enemyData->weaponRate = item->Attribute("weaponRate") == NULL ? 1000 : atoi(item->Attribute("weaponRate"));
+		enemyData->experience = item->Attribute("xp") == NULL ? 5 : atoi(item->Attribute("xp"));
 		enemyData->ai_data.init();
 
 		data[enemyData->name] = enemyData;
@@ -140,11 +161,11 @@ void Enemy::doAI(float dt)
 		v = gMath->calculateAngle(getPos(), ai->getObjectTarget());
 		if(gMath->distance(getPos(), ai->getObjectTarget())>ai->getRange()) 
 		{
-			move((cos(v)*getSpeed()*10*dt), (sin(v)*getSpeed()*10*dt));
+			move((cos(v)*getSpeed()*17*dt), (sin(v)*getSpeed()*17*dt));
 		}
 		else { //Attack
 			if(mAttackTimer < 0) {
-				getLevel()->addProjectile(this, ai->getObjectTarget(), 10);
+				getLevel()->addProjectile(this, ai->getObjectTarget());
 				mAttackTimer = (float)(mWeaponRate/100);
 			}
 			else 
@@ -200,9 +221,8 @@ void Enemy::calcAI(float dt)
 		ai->flags.returnToOrigin = true;
 		mLostSightTimer = .7;
 	}
-	
-	
 }
+
 void Enemy::initAI(AIdata data, Vector v) 
 {
 	ai = new AI(data);

@@ -57,7 +57,7 @@ AI_action AI::getAction() {
 			{
 				return AI_PATROL;
 			}
-		
+
 		return AI_IDLE;
 		}
 	}

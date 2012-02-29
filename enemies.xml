@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Enemies>
-  <Enemy name="spider" width="32" height="32" hp="10" range="5" speed="10" weaponRate="20" texture="Data\\imgs\\spider.png"></Enemy>
+  <Enemy name="spider" width="32" height="32" hp="10" xp="30" range="5" speed="10" weaponRate="20" texture="Data\\imgs\\spider.png"></Enemy>
 </Enemies>

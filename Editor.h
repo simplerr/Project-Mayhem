@@ -43,7 +43,7 @@ public:
 	bool messageHandler(wId id, wMessage msg);
 
 private:
-	Level		*mLevel;
+	Level			*mLevel;
 	ActiveObject	mActiveObject;
 
 	// GUI stuff

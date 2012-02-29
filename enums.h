@@ -1,6 +1,9 @@
 #ifndef ENUMS_H
 #define ENUMS_H
 
+// Enum for different type of slots
+enum SlotId {WEAPON, SHIELD, HEAD, CHEST, LEGS, MISC1, MISC2, BAG, SKILL};
+
 // Tile types
 enum TileType
 {

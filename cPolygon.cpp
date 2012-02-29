@@ -133,10 +133,10 @@ Rect cPolygon::getBoundingBox()
 {
 	Rect rect = mBoundingBox;
 
-	rect.left += getPos().x;
-	rect.right += getPos().x;
-	rect.top += getPos().y;
-	rect.bottom += getPos().y;
+	rect.left += mOrigin.x;
+	rect.right += mOrigin.x;
+	rect.top += mOrigin.y;
+	rect.bottom += mOrigin.y;
 
 	return rect;
 }

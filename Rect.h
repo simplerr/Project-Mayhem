@@ -53,6 +53,15 @@ public:
 		width = _width;
 		height = _height;
 	}
+	void setRect(float l, float r, float t, float b)
+	{
+		left = l;
+		right = r;
+		top = t;
+		bottom = b;
+		width = gMath->delta(left, right);
+		height = gMath->delta(top, bottom);
+	}
 
 	float left;
 	float right;

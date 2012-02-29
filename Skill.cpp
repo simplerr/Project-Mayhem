@@ -18,9 +18,15 @@ void Skill::performSkill(Player* player)
 	MessageBox(0, "asd", 0, 0);
 }
 
-void Skill::setTexture(string texture)
+void Skill::setIconTexture(string texture)
 {
 	mTexture = gGraphics->loadTexture(texture);
+}
+
+void Skill::init()
+{
+	skillLevel = 0;
+	passive = false;
 }
 
 IDirect3DTexture9* Skill::getTexture()
@@ -31,4 +37,12 @@ IDirect3DTexture9* Skill::getTexture()
 SlotId Skill::getSlotId()
 {
 	return SKILL;
+}
+
+bool Skill::canCast(Player* player) 
+{
+	if( player->getEnergy()>=getEnergyCost())
+		return true;
+	else 
+		return false;
 }

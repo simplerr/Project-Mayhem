@@ -1,18 +1,21 @@
 #pragma once
 
+#include "Projectile.h"
+
 class Object;
 class Rect;
 
-
-class Scrap {
+class Scrap 
+{
 public:
-	// Temporary test object, with position and dimensions of the tile
-	Object* tileObject;
-	Rect*	rect;
-
 	Scrap();
 	~Scrap();
-
+	
+	Object* tileObject; // Temporary test object, with position and dimensions of the tile
+	Rect*	rect;
+	Rect*	editorRect;
+	bool	editingRegion;
+	ProjectileData basicProjectile;
 };
 
 extern Scrap* gScrap;

@@ -5,6 +5,9 @@
 #include <vector>
 #include "enums.h"
 #include "Vector.h"
+#include "Projectile.h"
+#include "Scrap.h"
+
 
 using namespace std;
 
@@ -12,6 +15,7 @@ class Player;
 class Tile;
 class TileHandler;
 class Object;
+
 
 class Level
 {
@@ -35,7 +39,7 @@ public:
 	void addTile(float x, float y, string name);
 	void removeTile(float x, float y);
 
-	void addProjectile(Object* shooter, Vector target, int spread = 0);
+	void addProjectile(Object* shooter, Vector target, ProjectileData pData = gScrap->basicProjectile);
 	TileHandler* getTileHandler();
 	string getTile(int x, int y);
 	int getTileWidth();
@@ -43,8 +47,9 @@ public:
 	Vector getOffset();
 	Object* getObjectAt(Vector pos);
 	Player* getPlayer();
-	bool isInEditor() {return mEditorMode;}
+	std::vector<Object*>* getObjectList()	{return &mObjectList;}
 
+	bool isInEditor() {return mEditorMode;}
 	void setInEditor(bool b) { mEditorMode = b;}
 
 private:

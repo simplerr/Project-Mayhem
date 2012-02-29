@@ -81,6 +81,7 @@ void Container::update(float dt)
 	
 void Container::draw()
 {
+	char c[9] = {'1','2','3','4','Q','E','7'};
 	// Visible?
 	if(mVisible)
 	{
@@ -105,6 +106,12 @@ void Container::draw()
 				
 			if(mSlotList[i].taken)
 				gGraphics->drawTexture(mSlotList[i].item->getTexture(), rect.left + rect.getWidth()/2, rect.top + rect.getHeight()/2, rect.getWidth()-10, rect.getHeight()-10);
+
+			//Numbers
+			if(mSlotList[i].slotId == SKILL){
+				string str = string(1, c[i]);
+				gGraphics->drawText(str, mSlotList[i].rect.right-10,mSlotList[i].rect.top-8,CUSTOM, 8, D3DCOLOR_RGBA(255, 128, 0, 255));
+			}
 		}
 
 		// The moving item

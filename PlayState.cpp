@@ -5,6 +5,7 @@
 #include "MenuState.h"
 #include "Player.h"
 #include "enums.h"
+#include "AudioHandler.h"
 
 PlayState PlayState::mPlayState;
 
@@ -25,6 +26,8 @@ void PlayState::init(Game *game)
 
 	// Load the background texture, temporary
 	mBgkd = gGraphics->loadTexture("Data\\imgs\\dust_bkgd.bmp");
+	
+	//gAudio->ambientSound("Data\\sounds\\Retribution.ogg", true);
 
 	// Important when we later need to switch state
 	setGame(game);

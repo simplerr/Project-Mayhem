@@ -16,6 +16,7 @@
 #include "Projectile.h"
 #include "Scrap.h"
 #include "Collision.h"
+#include "Region.h"
 #include "Gold.h"
 
 Level::Level()
@@ -112,7 +113,7 @@ void Level::update(float dt)
 			}
 
 		}
-	
+
 		for(int j = 0; j < mTileList.size(); j++)
 		{
 			Tile* tile = mTileList[j];
@@ -321,6 +322,8 @@ void Level::saveToFile(string file)
 		object->SetAttribute("type", mObjectList[i]->getType());
 		object->SetAttribute("x", mObjectList[i]->getPos().x - mOffset.x);
 		object->SetAttribute("y", mObjectList[i]->getPos().y - mOffset.y);
+		object->SetAttribute("w", mObjectList[i]->getBoundingBox().getWidth());
+		object->SetAttribute("h", mObjectList[i]->getBoundingBox().getHeight());
 		
 		if(mObjectList[i]->getType() == ENEMY) {
 			Enemy* enemy = dynamic_cast<Enemy*>(mObjectList[i]);
@@ -369,6 +372,8 @@ void Level::loadFromFile(string file)
 		int type = atoi(object->Attribute("type"));
 		int x = atoi(object->Attribute("x"));
 		int y = atoi(object->Attribute("y"));
+		int w = atoi(object->Attribute("w"));
+		int h = atoi(object->Attribute("h"));
 		string texture = object->Attribute("texture");
 
 		// Switch type and add the according object to the level
@@ -379,6 +384,10 @@ void Level::loadFromFile(string file)
 		else if(type == ObjectType::ENEMY) {
 			Enemy* enemy = new Enemy(x, y, gEnemies->getData(object->Attribute("class")));
 			addObject(enemy);
+		}
+		else if(type == ObjectType::REGION) {
+			Region* region = new Region(Rect(x,y,w,h,0));
+			addObject(region);
 		}
 		// TODO: Add for different objects as well
 	}
@@ -463,19 +472,21 @@ string Level::getTile(int x, int y)
 	return "#NOVALUE";
 }
 
-void Level::addProjectile(Object* shooter, Vector target, int spread) 
+void Level::addProjectile(Object* shooter, Vector target, ProjectileData pData) 
 {
 	float v = gMath->calculateAngle(shooter->getPos(), target);
 	ObjectData data;
-	data.width = 20;
-	data.height = 7;
+	data.width = pData.width;
+	data.height = pData.height;
 	data.drawLayer = MIDDLE;
-	data.textureSource = "Data\\imgs\\projectile.bmp";
-	Object* object = new Projectile(shooter->getPos().x, shooter->getPos().y, data.width, data.height, 10, data.textureSource);
+	data.textureSource = pData.texturePath;
+	Projectile* object = new Projectile(shooter->getPos().x, shooter->getPos().y, data.width, data.height, pData.speed, data.textureSource);
 	object->setLayer(data.drawLayer);
 	object->setOwnerId(shooter->getID());
 	object->setType(PROJECTILE);
-	object->setRotation(v + (rand() % spread - spread/2)/40.0f);
+	object->setRotation(v + (rand() % pData.spread - pData.spread/2)/40.0f);
+	object->setMaxDistance(pData.range);
+	object->setDamage(pData.damage);
 	addObject(object);
 }
 

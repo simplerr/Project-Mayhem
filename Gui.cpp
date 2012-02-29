@@ -4,6 +4,10 @@
 #include "Input.h"
 #include "Skill.h"
 
+//Skills
+#include "Blink.h"
+#include "Wrath.h"
+
 Gui::Gui(Player* player) : Container(300, 700, 600, 90)
 {
 	// Load the slot texture
@@ -20,8 +24,14 @@ Gui::Gui(Player* player) : Container(300, 700, 600, 90)
 	// Add some test skills
 	addSkill(new Skill());
 	Skill* skill = new Skill();
-	skill->setTexture("Data\\imgs\\fire_bolt.png");
+	skill->setIconTexture("Data\\imgs\\fire_bolt.png");
 	addSkill(skill);
+
+	//addSkill(new Skill());
+	Blink* blink = new Blink();
+	addSkill(blink);
+
+	addSkill(new Wrath());
 
 	// Set visible
 	show();
@@ -40,6 +50,7 @@ void Gui::update(float dt)
 	// Check if a slot with a skill in it was pressed
 	// Keys 1-6
 	// TODO: Check for right press with the mouse
+	// TODO: Check for right press with the mouse, e and q
 	for(int i = 0; i < mSlotList.size(); i++) {
 		if(gInput->keyPressed(49 + i) && mSlotList[i].taken)
 			((Skill*)mSlotList[i].item)->performSkill(mPlayer);

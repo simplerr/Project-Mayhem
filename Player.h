@@ -40,6 +40,9 @@ public:
 	int getCharacterLevel();
 	int	getLevelExp();	
 
+	//void setEnergy(float nrg)	{mEnergy = nrg;}
+	void costEnergy(float dnrg)	{mEnergy-=dnrg;}
+	void damage(float dmg);
 private:
 	IDirect3DTexture9*	mWeapon;
 	Animation*	mAnimation;

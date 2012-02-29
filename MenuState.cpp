@@ -7,6 +7,7 @@
 #include "PlayState.h"
 #include "EditorState.h"
 #include "Vector.h"
+#include "AudioHandler.h"
 #include "enums.h"
 
 MenuState MenuState::mMenuState;
@@ -24,6 +25,8 @@ void MenuState::init(Game *game)
 	
 	mMenu->buildMenu2(256, 128);
 	mMenu->connect(&MenuState::menuHandler, this);
+
+	//gAudio->ambientPlay(false);
 
 	// Important when we later need to switch state
 	setGame(game);

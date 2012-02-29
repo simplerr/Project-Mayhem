@@ -16,22 +16,12 @@
 #include "Loot.h"
 #include "Region.h"
 #include "Math.h"
+#include "Scrap.h"
+#include "Math.h"
+#include "Graphics.h"
 
 Editor::Editor(std::string levelName)
 {
-	//// Create the level
-	//mLevel = new Level();
-
-	//mLevel->init();
-
-	//mWindowHandler = new WindowHandler();
-
-	//mButton1 = new wButton(600, 400, 100, 50, "press me!", WID_TESTBUTTON1);
-	//mButton1->connect(&Editor::messageHandler,this);
-	//mWindowHandler->addWindow(mButton1);
-
-	//wPanel* panel = new wPanel(700, 300, 200, 600, WID_PANEL1);
-	////mWindowHandler->addWindow(panel);
 
 }
 
@@ -80,7 +70,7 @@ void Editor::update(float dt)
 	mWindowHandler->update(dt);
 
 	Vector pos = gInput->mousePosition();
-	if((gInput->keyDown(VK_LBUTTON) && mActiveObject.type == TILE) || (gInput->keyPressed(VK_LBUTTON) && mActiveObject.type != TILE) && pos.x < 595)
+	if(((gInput->keyDown(VK_LBUTTON) && mActiveObject.type == TILE) || (gInput->keyPressed(VK_LBUTTON) && mActiveObject.type != TILE)) && (pos.x < 824))
 	{
 		// TODO: Fix correct placement
 		if(mActiveObject.type == ENEMY) {
@@ -95,7 +85,16 @@ void Editor::update(float dt)
 		}
 		else if(mActiveObject.type == REGION) {
 			mClickedPos = Vector(pos.x - mLevel->getOffset().x, pos.y - mLevel->getOffset().y);
+			//mClickedPos = Vector(pos.x - mLevel->getOffset().x, pos.y - mLevel->getOffset().y); //MINUS
+			mClickedPos = Vector(pos.x, pos.y);
+			gScrap->editingRegion=true;
+			gScrap->editorRect->setRect(mClickedPos.x, mClickedPos.x+1, mClickedPos.y, mClickedPos.y+1);
 		}
+	}
+	if(gScrap->editingRegion) {
+		float t;
+		gScrap->editorRect->right = pos.x;
+		gScrap->editorRect->bottom = pos.y;
 	}
 	if(gInput->keyDown(VK_RBUTTON))
 	{
@@ -109,12 +108,19 @@ void Editor::update(float dt)
 	}
 	if(gInput->keyReleased(VK_LBUTTON) && mActiveObject.type == REGION)
 	{
-		Vector tP = pos;
-		pos.x-=mLevel->getOffset().x;
-		pos.y-=mLevel->getOffset().y;
-		int h = gMath->delta(mClickedPos.y, pos.y);
-		int w = gMath->delta(mClickedPos.x, pos.x);
-		mLevel->addObject(new Region(mClickedPos.x, mClickedPos.y, w, h));
+		float t;
+		if(gScrap->editorRect->bottom < gScrap->editorRect->top) {
+			t = gScrap->editorRect->bottom;
+			gScrap->editorRect->bottom = gScrap->editorRect->top;
+			gScrap->editorRect->top = t;
+		}
+		if(gScrap->editorRect->right < gScrap->editorRect->left) {
+			t = gScrap->editorRect->right;
+			gScrap->editorRect->right = gScrap->editorRect->left;
+			gScrap->editorRect->left = t;
+		}
+		mLevel->addObject(new Region(*gScrap->editorRect));
+		gScrap->editingRegion=false;
 	}
 
 	if(gInput->keyDown('W'))	
@@ -131,6 +137,8 @@ void Editor::draw()
 {
 	// Draw game content
 	mLevel->draw();
+	if(gScrap->editingRegion) 
+		gGraphics->drawRect(*gScrap->editorRect, D3DCOLOR_ARGB(150,20,200,20));
 	mWindowHandler->draw();
 }
 

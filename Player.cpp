@@ -75,8 +75,6 @@ void Player::handleInput()
 	// Mouse pressed
 	if(gInput->keyPressed(VK_LBUTTON))
 	{
-		mHealth -= 5;
-		mEnergy -= 15;
 		Object* object = getLevel()->getObjectAt(gInput->mousePosition());
 		if(object != NULL && object->getType() == LOOT) {
 			Loot* loot = dynamic_cast<Loot*>(object);
@@ -114,7 +112,7 @@ void Player::handleInput()
 	{
 		if(gInput->keyDown(VK_LBUTTON))	{
 			Vector pos = gInput->mousePosition();
-			getLevel()->addProjectile(this, pos, 10);
+			getLevel()->addProjectile(this, pos);
 			mCounter = 0.0f;
 		}
 	}
@@ -129,7 +127,17 @@ bool Player::handleCollision(Object* collider, MTV* mtv)
 	if(collider->getType() == ENEMY || collider->getType() == STRUCTURE) {
 		getLevel()->moveObjects(-mtv->pushX, -mtv->pushY);
 	}
+
+	if(collider->getType() == PROJECTILE)
+		damage(dynamic_cast<Projectile*>(collider)->getDamage());
+	
 	return false;
+}
+
+void Player::damage(float dmg)
+{
+	mHealth-=dmg;
+	//CHECK IF DEAD
 }
 
 void Player::itemEquipped(Item* item, bool equiped)

@@ -72,7 +72,7 @@ bool Enemy::handleCollision(Object* collider, MTV* mtv)
 	if (collider->getOwnerId() != getID()) 
 	{
 		if(collider->getType() == PROJECTILE)
-			damage(1);
+			damage(dynamic_cast<Projectile*>(collider)->getDamage());
 		if(collider->getType() == ENEMY)
 			ai->flags.patrol = false;
 		if(collider->getType() == TILE)
@@ -165,7 +165,7 @@ void Enemy::doAI(float dt)
 		}
 		else { //Attack
 			if(mAttackTimer < 0) {
-				getLevel()->addProjectile(this, ai->getObjectTarget(), 10);
+				getLevel()->addProjectile(this, ai->getObjectTarget());
 				mAttackTimer = (float)(mWeaponRate/100);
 			}
 			else 

@@ -35,17 +35,19 @@ public:
 	virtual void update(float dt);
 	virtual void draw();
 	virtual void itemMoved(SlotItem* item, SlotId from, SlotId to){};
+	virtual void itemOutsideSlot(SlotItem* item);
 
 	//virtual void addItem(string itemName);
 	void addSlot(int x, int y, SlotId id);
 	//void removeItem(SlotItem item);
-	void swapItems(Slot* from, Slot* to);
+	void swapItems(Slot* slot1, Slot* slot2);
 
 	void show();
 	void hide();
 
 	void setTexture(string texture);
 	void setSlotSize(int size = 40);
+	void setMovingItem(SlotItem* item) {mMovingItem = item;}
 
 	SlotItem* getMovingItem();
 	Vector	getPosition();

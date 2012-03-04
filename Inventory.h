@@ -26,6 +26,7 @@ public:
 	Inventory();
 	virtual ~Inventory();
 
+	void itemOutsideSlot(SlotItem* item);
 	void setPlayer(Player* player);
 	void update(float dt);
 	void draw();

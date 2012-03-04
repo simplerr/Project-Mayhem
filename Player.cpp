@@ -34,7 +34,8 @@ Player::Player(float x, float y) : Object (x, y, 40, 40, PLAYER,  "Data\\imgs\\s
 	mGui = new Gui(this);
 	mGui->setTexture("Data\\imgs\\gui_bkgd.png");
 
-	mWeapon = gGraphics->loadTexture("Data\\imgs\\vapen1.png");
+	// No weapon to start with -TODODOODO
+	mWeapon = NULL;
 
 	// Experience per level
 	mExpPerLevel.push_back(100);
@@ -48,6 +49,9 @@ Player::~Player()
 	delete mAnimation;
 	delete mInventory;
 	delete mGui;
+
+	if(mWeapon != NULL)
+		delete mWeapon;
 }
 
 void Player::update(float dt)
@@ -55,17 +59,22 @@ void Player::update(float dt)
 	mInventory->update(dt);
 	mAnimation->animate(dt);
 	mGui->update(dt);
+
+	if(mWeapon != NULL)
+		mWeapon->update(dt);
+
 	handleInput();
 	mCounter += dt;
 }
 
 void Player::draw()
 {
-	static Vector offset(30, 16);
-
 	gGraphics->drawTexturedPolygon(getPolygon(), getTexture());
-	gGraphics->drawTexture(mWeapon, getPos().x + cosf(getRotation())*offset.x - sinf(getRotation())*offset.y, getPos().y + sinf(getRotation())*offset.x + cosf(getRotation())*offset.y, 64, 16, getRotation());
+	
 	//gGraphics->drawTexturedPolygon(getPolygon(), getTexture(), &mAnimation->getSourceRect());
+	if(mWeapon != NULL)
+		mWeapon->draw(getPos(), getRotation());
+
 	mInventory->draw();
 	mGui->draw();
 }
@@ -79,7 +88,7 @@ void Player::handleInput()
 		if(object != NULL && object->getType() == LOOT) {
 			Loot* loot = dynamic_cast<Loot*>(object);
 			mInventory->addItem(loot->getName());
-			getLevel()->removeObjectAt(gInput->mousePosition().x, gInput->mousePosition().y);
+			getLevel()->removeObject(loot);
 		}
 		else if(object != NULL && object->getType() == GOLD_COIN) {
 			Gold* gold = dynamic_cast<Gold*>(object);
@@ -104,18 +113,13 @@ void Player::handleInput()
 	else if(gInput->keyDown('D'))	
 		getLevel()->moveObjects(-mMoveSpeed, 0);
 
-	// Mouse
-	Vector mousePos = gInput->mousePosition();
-	float angle = gMath->calculateAngle(getPos(), mousePos);
-
-	if(mCounter >= mCooldown)	// :NOTE: && 0
-	{
-		if(gInput->keyDown(VK_LBUTTON))	{
-			Vector pos = gInput->mousePosition();
-			getLevel()->addProjectile(this, pos);
-			mCounter = 0.0f;
-		}
+	if(gInput->keyDown(VK_LBUTTON))	{
+		if(mWeapon != NULL && mWeapon->isReady())
+			mWeapon->fire(getPos(), getRotation());
 	}
+
+	// Look at the mouse
+	float angle = gMath->calculateAngle(getPos(), gInput->mousePosition());
 
 	resetRotation();
 	rotate(angle);
@@ -142,6 +146,25 @@ void Player::damage(float dmg)
 
 void Player::itemEquipped(Item* item, bool equiped)
 {
+	// Equipped a weapon
+	if(item->getSlotId() == WEAPON)
+	{
+		if(mWeapon != NULL) {
+			delete mWeapon;
+			mWeapon = NULL;
+		}
+
+		// Weapon equipped?
+		if(equiped)	{
+			if(item->getData().name == "Golden Sword")
+				mWeapon = new Weapon(this, getLevel());
+			else if(item->getData().name == "Golden Axe") {
+				mWeapon = new Weapon(this, getLevel());
+				mWeapon->setCooldown(0.1f);
+			}
+		}
+	}
+
 	int x = equiped ? 1 : -1;
 
 	ItemData data = item->getData();

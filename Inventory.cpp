@@ -5,6 +5,9 @@
 #include "Item.h"
 #include "enums.h"
 #include "Player.h"
+#include "Level.h"
+#include "Loot.h"
+#include "Item.h"
 
 using namespace std;
 
@@ -160,13 +163,30 @@ void Inventory::itemMoved(SlotItem* item, SlotId from, SlotId to)
 {
 	if(from == BAG && to != BAG)
 		mPlayer->itemEquipped((Item*)item, true);
-	else if(from != BAG && to == BAG)
+	else if(from != BAG && to == BAG)	{
 		mPlayer->itemEquipped((Item*)item, false);
+	}
 }
 
 void Inventory::addGold(int gold)
 {
 	mGold += gold;
+}
+
+void Inventory::itemOutsideSlot(SlotItem* item)
+{
+	Vector mousePos = gInput->mousePosition();
+
+	// Outside the inventory? -> drop the item
+	if(mousePos.x < getPosition().x - getWidth()/2 || mousePos.x > getPosition().x + getWidth()/2 || mousePos.y < getPosition().y - getHeight()/2 ||
+		mousePos.y > getPosition().y + getHeight()/2)
+	{
+		Item* item1 = dynamic_cast<Item*>(item);
+		mPlayer->getLevel()->addObject(new Loot(item1->getData().name, mousePos.x, mousePos.y));
+		setMovingItem(NULL);
+	}
+	else
+		Container::itemOutsideSlot(item);
 }
 
 ItemData Inventory::getAllStats()

@@ -32,7 +32,6 @@ public:
 	void setData(ItemData attributes);
 
 	ItemData		getData();
-	int				getId();
 	SlotId			getSlotId();
 	IDirect3DTexture9* getTexture();
 private:

@@ -135,6 +135,7 @@
     <ClInclude Include="wComponent.h" />
     <ClInclude Include="wContainer.h" />
     <ClInclude Include="wDropDown.h" />
+    <ClInclude Include="Weapon.h" />
     <ClInclude Include="WindowHandler.h" />
     <ClInclude Include="wMessage.h" />
     <ClInclude Include="wPanel.h" />
@@ -191,6 +192,7 @@
     <ClCompile Include="wComponent.cpp" />
     <ClCompile Include="wContainer.cpp" />
     <ClCompile Include="wDropDown.cpp" />
+    <ClCompile Include="Weapon.cpp" />
     <ClCompile Include="WindowHandler.cpp" />
     <ClCompile Include="wMessage.cpp" />
     <ClCompile Include="wPanel.cpp" />

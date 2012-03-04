@@ -237,6 +237,9 @@
     <ClCompile Include="Trigger.cpp">
       <Filter>Header Files</Filter>
     </ClCompile>
+    <ClCompile Include="Weapon.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="d3dUtil.h">
@@ -408,6 +411,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Trigger.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Weapon.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -72,13 +72,18 @@ void Container::update(float dt)
 
 			// Not inside a slot, move back to original slot
 			if(!any) {
-				mSlotList[mMovedFrom].taken = true;
-				mMovingItem = NULL;
+				itemOutsideSlot(mMovingItem);
 			}
 		}
 	}
 }
 	
+void Container::itemOutsideSlot(SlotItem* item)
+{
+	mSlotList[mMovedFrom].taken = true;
+	mMovingItem = NULL;
+}
+
 void Container::draw()
 {
 	char c[9] = {'1','2','3','4','Q','E','7'};
@@ -124,19 +129,26 @@ void Container::draw()
 
 void Container::swapItems(Slot* from, Slot* to)
 {
-	itemMoved((*from).item, from->slotId, to->slotId);
 	// Ugly swapping method.. Also checks if one slot is empty or not
 	Slot tmp = *from;
 	if((*to).taken) {
 		itemMoved((*to).item, to->slotId, from->slotId);
+
 		(*from).item = (*to).item;
 		(*from).taken = true;
+
+		itemMoved((*from).item, tmp.slotId, to->slotId);
+		(*to).item = tmp.item;
+		(*to).taken = true;
 	}
-	else
+	else {
 		(*from).taken = false;
 
-	(*to).item = tmp.item;
-	(*to).taken = true;
+		itemMoved((*from).item, from->slotId, to->slotId);
+
+		(*to).item =(*from).item;
+		(*to).taken = true;
+	}
 }
 
 void Container::setTexture(string texture)

@@ -4,6 +4,7 @@
 #include "Object.h"
 #include "Animation.h"
 #include "Collision.h"
+#include "Weapon.h"
 
 class Level;
 class Inventory;
@@ -44,9 +45,9 @@ public:
 	void costEnergy(float dnrg)	{mEnergy-=dnrg;}
 	void damage(float dmg);
 private:
-	IDirect3DTexture9*	mWeapon;
 	Animation*	mAnimation;
 	Inventory*	mInventory;
+	Weapon*		mWeapon;
 	Gui*		mGui;
 	vector<int> mExpPerLevel;
 	float mAngle;

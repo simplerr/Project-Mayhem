@@ -72,7 +72,7 @@ void Level::update(float dt)
 	mtv.collision = false;
 	int size = mObjectList.size();
 
-	for(int i = 0; i < size; i++)
+	for(int i = 0; i < mObjectList.size(); i++)
 	{
 		Object* objectA = mObjectList[i];
 		if(objectA->getAlive()) {

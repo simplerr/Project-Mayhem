@@ -12,6 +12,7 @@ Weapon::Weapon(Player* player, Level* level)
 	mTexture = 	gGraphics->loadTexture("Data\\imgs\\vapen1.png");
 	mOffset = Vector(30, 16);
 	setCooldown(0.55f);
+	setProjectileData(gScrap->basicProjectile);
 } 
 	
 Weapon::~Weapon()
@@ -34,10 +35,11 @@ void Weapon::fire(Vector playerPos, float rotation)
 {
 	// Mouse
 	Vector mousePos = gInput->mousePosition();
-	Vector pos = Vector(playerPos.x + cosf(rotation)*mOffset.x - sinf(rotation)*mOffset.y, 
-		playerPos.y + sinf(rotation)*mOffset.x + cosf(rotation)*mOffset.y);
+	Vector offset(55, 15);
+	Vector pos = Vector(playerPos.x + cosf(rotation)*offset.x - sinf(rotation)*offset.y, 
+		playerPos.y + sinf(rotation)*offset.x + cosf(rotation)*offset.y);
 
-	mLevel->addProjectile(mPlayer, gInput->mousePosition());
+	mLevel->addProjectile(mPlayer, pos, gInput->mousePosition());
 
 	mCounter = 0.0f;
 }
@@ -58,4 +60,29 @@ bool Weapon::isReady()
 void Weapon::setCooldown(float cooldown)
 {
 	mCooldown = cooldown;
+}
+
+Level* Weapon::getLevel()
+{
+	return mLevel;
+}
+	
+Player* Weapon::getPlayer()
+{
+	return mPlayer;
+}
+
+void Weapon::setCounter(float count)
+{
+	mCounter = count;
+}
+
+void Weapon::setProjectileData(ProjectileData projectileData)
+{
+	mProjectileData = projectileData;
+}
+
+ProjectileData Weapon::getProjectileData()
+{
+	return mProjectileData;
 }

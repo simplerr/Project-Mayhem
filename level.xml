@@ -2,8 +2,6 @@
 <Level>
     <Size width="2000" height="1500" />
     <Objects>
-        <Enemy type="3" x="206" y="526" w="32" h="32" class="spider" texture="Data\\imgs\\spider.png" />
-        <Enemy type="3" x="276" y="599" w="32" h="32" class="spider" texture="Data\\imgs\\spider.png" />
     </Objects>
     <Tiles>
         <Tile name="Bkgd" x="780" y="60" />

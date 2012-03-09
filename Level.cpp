@@ -472,7 +472,7 @@ string Level::getTile(int x, int y)
 	return "#NOVALUE";
 }
 
-void Level::addProjectile(Object* shooter, Vector target, ProjectileData pData) 
+void Level::addProjectile(Object* shooter, Vector pos, Vector target, ProjectileData pData) 
 {
 	float v = gMath->calculateAngle(shooter->getPos(), target);
 	ObjectData data;
@@ -480,7 +480,7 @@ void Level::addProjectile(Object* shooter, Vector target, ProjectileData pData)
 	data.height = pData.height;
 	data.drawLayer = MIDDLE;
 	data.textureSource = pData.texturePath;
-	Projectile* object = new Projectile(shooter->getPos().x, shooter->getPos().y, data.width, data.height, pData.speed, data.textureSource);
+	Projectile* object = new Projectile(pos.x, pos.y, data.width, data.height, pData.speed, data.textureSource);
 	object->setLayer(data.drawLayer);
 	object->setOwnerId(shooter->getID());
 	object->setType(PROJECTILE);

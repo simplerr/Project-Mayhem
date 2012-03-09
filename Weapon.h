@@ -1,9 +1,11 @@
 #pragma once
 #include "d3dUtil.h"
 #include "Vector.h"
+#include "Projectile.h"
 
 class Level;
 class Player;
+struct ProjectileData;
 
 class Weapon
 {
@@ -16,9 +18,15 @@ public:
 	void draw(Vector playerPos, float rotation);
 	void setOffset(Vector offset);
 	void setCooldown(float cooldown);
+	Level* getLevel();
+	Player* getPlayer();
 	bool isReady();
+	void setCounter(float count);
+	void setProjectileData(ProjectileData projectileData);
+	ProjectileData getProjectileData();
 private:
 	IDirect3DTexture9* mTexture;
+	ProjectileData mProjectileData;
 	Vector mOffset;
 	Player* mPlayer;
 	Level* mLevel;

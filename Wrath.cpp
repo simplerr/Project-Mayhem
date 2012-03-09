@@ -29,7 +29,7 @@ void Wrath::performSkill(Player* player)
 		pd.speed = 10;
 		pd.range = 400;
 		Vector pos = gInput->mousePosition();
-		player->getLevel()->addProjectile(player, pos, pd);
+		player->getLevel()->addProjectile(player, player->getPos(), pos, pd);
 
 		player->costEnergy(getEnergyCost());
 	}

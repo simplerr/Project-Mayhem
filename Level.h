@@ -39,7 +39,7 @@ public:
 	void addTile(float x, float y, string name);
 	void removeTile(float x, float y);
 
-	void addProjectile(Object* shooter, Vector target, ProjectileData pData = gScrap->basicProjectile);
+	void addProjectile(Object* shooter, Vector pos, Vector target, ProjectileData pData = gScrap->basicProjectile);
 	TileHandler* getTileHandler();
 	string getTile(int x, int y);
 	int getTileWidth();

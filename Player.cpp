@@ -9,6 +9,8 @@
 #include "Loot.h"
 #include "Gold.h"
 #include "Gui.h"
+#include "Shotgun.h"
+#include "Rifle.h"
 
 Player::Player(float x, float y) : Object (x, y, 40, 40, PLAYER,  "Data\\imgs\\spelaren.png") //change width/heigth/pic
 {
@@ -157,9 +159,9 @@ void Player::itemEquipped(Item* item, bool equiped)
 		// Weapon equipped?
 		if(equiped)	{
 			if(item->getData().name == "Golden Sword")
-				mWeapon = new Weapon(this, getLevel());
+				mWeapon = new Shotgun(this, getLevel());
 			else if(item->getData().name == "Golden Axe") {
-				mWeapon = new Weapon(this, getLevel());
+				mWeapon = new Rifle(this, getLevel());
 				mWeapon->setCooldown(0.1f);
 			}
 		}

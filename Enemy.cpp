@@ -165,7 +165,7 @@ void Enemy::doAI(float dt)
 		}
 		else { //Attack
 			if(mAttackTimer < 0) {
-				getLevel()->addProjectile(this, ai->getObjectTarget());
+				getLevel()->addProjectile(this, getPos(), ai->getObjectTarget());
 				mAttackTimer = (float)(mWeaponRate/100);
 			}
 			else 

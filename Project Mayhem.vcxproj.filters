@@ -73,6 +73,12 @@
     <Filter Include="Source Files\UI">
       <UniqueIdentifier>{d2998715-0c6e-4417-97b5-d0dd409b7e59}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Game objects\Weapons">
+      <UniqueIdentifier>{c16681d0-063e-450a-87ef-960e1a79ecb2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Game objects\Weapons">
+      <UniqueIdentifier>{4514c930-6b6f-4cf0-b85a-fa5277b78c6d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Game.cpp">
@@ -238,7 +244,13 @@
       <Filter>Header Files</Filter>
     </ClCompile>
     <ClCompile Include="Weapon.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Game objects\Weapons</Filter>
+    </ClCompile>
+    <ClCompile Include="Rifle.cpp">
+      <Filter>Source Files\Game objects\Weapons</Filter>
+    </ClCompile>
+    <ClCompile Include="Shotgun.cpp">
+      <Filter>Source Files\Game objects\Weapons</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -413,8 +425,14 @@
     <ClInclude Include="Trigger.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Rifle.h">
+      <Filter>Header Files\Game objects\Weapons</Filter>
+    </ClInclude>
     <ClInclude Include="Weapon.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Game objects\Weapons</Filter>
+    </ClInclude>
+    <ClInclude Include="Shotgun.h">
+      <Filter>Header Files\Game objects\Weapons</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

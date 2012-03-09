@@ -118,8 +118,10 @@
     <ClInclude Include="Projectile.h" />
     <ClInclude Include="Rect.h" />
     <ClInclude Include="Region.h" />
+    <ClInclude Include="Rifle.h" />
     <ClInclude Include="Runnable.h" />
     <ClInclude Include="Scrap.h" />
+    <ClInclude Include="Shotgun.h" />
     <ClInclude Include="Skill.h" />
     <ClInclude Include="SlotItem.h" />
     <ClInclude Include="Stackwalker.h" />
@@ -174,8 +176,10 @@
     <ClCompile Include="cPolygon.cpp" />
     <ClCompile Include="Projectile.cpp" />
     <ClCompile Include="Region.cpp" />
+    <ClCompile Include="Rifle.cpp" />
     <ClCompile Include="Runnable.cpp" />
     <ClCompile Include="Scrap.cpp" />
+    <ClCompile Include="Shotgun.cpp" />
     <ClCompile Include="Skill.cpp" />
     <ClCompile Include="SlotItem.cpp" />
     <ClCompile Include="Stackwalker.cpp" />

@@ -12,7 +12,7 @@
 #include "Shotgun.h"
 #include "Rifle.h"
 
-Player::Player(float x, float y) : Object (x, y, 40, 40, PLAYER,  "Data\\imgs\\spelaren.png") //change width/heigth/pic
+Player::Player(float x, float y) : Object (x, y, 40, 40, PLAYER,  "Data\\imgs\\spelaren2.png") //change width/heigth/pic
 {
 	setCooldown(.1f);
 	setLayer(MIDDLE);
@@ -30,7 +30,7 @@ Player::Player(float x, float y) : Object (x, y, 40, 40, PLAYER,  "Data\\imgs\\s
 	mInventory->addItem("Golden Helmet");
 	mInventory->addItem("Golden Chest");
 	mInventory->addItem("Golden Legs");
-	mAnimation = new Animation(64, 54, .2f, 2, 2);
+	mAnimation = new Animation(200, 155, .1f, 3, 3);
 	mAnimation->setFrame(0);
 	mCounter = 0.0f;
 	mGui = new Gui(this);
@@ -71,9 +71,9 @@ void Player::update(float dt)
 
 void Player::draw()
 {
-	gGraphics->drawTexturedPolygon(getPolygon(), getTexture());
+	//gGraphics->drawTexturedPolygon(getPolygon(), getTexture());
 	
-	//gGraphics->drawTexturedPolygon(getPolygon(), getTexture(), &mAnimation->getSourceRect());
+	gGraphics->drawTexturedPolygon(getPolygon(), getTexture(), &mAnimation->getSourceRect());
 	if(mWeapon != NULL)
 		mWeapon->draw(getPos(), getRotation());
 

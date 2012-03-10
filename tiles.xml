@@ -2,9 +2,11 @@
 <Tiles>
   <!-- All the different tiles are stored here -->
   <!-- Multiple tiles can't have the same name -->
-  <Tile name="Grass" texture="Data\\imgs\\grass_tile.bmp" obstacle="false" friction="1.0f"></Tile>
-  <Tile name="Wall"  texture="Data\\imgs\\wall_tile.bmp"  obstacle="true"  friction ="0.7f"></Tile>
+  <Tile name="Grass" texture="Data\\imgs\\tile_grass.png" obstacle="false" friction="1.0f"></Tile>
+  <Tile name="Green" texture="Data\\imgs\\tile_green.png" obstacle="false" friction="1.0f"></Tile>
+  <Tile name="Gray1" texture="Data\\imgs\\tile_gray.png" obstacle="false" friction="1.0f"></Tile>
+  <Tile name="Gray2" texture="Data\\imgs\\tile_gray1.png" obstacle="false" friction="1.0f"></Tile>
+  <Tile name="Wall1" texture="Data\\imgs\\tile_wall1.png"  obstacle="true"  friction ="0.7f"></Tile>
+  <Tile name="Wall2" texture="Data\\imgs\\tile_wall2.png"  obstacle="true"  friction ="0.7f"></Tile>
   <Tile name="Bkgd"  texture="Data\\imgs\\black_tile.bmp" obstacle="false" friction ="1.0f"></Tile>
-  <Tile name="Early"  texture="Data\\imgs\\early_stage1.bmp" obstacle="false" friction ="1.0f"></Tile>
-  <Tile name="Orange"  texture="Data\\imgs\\panel.bmp" obstacle="true" friction ="1.0f"></Tile>
 </Tiles>

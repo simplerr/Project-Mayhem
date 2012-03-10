@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Items>
-  <Item name="Golden Sword" texture="Data/imgs/golden_sword.png" slot="weapon" damage="20"></Item>
+  <Item name="Golden Sword" texture="Data/imgs/weapon1.png" slot="weapon" damage="20"></Item>
   <Item name="Golden Axe" texture="Data/imgs/golden_axe.png"  slot="weapon" damage="25"></Item>
-  <Item name="Golden Helmet" texture="Data/imgs/golden_head.png"  slot="head" armor="15"></Item>
-  <Item name="Golden Chest" texture="Data/imgs/golden_chest.png"  slot="chest" armor="10"></Item>
-  <Item name="Golden Legs" texture="Data/imgs/golden_legs.png"  slot="legs" armor="7"></Item>
+  <Item name="Golden Helmet" texture="Data/imgs/helm1.png"  slot="head" armor="15"></Item>
+  <Item name="Golden Chest" texture="Data/imgs/chest1.png"  slot="chest" armor="10"></Item>
+  <Item name="Golden Legs" texture="Data/imgs/boots1.png"  slot="legs" armor="7"></Item>
 </Items>

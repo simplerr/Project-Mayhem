@@ -71,10 +71,10 @@ void Gui::draw()
 	gGraphics->drawRect(energyPos.x, energyPos.y, 150, 25, 0xff000000);
 
 	// Draw the hp and energy bars
-	float filledPercent = mPlayer->getHealth() / mPlayer->getMaxHealth();
+	float filledPercent = (float)mPlayer->getHealth() / (float)mPlayer->getMaxHealth();
 	gGraphics->drawRect(hpPos.x - (float)145/2 + 145*filledPercent/2, hpPos.y, 145*filledPercent, 20, 0xffff0000);
 
-	filledPercent = mPlayer->getEnergy() / mPlayer->getMaxEnergy();
+	filledPercent = (float)mPlayer->getEnergy() / (float)mPlayer->getMaxEnergy();
 	gGraphics->drawRect(energyPos.x - (float)145/2 + 145*filledPercent/2, energyPos.y, 145*filledPercent, 20, 0xff0000ff);
 }
 

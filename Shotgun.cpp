@@ -9,6 +9,7 @@ Shotgun::Shotgun(Player* player, Level* level) : Weapon(player, level)
 	pd.spread = 20;
 	pd.texturePath = "Data\\imgs\\yellow_tile.bmp";
 	setProjectileData(pd);
+	setTexture("Data\\imgs\\vapen2.png");
 }
 
 Shotgun::~Shotgun()

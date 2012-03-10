@@ -73,3 +73,8 @@ void PlayState::handleEvents(UINT msg, WPARAM wParam, LPARAM lParam)
 	// For windows messages
 	// Pass to what needs it
 }
+
+void PlayState::loadLevel(string source)
+{
+	mLevel->loadFromFile(source);
+}

@@ -16,14 +16,16 @@ void MenuState::init(Game *game)
 {
 	useCamera(false);
 	// Load the background texture, temporary
-	mBgkd = gGraphics->loadTexture("Data\\imgs\\bkgd.bmp");
+	mBgkd = gGraphics->loadTexture("Data\\imgs\\dark_bkgd.png");
+	mLogo = gGraphics->loadTexture("Data\\imgs\\logo.png");
 
 	mMenu = new Menu("MainMenu", MOUSE, HOR, 1);
 	mMenu->setMenuBackground("none", 1024/2, 768/2, 256, 512);
-	mMenu->addMenuItem("play", "Data\\imgs\\play_button.bmp", "Data\\imgs\\play_button.bmp");
-	mMenu->addMenuItem("build", "Data\\imgs\\build_button.bmp", "Data\\imgs\\build_button.bmp");
+	mMenu->addMenuItem("campaign", "Data\\imgs\\campaign.png", "Data\\imgs\\campaign_hoover.png");
+	mMenu->addMenuItem("custom", "Data\\imgs\\custom.png", "Data\\imgs\\custom_hoover.png");
+	mMenu->addMenuItem("build", "Data\\imgs\\editor.png", "Data\\imgs\\editor_hoover.png");
 	
-	mMenu->buildMenu2(256, 128);
+	mMenu->buildMenu2(256, 64);
 	mMenu->connect(&MenuState::menuHandler, this);
 
 	//gAudio->ambientPlay(false);
@@ -37,6 +39,7 @@ void MenuState::cleanup()
 	// Delete and release everything
 	delete mMenu;
 	ReleaseCOM(mBgkd);
+	ReleaseCOM(mLogo);
 }
 
 void MenuState::pause()
@@ -59,14 +62,22 @@ void MenuState::draw()
 {
 	// Draw the background
 	gGraphics->drawTexture(mBgkd, 1024/2, 768/2, 1024, 768);
+	gGraphics->drawTexture(mLogo, 1024/2, 125, 665, 165);
 	mMenu->draw();
 }
 
 bool MenuState::menuHandler(std::string name)
 {
-	if(name == "play")	{
+	// Returns false to tell the menu it no longer exists
+	if(name == "campaign")	{
 		changeState(PlayState::Instance());
-		return false;	// To tell the menu it no longer exists
+		PlayState::Instance()->loadLevel("Data\\levels\\campaign.xml");
+		return false;	
+	}
+	else if(name == "custom") {
+		changeState(PlayState::Instance());
+		PlayState::Instance()->loadLevel("Data\\levels\\custom.xml");
+		return false;
 	}
 	else if(name == "build")	{
 		changeState(EditorState::Instance());

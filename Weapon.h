@@ -23,6 +23,7 @@ public:
 	bool isReady();
 	void setCounter(float count);
 	void setProjectileData(ProjectileData projectileData);
+	void setTexture(string source);
 	ProjectileData getProjectileData();
 private:
 	IDirect3DTexture9* mTexture;

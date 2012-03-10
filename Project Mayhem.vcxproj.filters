@@ -439,9 +439,6 @@
     <None Include="font_effect.fx">
       <Filter>Header Files\Common</Filter>
     </None>
-    <None Include="level.xml">
-      <Filter>Resource Files</Filter>
-    </None>
     <None Include="tiles.xml">
       <Filter>Resource Files</Filter>
     </None>
@@ -449,6 +446,12 @@
       <Filter>Resource Files</Filter>
     </None>
     <None Include="enemies.xml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Data\levels\campaign.xml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Data\levels\custom.xml">
       <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>

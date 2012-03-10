@@ -203,12 +203,11 @@
     <ClCompile Include="Wrath.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Data\levels\campaign.xml" />
+    <None Include="Data\levels\custom.xml" />
     <None Include="enemies.xml" />
     <None Include="font_effect.fx" />
     <None Include="items.xml">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="level.xml">
       <SubType>Designer</SubType>
     </None>
     <None Include="tiles.xml" />

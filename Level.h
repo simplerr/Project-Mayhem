@@ -59,6 +59,7 @@ private:
 	Player*					mPlayer;
 	Vector					mOffset;		// TODO: Use this for all objects!
 	Vector					mCameraOffset;
+	string					mSource;
 	bool					mEditorMode;
 
 	int mWidth, mHeight;

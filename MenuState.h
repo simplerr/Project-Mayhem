@@ -29,6 +29,7 @@ protected:
 private:
 	static MenuState	mMenuState;
 	IDirect3DTexture9*	mBgkd;
+	IDirect3DTexture9*	mLogo;
 	Menu*				mMenu;
 };	// Class
 

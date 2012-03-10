@@ -1,8 +1,11 @@
 #ifndef PLAYSTATE_H
 #define PLAYSTATE_H
 
+#include <string>
 #include "GameState.h"
 #include "enums.h"
+
+using namespace std;
 
 class Level;
 class Object;
@@ -20,6 +23,7 @@ public:
 	void update(double dt);
 	void draw();
 	void handleEvents(UINT msg, WPARAM wParam, LPARAM lParam);
+	void loadLevel(string source);
 
 	static PlayState* Instance() {
 		return &mPlayState;

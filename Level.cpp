@@ -28,7 +28,7 @@ Level::~Level()
 {
 	// Save the level if in editor
 	if(isInEditor())
-		saveToFile("level.xml");
+		saveToFile(mSource);
 
 	// Delete the tile handler
 	delete mTileHandler;
@@ -60,7 +60,7 @@ void Level::init()
 	mTileHeight = 40;
 
 	// Load tile placements from a textfile
-	loadFromFile("level.xml");
+	//loadFromFile("Data\\levels\\campaign.xml");
 
 	// A player has to be added manually
 	mPlayer = NULL;
@@ -352,6 +352,8 @@ void Level::saveToFile(string file)
 	
 void Level::loadFromFile(string file)
 {
+	mSource = file;
+
 	// The XML document
 	TiXmlDocument doc(file.c_str());
 	doc.LoadFile();

@@ -4,15 +4,12 @@
     <Objects />
     <Tiles>
         <Tile name="Bkgd" x="780" y="60" />
-        <Tile name="Grass" x="460" y="500" />
-        <Tile name="Grass" x="460" y="540" />
         <Tile name="Grass" x="500" y="580" />
         <Tile name="Grass" x="100" y="580" />
         <Tile name="Grass" x="140" y="580" />
         <Tile name="Grass" x="180" y="580" />
         <Tile name="Grass" x="300" y="660" />
         <Tile name="Grass" x="140" y="620" />
-        <Tile name="Grass" x="340" y="620" />
         <Tile name="Grass" x="380" y="660" />
         <Tile name="Grass" x="460" y="660" />
         <Tile name="Grass" x="540" y="740" />
@@ -29,33 +26,23 @@
         <Tile name="Grass" x="340" y="660" />
         <Tile name="Grass" x="220" y="660" />
         <Tile name="Grass" x="180" y="620" />
-        <Tile name="Grass" x="420" y="580" />
         <Tile name="Grass" x="540" y="540" />
         <Tile name="Grass" x="580" y="580" />
-        <Tile name="Grass" x="380" y="620" />
         <Tile name="Grass" x="260" y="620" />
         <Tile name="Grass" x="220" y="620" />
-        <Tile name="Grass" x="300" y="620" />
         <Tile name="Grass" x="420" y="660" />
         <Tile name="Grass" x="500" y="660" />
         <Tile name="Grass" x="540" y="620" />
         <Tile name="Grass" x="500" y="540" />
-        <Tile name="Grass" x="460" y="580" />
         <Tile name="Grass" x="20" y="500" />
         <Tile name="Grass" x="140" y="500" />
         <Tile name="Grass" x="540" y="500" />
         <Tile name="Grass" x="500" y="500" />
-        <Tile name="Grass" x="420" y="540" />
-        <Tile name="Grass" x="300" y="580" />
-        <Tile name="Grass" x="380" y="540" />
-        <Tile name="Grass" x="420" y="500" />
         <Tile name="Grass" x="340" y="420" />
         <Tile name="Grass" x="180" y="500" />
         <Tile name="Grass" x="140" y="540" />
         <Tile name="Grass" x="180" y="540" />
         <Tile name="Grass" x="340" y="500" />
-        <Tile name="Grass" x="380" y="500" />
-        <Tile name="Grass" x="420" y="460" />
         <Tile name="Grass" x="260" y="220" />
         <Tile name="Grass" x="180" y="300" />
         <Tile name="Grass" x="180" y="380" />
@@ -116,18 +103,9 @@
         <Tile name="Grass" x="620" y="660" />
         <Tile name="Grass" x="500" y="620" />
         <Tile name="Grass" x="460" y="620" />
-        <Tile name="Grass" x="420" y="620" />
-        <Tile name="Grass" x="380" y="580" />
-        <Tile name="Grass" x="340" y="580" />
-        <Tile name="Grass" x="340" y="540" />
-        <Tile name="Grass" x="300" y="540" />
         <Tile name="Grass" x="300" y="500" />
         <Tile name="Grass" x="340" y="460" />
         <Tile name="Grass" x="380" y="420" />
-        <Tile name="Grass" x="700" y="460" />
-        <Tile name="Grass" x="420" y="420" />
-        <Tile name="Grass" x="460" y="420" />
-        <Tile name="Grass" x="460" y="460" />
         <Tile name="Grass" x="500" y="380" />
         <Tile name="Grass" x="540" y="420" />
         <Tile name="Grass" x="380" y="340" />
@@ -162,8 +140,6 @@
         <Tile name="Wall" x="380" y="300" />
         <Tile name="Wall" x="420" y="300" />
         <Tile name="Wall" x="460" y="300" />
-        <Tile name="Wall" x="500" y="300" />
-        <Tile name="Wall" x="540" y="300" />
         <Tile name="Wall" x="540" y="340" />
         <Tile name="Wall" x="620" y="420" />
         <Tile name="Wall" x="620" y="460" />
@@ -189,5 +165,32 @@
         <Tile name="Grass" x="500" y="460" />
         <Tile name="Grass" x="500" y="420" />
         <Tile name="Grass" x="700" y="260" />
+        <Tile name="Grass" x="700" y="460" />
+        <Tile name="Bkgd" x="780" y="100" />
+        <Tile name="Early" x="540" y="300" />
+        <Tile name="Early" x="500" y="300" />
+        <Tile name="Early" x="500" y="340" />
+        <Tile name="Early" x="460" y="380" />
+        <Tile name="Early" x="460" y="420" />
+        <Tile name="Early" x="420" y="420" />
+        <Tile name="Early" x="420" y="460" />
+        <Tile name="Early" x="460" y="460" />
+        <Tile name="Early" x="460" y="500" />
+        <Tile name="Early" x="460" y="540" />
+        <Tile name="Early" x="460" y="580" />
+        <Tile name="Early" x="420" y="620" />
+        <Tile name="Early" x="380" y="620" />
+        <Tile name="Early" x="340" y="620" />
+        <Tile name="Early" x="300" y="620" />
+        <Tile name="Early" x="300" y="580" />
+        <Tile name="Early" x="300" y="540" />
+        <Tile name="Early" x="380" y="500" />
+        <Tile name="Early" x="420" y="500" />
+        <Tile name="Early" x="420" y="580" />
+        <Tile name="Early" x="380" y="580" />
+        <Tile name="Early" x="340" y="580" />
+        <Tile name="Early" x="340" y="540" />
+        <Tile name="Early" x="420" y="540" />
+        <Tile name="Early" x="380" y="540" />
     </Tiles>
 </Level>

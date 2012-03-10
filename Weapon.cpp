@@ -9,7 +9,7 @@ Weapon::Weapon(Player* player, Level* level)
 	mPlayer = player;
 	mLevel = level;
 	mCounter = 0.0f;
-	mTexture = 	gGraphics->loadTexture("Data\\imgs\\vapen1.png");
+	setTexture("Data\\imgs\\vapen1.png");
 	mOffset = Vector(30, 16);
 	setCooldown(0.55f);
 	setProjectileData(gScrap->basicProjectile);
@@ -85,4 +85,9 @@ void Weapon::setProjectileData(ProjectileData projectileData)
 ProjectileData Weapon::getProjectileData()
 {
 	return mProjectileData;
+}
+
+void Weapon::setTexture(string source)
+{
+	mTexture = gGraphics->loadTexture(source);
 }

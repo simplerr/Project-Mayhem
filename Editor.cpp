@@ -31,6 +31,7 @@ Editor::Editor()
 	mLevel = new Level();
 	mLevel->init();
 	mLevel->setInEditor(true);
+	mLevel->loadFromFile("Data\\levels\\custom.xml");
 
 	// Set the default active tile type
 	mActiveObject = ActiveObject("Grass", TILE);

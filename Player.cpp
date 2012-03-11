@@ -13,6 +13,11 @@
 #include "Rifle.h"
 #include "PlayState.h"
 #include "GameOver.h"
+#include "Blink.h"
+#include "Wrath.h"
+#include "SolarBolts.h"
+#include "Mine.h"
+#include "StatusText.h"
 
 Player::Player(float x, float y) : Object (x, y, 40, 40, PLAYER,  "Data\\imgs\\spelaren2.png") //change width/heigth/pic
 {
@@ -37,22 +42,24 @@ Player::Player(float x, float y) : Object (x, y, 40, 40, PLAYER,  "Data\\imgs\\s
 	mCounter = 0.0f;
 	mGui = new Gui(this);
 	mGui->setTexture("Data\\imgs\\gui_bkgd.png");
+	mStatusText = new StatusText("Data\\imgs\\level_up.png", SCREEN_WIDTH/2, 200, 400, 50);
 
 	// No weapon to start with -TODODOODO
 	mWeapon = NULL;
 
 	// Experience per level
+	mExpPerLevel.push_back(50);
 	mExpPerLevel.push_back(100);
-	mExpPerLevel.push_back(250);
+	mExpPerLevel.push_back(200);
 	mExpPerLevel.push_back(500);
 	mExpPerLevel.push_back(1000);
-	mExpPerLevel.push_back(2000);
 }
 Player::~Player() 
 {
 	delete mAnimation;
 	delete mInventory;
 	delete mGui;
+	delete mStatusText;
 
 	if(mWeapon != NULL)
 		delete mWeapon;
@@ -63,6 +70,7 @@ void Player::update(float dt)
 	mInventory->update(dt);
 	mAnimation->animate(dt);
 	mGui->update(dt);
+	mStatusText->update(dt);
 
 	if(mWeapon != NULL)
 		mWeapon->update(dt);
@@ -73,12 +81,11 @@ void Player::update(float dt)
 
 void Player::draw()
 {
-	//gGraphics->drawTexturedPolygon(getPolygon(), getTexture());
-	
 	gGraphics->drawTexturedPolygon(getPolygon(), getTexture(), &mAnimation->getSourceRect());
 	if(mWeapon != NULL)
 		mWeapon->draw(getPos(), getRotation());
 
+	mStatusText->draw();
 	mInventory->draw();
 	mGui->draw();
 }
@@ -190,6 +197,17 @@ void Player::addExperience(int experience)
 	if(getExperience() + experience >= mExpPerLevel[mLevel-1] && mLevel != mExpPerLevel.size()) {
 		mExperience = getExperience() + experience - mExpPerLevel[mLevel-1];
 		mLevel++;
+
+		if(mLevel == 2)
+			mGui->addSkill(new Blink());
+		else if(mLevel == 3)
+			mGui->addSkill(new Wrath());
+		else if(mLevel == 4)
+			mGui->addSkill(new Mine());
+		else if(mLevel == 5)
+			mGui->addSkill(new SolarBolts());
+
+		mStatusText->show(2.0f);
 	}
 	else
 		mExperience += experience;

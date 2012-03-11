@@ -24,14 +24,14 @@ Gui::Gui(Player* player) : Container(300, 700, 600, 90)
 	}
 
 	//addSkill(new Skill());
-	Blink* blink = new Blink();
+	/*Blink* blink = new Blink();
 	addSkill(blink);
 
 	addSkill(new Wrath());
 
 	addSkill(new SolarBolts());
 
-	addSkill(new Mine());
+	addSkill(new Mine());*/
 
 	// Set visible
 	show();

@@ -58,6 +58,6 @@ public:
 private:
 	Event mEventType;
 	std::map<std::string, std::string> mLocalVars;
-	std::string mAction[256][256];
+	//std::string mAction[256][256];
 	Region* mOwner;
 };

@@ -28,8 +28,9 @@ Region::~Region()
 }
 
 void Region::draw() {
+	Rect rect = getRect();
 	if(getLevel()->isInEditor()) {
-		gGraphics->drawRect(getRect(), D3DCOLOR_ARGB(100, 20,150,200));
+		gGraphics->drawRect(getRect(), D3DCOLOR_ARGB(255, 20,150,200));
 	}
 }
 

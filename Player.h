@@ -10,6 +10,7 @@ class Level;
 class Inventory;
 class Gui;
 class Item;
+class StatusText;
 
 class Player : public Object 
 {
@@ -50,10 +51,12 @@ private:
 	Inventory*	mInventory;
 	Weapon*		mWeapon;
 	Gui*		mGui;
+	StatusText*	mStatusText;
 	vector<int> mExpPerLevel;
 	float mAngle;
 	float mCooldown;
 	float mCounter;
+
 
 	// Stats
 	int	mLevel;

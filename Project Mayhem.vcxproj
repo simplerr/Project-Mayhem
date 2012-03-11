@@ -129,6 +129,7 @@
     <ClInclude Include="SlotItem.h" />
     <ClInclude Include="SolarBolts.h" />
     <ClInclude Include="Stackwalker.h" />
+    <ClInclude Include="StatusText.h" />
     <ClInclude Include="Structure.h" />
     <ClInclude Include="Tile.h" />
     <ClInclude Include="TileHandler.h" />
@@ -191,6 +192,7 @@
     <ClCompile Include="SlotItem.cpp" />
     <ClCompile Include="SolarBolts.cpp" />
     <ClCompile Include="Stackwalker.cpp" />
+    <ClCompile Include="StatusText.cpp" />
     <ClCompile Include="Structure.cpp" />
     <ClCompile Include="Tile.cpp" />
     <ClCompile Include="TileHandler.cpp" />
@@ -212,7 +214,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Data\levels\campaign.xml" />
-    <None Include="Data\levels\custom.xml" />
+    <None Include="Data\levels\custom.xml">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="enemies.xml" />
     <None Include="font_effect.fx" />
     <None Include="items.xml">

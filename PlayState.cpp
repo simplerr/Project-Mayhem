@@ -55,14 +55,15 @@ void PlayState::update(double dt)
 {
 	if(gInput->keyPressed(VK_ESCAPE) && !mPlayer->inInventory())
 		changeState(MenuState::Instance());
-	else
+	else {
 		// Update all objects in the level
 		mLevel->update(dt);
-
-	if(mPlayer->getHealth() <= 0) {
-		string source = mLevel->getSource();
-		PlayState::Instance()->changeState(GameOver::Instance());
-		GameOver::Instance()->setLevelSource(source);
+	
+		if(mPlayer->getHealth() <= 0) {
+			string source = mLevel->getSource();
+			PlayState::Instance()->changeState(GameOver::Instance());
+			GameOver::Instance()->setLevelSource(source);
+		}
 	}
 }
 	

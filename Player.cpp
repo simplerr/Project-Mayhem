@@ -18,6 +18,8 @@
 #include "SolarBolts.h"
 #include "Mine.h"
 #include "StatusText.h"
+#include "HealthPotion.h"
+#include "EnergyPotion.h"
 
 Player::Player(float x, float y) : Object (x, y, 40, 40, PLAYER,  "Data\\imgs\\spelaren2.png") //change width/heigth/pic
 {
@@ -105,6 +107,14 @@ void Player::handleInput()
 			Gold* gold = dynamic_cast<Gold*>(object);
 			mInventory->addGold(gold->getAmount());
 			getLevel()->removeObjectAt(gInput->mousePosition().x, gInput->mousePosition().y);
+		}
+		else if(object != NULL && object->getType() == HP_POTION) {
+			setHealth(getHealth() + dynamic_cast<HealthPotion*>(object)->getHp());
+			object->setAlive(false);
+		}
+		else if(object != NULL && object->getType() == ENERGY_POTION) {
+			setEnergy(getEnergy() + dynamic_cast<EnergyPotion*>(object)->getEnergy());
+			object->setAlive(false);
 		}
 	}
 
@@ -276,4 +286,14 @@ int Player::getLevelExp()
 bool Player::inInventory()
 {
 	return mInventory->getVisible();
+}
+
+void Player::setHealth(int hp)
+{
+	mHealth = hp > mMaxHealth ? mMaxHealth : hp;
+}
+	
+void Player::setEnergy(int energy)
+{
+	mEnergy = energy > mMaxEnergy ? mMaxEnergy : energy;
 }

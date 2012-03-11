@@ -91,11 +91,13 @@
     <ClInclude Include="Collision.h" />
     <ClInclude Include="Container.h" />
     <ClInclude Include="d3dUtil.h" />
+    <ClInclude Include="EnergyPotion.h" />
     <ClInclude Include="Font.h" />
     <ClInclude Include="FX.h" />
     <ClInclude Include="GameOver.h" />
     <ClInclude Include="Gold.h" />
     <ClInclude Include="Gui.h" />
+    <ClInclude Include="HealthPotion.h" />
     <ClInclude Include="Input.h" />
     <ClInclude Include="Editor.h" />
     <ClInclude Include="EditorState.h" />
@@ -157,11 +159,13 @@
     <ClCompile Include="CameraManager_b.cpp" />
     <ClCompile Include="Collision.cpp" />
     <ClCompile Include="Container.cpp" />
+    <ClCompile Include="EnergyPotion.cpp" />
     <ClCompile Include="Font.cpp" />
     <ClCompile Include="FX.cpp" />
     <ClCompile Include="GameOver.cpp" />
     <ClCompile Include="Gold.cpp" />
     <ClCompile Include="Gui.cpp" />
+    <ClCompile Include="HealthPotion.cpp" />
     <ClCompile Include="Input.cpp" />
     <ClCompile Include="Editor.cpp" />
     <ClCompile Include="EditorState.cpp" />

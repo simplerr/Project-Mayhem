@@ -2,22 +2,11 @@
 <Level>
     <Size width="2000" height="1500" />
     <Objects>
-        <Enemy type="3" x="591" y="268" w="32" h="32" class="spider" texture="Data\\imgs\\spider.png" />
-        <Enemy type="3" x="618" y="300" w="32" h="32" class="spider" texture="Data\\imgs\\spider.png" />
-        <Enemy type="3" x="659" y="371" w="32" h="32" class="spider" texture="Data\\imgs\\spider.png" />
-        <Enemy type="3" x="658" y="407" w="32" h="32" class="spider" texture="Data\\imgs\\spider.png" />
-        <Enemy type="3" x="626" y="416" w="32" h="32" class="spider" texture="Data\\imgs\\spider.png" />
-        <Enemy type="3" x="650" y="308" w="32" h="32" class="spider" texture="Data\\imgs\\spider.png" />
         <Enemy type="3" x="656" y="256" w="32" h="32" class="spider" texture="Data\\imgs\\spider.png" />
-        <Enemy type="3" x="593" y="430" w="32" h="32" class="spider" texture="Data\\imgs\\spider.png" />
-        <Enemy type="3" x="595" y="366" w="32" h="32" class="spider" texture="Data\\imgs\\spider.png" />
-        <Enemy type="3" x="587" y="334" w="32" h="32" class="spider" texture="Data\\imgs\\spider.png" />
-        <Enemy type="3" x="566" y="302" w="32" h="32" class="spider" texture="Data\\imgs\\spider.png" />
-        <Enemy type="3" x="559" y="270" w="32" h="32" class="spider" texture="Data\\imgs\\spider.png" />
-        <Enemy type="3" x="590" y="398" w="32" h="32" class="spider" texture="Data\\imgs\\spider.png" />
-        <Enemy type="3" x="526" y="373" w="32" h="32" class="spider" texture="Data\\imgs\\spider.png" />
         <Enemy type="3" x="527" y="282" w="32" h="32" class="spider" texture="Data\\imgs\\spider.png" />
-        <Enemy type="3" x="555" y="334" w="32" h="32" class="spider" texture="Data\\imgs\\spider.png" />
+        <Enemy type="3" x="608" y="344" w="32" h="32" class="spider" texture="Data\\imgs\\spider.png" />
+        <Enemy type="3" x="626" y="396" w="32" h="32" class="spider" texture="Data\\imgs\\spider.png" />
+        <Enemy type="3" x="648" y="325" w="32" h="32" class="spider" texture="Data\\imgs\\spider.png" />
     </Objects>
     <Tiles>
         <Tile name="Grass" x="420" y="420" />
@@ -221,7 +210,6 @@
         <Tile name="Wall2" x="220" y="380" />
         <Tile name="Wall2" x="220" y="420" />
         <Tile name="Wall2" x="220" y="460" />
-        <Tile name="Grass" x="500" y="460" />
         <Tile name="Grass" x="260" y="300" />
         <Tile name="Grass" x="220" y="300" />
         <Tile name="Grass" x="220" y="340" />
@@ -245,8 +233,10 @@
         <Tile name="Bkgd" x="340" y="340" />
         <Tile name="Bkgd" x="340" y="380" />
         <Tile name="Bkgd" x="300" y="380" />
-        <Tile name="Grass" x="500" y="500" />
         <Tile name="Grass" x="540" y="420" />
         <Tile name="Grass" x="580" y="460" />
+        <Tile name="Grass" x="500" y="500" />
+        <Tile name="Grass" x="820" y="20" />
+        <Tile name="Grass" x="500" y="460" />
     </Tiles>
 </Level>

@@ -267,6 +267,12 @@
     <ClCompile Include="StatusText.cpp">
       <Filter>Source Files\Common</Filter>
     </ClCompile>
+    <ClCompile Include="HealthPotion.cpp">
+      <Filter>Source Files\Game objects</Filter>
+    </ClCompile>
+    <ClCompile Include="EnergyPotion.cpp">
+      <Filter>Source Files\Game objects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="d3dUtil.h">
@@ -463,6 +469,12 @@
     </ClInclude>
     <ClInclude Include="StatusText.h">
       <Filter>Header Files\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="HealthPotion.h">
+      <Filter>Header Files\Game objects</Filter>
+    </ClInclude>
+    <ClInclude Include="EnergyPotion.h">
+      <Filter>Header Files\Game objects</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

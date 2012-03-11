@@ -9,6 +9,8 @@
 #include "ItemHandler.h"
 #include "Loot.h"
 #include "Gold.h"
+#include "HealthPotion.h"
+#include "EnergyPotion.h"
 
 EnemyData::EnemyData(int w, int h, string n, string texture) 
 {
@@ -51,14 +53,27 @@ void Enemy::damage(float dHP)
 		// TODO: Add a drop effect, the loot should fly away from the enemy
 		// TODO: Add drop rate for different items
 		auto map = gItemHandler->getDataMap();
-		int loot = rand() % (map.size()+4);
+		int loot = rand() % (map.size()+10);
 		int i = 0, distance = 0;
+		bool any = false;
 		for(auto iter = map.begin(); iter != map.end(); iter++, i++) {
 			if(i == loot) {
 				float angle = (rand() % 340)/(float)100;
 				getLevel()->addObject(new Loot(iter->second.name, getPos().x + distance*cosf(angle), getPos().y + distance*sinf(angle)));
+				any = true;
+				break;
 			}
 		}
+
+		if(!any) {
+			int x = rand() % 5;
+			float angle = (rand() % 340)/(float)100;
+			if(x == 0) 
+				getLevel()->addObject(new HealthPotion(getPos().x + distance*cosf(angle), getPos().y + distance*sinf(angle), 20));
+			else if(x == 1) 
+				getLevel()->addObject(new EnergyPotion(getPos().x + distance*cosf(angle), getPos().y + distance*sinf(angle), 20));
+		}
+		
 
 		getLevel()->addObject(new Gold(getPos().x, getPos().y+15));
 		getLevel()->addObject(new Gold(getPos().x-15, getPos().y));

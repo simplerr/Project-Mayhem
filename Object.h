@@ -22,7 +22,9 @@ enum ObjectType
 	PLAYER,		// Player
 	TILE,
 	GOLD_COIN,
-	REGION
+	REGION,
+	HP_POTION,
+	ENERGY_POTION
 };
 
 enum Layer {

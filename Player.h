@@ -31,6 +31,8 @@ public:
 
 	void addExperience(int experience);
 	void addGold(int amount);
+	void setHealth(int hp);
+	void setEnergy(int energy);
 
 	float getMoveSpeed();
 	float getHealth();

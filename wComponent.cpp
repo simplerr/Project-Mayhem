@@ -32,9 +32,9 @@ void wComponent::draw()
 		gGraphics->drawRect(getPos().x, getPos().y, getWidth(), getHeight());	// :TODO: ............
 }
 
-void wComponent::onPress()
+bool wComponent::onPress()
 {
-	
+	return false;
 }
 
 void wComponent::onHoover()

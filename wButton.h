@@ -16,7 +16,7 @@ public:
 	~wButton();
 
 	void draw();
-	void onPress();
+	bool onPress();
 	void onHoover();
 	
 	// The callback function, ex: bool Editor::messageHandler(wId id, wMessage msg)

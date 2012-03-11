@@ -55,7 +55,7 @@ void wDropDown::draw()
 	}
 }
 
-void wDropDown::onPress()
+bool wDropDown::onPress()
 {
 	// The expand rect was pressed
 	if(!mExpanded)
@@ -85,6 +85,8 @@ void wDropDown::onPress()
 			}
 		}
 	}
+
+	return false;
 }
 
 void wDropDown::setActive(bool active)

@@ -92,6 +92,8 @@
     <ClInclude Include="Container.h" />
     <ClInclude Include="d3dUtil.h" />
     <ClInclude Include="Font.h" />
+    <ClInclude Include="FX.h" />
+    <ClInclude Include="GameOver.h" />
     <ClInclude Include="Gold.h" />
     <ClInclude Include="Gui.h" />
     <ClInclude Include="Input.h" />
@@ -111,6 +113,7 @@
     <ClInclude Include="Math.h" />
     <ClInclude Include="Menu.h" />
     <ClInclude Include="MenuState.h" />
+    <ClInclude Include="Mine.h" />
     <ClInclude Include="Object.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="PlayState.h" />
@@ -124,6 +127,7 @@
     <ClInclude Include="Shotgun.h" />
     <ClInclude Include="Skill.h" />
     <ClInclude Include="SlotItem.h" />
+    <ClInclude Include="SolarBolts.h" />
     <ClInclude Include="Stackwalker.h" />
     <ClInclude Include="Structure.h" />
     <ClInclude Include="Tile.h" />
@@ -153,6 +157,8 @@
     <ClCompile Include="Collision.cpp" />
     <ClCompile Include="Container.cpp" />
     <ClCompile Include="Font.cpp" />
+    <ClCompile Include="FX.cpp" />
+    <ClCompile Include="GameOver.cpp" />
     <ClCompile Include="Gold.cpp" />
     <ClCompile Include="Gui.cpp" />
     <ClCompile Include="Input.cpp" />
@@ -170,6 +176,7 @@
     <ClCompile Include="Math.cpp" />
     <ClCompile Include="Menu.cpp" />
     <ClCompile Include="MenuState.cpp" />
+    <ClCompile Include="Mine.cpp" />
     <ClCompile Include="Object.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="PlayState.cpp" />
@@ -182,6 +189,7 @@
     <ClCompile Include="Shotgun.cpp" />
     <ClCompile Include="Skill.cpp" />
     <ClCompile Include="SlotItem.cpp" />
+    <ClCompile Include="SolarBolts.cpp" />
     <ClCompile Include="Stackwalker.cpp" />
     <ClCompile Include="Structure.cpp" />
     <ClCompile Include="Tile.cpp" />

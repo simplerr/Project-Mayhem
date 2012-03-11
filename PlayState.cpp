@@ -6,6 +6,7 @@
 #include "Player.h"
 #include "enums.h"
 #include "AudioHandler.h"
+#include "GameOver.h"
 
 PlayState PlayState::mPlayState;
 
@@ -57,6 +58,12 @@ void PlayState::update(double dt)
 	else
 		// Update all objects in the level
 		mLevel->update(dt);
+
+	if(mPlayer->getHealth() <= 0) {
+		string source = mLevel->getSource();
+		PlayState::Instance()->changeState(GameOver::Instance());
+		GameOver::Instance()->setLevelSource(source);
+	}
 }
 	
 void PlayState::draw()
@@ -77,4 +84,9 @@ void PlayState::handleEvents(UINT msg, WPARAM wParam, LPARAM lParam)
 void PlayState::loadLevel(string source)
 {
 	mLevel->loadFromFile(source);
+}
+
+string PlayState::getLevelName() 
+{
+	return mLevel->getSource();
 }

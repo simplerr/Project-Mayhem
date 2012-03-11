@@ -20,7 +20,7 @@ public:
 	virtual void draw();
 
 	/* Event functions */
-	virtual void onPress();
+	virtual bool onPress();
 	virtual void onHoover();
 	virtual void onText();
 	virtual void setActive(bool active);

@@ -78,7 +78,8 @@ void WindowHandler::update(float dt)
 
 					if(mActiveWindow != mWindowList[i])	{
 						mActiveWindow = mWindowList[i];
-						mActiveWindow->onPress();
+						if(mActiveWindow->onPress())
+							return;
 					}
 					break;
 				}

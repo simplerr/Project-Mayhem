@@ -252,6 +252,18 @@
     <ClCompile Include="Shotgun.cpp">
       <Filter>Source Files\Game objects\Weapons</Filter>
     </ClCompile>
+    <ClCompile Include="FX.cpp">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Mine.cpp">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SolarBolts.cpp">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GameOver.cpp">
+      <Filter>Source Files\States</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="d3dUtil.h">
@@ -433,6 +445,18 @@
     </ClInclude>
     <ClInclude Include="Shotgun.h">
       <Filter>Header Files\Game objects\Weapons</Filter>
+    </ClInclude>
+    <ClInclude Include="FX.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Mine.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SolarBolts.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GameOver.h">
+      <Filter>Header Files\States</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

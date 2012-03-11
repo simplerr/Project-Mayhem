@@ -5,6 +5,7 @@
 Skill::Skill() : SlotItem()
 {
 	mTexture = gGraphics->loadTexture("Data\\imgs\\blink_icon.png");
+	skillLevel = 0;
 	setName("");
 	setDescription("");
 }

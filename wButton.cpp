@@ -22,15 +22,15 @@ wButton::~wButton()
 void wButton::draw()
 {
 	// Draw the texture and labelR
-	gGraphics->drawTexture(mBkgdTexture, getPos().x, getPos().y, getWidth()+5, getHeight()+5);
+	//gGraphics->drawTexture(mBkgdTexture, getPos().x, getPos().y, getWidth()+5, getHeight()+5);
 	gGraphics->drawTexture(mTexture, getPos().x, getPos().y, getWidth(), getHeight());
 	//gGraphics->drawText((char*)mLabel.c_str(), getPos().x - getWidth()/2 + 4, getPos().y - 10, TextType::SMALL_DX);
 }
 	
-void wButton::onPress()
+bool wButton::onPress()
 {
 	// Send the ID and the Label
-	callback(getId(), wMessage(mLabel));
+	return callback(getId(), wMessage(mLabel));
 }
 
 void wButton::onHoover()

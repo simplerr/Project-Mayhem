@@ -1,9 +1,9 @@
-#ifndef PLAYSTATE_H
-#define PLAYSTATE_H
+#pragma once
 
 #include <string>
 #include "GameState.h"
 #include "enums.h"
+#include "WindowHandler.h"
 
 using namespace std;
 
@@ -11,7 +11,7 @@ class Level;
 class Object;
 class Player;
 
-class PlayState : public GameState
+class GameOver : public GameState
 {
 public:
 	void init(Game* game);
@@ -23,20 +23,18 @@ public:
 	void update(double dt);
 	void draw();
 	void handleEvents(UINT msg, WPARAM wParam, LPARAM lParam);
-	void loadLevel(string source);
-	string getLevelName();
+	bool messageHandler(wId id, wMessage msg);
+	void setLevelSource(string source);
 
-	static PlayState* Instance() {
-		return &mPlayState;
+	static GameOver* Instance() {
+		return &mGameOver;
 	}
 protected:
-	PlayState() {};
+	GameOver() {};
 private:
-	static PlayState mPlayState;
-	Level *mLevel;
-	Player* mPlayer;
+	static GameOver mGameOver;
 
 	IDirect3DTexture9* mBgkd;
+	WindowHandler* mWindowHandler;
+	string mSource;
 };	// Class
-
-#endif

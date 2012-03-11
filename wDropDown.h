@@ -30,7 +30,7 @@ public:
 	void update(float dt);
 	void draw();
 
-	void onPress();
+	bool onPress();
 
 	void addItem(wDropItem* item);
 	void add(string value);

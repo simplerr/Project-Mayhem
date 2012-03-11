@@ -9,6 +9,7 @@
 #include "Vector.h"
 #include "AudioHandler.h"
 #include "enums.h"
+#include "GameOver.h"
 
 MenuState MenuState::mMenuState;
 

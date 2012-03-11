@@ -11,6 +11,8 @@
 #include "Gui.h"
 #include "Shotgun.h"
 #include "Rifle.h"
+#include "PlayState.h"
+#include "GameOver.h"
 
 Player::Player(float x, float y) : Object (x, y, 40, 40, PLAYER,  "Data\\imgs\\spelaren2.png") //change width/heigth/pic
 {
@@ -146,7 +148,6 @@ bool Player::handleCollision(Object* collider, MTV* mtv)
 void Player::damage(float dmg)
 {
 	mHealth-=dmg;
-	//CHECK IF DEAD
 }
 
 void Player::itemEquipped(Item* item, bool equiped)

@@ -1,5 +1,7 @@
 #include "Projectile.h"
 #include "Graphics.h"
+#include "Level.h"
+#include "FX.h"
 
 Projectile::Projectile(float x, float y, int width, int height, float velocity, std::string textureSource)
 	: Object(x, y, width, height, PROJECTILE, textureSource)
@@ -37,8 +39,12 @@ bool Projectile::handleCollision(Object* collider, MTV* mtv)
 {
 	if (getOwnerId() != collider->getID()) 
 	{
-		if((collider->getType() == STRUCTURE || collider->getType() == PLAYER || collider->getType() == ENEMY))
+		if((collider->getType() == STRUCTURE || collider->getType() == PLAYER || collider->getType() == ENEMY)) {
 			setAlive(false);
+			FX *f = new FX(getPos().x, getPos().y, 64,64,0.3f,4, "Data\\imgs\\hit_fx.png");
+			f->rotate(getRotation()+PI);
+			getLevel()->addObject(f);
+		}
 		if(collider->getType() == ENEMY)
 			collider->handleCollision(this, mtv);
 		

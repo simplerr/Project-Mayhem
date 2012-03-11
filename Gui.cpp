@@ -7,6 +7,8 @@
 //Skills
 #include "Blink.h"
 #include "Wrath.h"
+#include "SolarBolts.h"
+#include "Mine.h"
 
 Gui::Gui(Player* player) : Container(300, 700, 600, 90)
 {
@@ -21,17 +23,15 @@ Gui::Gui(Player* player) : Container(300, 700, 600, 90)
 		addSlot(getPosition().x + i*50, getPosition().y, SKILL);
 	}
 
-	// Add some test skills
-	addSkill(new Skill());
-	Skill* skill = new Skill();
-	skill->setIconTexture("Data\\imgs\\fire_bolt.png");
-	addSkill(skill);
-
 	//addSkill(new Skill());
 	Blink* blink = new Blink();
 	addSkill(blink);
 
 	addSkill(new Wrath());
+
+	addSkill(new SolarBolts());
+
+	addSkill(new Mine());
 
 	// Set visible
 	show();

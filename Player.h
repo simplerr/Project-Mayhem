@@ -32,9 +32,9 @@ public:
 	void addGold(int amount);
 
 	float getMoveSpeed();
-	int getHealth();
+	float getHealth();
 	int getMaxHealth();
-	int getEnergy();
+	float getEnergy();
 	int getMaxEnergy();
 	int getArmor();
 	int getExperience();

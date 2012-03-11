@@ -23,10 +23,14 @@ public:
 	void setIconTexture(string texture);
 	void setEnergyCost(int cost)	{energyCost = cost;}
 	void setPassive(bool b)			{passive = b;}
+	void setName(string s)			{mName = s;}
+	void setDescription(string s)	{mDescription = s;}
 
 	int getLevel()					{return skillLevel;}
 	int getEnergyCost()				{return energyCost;}
 	bool isPassive()				{return passive;}
+	string getName()				{return mName;}
+	string getDescription()			{return mDescription;}
 
 	bool canCast(Player* player);
 
@@ -37,6 +41,6 @@ private:
 	bool passive;
 	int energyCost;
 	IDirect3DTexture9* mTexture;
-	string description;
-	string name;
+	string mDescription;
+	string mName;
 };

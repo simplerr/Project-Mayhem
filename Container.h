@@ -62,6 +62,7 @@ private:
 	IDirect3DTexture9*  mBagSlot;
 	IDirect3DTexture9*	mSkillSlot;
 	IDirect3DTexture9*	mBkgd;
+	IDirect3DTexture9*	mSkillBG;
 	bool				mVisible;
 	Vector				mPosition;
 	int					mWidth, mHeight;

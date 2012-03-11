@@ -31,8 +31,9 @@ Graphics::Graphics()
 	buildFastBuffer();
 
 	mCustomFont = new Font();
-
+	
 	checkDeviceCaps();
+	
 }
 
 //! Destructor that for cleanin up.

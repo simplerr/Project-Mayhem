@@ -52,7 +52,7 @@ void Level::init()
 {
 	// Create the tilehandler and load the different tiles from a XML file
 	mTileHandler = new TileHandler();
-	mTileHandler->loadTiles("tiles.xml");
+	mTileHandler->loadTiles("Data\\tiles.xml");
 	mOffset = Vector(0, 0);
 	mCameraOffset = mOffset;
 
@@ -250,13 +250,13 @@ void Level::moveObjects(float dx, float dy)
 	// Horizontal camera movement
 	if(!isInEditor())
 	{
-		if(mCameraOffset.x < 0 || mCameraOffset.x + mWidth/2 > mWidth-400) {
+		if(mCameraOffset.x < 0 || mCameraOffset.x + mWidth/2 > mWidth-1024/2) {
 			if(mPlayer != NULL) mPlayer->move(-dx, 0);
 			dx = 0;
 		}
 
 		// Vertical camera movement
-		if(mCameraOffset.y < 0 || mCameraOffset.y + mHeight/2 > mHeight-300) {
+		if(mCameraOffset.y < 0 || mCameraOffset.y + mHeight/2 > mHeight-SCREEN_HEIGHT/2) {
 			if(mPlayer != NULL) mPlayer->move(0, -dy);
 			dy = 0;
 		}
@@ -268,10 +268,10 @@ void Level::moveObjects(float dx, float dy)
 	else
 	{
 		// +200 due to the editor gui
-		if(newOffset.x < 0 || newOffset.x + mWidth/2 > mWidth-400+200)
+		if(newOffset.x < 0 || newOffset.x + mWidth/2 > mWidth-SCREEN_WIDTH/2+200)
 			dx = 0;
 
-		if(newOffset.y < 0 || newOffset.y + mHeight/2 > mHeight-300) 
+		if(newOffset.y < 0 || newOffset.y + mHeight/2 > mHeight-SCREEN_HEIGHT/2) 
 			dy = 0;
 
 		for(int i = 0; i < mObjectList.size(); i++)	
@@ -515,4 +515,14 @@ TileHandler* Level::getTileHandler()
 Player* Level::getPlayer()
 {
 	return mPlayer;
+}
+
+int Level::getWidth()
+{
+	return mWidth;
+}
+
+int Level::getHeight()
+{
+	return mHeight;
 }

@@ -44,6 +44,8 @@ public:
 	string getTile(int x, int y);
 	int getTileWidth();
 	int getTileHeight();
+	int getWidth();
+	int getHeight();
 	Vector getOffset();
 	Object* getObjectAt(Vector pos);
 	Player* getPlayer();

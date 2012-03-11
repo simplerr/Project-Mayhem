@@ -130,8 +130,11 @@ void Player::handleInput()
 
 bool Player::handleCollision(Object* collider, MTV* mtv)
 {
-	if(collider->getType() == ENEMY || collider->getType() == STRUCTURE) {
+	if(collider->getType() == STRUCTURE)
 		getLevel()->moveObjects(-mtv->pushX, -mtv->pushY);
+	else if(collider->getType() == ENEMY) {
+		getLevel()->moveObjects(mtv->pushX, mtv->pushY);
+		move(-mtv->pushX, -mtv->pushY);
 	}
 
 	if(collider->getType() == PROJECTILE)
@@ -249,4 +252,9 @@ int Player::getCharacterLevel()
 int Player::getLevelExp()
 {
 	return mExpPerLevel[mLevel-1];
+}
+
+bool Player::inInventory()
+{
+	return mInventory->getVisible();
 }

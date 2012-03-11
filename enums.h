@@ -1,6 +1,9 @@
 #ifndef ENUMS_H
 #define ENUMS_H
 
+#define SCREEN_WIDTH 1024
+#define SCREEN_HEIGHT 768
+
 // Enum for different type of slots
 enum SlotId {WEAPON, SHIELD, HEAD, CHEST, LEGS, MISC1, MISC2, BAG, SKILL};
 

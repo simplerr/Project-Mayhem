@@ -20,6 +20,9 @@ Blink::Blink() {
 void Blink::performSkill(Player* player) {
 	if(canCast(player)) {
 		Vector pos = gInput->mousePosition();
+		if(pos.x < 0 || pos.x > player->getLevel()->getWidth() || pos.y < 0  || pos.y > player->getLevel()->getHeight())
+			return;
+
 		float angle = gMath->calculateAngle(player->getPos(), pos);
 		if(pos.length() < blinkRange[getLevel()]) 
 		{

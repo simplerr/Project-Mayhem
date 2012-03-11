@@ -7,3 +7,13 @@ Tänkte att vi har en lista med saker vi ska göra. Får senare hosta en todo list 
 - Lägg till collision detection
 - Lägg till en kamera som följer spelaren när man går
 - Bägränsa storleken på banan
+
+mattes idéer:
+- equip slotsen lyser upp om man drar ett item så man ser var man kan placera det
+- om man högerklickar på items som man har på sig borde man ta av sig dom 	- DONE
+- om man trycker esc när man är i inventoryt ska det stängas			- DONE
+- inte blinka utanför mapen							- VIKTORS							
+- kryss uppe i högra inventoryhörnet?						- DONE
+- hotkey för inventory								- DONE						- 
+- problem med kollision
+- kameran blir off om man går in i fiender

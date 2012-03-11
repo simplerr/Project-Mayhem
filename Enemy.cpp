@@ -87,13 +87,13 @@ void Enemies::init()
 {
 	//Load enemies
 	// Load all different items
-	TiXmlDocument doc("enemies.xml");
+	TiXmlDocument doc("Data\\enemies.xml");
 	doc.LoadFile();
 	srand(time(0));
 
 	// Get the root element
 	TiXmlElement* root = doc.FirstChildElement();
-
+	
 	// Load items from the file ------ TODO
 	for(TiXmlElement* item = root->FirstChildElement("Enemy"); item != NULL; item = item->NextSiblingElement("Enemy"))
 	{

@@ -20,7 +20,7 @@ void PlayState::init(Game *game)
 
 	// Create and add player to the level
 	// :NOTE: Could instead lie in Level
-	mPlayer = new Player(400, 300);
+	mPlayer = new Player(SCREEN_WIDTH/2, SCREEN_HEIGHT/2);
 	mPlayer->setLevel(mLevel);
 	mLevel->addPlayer(mPlayer);
 
@@ -52,11 +52,11 @@ void PlayState::resume()
 
 void PlayState::update(double dt)
 {
-	// Update all objects in the level
-	mLevel->update(dt);
-
-	if(gInput->keyPressed(VK_ESCAPE))
+	if(gInput->keyPressed(VK_ESCAPE) && !mPlayer->inInventory())
 		changeState(MenuState::Instance());
+	else
+		// Update all objects in the level
+		mLevel->update(dt);
 }
 	
 void PlayState::draw()

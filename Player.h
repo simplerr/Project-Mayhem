@@ -40,6 +40,7 @@ public:
 	int getExperience();
 	int getCharacterLevel();
 	int	getLevelExp();	
+	bool inInventory();
 
 	//void setEnergy(float nrg)	{mEnergy = nrg;}
 	void costEnergy(float dnrg)	{mEnergy-=dnrg;}

@@ -7,7 +7,7 @@
 ItemHandler::ItemHandler()
 {
 	// Load all different items
-	TiXmlDocument doc("items.xml");
+	TiXmlDocument doc("Data\\items.xml");
 	doc.LoadFile();
 
 	// Get the root element

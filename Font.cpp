@@ -3,8 +3,11 @@
 
 Font::Font()
 {
+	
 	loadFont("Data\\imgs\\font.bmp");
 	mCharacters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ 0123456789.,!?'\"-+=/\\%()<>:;";
+
+	
 
 	// Load the effect
 	// Create the FX from a .fx file
@@ -14,8 +17,12 @@ Font::Font()
 	if( errors ) 
 		MessageBox(0, (char*)errors->GetBufferPointer(), 0, 0);
 
+	
+
 	mhTech = mEffect->GetTechniqueByName("FontTech");
 	mhColor = mEffect->GetParameterByName(0, "gColor");
+
+	
 }
 	
 Font::~Font()

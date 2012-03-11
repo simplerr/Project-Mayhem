@@ -28,7 +28,7 @@ void Weapon::update(float dt)
 void Weapon::draw(Vector playerPos, float rotation)
 {
 	gGraphics->drawTexture(mTexture, playerPos.x + cosf(rotation)*mOffset.x - sinf(rotation)*mOffset.y, 
-		playerPos.y + sinf(rotation)*mOffset.x + cosf(rotation)*mOffset.y, 64, 16, rotation);
+		playerPos.y + sinf(rotation)*mOffset.x + cosf(rotation)*mOffset.y, 40, 10, rotation);
 }
 
 void Weapon::fire(Vector playerPos, float rotation)

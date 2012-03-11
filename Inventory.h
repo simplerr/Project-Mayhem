@@ -38,6 +38,8 @@ public:
 
 private:
 	IDirect3DTexture9*	mHooverBkgd;
+	IDirect3DTexture9*  mCloseTexture;
+	Rect				mCloseRect;
 	Player*				mPlayer;
 	int					mGold;
 };

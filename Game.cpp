@@ -44,8 +44,8 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE prevInstance,
 	#if defined(DEBUG) | defined(_DEBUG)
 		_CrtSetDbgFlag( _CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF );
 	#endif
-
-	Game app(hInstance, "Project Mayhem", 1024, 768, D3DDEVTYPE_HAL, D3DCREATE_HARDWARE_VERTEXPROCESSING);
+		
+	Game app(hInstance, "Project Mayhem", SCREEN_WIDTH, SCREEN_HEIGHT, D3DDEVTYPE_HAL, D3DCREATE_HARDWARE_VERTEXPROCESSING);
 	gGame = &app;
 
 	gInput = new Input();
@@ -61,8 +61,10 @@ Game::Game(HINSTANCE hInstance, std::string caption, int width, int height, D3DD
 	:Runnable(hInstance, caption, width, height, devType, requestedVP)
 {
 	gGraphics = new Graphics();
+	
 	gEnemies = new Enemies();
 	gItemHandler = new ItemHandler();
+	
 	mGameState = NULL;
 	gAudio = new AudioHandler();
 	changeState(MenuState::Instance());

@@ -15,10 +15,13 @@ Inventory::Inventory() : Container(400, 300, 675, 400)
 {
 	mGold = 0;
 	mHooverBkgd = gGraphics->loadTexture("Data\\imgs\\hoover_bkgd.png");
+	mCloseTexture = gGraphics->loadTexture("Data\\imgs\\close_button.png");
 
 	// Create the equip slots
 	int x = getPosition().x - getWidth()/2 + 20;
 	int y = getPosition().y - getHeight()/2 + 35;
+
+	mCloseRect = Rect(getPosition().x + getWidth()/2 - 20, getPosition().y - getHeight()/2 + 20, 30, 30, 1);
 	
 	addSlot(x + 50, y + 50, SlotId::WEAPON);
 	addSlot(x + 120, y + 50, SlotId::SHIELD);
@@ -41,6 +44,7 @@ Inventory::~Inventory()
 {
 	// Cleanup
 	ReleaseCOM(mHooverBkgd);
+	ReleaseCOM(mCloseTexture);
 }
 
 void Inventory::update(float dt)
@@ -59,20 +63,28 @@ void Inventory::update(float dt)
 				if(gMath->pointInsideRect(gInput->mousePosition(), mSlotList[i].rect) && getMovingItem() == NULL && mSlotList[i].taken)
 				{
 					// TODO: Remove hacks!
-					int iii = mSlotList[i].item->getSlotId();
-					swapItems(&mSlotList[i], & mSlotList[mSlotList[i].item->getSlotId()]);
+					if(mSlotList[i].slotId == mSlotList[i].item->getSlotId()) {
+						Item* item = (Item*)mSlotList[i].item;
+						addItem(item->getData().name);
+						mSlotList[i].item = NULL;
+						mSlotList[i].taken = false;
+					}
+					else
+						swapItems(&mSlotList[i], & mSlotList[mSlotList[i].item->getSlotId()]);
 					break;
 				}
 			}
 		}
 
 		// Hide inventory
-		if(gInput->keyPressed('I'))
+		if(gInput->keyPressed('I') || gInput->keyPressed('B') || gInput->keyPressed(VK_TAB) || gInput->keyPressed(VK_ESCAPE))
+			hide();
+		if(gInput->keyPressed(VK_LBUTTON) && gMath->pointInsideRect(gInput->mousePosition(), mCloseRect))
 			hide();
 	}
 	else 
 		// Show inventory
-		if(gInput->keyPressed('I'))
+		if(gInput->keyPressed('I') || gInput->keyPressed('B') || gInput->keyPressed(VK_TAB))
 			show();
 }
 	
@@ -140,6 +152,8 @@ void Inventory::draw()
 
 		sprintf(buffer, "Energy: %i", (int)mPlayer->getMaxEnergy());
 		gGraphics->drawText(buffer, getPosition().x + 160, getPosition().y - 20, SMALL_DX);
+
+		gGraphics->drawTexture(mCloseTexture, mCloseRect);
 	}
 }
 

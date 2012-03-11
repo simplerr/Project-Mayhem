@@ -12,8 +12,11 @@ Wrath::Wrath() {
 	wrathDamage[3] = 20;
 	wrathDamage[4] = 25;
 	
-	setIconTexture("Data\\imgs\\fire_bolt.png");
 	init();
+	setIconTexture("Data\\imgs\\fire_bolt.png");
+	setName("Roar of Wrath");
+	setDescription("Release the wrath of old memories upon your foes, ripping them to shreds.");
+
 	setEnergyCost(5);
 }
 

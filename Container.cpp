@@ -3,6 +3,7 @@
 #include "Graphics.h"
 #include "Container.h"
 #include "Item.h"
+#include "Skill.h"
 
 Container::Container(int x, int y , int width, int height)
 {
@@ -19,6 +20,7 @@ Container::Container(int x, int y , int width, int height)
 	mBagSlot = gGraphics->loadTexture("Data\\imgs\\bag_slot.png");
 	mBkgd = gGraphics->loadTexture("Data\\imgs\\inventory_bkgd.png");
 	mSkillSlot = gGraphics->loadTexture("Data\\imgs\\skill_slot.png");
+	mSkillBG = gGraphics->loadTexture("Data\\imgs\\SkillBG.png");
 
 	// Not visible to start with
 	hide();
@@ -31,6 +33,7 @@ Container::~Container()
 	ReleaseCOM(mBagSlot);
 	ReleaseCOM(mBkgd);
 	ReleaseCOM(mSkillSlot);
+	ReleaseCOM(mSkillBG);
 }
 
 void Container::update(float dt)
@@ -86,13 +89,13 @@ void Container::itemOutsideSlot(SlotItem* item)
 
 void Container::draw()
 {
-	char c[9] = {'1','2','3','4','Q','E','7'};
+	char c[9] = {'1','2','3','4','5','6','7'};
 	// Visible?
 	if(mVisible)
 	{
 		// Background
 		gGraphics->drawTexture(mBkgd, mPosition.x, mPosition.y, mWidth, mHeight);
-
+		Vector v = gInput->mousePosition();
 		// Loop through all slots
 		for(int i = 0; i < mSlotList.size(); i++)
 		{
@@ -116,6 +119,11 @@ void Container::draw()
 			if(mSlotList[i].slotId == SKILL){
 				string str = string(1, c[i]);
 				gGraphics->drawText(str, mSlotList[i].rect.right-10,mSlotList[i].rect.top-8,CUSTOM, 8, D3DCOLOR_RGBA(255, 128, 0, 255));
+				if(gMath->pointInsideRect(gInput->mousePosition(), rect) && mSlotList[i].item != NULL) 
+				{
+					gGraphics->drawTexture(mSkillBG, v.x+70, v.y-70 , 170, 100);
+					gGraphics->drawText(dynamic_cast<Skill*>(mSlotList[i].item)->getName(), v.x+4, v.y-110,CUSTOM,9, D3DCOLOR_RGBA(255,128,0,255));
+				}
 			}
 		}
 

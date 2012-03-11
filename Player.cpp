@@ -206,7 +206,7 @@ void Player::setCooldown(float cooldown)
 	mCooldown = cooldown;
 }
 
-int Player::getHealth()
+float Player::getHealth()
 {
 	return mHealth;
 }
@@ -216,7 +216,7 @@ int Player::getMaxHealth()
 	return mMaxHealth;
 }
 
-int Player::getEnergy()
+float Player::getEnergy()
 {
 	return mEnergy;
 }

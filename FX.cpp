@@ -3,9 +3,14 @@
 #include "Animation.h"
 
 
-FX::FX(float x, float y, float w, float h, float life) : Object(x,y,w,h,SFX) 
+FX::FX(float x, float y, float w, float h, float life, int frames, std::string textureSource) : Object(x,y,w,h,SFX, textureSource) 
 {
 	mLife = life;
+	mCounter = 0;
+	mAnimation = new Animation(w,h,life/frames, frames, frames);
+	setLayer(TOP);
+	setCollidable(false);
+	
 }
 
 FX::~FX()
@@ -22,6 +27,6 @@ void FX::update(float dt)
 {
 	mAnimation->animate(dt);
 	if(mCounter > mLife)
-		delete this;
+		this->setAlive(false);
 	mCounter+=dt;
 }

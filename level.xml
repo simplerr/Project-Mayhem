@@ -2,6 +2,7 @@
 <Level>
     <Size width="2000" height="1500" />
     <Objects>
+        <Enemy type="3" x="138" y="638" w="32" h="32" class="spider" texture="Data\\imgs\\spider.png" />
     </Objects>
     <Tiles>
         <Tile name="Bkgd" x="780" y="60" />
@@ -102,7 +103,6 @@
         <Tile name="Grass" x="460" y="180" />
         <Tile name="Grass" x="500" y="220" />
         <Tile name="Grass" x="540" y="380" />
-        <Tile name="Grass" x="540" y="460" />
         <Tile name="Grass" x="500" y="260" />
         <Tile name="Grass" x="540" y="220" />
         <Tile name="Grass" x="620" y="300" />
@@ -189,5 +189,6 @@
         <Tile name="Wall" x="100" y="700" />
         <Tile name="Wall" x="60" y="700" />
         <Tile name="Grass" x="500" y="460" />
+        <Tile name="Grass" x="540" y="460" />
     </Tiles>
 </Level>

@@ -2,6 +2,7 @@
 
 #include <string>
 #include <map>
+#include <vector>
 
 class Enemy;
 class Object;
@@ -13,6 +14,16 @@ enum Event {
 	PERIODICALLY,
 	AFTER_TIME_ELAPSED,
 	ON_ENEMY_DEATH
+};
+
+struct Action 
+{
+	std::string action;
+	std::string param[5];
+	Action() {
+		action = "Win";
+		param[0] = "";
+	};
 };
 
 //enum VariableType {
@@ -58,6 +69,6 @@ public:
 private:
 	Event mEventType;
 	std::map<std::string, std::string> mLocalVars;
-	//std::string mAction[256][256];
+	std::vector<Action> mActions;
 	Region* mOwner;
 };

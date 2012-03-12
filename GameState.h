@@ -40,4 +40,6 @@ private:
 	bool mUsesCamera;
 };	// Class
 
+extern GameState* gGameState;
+
 #endif

@@ -15,6 +15,8 @@ public:
 
 	// Changes the current state (PlayState, MenuState, OptionState etc..)
 	void changeState(GameState* state);
+	
+	GameState* getState()	{ return mGameState; }
 
 	// Initialize everything, could replace ctor, but doesn't atm
 	void init();

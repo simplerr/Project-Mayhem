@@ -19,6 +19,7 @@ public:
 private:
 	Vector	mPos;
 	IDirect3DTexture9* mTexture;
+	bool	mVisible;
 	float	mTime;
 	int		mWidth, mHeight;
 };

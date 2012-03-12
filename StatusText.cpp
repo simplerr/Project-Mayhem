@@ -14,6 +14,7 @@ StatusText::StatusText(string source, float x, float y, int width, int height, f
 	mWidth = width;
 	mHeight = height;
 	mTime = time;
+	mVisible = false;
 }
 
 //! Destructor.
@@ -25,7 +26,7 @@ StatusText::~StatusText()
 //! Draws the status text.
 void StatusText::draw()
 {
-	if(mTime > 0)	{
+	if(mTime > 0 && mVisible)	{
 		gGraphics->drawTexture(mTexture, mPos.x, mPos.y, mWidth, mHeight);
 	}
 }
@@ -40,4 +41,5 @@ void StatusText::update(float dt)
 void StatusText::show(float time)
 {
 	mTime = time;
+	mVisible = true;
 }

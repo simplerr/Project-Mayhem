@@ -18,6 +18,7 @@ public:
 
 	void draw();
 	void clearChildren(WindowHandler* windowHandler);
+	void setNumComponents(int num);
 	
 	void arrangeObject(wComponent* component);
 private:

@@ -10,6 +10,7 @@ class Level;
 class wButton;
 class wDropDown;
 class wContainer;
+class wLabel;
 
 enum CommandResult
 {
@@ -50,6 +51,8 @@ private:
 	WindowHandler*	mWindowHandler;
 	wDropDown*		mDropDown;
 	wContainer*		mButtonContainer;
+	wLabel*			mTileLabel1;
+	wLabel*			mTileLabel2;
 
 	Vector			mClickedPos;
 };

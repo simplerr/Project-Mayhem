@@ -146,6 +146,8 @@
     <ClInclude Include="wDropDown.h" />
     <ClInclude Include="Weapon.h" />
     <ClInclude Include="WindowHandler.h" />
+    <ClInclude Include="wInputBox.h" />
+    <ClInclude Include="wLabel.h" />
     <ClInclude Include="wMessage.h" />
     <ClInclude Include="WonState.h" />
     <ClInclude Include="wPanel.h" />
@@ -213,6 +215,8 @@
     <ClCompile Include="wDropDown.cpp" />
     <ClCompile Include="Weapon.cpp" />
     <ClCompile Include="WindowHandler.cpp" />
+    <ClCompile Include="wInputBox.cpp" />
+    <ClCompile Include="wLabel.cpp" />
     <ClCompile Include="wMessage.cpp" />
     <ClCompile Include="WonState.cpp" />
     <ClCompile Include="wPanel.cpp" />

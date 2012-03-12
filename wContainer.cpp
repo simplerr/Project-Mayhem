@@ -58,3 +58,8 @@ void wContainer::clearChildren(WindowHandler* windowHandler)
 	mChildren.clear();
 	mComponents = 0;
 }
+
+void wContainer::setNumComponents(int num)
+{
+	mComponents = num;
+}

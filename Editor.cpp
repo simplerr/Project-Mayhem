@@ -19,6 +19,7 @@
 #include "Scrap.h"
 #include "Math.h"
 #include "Graphics.h"
+#include "wLabel.h"
 
 Editor::Editor(std::string levelName)
 {
@@ -155,13 +156,38 @@ bool Editor::messageHandler(wId id, wMessage msg)
 			map<string, TileData*> dataMap = mLevel->getTileHandler()->getDataMap();
 			mActiveObject.name = (*dataMap.begin()).second->name;
 
+			mTileLabel1 = new wLabel(820, 60, 0, 0, WID_STANDARD, "Walls");
+			mWindowHandler->addWindow(mTileLabel1);
+
+			mTileLabel2 = new wLabel(820, 260, 0, 0, WID_STANDARD, "Ground");
+			mWindowHandler->addWindow(mTileLabel2);
+
 			for(TileIter iter = dataMap.begin(); iter != dataMap.end(); iter++)
 			{
+				if(!iter->second->obstacle)
+					continue;
+
 				wButton* button = new wButton(10, 10, 40, 40, iter->second->name, WID_TILE_BUTTON, iter->second->textureSource);
 				button->connect(&Editor::messageHandler, this);
 				mWindowHandler->addWindow(button);
 				mButtonContainer->arrangeObject(button);
 			}
+
+			mButtonContainer->setPos(mButtonContainer->getPos() + Vector(0, 200));
+			mButtonContainer->setNumComponents(0);
+
+			for(TileIter iter = dataMap.begin(); iter != dataMap.end(); iter++)
+			{
+				if(iter->second->obstacle)
+					continue;
+
+				wButton* button = new wButton(10, 10, 40, 40, iter->second->name, WID_TILE_BUTTON, iter->second->textureSource);
+				button->connect(&Editor::messageHandler, this);
+				mWindowHandler->addWindow(button);
+				mButtonContainer->arrangeObject(button);
+			}
+
+			mButtonContainer->setPos(mButtonContainer->getPos() - Vector(0, 200));
 		}
 		else if(msg.getString() == "Props")
 		{

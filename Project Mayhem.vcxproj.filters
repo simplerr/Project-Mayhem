@@ -276,6 +276,12 @@
     <ClCompile Include="WonState.cpp">
       <Filter>Source Files\States</Filter>
     </ClCompile>
+    <ClCompile Include="wInputBox.cpp">
+      <Filter>Source Files\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="wLabel.cpp">
+      <Filter>Source Files\Windows</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="d3dUtil.h">
@@ -481,6 +487,12 @@
     </ClInclude>
     <ClInclude Include="WonState.h">
       <Filter>Header Files\States</Filter>
+    </ClInclude>
+    <ClInclude Include="wInputBox.h">
+      <Filter>Header Files\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="wLabel.h">
+      <Filter>Header Files\Windows</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

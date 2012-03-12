@@ -4,6 +4,7 @@
 #include "Vector.h"
 #include "Rect.h"
 #include "Graphics.h"
+#include "wComponent.h"
 
 WindowHandler::WindowHandler()
 {

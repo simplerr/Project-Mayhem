@@ -2,11 +2,13 @@
 #define WINDOWHANDLER_H
 
 #include <vector>
-#include "wComponent.h"
+#include "wMessage.h"
 
 using namespace std;
 
 class Rect;
+class wComponent;
+
 
 /* Todo
 - Maybe make the coordinates local for the windowhandler? ie x = 50 could be x = 350 in the global window

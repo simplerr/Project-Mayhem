@@ -7,24 +7,24 @@
 #include "Rect.h"
 
 Region::Region(float x, float y, int width, int height)
-	: Object(x+(width/2), y+(height/2), width, height, REGION)
+	: Object(x+(width/2), y+(height/2), width, height, REGION), 
+	mTrigger("Win", PLAYER_IN_RECT, this)
 {
 	setLayer(TOP);
 	setCollidable(false);
-	//setTrigger(new Trigger("", PLAYER_IN_RECT, this));
 }
 
 Region::Region(Rect r)
-	: Object(r.left+(r.getWidth()/2), (r.top+r.getHeight()/2), r.getWidth(), r.getHeight(), REGION)
+	: Object(r.left+(r.getWidth()/2), (r.top+r.getHeight()/2), r.getWidth(), r.getHeight(), REGION), 
+	mTrigger("Win", PLAYER_IN_RECT, this)
 {
 	setLayer(TOP);
 	setCollidable(false);
-	//setTrigger(new Trigger("", PLAYER_IN_RECT, this));
 }
 
 Region::~Region()
 {
-	//delete mTrigger;
+
 }
 
 void Region::draw() {
@@ -86,7 +86,7 @@ void Region::update(float dt)
 	*/
 }
 
-void Region::setTrigger(Trigger *trig)
+void Region::setTrigger(Trigger trig)
 {
 	mTrigger = trig;
 }

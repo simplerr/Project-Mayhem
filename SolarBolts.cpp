@@ -13,9 +13,11 @@ SolarBolts::SolarBolts() {
 	spiritDamage[3] = 20;
 	spiritDamage[4] = 25;
 	
+	init();
 	setIconTexture("Data\\imgs\\orb.png");
 	setName("Lunar Spirits");
 	setDescription("Years of studying the moonlight through the narrow cell window has yielded the ability to call upon several Lunar Spirits, each dealing moderate damage.");
+	
 	setEnergyCost(5);
 }
 

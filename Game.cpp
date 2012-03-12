@@ -17,10 +17,11 @@
 #include <crtdbg.h>
 
 Graphics*			gGraphics		= NULL;
+GameState*			gGameState		= NULL;
 Input*				gInput			= NULL;
 Runnable*			gGame			= NULL;
 IDirect3DDevice9*	gd3dDevice		= NULL;
-AudioHandler*		gAudio	= NULL;
+AudioHandler*		gAudio			= NULL;
 Math*				gMath			= NULL;
 Enemies*			gEnemies		= NULL;
 ItemHandler*		gItemHandler	= NULL;
@@ -69,6 +70,7 @@ Game::Game(HINSTANCE hInstance, std::string caption, int width, int height, D3DD
 	gAudio = new AudioHandler();
 	changeState(MenuState::Instance());
 	mGameState->init(this);
+	gGameState = mGameState;
 	mGfxStats = new GfxStats();
 	gScrap = new Scrap();
 }

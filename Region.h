@@ -15,9 +15,9 @@ public:
 	void draw();
 	void update(float dt);
 
-	void setTrigger(Trigger* trig);
-	Trigger* getTrigger()	{return mTrigger;}
+	void setTrigger(Trigger trig);
+	Trigger* getTrigger()	{return &mTrigger;}
 private:
-	Trigger* mTrigger;
+	Trigger mTrigger;
 	float mCounter;
 };

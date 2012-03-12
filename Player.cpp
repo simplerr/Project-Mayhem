@@ -100,21 +100,16 @@ void Player::handleInput()
 		Object* object = getLevel()->getObjectAt(gInput->mousePosition());
 		if(object != NULL && object->getType() == LOOT) {
 			Loot* loot = dynamic_cast<Loot*>(object);
-			mInventory->addItem(loot->getName());
+			if(loot->getName() == "Health potion") 
+				setHealth(getHealth() + dynamic_cast<HealthPotion*>(object)->getHp());	
+			else if(loot->getName() == "Energy potion") 
+				setEnergy(getEnergy() + dynamic_cast<EnergyPotion*>(object)->getEnergy());
+			else if(loot->getName() == "Gold")
+				mInventory->addGold(dynamic_cast<Gold*>(object)->getAmount());
+			else
+				mInventory->addItem(loot->getName());
+		
 			getLevel()->removeObject(loot);
-		}
-		else if(object != NULL && object->getType() == GOLD_COIN) {
-			Gold* gold = dynamic_cast<Gold*>(object);
-			mInventory->addGold(gold->getAmount());
-			getLevel()->removeObjectAt(gInput->mousePosition().x, gInput->mousePosition().y);
-		}
-		else if(object != NULL && object->getType() == HP_POTION) {
-			setHealth(getHealth() + dynamic_cast<HealthPotion*>(object)->getHp());
-			object->setAlive(false);
-		}
-		else if(object != NULL && object->getType() == ENERGY_POTION) {
-			setEnergy(getEnergy() + dynamic_cast<EnergyPotion*>(object)->getEnergy());
-			object->setAlive(false);
 		}
 	}
 

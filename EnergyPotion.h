@@ -1,7 +1,7 @@
 #pragma once
-#include "Object.h"
+#include "Loot.h"
 
-class EnergyPotion : public Object
+class EnergyPotion : public Loot
 {
 public:
 	EnergyPotion(int x, int y, int energy = 10);

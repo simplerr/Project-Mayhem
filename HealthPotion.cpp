@@ -1,7 +1,7 @@
 #include "HealthPotion.h"
 #include "Player.h"
 
-HealthPotion::HealthPotion(int x, int y, int hp) : Object(x, y, 32, 32, HP_POTION, "Data\\imgs\\hp_potion.png")
+HealthPotion::HealthPotion(int x, int y, int hp) : Loot("Health Potion", x, y)
 {
 	mHp = hp;
 	setDetailedCollision(false);

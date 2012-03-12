@@ -65,10 +65,10 @@ void Enemy::damage(float dHP)
 			}
 		}
 
-		if(!any) {
+		if(!any || 1) {
 			int x = rand() % 5;
 			float angle = (rand() % 340)/(float)100;
-			if(x == 0) 
+			if(x == 0 || 1) 
 				getLevel()->addObject(new HealthPotion(getPos().x + distance*cosf(angle), getPos().y + distance*sinf(angle), 20));
 			else if(x == 1) 
 				getLevel()->addObject(new EnergyPotion(getPos().x + distance*cosf(angle), getPos().y + distance*sinf(angle), 20));

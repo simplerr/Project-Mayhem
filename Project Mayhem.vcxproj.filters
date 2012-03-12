@@ -273,6 +273,9 @@
     <ClCompile Include="EnergyPotion.cpp">
       <Filter>Source Files\Game objects</Filter>
     </ClCompile>
+    <ClCompile Include="WonState.cpp">
+      <Filter>Source Files\States</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="d3dUtil.h">
@@ -476,15 +479,15 @@
     <ClInclude Include="EnergyPotion.h">
       <Filter>Header Files\Game objects</Filter>
     </ClInclude>
+    <ClInclude Include="WonState.h">
+      <Filter>Header Files\States</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="font_effect.fx">
       <Filter>Header Files\Common</Filter>
     </None>
     <None Include="tiles.xml">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="items.xml">
       <Filter>Resource Files</Filter>
     </None>
     <None Include="enemies.xml">
@@ -494,6 +497,9 @@
       <Filter>Resource Files</Filter>
     </None>
     <None Include="Data\levels\custom.xml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Data\items.xml">
       <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>

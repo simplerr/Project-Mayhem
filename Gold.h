@@ -1,11 +1,13 @@
 #pragma once
-#include "Object.h"
+#include "Loot.h"
 
-class Gold : public Object
+class Gold : public Loot
 {
 public:
 	Gold(int x, int y, int amount = 1);
 	~Gold();
+
+	void draw();
 
 	bool handleCollision(Object* collider, MTV* mtv);
 	int getAmount();

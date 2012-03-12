@@ -147,6 +147,7 @@
     <ClInclude Include="Weapon.h" />
     <ClInclude Include="WindowHandler.h" />
     <ClInclude Include="wMessage.h" />
+    <ClInclude Include="WonState.h" />
     <ClInclude Include="wPanel.h" />
     <ClInclude Include="Wrath.h" />
   </ItemGroup>
@@ -213,19 +214,18 @@
     <ClCompile Include="Weapon.cpp" />
     <ClCompile Include="WindowHandler.cpp" />
     <ClCompile Include="wMessage.cpp" />
+    <ClCompile Include="WonState.cpp" />
     <ClCompile Include="wPanel.cpp" />
     <ClCompile Include="Wrath.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Data\items.xml" />
     <None Include="Data\levels\campaign.xml" />
     <None Include="Data\levels\custom.xml">
       <SubType>Designer</SubType>
     </None>
     <None Include="enemies.xml" />
     <None Include="font_effect.fx" />
-    <None Include="items.xml">
-      <SubType>Designer</SubType>
-    </None>
     <None Include="tiles.xml" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

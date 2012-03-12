@@ -40,6 +40,7 @@ ItemHandler::ItemHandler()
 		else if(slot == "shield") slotId = SHIELD;
 		else if(slot == "misc1") slotId = MISC1;
 		else if(slot == "misc2") slotId = MISC2;
+		else slotId = BAG;
 
 		ItemData.slot = slotId;
 

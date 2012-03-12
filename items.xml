@@ -5,6 +5,7 @@
   <Item name="Golden Helmet" texture="Data/imgs/helm1.png"  slot="head" armor="15"></Item>
   <Item name="Golden Chest" texture="Data/imgs/chest1.png"  slot="chest" armor="10"></Item>
   <Item name="Golden Legs" texture="Data/imgs/boots1.png"  slot="legs" armor="7"></Item>
-  <Item name="Health Potion" texture="Data/imgs/hp_potion.png"  slot="bag" armor="7"></Item>
-  <Item name="Energy Potion" texture="Data/imgs/energy_potion.png"  slot="bag" armor="7"></Item>
+  <Item name="Health Potion" texture="Data/imgs/hp_potion.png"  slot="bag"></Item>
+  <Item name="Energy Potion" texture="Data/imgs/energy_potion.png"  slot="bag"></Item>
+  <Item name="Gold" texture="Data\\imgs\\gold_coin.png" slot="bag"></Item>
 </Items>

@@ -1,7 +1,7 @@
 #include "EnergyPotion.h"
 #include "Player.h"
 
-EnergyPotion::EnergyPotion(int x, int y, int energy) : Object(x, y, 32, 32, ENERGY_POTION, "Data\\imgs\\energy_potion.png")
+EnergyPotion::EnergyPotion(int x, int y, int energy) : Loot("Energy Potion", x, y)
 {
 	mEnergy = energy;
 	setDetailedCollision(false);

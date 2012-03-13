@@ -11,6 +11,7 @@ class Inventory;
 class Gui;
 class Item;
 class StatusText;
+enum SlotId;
 
 class Player : public Object 
 {
@@ -45,6 +46,7 @@ public:
 	int getCharacterLevel();
 	int	getLevelExp();	
 	bool inInventory();
+	void addItem(string name, SlotId slotId);
 
 	//void setEnergy(float nrg)	{mEnergy = nrg;}
 	void costEnergy(float dnrg)	{mEnergy-=dnrg;}

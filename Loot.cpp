@@ -1,5 +1,6 @@
 #include "Loot.h"
 #include "ItemHandler.h"
+#include "Player.h"
 
 Loot::Loot(string name, int x, int y) : Object(x, y, 32, 32, LOOT, gItemHandler->getData(name).textureSource)
 {
@@ -37,4 +38,14 @@ void Loot::setLifetime(float lifetime)
 string Loot::getName()
 {
 	return mName;
+}
+
+bool Loot::handleCollision(Object* collider, MTV* mtv)
+{
+	if(collider->getType() == PLAYER) {
+		dynamic_cast<Player*>(collider)->addItem(getName(), BAG);
+		setAlive(false);
+	}
+
+	return true;
 }

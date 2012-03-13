@@ -153,12 +153,12 @@ void Player::handleInput()
 
 bool Player::handleCollision(Object* collider, MTV* mtv)
 {
-	if(collider->getType() == STRUCTURE)
+	/*if(collider->getType() == STRUCTURE)
 		getLevel()->moveObjects(-mtv->pushX, -mtv->pushY);
 	else if(collider->getType() == ENEMY) {
 		getLevel()->moveObjects(mtv->pushX, mtv->pushY);
 		move(-mtv->pushX, -mtv->pushY);
-	}
+	}*/
 
 	if(collider->getType() == PROJECTILE)
 		damage(dynamic_cast<Projectile*>(collider)->getDamage());
@@ -302,4 +302,9 @@ void Player::setHealth(int hp)
 void Player::setEnergy(int energy)
 {
 	mEnergy = energy > mMaxEnergy ? mMaxEnergy : energy;
+}
+
+void Player::addItem(string name, SlotId slotId)
+{
+	mInventory->addItem(name, slotId);
 }

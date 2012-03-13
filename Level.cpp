@@ -112,10 +112,21 @@ void Level::update(float dt)
 			// If there's a collision
 			if(mtv.collision)
 			{
-				if(objectA->handleCollision(objectB,&mtv) && objectB->getType() != PLAYER)
+				objectA->handleCollision(objectB,&mtv);
+				objectB->handleCollision(objectA,&mtv);
+
+				if(objectA->getType() == PLAYER && objectB->getType() != PROJECTILE)
+					moveObjects(mtv.pushX, mtv.pushY);
+				else if(objectA->getType() == ENEMY)
+					objectA->move(-mtv.pushX, -mtv.pushY);
+				else if(objectB->getType() == ENEMY)
+					objectB->move(mtv.pushX, mtv.pushY);
+				else if(objectB->getType() == PLAYER)
+					moveObjects(-mtv.pushX, -mtv.pushY);
+				/*if( && objectB->getType() != PLAYER)
 					objectA->move(-mtv.pushX/2, -mtv.pushY/2);
-				if(objectB->handleCollision(objectA,&mtv) && objectA->getType() != PLAYER)
-					objectB->move(mtv.pushX/2, mtv.pushY/2);
+				if( && objectA->getType() != PLAYER)
+					objectB->move(mtv.pushX/2, mtv.pushY/2);*/
 			}
 
 		}
@@ -395,7 +406,7 @@ void Level::loadFromFile(string file)
 
 		// Switch type and add the according object to the level
 		if(type == ObjectType::STRUCTURE) {
-			Structure* structure = new Structure(x, y, 100, 100, texture);
+			Structure* structure = new Structure(x, y, w, h, texture);
 			structure->setCollidable(collides);
 			addObject(structure);
 		}

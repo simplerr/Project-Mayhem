@@ -2,18 +2,153 @@
 <Level>
     <Size width="2000" height="1500" />
     <Objects>
-        <Object type="9" x="10" y="10" w="10" h="10" collidable="0" texture="Data\imgs\standard_box.bmp" />
-        <Object type="0" x="428" y="362" w="100" h="100" collidable="0" texture="Data/imgs/skelett.png" />
-        <Enemy type="3" x="746" y="204" w="32" h="32" class="spider" texture="Data\\imgs\\spider.png" />
-        <Object type="9" x="439" y="476" w="0" h="0" texture="Data\imgs\standard_box.bmp" />
-        <Object type="9" x="417" y="286" w="0" h="0" texture="Data\imgs\standard_box.bmp" />
-        <Object type="9" x="154" y="456" w="0" h="0" texture="Data\imgs\standard_box.bmp" />
-        <Object type="9" x="344" y="325" w="0" h="0" texture="Data\imgs\standard_box.bmp" />
-        <Object type="9" x="10" y="10" w="10" h="10" texture="Data\imgs\standard_box.bmp" />
-        <Object type="9" x="10" y="10" w="10" h="10" texture="Data\imgs\standard_box.bmp" />
-        <Object type="9" x="323" y="431" w="104" h="120" texture="Data\imgs\standard_box.bmp" />
+        <Enemy type="3" x="111" y="464" w="32" h="32" collidable="1" class="spider" texture="Data\\imgs\\spider.png" />
+        <Enemy type="3" x="136" y="519" w="32" h="32" collidable="1" class="spider" texture="Data\\imgs\\spider.png" />
+        <Object type="0" x="281" y="213" w="100" h="50" collidable="1" texture="Data/imgs/bag1.png" />
+        <Object type="0" x="406" y="314" w="100" h="50" collidable="1" texture="Data/imgs/bag1.png" />
+        <Object type="0" x="405" y="359" w="100" h="50" collidable="1" texture="Data/imgs/bag1.png" />
+        <Object type="0" x="401" y="401" w="100" h="50" collidable="1" texture="Data/imgs/bag1.png" />
+        <Object type="0" x="400" y="380" w="100" h="50" collidable="1" texture="Data/imgs/bag1.png" />
+        <Loot type="2" x="250" y="384" w="32" h="32" collidable="1" name="Energy Potion" texture="Data/imgs/energy_potion.png" />
+        <Loot type="2" x="274" y="484" w="32" h="32" collidable="1" name="Energy Potion" texture="Data/imgs/energy_potion.png" />
+        <Loot type="2" x="331" y="534" w="32" h="32" collidable="1" name="Energy Potion" texture="Data/imgs/energy_potion.png" />
+        <Loot type="2" x="386" y="540" w="32" h="32" collidable="1" name="Energy Potion" texture="Data/imgs/energy_potion.png" />
+        <Loot type="2" x="394" y="477" w="32" h="32" collidable="1" name="Golden Sword" texture="Data/imgs/weapon1.png" />
+        <Loot type="2" x="447" y="492" w="32" h="32" collidable="1" name="Golden Sword" texture="Data/imgs/weapon1.png" />
+        <Loot type="2" x="419" y="515" w="32" h="32" collidable="1" name="Golden Sword" texture="Data/imgs/weapon1.png" />
     </Objects>
     <Tiles>
-     
+        <Tile name="Grass" x="300" y="220" />
+        <Tile name="Grass" x="380" y="180" />
+        <Tile name="Grass" x="260" y="180" />
+        <Tile name="Grass" x="220" y="220" />
+        <Tile name="Grass" x="460" y="180" />
+        <Tile name="Grass" x="420" y="180" />
+        <Tile name="Grass" x="260" y="220" />
+        <Tile name="Grass" x="140" y="300" />
+        <Tile name="Grass" x="140" y="340" />
+        <Tile name="Grass" x="420" y="500" />
+        <Tile name="Grass" x="380" y="540" />
+        <Tile name="Grass" x="260" y="420" />
+        <Tile name="Grass" x="260" y="260" />
+        <Tile name="Grass" x="380" y="220" />
+        <Tile name="Grass" x="540" y="260" />
+        <Tile name="Grass" x="340" y="220" />
+        <Tile name="Grass" x="300" y="180" />
+        <Tile name="Grass" x="340" y="180" />
+        <Tile name="Grass" x="420" y="220" />
+        <Tile name="Grass" x="580" y="420" />
+        <Tile name="Grass" x="460" y="220" />
+        <Tile name="Grass" x="540" y="220" />
+        <Tile name="Grass" x="500" y="220" />
+        <Tile name="Grass" x="500" y="260" />
+        <Tile name="Grass" x="260" y="500" />
+        <Tile name="Grass" x="220" y="460" />
+        <Tile name="Grass" x="180" y="340" />
+        <Tile name="Grass" x="180" y="300" />
+        <Tile name="Grass" x="220" y="260" />
+        <Tile name="Grass" x="260" y="340" />
+        <Tile name="Grass" x="340" y="540" />
+        <Tile name="Grass" x="340" y="580" />
+        <Tile name="Grass" x="300" y="580" />
+        <Tile name="Grass" x="260" y="460" />
+        <Tile name="Grass" x="220" y="380" />
+        <Tile name="Grass" x="180" y="260" />
+        <Tile name="Grass" x="220" y="300" />
+        <Tile name="Grass" x="300" y="540" />
+        <Tile name="Grass" x="300" y="500" />
+        <Tile name="Grass" x="300" y="340" />
+        <Tile name="Grass" x="260" y="300" />
+        <Tile name="Grass" x="220" y="340" />
+        <Tile name="Grass" x="180" y="380" />
+        <Tile name="Grass" x="180" y="420" />
+        <Tile name="Grass" x="180" y="460" />
+        <Tile name="Grass" x="180" y="500" />
+        <Tile name="Grass" x="220" y="500" />
+        <Tile name="Grass" x="220" y="420" />
+        <Tile name="Grass" x="260" y="380" />
+        <Tile name="Grass" x="380" y="260" />
+        <Tile name="Grass" x="340" y="260" />
+        <Tile name="Grass" x="300" y="260" />
+        <Tile name="Grass" x="300" y="300" />
+        <Tile name="Grass" x="300" y="380" />
+        <Tile name="Grass" x="300" y="420" />
+        <Tile name="Grass" x="300" y="460" />
+        <Tile name="Grass" x="420" y="260" />
+        <Tile name="Grass" x="460" y="260" />
+        <Tile name="Grass" x="580" y="500" />
+        <Tile name="Grass" x="580" y="540" />
+        <Tile name="Grass" x="540" y="540" />
+        <Tile name="Grass" x="580" y="380" />
+        <Tile name="Grass" x="580" y="340" />
+        <Tile name="Grass" x="580" y="300" />
+        <Tile name="Grass" x="580" y="260" />
+        <Tile name="Grass" x="620" y="260" />
+        <Tile name="Grass" x="620" y="300" />
+        <Tile name="Grass" x="620" y="460" />
+        <Tile name="Grass" x="620" y="420" />
+        <Tile name="Grass" x="580" y="460" />
+        <Tile name="Wall2" x="100" y="100" />
+        <Tile name="Wall2" x="100" y="140" />
+        <Tile name="Wall2" x="100" y="180" />
+        <Tile name="Wall2" x="60" y="180" />
+        <Tile name="Wall2" x="60" y="220" />
+        <Tile name="Wall2" x="60" y="260" />
+        <Tile name="Wall2" x="60" y="300" />
+        <Tile name="Wall2" x="60" y="340" />
+        <Tile name="Wall2" x="60" y="380" />
+        <Tile name="Wall2" x="60" y="420" />
+        <Tile name="Wall2" x="60" y="460" />
+        <Tile name="Wall2" x="60" y="500" />
+        <Tile name="Wall2" x="60" y="540" />
+        <Tile name="Wall2" x="100" y="540" />
+        <Tile name="Wall2" x="100" y="580" />
+        <Tile name="Wall2" x="140" y="580" />
+        <Tile name="Wall2" x="180" y="620" />
+        <Tile name="Wall2" x="220" y="620" />
+        <Tile name="Wall2" x="260" y="620" />
+        <Tile name="Wall2" x="300" y="620" />
+        <Tile name="Wall2" x="340" y="620" />
+        <Tile name="Wall2" x="380" y="620" />
+        <Tile name="Wall2" x="420" y="620" />
+        <Tile name="Wall2" x="460" y="620" />
+        <Tile name="Wall2" x="500" y="620" />
+        <Tile name="Wall2" x="540" y="620" />
+        <Tile name="Wall2" x="540" y="580" />
+        <Tile name="Wall2" x="580" y="580" />
+        <Tile name="Wall2" x="620" y="580" />
+        <Tile name="Wall2" x="620" y="540" />
+        <Tile name="Wall2" x="620" y="500" />
+        <Tile name="Wall2" x="660" y="500" />
+        <Tile name="Wall2" x="660" y="460" />
+        <Tile name="Wall2" x="660" y="420" />
+        <Tile name="Wall2" x="700" y="420" />
+        <Tile name="Wall2" x="700" y="380" />
+        <Tile name="Wall2" x="700" y="340" />
+        <Tile name="Wall2" x="700" y="300" />
+        <Tile name="Wall2" x="700" y="260" />
+        <Tile name="Wall2" x="660" y="260" />
+        <Tile name="Wall2" x="660" y="220" />
+        <Tile name="Wall2" x="620" y="180" />
+        <Tile name="Wall2" x="580" y="180" />
+        <Tile name="Wall2" x="540" y="180" />
+        <Tile name="Wall2" x="500" y="140" />
+        <Tile name="Wall2" x="460" y="140" />
+        <Tile name="Wall2" x="420" y="140" />
+        <Tile name="Wall2" x="380" y="140" />
+        <Tile name="Wall2" x="340" y="140" />
+        <Tile name="Wall2" x="300" y="140" />
+        <Tile name="Wall2" x="260" y="140" />
+        <Tile name="Wall2" x="220" y="140" />
+        <Tile name="Wall2" x="220" y="100" />
+        <Tile name="Wall2" x="180" y="100" />
+        <Tile name="Wall2" x="140" y="100" />
+        <Tile name="Wall2" x="500" y="540" />
+        <Tile name="Grass" x="780" y="140" />
+        <Tile name="Grass" x="540" y="460" />
+        <Tile name="Grass" x="540" y="500" />
+        <Tile name="Grass" x="500" y="500" />
+        <Tile name="Grass" x="500" y="460" />
+        <Tile name="Grass" x="460" y="500" />
     </Tiles>
 </Level>

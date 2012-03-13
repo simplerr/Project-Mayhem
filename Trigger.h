@@ -60,13 +60,18 @@ struct localVariable;
 class Trigger
 {
 public:
-	Trigger(std::string action, Event eventType, Region* owner);
+	Trigger(std::string action, Event eventType);
 	Trigger();
 	~Trigger();
 
-	void doActions(Object* causingObject);
-	Event getEvent()	{return mEventType;}
+	void doActions(Object* causingObject, float dt);
+	Event getEvent()					{return mEventType;}
+	Region* getOwner()					{return mOwner;}
+	void setOwner(Region* r)			{mOwner = r;}
+	std::string getTriggerAsString()	{return mTrigger;}
+	void setTriggerString(std::string s);
 private:
+	std::string mTrigger;
 	Event mEventType;
 	std::map<std::string, std::string> mLocalVars;
 	std::vector<Action> mActions;

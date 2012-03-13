@@ -97,8 +97,12 @@ Editor::Editor()
 	mButtonContainer->setPadding(5, 5);
 	mWindowHandler->addWindow(mButtonContainer);
 
+<<<<<<< HEAD
 	mTileLabel1 = NULL;
 	mTileLabel2 = NULL;
+=======
+	mSelectedRegion = NULL;
+>>>>>>> 6cccf03c0ddee810585c2cf05315fe100a7150e4
 }
 
 Editor::~Editor()
@@ -135,11 +139,19 @@ void Editor::update(float dt)
 				mLevel->addObject(new Loot(mActiveObject.name, pos.x, pos.y));
 		}
 		else if(mActiveObject.type == REGION) {
-			mClickedPos = Vector(pos.x - mLevel->getOffset().x, pos.y - mLevel->getOffset().y);
-			//mClickedPos = Vector(pos.x - mLevel->getOffset().x, pos.y - mLevel->getOffset().y); //MINUS
-			mClickedPos = Vector(pos.x, pos.y);
-			gScrap->editingRegion=true;
-			gScrap->editorRect->setRect(mClickedPos.x, mClickedPos.x+1, mClickedPos.y, mClickedPos.y+1);
+			mSelectedRegion = dynamic_cast<Region*>(mLevel->getObjectAt(pos));
+			if(mSelectedRegion == NULL) 
+			{
+				mClickedPos = Vector(pos.x - mLevel->getOffset().x, pos.y - mLevel->getOffset().y);
+				//mClickedPos = Vector(pos.x - mLevel->getOffset().x, pos.y - mLevel->getOffset().y); //MINUS
+				mClickedPos = Vector(pos.x, pos.y);
+				gScrap->editingRegion=true;
+				gScrap->editorRect->setRect(mClickedPos.x, mClickedPos.x+1, mClickedPos.y, mClickedPos.y+1);
+			}
+			else 
+			{
+				SetWindowText(mhInputBox, mSelectedRegion->getTrigger()->getTriggerAsString().c_str());
+			}
 		}
 		else if(mActiveObject.type == PROP) {
 			auto data = gObjectHandler->getData(mActiveObject.name);
@@ -163,7 +175,7 @@ void Editor::update(float dt)
 			mLevel->removeObjectAt(pos.x, pos.y);
 		}
 	}
-	if(gInput->keyReleased(VK_LBUTTON) && mActiveObject.type == REGION)
+	if(gInput->keyReleased(VK_LBUTTON) && mActiveObject.type == REGION && (pos.x < 824) && gScrap->editingRegion)
 	{
 		float t;
 		if(gScrap->editorRect->bottom < gScrap->editorRect->top) {
@@ -176,11 +188,13 @@ void Editor::update(float dt)
 			gScrap->editorRect->right = gScrap->editorRect->left;
 			gScrap->editorRect->left = t;
 		}
-		mLevel->addObject(new Region(*gScrap->editorRect));
+		Region * r = new Region(*gScrap->editorRect);
+		r->initTrigger(r);
+		mLevel->addObject(r);
 		gScrap->editingRegion=false;
 	}
 
-	if(gInput->keyDown('W'))	
+	if(gInput->keyDown('W'))
 		mLevel->moveObjects(0, 5);
 	else if(gInput->keyDown('S'))	
 		mLevel->moveObjects(0, -5);
@@ -314,9 +328,10 @@ void Editor::handleEvents(UINT msg, WPARAM wParam, LPARAM lParam)
 		{
 			char buffer[256];
 			GetWindowText(mhInputBox, buffer, 256);
-			SetWindowText(mhInputBox, "");
 			string text = string(buffer);
-			MessageBox(0, text.c_str(), 0, 0);
+			mSelectedRegion->getTrigger()->setTriggerString(text);
+			SetWindowText(mhInputBox, mSelectedRegion->getTrigger()->getTriggerAsString().c_str());
+			//MessageBox(0, text.c_str(), 0, 0);
 			break;
 		}
 	}
@@ -325,7 +340,7 @@ void Editor::handleEvents(UINT msg, WPARAM wParam, LPARAM lParam)
 void Editor::createInputBox()
 {
 	mhInputBox = CreateWindow("EDIT", "", WS_VISIBLE | WS_CHILD | WS_OVERLAPPED | ES_MULTILINE | ES_AUTOVSCROLL,
-        835, 160, 125, 25, gGame->getMainWnd(), (HMENU)IDC_INPUT_BOX, gGame->getAppInst(), NULL);
+        825, 160, 180, 500, gGame->getMainWnd(), (HMENU)IDC_INPUT_BOX, gGame->getAppInst(), NULL);
 
 	// Set the default edit control proc
 	DefEditProc = (WNDPROC)SetWindowLong(mhInputBox, GWL_WNDPROC, (DWORD)inputProc);

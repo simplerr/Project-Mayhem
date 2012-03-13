@@ -52,7 +52,9 @@ public:
 	std::vector<Object*>* getObjectList()	{return &mObjectList;}
 	string getSource() {return mSource;}
 	bool isInEditor() {return mEditorMode;}
-	void setInEditor(bool b) { mEditorMode = b;}
+	void setInEditor(bool b)	{ mEditorMode = b;}
+	void changeState(bool b)	{ mChangeState = b;}
+	bool getChangeState()		{ return mChangeState; }
 
 private:
 	std::vector<Object*>	mObjectList;
@@ -63,6 +65,7 @@ private:
 	Vector					mCameraOffset;
 	string					mSource;
 	bool					mEditorMode;
+	bool					mChangeState;
 
 	int mWidth, mHeight;
 	int mTileWidth, mTileHeight;

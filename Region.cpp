@@ -7,19 +7,22 @@
 #include "Rect.h"
 
 Region::Region(float x, float y, int width, int height)
-	: Object(x+(width/2), y+(height/2), width, height, REGION), 
-	mTrigger("Win", PLAYER_IN_RECT, this)
+	: Object(x+(width/2), y+(height/2), width, height, REGION)
 {
 	setLayer(TOP);
 	setCollidable(false);
 }
 
 Region::Region(Rect r)
-	: Object(r.left+(r.getWidth()/2), (r.top+r.getHeight()/2), r.getWidth(), r.getHeight(), REGION), 
-	mTrigger("Win", PLAYER_IN_RECT, this)
+	: Object(r.left+(r.getWidth()/2), (r.top+r.getHeight()/2), r.getWidth(), r.getHeight(), REGION)
 {
 	setLayer(TOP);
 	setCollidable(false);
+}
+
+void Region::initTrigger(Region* owner) {
+	mTrigger = new Trigger("Win", PLAYER_IN_RECT);
+	mTrigger->setOwner(owner);
 }
 
 Region::~Region()
@@ -30,7 +33,7 @@ Region::~Region()
 void Region::draw() {
 	Rect rect = getRect();
 	if(getLevel()->isInEditor()) {
-		gGraphics->drawRect(getRect(), D3DCOLOR_ARGB(255, 20,150,200));
+		gGraphics->drawRect(getRect(), D3DCOLOR_ARGB(150, 20,150,150));
 	}
 }
 
@@ -41,7 +44,7 @@ void Region::update(float dt)
 	case PLAYER_IN_RECT:
 		if(gMath->pointInsideRect(getLevel()->getPlayer()->getPos(), getBoundingBox()))
 		{
-			getTrigger()->doActions(getLevel()->getPlayer());
+			getTrigger()->doActions(getLevel()->getPlayer(), dt);
 		}
 		break;
 	case ENEMY_IN_RECT:
@@ -51,7 +54,7 @@ void Region::update(float dt)
 				continue;
 			if(gMath->pointInsideRect(getLevel()->getObjectList()->at(i)->getPos(), getBoundingBox()))
 			{
-				getTrigger()->doActions(getLevel()->getObjectList()->at(i));
+				getTrigger()->doActions(getLevel()->getObjectList()->at(i), dt);
 			}
 		}
 		break;
@@ -87,7 +90,8 @@ void Region::update(float dt)
 	*/
 }
 
-void Region::setTrigger(Trigger trig)
+void Region::setTrigger(Trigger* trig)
 {
+	delete mTrigger;
 	mTrigger = trig;
 }

@@ -59,7 +59,9 @@ void PlayState::update(double dt)
 	else {
 		// Update all objects in the level
 		mLevel->update(dt);
-	
+		if(mLevel->getChangeState())
+			return;
+
 		if(mPlayer->getHealth() <= 0) {
 			string source = mLevel->getSource();
 			PlayState::Instance()->changeState(GameOver::Instance());

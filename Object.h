@@ -39,8 +39,10 @@ public:
 	float health;
 	float width, height;
 	string textureSource;
+	string name;
 	cPolygon polygon;
 	Layer drawLayer;
+	bool collides;
 	// :TODO: Fill with more...
 };
 
@@ -70,6 +72,7 @@ public:
 	void setType(ObjectType type)		{mType = type;}
 	void setOwnerId	(int id)			{mOwnerId = id;}
 	void setDetailedCollision(bool detailed) {mDetailedCollision = detailed;}
+	void setTexture(string source);
 
 	IDirect3DTexture9*	getTexture();
 	string				getTextureSource();

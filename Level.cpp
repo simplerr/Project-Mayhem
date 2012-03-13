@@ -97,7 +97,7 @@ void Level::update(float dt)
 			if(objectA->getType() == PROJECTILE && objectB->getType() == PROJECTILE)
 				continue;
 
-			if(!objectA->getColides() && !objectB->getColides())
+			if(!objectA->getColides() || !objectB->getColides())
 				continue;
 
 			if(objectA->getID() == objectB->getOwnerId() || objectB->getID() == objectA->getOwnerId())
@@ -328,6 +328,7 @@ void Level::saveToFile(string file)
 		object->SetAttribute("y", mObjectList[i]->getPos().y - mOffset.y);
 		object->SetAttribute("w", mObjectList[i]->getBoundingBox().getWidth());
 		object->SetAttribute("h", mObjectList[i]->getBoundingBox().getHeight());
+		object->SetAttribute("collidable", mObjectList[i]->getColides() ? 1 : 0);
 		
 		if(mObjectList[i]->getType() == ENEMY) {
 			Enemy* enemy = dynamic_cast<Enemy*>(mObjectList[i]);
@@ -385,11 +386,13 @@ void Level::loadFromFile(string file)
 		int y = atoi(object->Attribute("y"));
 		int w = atoi(object->Attribute("w"));
 		int h = atoi(object->Attribute("h"));
+		bool collides = atoi(object->Attribute("collidable")) == 1 ? true : false;
 		string texture = object->Attribute("texture");
 
 		// Switch type and add the according object to the level
 		if(type == ObjectType::STRUCTURE) {
 			Structure* structure = new Structure(x, y, 100, 100, texture);
+			structure->setCollidable(collides);
 			addObject(structure);
 		}
 		else if(type == ObjectType::ENEMY) {

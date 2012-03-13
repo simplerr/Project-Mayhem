@@ -63,6 +63,7 @@ void Object::rotate(float rotation)
 
 void Object::setRotation(float rad)
 {
+	resetRotation();
 	mRotation = rad;
 	mPolygon.rotate(rad);
 }
@@ -101,4 +102,9 @@ Rect Object::getBoundingBox()
 string Object::getTextureSource()
 {
 	return mTextureSource;
+}
+
+void Object::setTexture(string source)
+{
+	mTexture = gGraphics->loadTexture(source);
 }

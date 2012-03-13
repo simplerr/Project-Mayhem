@@ -33,9 +33,25 @@ Enemy::Enemy(float x, float y, EnemyData* type) : Object (x, y, type->width, typ
 	mHp = type->hp;//ptr
 	mSpeed = type->speed;
 	mWeaponRate = type->weaponRate;
+	mAnimation = new Animation(200, 200, .1f, 3, 3);
+	mAnimation->setFrame(0); 
 	setClass(type);
 	initAI(type->ai_data, Vector(x,y));
 	mLostSightTimer = 1;
+
+	srand(time(0));
+
+	string texture = "Data\\imgs\\enemy1.png";
+	int z = rand() % 2;
+	if(z == 1)
+		texture = "Data\\imgs\\enemy2.png";
+	/*if(x == 2)
+		texture = "Data\\imgs\\enemy3.png";
+	if(x == 3)
+		texture = "Data\\imgs\\enemy4.png";*/
+
+	setTexture(texture);
+
 }
 
 Enemy::~Enemy()
@@ -90,8 +106,9 @@ bool Enemy::handleCollision(Object* collider, MTV* mtv)
 			damage(dynamic_cast<Projectile*>(collider)->getDamage());
 		if(collider->getType() == ENEMY)
 			ai->flags.patrol = false;
-		if(collider->getType() == TILE)
-			ai->flags.patrol = false;
+		if(collider->getType() == STRUCTURE) {
+			ai->newTarget(false, getRotation());
+		}
 		if((collider->getType() == ENEMY || collider->getType() == STRUCTURE))
 			return true;
 	}
@@ -150,6 +167,8 @@ EnemyData* Enemies::getData(string searchFor)
 
 void Enemy::update(float dt) 
 {
+	//if(ai->flags.patrol || ai->flags.seen_enemy)
+	mAnimation->animate(dt);
 	mTime -= dt;
 	//Calculate AI
 	if(mTime < 0) {
@@ -163,7 +182,7 @@ void Enemy::update(float dt)
 
 void Enemy::draw()
 {
-	gGraphics->drawTexturedPolygon(getPolygon(), getTexture());
+	gGraphics->drawTexturedPolygon(getPolygon(), getTexture(), &mAnimation->getSourceRect());
 }
 
 void Enemy::doAI(float dt)
@@ -173,12 +192,15 @@ void Enemy::doAI(float dt)
 	switch (swiAI) 
 	{
 	case AI_MOVEATTACK:
+		mAnimation->resume();
 		v = gMath->calculateAngle(getPos(), ai->getObjectTarget());
+		setRotation(v);
 		if(gMath->distance(getPos(), ai->getObjectTarget())>ai->getRange()) 
 		{
 			move((cos(v)*getSpeed()*17*dt), (sin(v)*getSpeed()*17*dt));
 		}
 		else { //Attack
+			mAnimation->pause();
 			if(mAttackTimer < 0) {
 				getLevel()->addProjectile(this, getPos(), ai->getObjectTarget());
 				mAttackTimer = (float)(mWeaponRate/100);
@@ -188,7 +210,9 @@ void Enemy::doAI(float dt)
 		}
 		break;
 	case AI_RETURN:
+		mAnimation->resume();
 		v = gMath->calculateAngle(getPos(), ai->getPatrolPos());
+		setRotation(v);
 		if(gMath->distance(getPos(), ai->getPatrolPos())>10) 
 		{
 			move((cos(v)*getSpeed()*10*dt), (sin(v)*getSpeed()*10*dt));
@@ -196,14 +220,27 @@ void Enemy::doAI(float dt)
 		else
 			ai->flags.returnToOrigin = false;
 		break;
-	case AI_PATROL:
+	case AI_PATROL: {
+		mAnimation->resume();
 		v = gMath->calculateAngle(getPos(), ai->getActionTarget());
-		if(gMath->distance(getPos(), ai->getActionTarget())>10) 
-		{
-			move((cos(v)*getSpeed()*10*dt), (sin(v)*getSpeed()*10*dt));
+		setRotation(v);
+		/*float diff = v - getRotation();
+		if(abs(diff) > .1f)
+			setRotation(getRotation() + v/(float)30);
+		else*/ {
+			if(gMath->distance(getPos(), ai->getActionTarget())>10) 
+			{
+				move((cos(v)*getSpeed()*10*dt), (sin(v)*getSpeed()*10*dt));
+			}
+			else {
+				ai->flags.patrol = false;
+				mAnimation->pause();	
+			}
 		}
-		else
-			ai->flags.patrol = false;
+		break;
+					}
+	case AI_IDLE:
+		mAnimation->pause();
 		break;
 	default:
 		break;

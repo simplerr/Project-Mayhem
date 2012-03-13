@@ -55,7 +55,8 @@ public:
 
 	void setPatrolOrigin(Vector v) {ai_patrolOrigin = v;}
 	void setTarget(Object *target);
-	
+	void newTarget(bool random = true, float rotation = 0);
+
 	float getVisionRange()		{return visionRange;}
 	float getRange()			{return range;}
 	Vector getPatrolPos()		{return ai_patrolOrigin;}

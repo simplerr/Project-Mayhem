@@ -4,11 +4,13 @@
 #include "d3dUtil.h"
 #include "Object.h"
 #include "Collision.h"
+#include "Animation.h"
 #include "AI.h"
 #include <map>
 #include <string>
 
 using namespace std;
+class Animation;
 
 class EnemyData 
 {
@@ -82,6 +84,7 @@ public:
 	void initAI(AIdata data, Vector v);
 private:
 	EnemyData* mClass;
+	Animation* mAnimation;
 	AI* ai;
 	float mHp;
 	float mRange;

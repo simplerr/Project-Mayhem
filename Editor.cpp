@@ -24,6 +24,7 @@
 #include "EnergyPotion.h"
 #include "HealthPotion.h"
 #include "Gold.h"
+#include "ObjectHandler.h"
 
 #define IDC_INPUT_BOX 101
 #define IDC_ENTER_PRESSED 102
@@ -140,6 +141,12 @@ void Editor::update(float dt)
 			gScrap->editingRegion=true;
 			gScrap->editorRect->setRect(mClickedPos.x, mClickedPos.x+1, mClickedPos.y, mClickedPos.y+1);
 		}
+		else if(mActiveObject.type == PROP) {
+			auto data = gObjectHandler->getData(mActiveObject.name);
+			Structure* structure = new Structure(pos.x, pos.y, data.width, data.height, data.textureSource);
+			structure->setCollidable(data.collides);
+			mLevel->addObject(structure);
+		}
 	}
 	if(gScrap->editingRegion) {
 		float t;
@@ -242,6 +249,17 @@ bool Editor::messageHandler(wId id, wMessage msg)
 		}
 		else if(msg.getString() == "Props")
 		{
+			map<string, ObjectData> dataMap = gObjectHandler->getDataMap();
+			mActiveObject.name = (*dataMap.begin()).second.name;
+
+			for(auto iter = dataMap.begin(); iter != dataMap.end(); iter++)
+			{
+				wButton* button = new wButton(10, 10, 40, 40, iter->second.name, WID_TILE_BUTTON, iter->second.textureSource);
+				button->connect(&Editor::messageHandler, this);
+				mWindowHandler->addWindow(button);
+				mButtonContainer->arrangeObject(button);
+			}
+
 			mActiveObject.type = PROP;
 		}
 		else if(msg.getString() == "Enemies")	{

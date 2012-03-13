@@ -47,11 +47,7 @@ AI_action AI::getAction() {
 		else
 		{
 			if(gMath->random(0,1000) < 5) {
-				float v = gMath->random(0, 2*PI*360)/360;
-				ai_actionTarget = Vector(cos(v), sin(v));
-				ai_actionTarget.multiply(patrolSize);
-				ai_actionTarget.add(ai_patrolOrigin);
-				flags.patrol = true;
+				newTarget();
 			}
 			if(flags.patrol == true) 
 			{
@@ -61,4 +57,19 @@ AI_action AI::getAction() {
 		return AI_IDLE;
 		}
 	}
+}
+
+void AI::newTarget(bool random, float rotation)
+{
+	facing = rotation;
+	float v;
+	if(random)
+		v = gMath->random(0, 2*PI*360)/360;
+	else
+		v = rotation - PI;
+	
+	ai_actionTarget = Vector(cos(v), sin(v));
+	ai_actionTarget.multiply(patrolSize);
+	ai_actionTarget.add(ai_patrolOrigin);
+	flags.patrol = true;
 }

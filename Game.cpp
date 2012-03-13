@@ -15,6 +15,7 @@
 #include "AudioHandler.h"
 #include <stdlib.h>
 #include <crtdbg.h>
+#include "ObjectHandler.h"
 
 Graphics*			gGraphics		= NULL;
 GameState*			gGameState		= NULL;
@@ -25,6 +26,7 @@ AudioHandler*		gAudio			= NULL;
 Math*				gMath			= NULL;
 Enemies*			gEnemies		= NULL;
 ItemHandler*		gItemHandler	= NULL;
+ObjectHandler*		gObjectHandler	= NULL;
 Scrap*				gScrap			= NULL;
 
 bool operator==(const Item& a, const Item& b)
@@ -65,6 +67,7 @@ Game::Game(HINSTANCE hInstance, std::string caption, int width, int height, D3DD
 	
 	gEnemies = new Enemies();
 	gItemHandler = new ItemHandler();
+	gObjectHandler = new ObjectHandler();
 	
 	mGameState = NULL;
 	gAudio = new AudioHandler();

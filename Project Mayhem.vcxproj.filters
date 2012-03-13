@@ -285,6 +285,9 @@
     <ClCompile Include="Knife.cpp">
       <Filter>Source Files\Game objects\Weapons</Filter>
     </ClCompile>
+    <ClCompile Include="ObjectHandler.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="d3dUtil.h">
@@ -500,6 +503,9 @@
     <ClInclude Include="Knife.h">
       <Filter>Header Files\Game objects\Weapons</Filter>
     </ClInclude>
+    <ClInclude Include="ObjectHandler.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="font_effect.fx">
@@ -518,6 +524,9 @@
       <Filter>Resource Files</Filter>
     </None>
     <None Include="Data\items.xml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Data\objects.xml">
       <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>

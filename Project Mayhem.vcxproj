@@ -44,8 +44,8 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>F:\Users\Axel\Desktop\irrKlang-1.3.0\include;F:\Users\Axel\Desktop\boost_1_46_1;C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include;$(VCInstallDir)include;$(VCInstallDir)atlmfc\include;$(WindowsSdkDir)include;$(FrameworkSDKDir)\include</IncludePath>
-    <LibraryPath>F:\Users\Axel\Desktop\irrKlang-1.3.0\lib\Win32-visualStudio;C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Lib\x86;$(VCInstallDir)lib;$(VCInstallDir)atlmfc\lib;$(WindowsSdkDir)lib;$(FrameworkSDKDir)\lib</LibraryPath>
+    <IncludePath>C:\Users\Helena\Desktop\irrKlang-1.3.0\include;C:\Users\Helena\Desktop\boost_1_46_1;C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include;$(VCInstallDir)include;$(VCInstallDir)atlmfc\include;$(WindowsSdkDir)include;$(FrameworkSDKDir)\include</IncludePath>
+    <LibraryPath>C:\Users\Helena\Desktop\irrKlang-1.3.0\lib\Win32-visualStudio;C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Lib\x86;$(VCInstallDir)lib;$(VCInstallDir)atlmfc\lib;$(WindowsSdkDir)lib;$(FrameworkSDKDir)\lib</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -118,6 +118,7 @@
     <ClInclude Include="MenuState.h" />
     <ClInclude Include="Mine.h" />
     <ClInclude Include="Object.h" />
+    <ClInclude Include="ObjectHandler.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="PlayState.h" />
     <ClInclude Include="cPolygon.h" />
@@ -188,6 +189,7 @@
     <ClCompile Include="MenuState.cpp" />
     <ClCompile Include="Mine.cpp" />
     <ClCompile Include="Object.cpp" />
+    <ClCompile Include="ObjectHandler.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="PlayState.cpp" />
     <ClCompile Include="cPolygon.cpp" />
@@ -230,6 +232,7 @@
     <None Include="Data\levels\custom.xml">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Data\objects.xml" />
     <None Include="enemies.xml" />
     <None Include="font_effect.fx" />
     <None Include="tiles.xml" />

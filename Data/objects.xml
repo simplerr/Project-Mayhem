@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Objects>
+  <Object name="Tunna" collides="1" texture="Data/imgs/tunna.png" width="100" height="100"></Object>
+  <Object name="Väska1" collides="1" texture="Data/imgs/bag1.png" width="100" height="50"></Object>
+  <Object name="Skelett" collides="0" texture="Data/imgs/skelett.png" width="100" height="100"></Object>
+  <Object name="Väska2" collides="1" texture="Data/imgs/bag2.png" width="100" height="100"></Object>
+</Objects>

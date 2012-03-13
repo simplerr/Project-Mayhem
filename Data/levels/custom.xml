@@ -69,7 +69,6 @@
         <Tile name="Grass" x="260" y="260" />
         <Tile name="Grass" x="300" y="260" />
         <Tile name="Grass" x="340" y="260" />
-        <Tile name="Grass" x="380" y="260" />
         <Tile name="Grass" x="420" y="260" />
         <Tile name="Grass" x="460" y="260" />
         <Tile name="Grass" x="500" y="260" />
@@ -238,8 +237,9 @@
         <Tile name="Grass" x="780" y="100" />
         <Tile name="Grass" x="580" y="260" />
         <Tile name="Grass" x="780" y="60" />
-        <Tile name="Grass" x="500" y="460" />
         <Tile name="Grass" x="580" y="380" />
         <Tile name="Grass" x="540" y="340" />
+        <Tile name="Grass" x="500" y="460" />
+        <Tile name="Grass" x="380" y="260" />
     </Tiles>
 </Level>

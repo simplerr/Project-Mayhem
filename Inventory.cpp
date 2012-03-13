@@ -62,15 +62,41 @@ void Inventory::update(float dt)
 				// Pressed, not moving an item, item in the slot
 				if(gMath->pointInsideRect(gInput->mousePosition(), mSlotList[i].rect) && getMovingItem() == NULL && mSlotList[i].taken)
 				{
-					// TODO: Remove hacks!
+					// NOTE: Hack code.. hope it doesn't break!
 					if(mSlotList[i].slotId == mSlotList[i].item->getSlotId()) {
 						Item* item = (Item*)mSlotList[i].item;
 						addItem(item->getData().name);
 						mSlotList[i].item = NULL;
 						mSlotList[i].taken = false;
 					}
-					else
-						swapItems(&mSlotList[i], & mSlotList[mSlotList[i].item->getSlotId()]);
+					else {
+						int id = -1;
+						bool taken = false;
+						for(int j = 0; j < mSlotList.size(); j++) 
+							if(mSlotList[j].slotId == mSlotList[i].item->getSlotId()) {
+								id = j;
+								if(mSlotList[j].taken)
+									taken = true;
+								break;
+							}
+
+						if(taken) {
+							// The equip slot was taken
+							itemMoved(mSlotList[id].item, mSlotList[id].slotId, mSlotList[i].slotId);
+							itemMoved(mSlotList[i].item, mSlotList[i].slotId, mSlotList[id].slotId);
+							SlotItem* tmp = mSlotList[i].item;
+							mSlotList[i].item = mSlotList[id].item;
+							mSlotList[id].item = tmp;
+							
+						}
+						else {
+							// The equip slot was not taken
+							itemMoved(mSlotList[i].item, mSlotList[i].slotId, mSlotList[id].slotId);
+							mSlotList[id].item = mSlotList[i].item;
+							mSlotList[id].taken = true;
+							mSlotList[i].taken = false;
+						}
+					}
 					break;
 				}
 			}

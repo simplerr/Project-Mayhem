@@ -25,9 +25,13 @@ void Loot::draw()
 	Object::draw();
 }
 
+//! 0 for infinity
 void Loot::setLifetime(float lifetime)
 {
-	mCounter = lifetime;
+	if(lifetime == 0)
+		mCounter = 99999999;
+	else
+		mCounter = lifetime;
 }
 
 string Loot::getName()

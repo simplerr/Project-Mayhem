@@ -18,6 +18,8 @@
 #include "Collision.h"
 #include "Region.h"
 #include "Gold.h"
+#include "EnergyPotion.h"
+#include "HealthPotion.h"
 
 Level::Level()
 {
@@ -316,7 +318,9 @@ void Level::saveToFile(string file)
 		string name = "Object";
 		if(mObjectList[i]->getType() == ENEMY)
 			name = "Enemy";
-
+		else if(mObjectList[i]->getType() == LOOT) 
+			name = "Loot";
+		
 		// Set attributes
 		object = new TiXmlElement(name.c_str());
 		object->SetAttribute("type", mObjectList[i]->getType());
@@ -328,6 +332,11 @@ void Level::saveToFile(string file)
 		if(mObjectList[i]->getType() == ENEMY) {
 			Enemy* enemy = dynamic_cast<Enemy*>(mObjectList[i]);
 			object->SetAttribute("class", enemy->getClass()->name.c_str());
+		}
+
+		if(mObjectList[i]->getType() == LOOT) {
+			Loot* loot = dynamic_cast<Loot*>(mObjectList[i]);
+			object->SetAttribute("name", loot->getName().c_str());
 		}
 
 		object->SetAttribute("texture", mObjectList[i]->getTextureSource().c_str());
@@ -390,6 +399,29 @@ void Level::loadFromFile(string file)
 		else if(type == ObjectType::REGION) {
 			Region* region = new Region(Rect(x,y,w,h,0));
 			addObject(region);
+		}
+		else if(type == ObjectType::LOOT) {
+			string name = object->Attribute("name");
+			if(name == "Health Potion") {
+				HealthPotion* hp = new HealthPotion(x, y);
+				hp->setLifetime(0);
+				addObject(hp);
+			}
+			else if(name == "Energy Potion") {
+				EnergyPotion* ep = new EnergyPotion(x, y);
+				ep->setLifetime(0);
+				addObject(ep);
+			}
+			else if(name == "Gold") {
+				Gold* gold = new Gold(x, y);
+				gold->setLifetime(0);
+				addObject(gold);
+			}
+			else { 
+				Loot* loot = new Loot(name, x, y);
+				loot->setLifetime(0);
+				addObject(loot);
+			}
 		}
 		// TODO: Add for different objects as well
 	}

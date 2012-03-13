@@ -20,7 +20,7 @@
 #include "StatusText.h"
 #include "HealthPotion.h"
 #include "EnergyPotion.h"
-
+	
 Player::Player(float x, float y) : Object (x, y, 40, 40, PLAYER,  "Data\\imgs\\spelaren2.png") //change width/heigth/pic
 {
 	setCooldown(.1f);

@@ -21,6 +21,9 @@
 #include "Graphics.h"
 #include "wLabel.h"
 #include "Game.h"
+#include "EnergyPotion.h"
+#include "HealthPotion.h"
+#include "Gold.h"
 
 #define IDC_INPUT_BOX 101
 #define IDC_ENTER_PRESSED 102
@@ -117,7 +120,14 @@ void Editor::update(float dt)
 			mLevel->addTile(pos.x - mLevel->getOffset().x, pos.y - mLevel->getOffset().y, mActiveObject.name);
 		}
 		else if(mActiveObject.type == LOOT) {
-			mLevel->addObject(new Loot(mActiveObject.name, pos.x, pos.y));
+			if(mActiveObject.name == "Health Potion")
+				mLevel->addObject(new HealthPotion(pos.x, pos.y));
+			else if(mActiveObject.name == "Energy Potion")
+				mLevel->addObject(new EnergyPotion(pos.x, pos.y));
+			else if(mActiveObject.name == "Gold")
+				mLevel->addObject(new Gold(pos.x, pos.y));
+			else
+				mLevel->addObject(new Loot(mActiveObject.name, pos.x, pos.y));
 		}
 		else if(mActiveObject.type == REGION) {
 			mClickedPos = Vector(pos.x - mLevel->getOffset().x, pos.y - mLevel->getOffset().y);

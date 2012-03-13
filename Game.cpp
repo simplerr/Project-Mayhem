@@ -124,8 +124,8 @@ void Game::draw()
 //! The starting msgProc function.
 LRESULT Game::msgProc(UINT msg, WPARAM wParam, LPARAM lParam)
 {
+	mGameState->handleEvents(msg, wParam, lParam);
 	LRESULT result = gInput->msgProc(msg, wParam, lParam);
 	result = Runnable::msgProc(msg, wParam, lParam);
-
 	return result;
 }

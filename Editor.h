@@ -1,6 +1,7 @@
 #ifndef EDITOR_H
 #define EDITOR_H
 
+#include <Windows.h>
 #include <string>
 #include "WindowHandler.h"
 #include "enums.h"
@@ -42,7 +43,10 @@ public:
 	void draw();
 
 	bool messageHandler(wId id, wMessage msg);
+	void handleEvents(UINT msg, WPARAM wParam, LPARAM lParam);
 
+private:
+	void			createInputBox();
 private:
 	Level			*mLevel;
 	ActiveObject	mActiveObject;
@@ -53,6 +57,7 @@ private:
 	wContainer*		mButtonContainer;
 	wLabel*			mTileLabel1;
 	wLabel*			mTileLabel2;
+	HWND			mhInputBox;
 
 	Vector			mClickedPos;
 };

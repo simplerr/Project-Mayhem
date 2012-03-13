@@ -20,6 +20,40 @@
 #include "Math.h"
 #include "Graphics.h"
 #include "wLabel.h"
+#include "Game.h"
+
+#define IDC_INPUT_BOX 101
+#define IDC_ENTER_PRESSED 102
+
+// The default edit control procedure.
+WNDPROC DefEditProc;
+
+//! Subclassed msg proc for the input box.
+LRESULT inputProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
+{
+	LRESULT result;
+	bool enter = false;
+    switch (uMsg)
+    {
+	case WM_CHAR:
+		// Enter was pressed.
+		if(wParam == VK_RETURN)
+			enter = true;
+	default:
+		// Handles all default actions.
+		result =  CallWindowProc(DefEditProc, hwnd, uMsg, wParam, lParam);
+    }
+
+	// Has to be here since case WM_CHAR is before the default procedure. 
+	// Otherwise the caret positions gets set but then changed when the ENTER msg is proccessed.
+	if(enter)
+	{
+		// Send the message so Chat can catch it.
+		SendMessage(gGame->getMainWnd(), IDC_ENTER_PRESSED, 0, 0);
+	}
+
+	return result;
+}
 
 Editor::Editor(std::string levelName)
 {
@@ -148,6 +182,9 @@ bool Editor::messageHandler(wId id, wMessage msg)
 {
 	if(id == WID_OBJECTTYPE)
 	{
+		DestroyWindow(mhInputBox);
+		mWindowHandler->removeWindow(mTileLabel1);
+		mWindowHandler->removeWindow(mTileLabel2);
 		mButtonContainer->clearChildren(mWindowHandler);
 		if(msg.getString()  == "Tiles")	
 		{
@@ -224,6 +261,7 @@ bool Editor::messageHandler(wId id, wMessage msg)
 			mActiveObject.type = SFX;
 		}
 		else if(msg.getString() == "Regions")	{
+			createInputBox();
 			mActiveObject.type = REGION;
 		}
 	}
@@ -233,4 +271,30 @@ bool Editor::messageHandler(wId id, wMessage msg)
 	}
 
 	return true;
+}
+
+void Editor::handleEvents(UINT msg, WPARAM wParam, LPARAM lParam)
+{
+	switch(msg)
+	{
+		// Enter pressed
+		case IDC_ENTER_PRESSED:
+		{
+			char buffer[256];
+			GetWindowText(mhInputBox, buffer, 256);
+			SetWindowText(mhInputBox, "");
+			string text = string(buffer);
+			MessageBox(0, text.c_str(), 0, 0);
+			break;
+		}
+	}
+}
+
+void Editor::createInputBox()
+{
+	mhInputBox = CreateWindow("EDIT", "", WS_VISIBLE | WS_CHILD | WS_OVERLAPPED | ES_MULTILINE | ES_AUTOVSCROLL,
+        835, 160, 125, 25, gGame->getMainWnd(), (HMENU)IDC_INPUT_BOX, gGame->getAppInst(), NULL);
+
+	// Set the default edit control proc
+	DefEditProc = (WNDPROC)SetWindowLong(mhInputBox, GWL_WNDPROC, (DWORD)inputProc);
 }

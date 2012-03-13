@@ -60,4 +60,5 @@ void EditorState::handleEvents(UINT msg, WPARAM wParam, LPARAM lParam)
 {
 	// For windows messages
 	// Pass to what needs it
+	mEditor->handleEvents(msg, wParam, lParam);
 }

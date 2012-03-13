@@ -24,6 +24,8 @@ public:
 	void setCounter(float count);
 	void setProjectileData(ProjectileData projectileData);
 	void setTexture(string source);
+	void setVisible(bool visible);
+	bool isVisible();
 	ProjectileData getProjectileData();
 private:
 	IDirect3DTexture9* mTexture;
@@ -31,6 +33,7 @@ private:
 	Vector mOffset;
 	Player* mPlayer;
 	Level* mLevel;
+	bool mVisible;
 	float mCooldown;
 	float mCounter;
 };

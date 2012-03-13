@@ -2,50 +2,10 @@
 <Level>
     <Size width="2000" height="1500" />
     <Objects>
-        <Enemy type="3" x="426" y="267" w="32" h="32" class="spider" texture="Data\\imgs\\spider.png" />
-        <Enemy type="3" x="387" y="327" w="32" h="32" class="spider" texture="Data\\imgs\\spider.png" />
-        <Enemy type="3" x="359" y="386" w="32" h="32" class="spider" texture="Data\\imgs\\spider.png" />
-        <Loot type="2" x="313" y="281" w="32" h="32" name="Energy Potion" texture="Data/imgs/energy_potion.png" />
-        <Loot type="2" x="589" y="304" w="32" h="32" name="Golden Helmet" texture="Data/imgs/helm1.png" />
-        <Loot type="2" x="553" y="256" w="32" h="32" name="Golden Legs" texture="Data/imgs/boots1.png" />
-        <Loot type="2" x="276" y="493" w="32" h="32" name="Gold" texture="Data\\imgs\\gold_coin.png" />
-        <Loot type="2" x="347" y="513" w="32" h="32" name="Gold" texture="Data\\imgs\\gold_coin.png" />
-        <Loot type="2" x="393" y="512" w="32" h="32" name="Gold" texture="Data\\imgs\\gold_coin.png" />
-        <Loot type="2" x="443" y="506" w="32" h="32" name="Gold" texture="Data\\imgs\\gold_coin.png" />
-        <Loot type="2" x="256" y="376" w="32" h="32" name="Golden Sword" texture="Data/imgs/weapon1.png" />
-        <Loot type="2" x="624" y="464" w="32" h="32" name="Health Potion" texture="Data/imgs/hp_potion.png" />
-        <Loot type="2" x="430" y="337" w="32" h="32" name="Golden Axe" texture="Data/imgs/golden_axe.png" />
-        <Loot type="2" x="492" y="397" w="32" h="32" name="Golden Chest" texture="Data/imgs/chest1.png" />
-        <Loot type="2" x="230" y="267" w="32" h="32" name="Energy Potion" texture="Data/imgs/energy_potion.png" />
-        <Loot type="2" x="266" y="327" w="32" h="32" name="Gold" texture="Data\\imgs\\gold_coin.png" />
-        <Loot type="2" x="411" y="432" w="32" h="32" name="Gold" texture="Data\\imgs\\gold_coin.png" />
-        <Loot type="2" x="389" y="455" w="32" h="32" name="Gold" texture="Data\\imgs\\gold_coin.png" />
-        <Loot type="2" x="352" y="447" w="32" h="32" name="Gold" texture="Data\\imgs\\gold_coin.png" />
-        <Loot type="2" x="433" y="403" w="32" h="32" name="Gold" texture="Data\\imgs\\gold_coin.png" />
-        <Loot type="2" x="526" y="494" w="32" h="32" name="Gold" texture="Data\\imgs\\gold_coin.png" />
-        <Loot type="2" x="517" y="501" w="32" h="32" name="Gold" texture="Data\\imgs\\gold_coin.png" />
-        <Loot type="2" x="518" y="445" w="32" h="32" name="Gold" texture="Data\\imgs\\gold_coin.png" />
-        <Loot type="2" x="529" y="426" w="32" h="32" name="Gold" texture="Data\\imgs\\gold_coin.png" />
-        <Loot type="2" x="575" y="436" w="32" h="32" name="Gold" texture="Data\\imgs\\gold_coin.png" />
-        <Loot type="2" x="398" y="371" w="32" h="32" name="Gold" texture="Data\\imgs\\gold_coin.png" />
-        <Loot type="2" x="407" y="387" w="32" h="32" name="Gold" texture="Data\\imgs\\gold_coin.png" />
-        <Loot type="2" x="487" y="344" w="32" h="32" name="Gold" texture="Data\\imgs\\gold_coin.png" />
-        <Loot type="2" x="494" y="335" w="32" h="32" name="Gold" texture="Data\\imgs\\gold_coin.png" />
-        <Loot type="2" x="519" y="332" w="32" h="32" name="Gold" texture="Data\\imgs\\gold_coin.png" />
-        <Loot type="2" x="539" y="334" w="32" h="32" name="Gold" texture="Data\\imgs\\gold_coin.png" />
-        <Loot type="2" x="571" y="328" w="32" h="32" name="Gold" texture="Data\\imgs\\gold_coin.png" />
-        <Loot type="2" x="572" y="348" w="32" h="32" name="Gold" texture="Data\\imgs\\gold_coin.png" />
-        <Loot type="2" x="585" y="366" w="32" h="32" name="Gold" texture="Data\\imgs\\gold_coin.png" />
-        <Loot type="2" x="592" y="384" w="32" h="32" name="Gold" texture="Data\\imgs\\gold_coin.png" />
-        <Loot type="2" x="605" y="381" w="32" h="32" name="Gold" texture="Data\\imgs\\gold_coin.png" />
-        <Loot type="2" x="430" y="173" w="32" h="32" name="Golden Helmet" texture="Data/imgs/helm1.png" />
-        <Loot type="2" x="327" y="463" w="32" h="32" name="Golden Helmet" texture="Data/imgs/helm1.png" />
-        <Loot type="2" x="361" y="533" w="32" h="32" name="Health Potion" texture="Data/imgs/hp_potion.png" />
-        <Loot type="2" x="372" y="533" w="32" h="32" name="Health Potion" texture="Data/imgs/hp_potion.png" />
-        <Loot type="2" x="415" y="533" w="32" h="32" name="Health Potion" texture="Data/imgs/hp_potion.png" />
-        <Loot type="2" x="453" y="535" w="32" h="32" name="Health Potion" texture="Data/imgs/hp_potion.png" />
-        <Loot type="2" x="506" y="536" w="32" h="32" name="Health Potion" texture="Data/imgs/hp_potion.png" />
-        <Loot type="2" x="550" y="536" w="32" h="32" name="Health Potion" texture="Data/imgs/hp_potion.png" />
+        <Object type="9" x="10" y="10" w="10" h="10" texture="Data\imgs\standard_box.bmp" />
+        <Enemy type="3" x="264" y="331" w="32" h="32" class="spider" texture="Data\\imgs\\spider.png" />
+        <Enemy type="3" x="261" y="410" w="32" h="32" class="spider" texture="Data\\imgs\\spider.png" />
+        <Enemy type="3" x="260" y="447" w="32" h="32" class="spider" texture="Data\\imgs\\spider.png" />
     </Objects>
     <Tiles>
         <Tile name="Grass" x="420" y="420" />
@@ -114,7 +74,6 @@
         <Tile name="Grass" x="460" y="260" />
         <Tile name="Grass" x="500" y="260" />
         <Tile name="Grass" x="540" y="260" />
-        <Tile name="Grass" x="580" y="260" />
         <Tile name="Grass" x="620" y="260" />
         <Tile name="Grass" x="540" y="300" />
         <Tile name="Grass" x="180" y="300" />
@@ -264,9 +223,7 @@
         <Tile name="Grass" x="340" y="540" />
         <Tile name="Grass" x="180" y="540" />
         <Tile name="Bkgd" x="500" y="300" />
-        <Tile name="Bkgd" x="540" y="340" />
         <Tile name="Bkgd" x="580" y="340" />
-        <Tile name="Bkgd" x="580" y="380" />
         <Tile name="Bkgd" x="580" y="420" />
         <Tile name="Bkgd" x="540" y="420" />
         <Tile name="Grass" x="540" y="460" />
@@ -275,10 +232,14 @@
         <Tile name="Grass" x="460" y="460" />
         <Tile name="Grass" x="660" y="300" />
         <Tile name="Grass" x="580" y="300" />
-        <Tile name="Grass" x="500" y="460" />
         <Tile name="Grass" x="740" y="260" />
         <Tile name="Grass" x="780" y="300" />
         <Tile name="Grass" x="500" y="500" />
         <Tile name="Grass" x="780" y="100" />
+        <Tile name="Grass" x="580" y="260" />
+        <Tile name="Grass" x="780" y="60" />
+        <Tile name="Grass" x="500" y="460" />
+        <Tile name="Grass" x="580" y="380" />
+        <Tile name="Grass" x="540" y="340" />
     </Tiles>
 </Level>

@@ -20,6 +20,7 @@ public:
 
 	void update(float dt);
 	void draw();
+	void init();
 
 	void handleInput();
 	void attack(/*KEY/WPN used*/);

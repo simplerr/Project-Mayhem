@@ -13,6 +13,8 @@ struct ProjectileData
 	int width;
 	int height;
 	int range;
+	float lifetime;
+	bool followPlayer;
 	ProjectileData() {
 		spread = 10;
 		damage = 1;
@@ -21,6 +23,8 @@ struct ProjectileData
 		height = 7;
 		range = 250;
 		texturePath = "Data\\imgs\\standard_box.bmp";
+		lifetime = 9999999;
+		followPlayer = false;
 	}
 };
 
@@ -39,12 +43,20 @@ public:
 	void setDamage(float dmg)			{mDmg = dmg;}
 	float getDamage()					{return mDmg;}
 	void setMaxDistance(float distance)	{mMaxDistance = distance;}
+	void setLifetime(float lifetime);
+	void setFollowingPlayer(bool following);
+	void setOwner(Object* object);
+	void setOffset(Vector offset) {mOffset = offset;}
 
 private:
+	Object* mOwner;
+	Vector mOffset;
 	float mDmg;
 	float mVelocity;
 	float mMaxDistance;
 	float mTravelled;
+	float mLifetime;
+	bool mFollowingPlayer;
 };
 
 #endif

@@ -157,18 +157,32 @@ void Inventory::draw()
 	}
 }
 
-void Inventory::addItem(string itemName)
+void Inventory::addItem(string itemName, SlotId slotId)
 {
 	Item* item = new Item(itemName);
 	item->setId(mIdCounter);
 	item->setData(gItemHandler->getData(itemName));
 
-	// Find first free slot
-	for(int i = 0; i < mSlotList.size(); i++) {
-		if(!mSlotList[i].taken && mSlotList[i].slotId == BAG) {
-			mSlotList[i].item = item;
-			mSlotList[i].taken = true;
-			break;
+	if(slotId == BAG) 
+	{
+		// Find first free slot
+		for(int i = 0; i < mSlotList.size(); i++) {
+			if(!mSlotList[i].taken && mSlotList[i].slotId == BAG) {
+				mSlotList[i].item = item;
+				mSlotList[i].taken = true;
+				break;
+			}
+		}
+	}
+	else
+	{
+		for(int i = 0; i < mSlotList.size(); i++) {
+			if(!mSlotList[i].taken && mSlotList[i].slotId == slotId) {
+				mSlotList[i].item = item;
+				mSlotList[i].taken = true;
+				mPlayer->itemEquipped(item, true);
+				break;
+			}
 		}
 	}
 }

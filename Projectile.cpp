@@ -8,6 +8,8 @@ Projectile::Projectile(float x, float y, int width, int height, float velocity, 
 {
 	setLayer(MIDDLE);
 	setVelocity(velocity);
+	setLifetime(99999);
+	setFollowingPlayer(false);
 	mTravelled = 0.0f;
 	mMaxDistance = 250;
 }
@@ -19,6 +21,11 @@ Projectile::~Projectile()
 
 void Projectile::update(float dt)
 {
+	if(mFollowingPlayer)
+		setPos(mOwner->getPos() + mOffset);
+
+	mLifetime -= dt;
+
 	float dx = getVelocity() * cosf(getRotation());
 	float dy = getVelocity() * sinf(getRotation());
 	
@@ -26,7 +33,7 @@ void Projectile::update(float dt)
 
 	move(dx, dy);
 
-	if(mTravelled >= mMaxDistance)
+	if(mTravelled >= mMaxDistance || mLifetime <= 0)
 		setAlive(false);
 }
 
@@ -50,4 +57,19 @@ bool Projectile::handleCollision(Object* collider, MTV* mtv)
 		
 	}
 	return false;
+}
+
+void Projectile::setLifetime(float lifetime)
+{
+	mLifetime = lifetime;
+}
+
+void Projectile::setOwner(Object* object)
+{
+	mOwner = object;
+}
+
+void Projectile::setFollowingPlayer(bool following)
+{
+	mFollowingPlayer = following;
 }

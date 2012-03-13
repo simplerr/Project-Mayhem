@@ -515,6 +515,10 @@ void Level::addProjectile(Object* shooter, Vector pos, Vector target, Projectile
 	data.drawLayer = MIDDLE;
 	data.textureSource = pData.texturePath;
 	Projectile* object = new Projectile(pos.x, pos.y, data.width, data.height, pData.speed, data.textureSource);
+	object->setOffset(object->getPos() - shooter->getPos());
+	object->setOwner(mPlayer);
+	object->setFollowingPlayer(pData.followPlayer);
+	object->setLifetime(pData.lifetime);
 	object->setLayer(data.drawLayer);
 	object->setOwnerId(shooter->getID());
 	object->setType(PROJECTILE);

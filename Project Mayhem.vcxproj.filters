@@ -282,6 +282,9 @@
     <ClCompile Include="wLabel.cpp">
       <Filter>Source Files\Windows</Filter>
     </ClCompile>
+    <ClCompile Include="Knife.cpp">
+      <Filter>Source Files\Game objects\Weapons</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="d3dUtil.h">
@@ -493,6 +496,9 @@
     </ClInclude>
     <ClInclude Include="wLabel.h">
       <Filter>Header Files\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="Knife.h">
+      <Filter>Header Files\Game objects\Weapons</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

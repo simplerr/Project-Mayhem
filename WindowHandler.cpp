@@ -46,7 +46,10 @@ void WindowHandler::removeWindow(int id)
 	
 void WindowHandler::removeWindow(wComponent* window)
 {
-	// :TODO:
+	if(window != NULL)
+		removeWindow(window->getId());
+
+	window = NULL;
 }
 
 void WindowHandler::update(float dt)

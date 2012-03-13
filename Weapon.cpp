@@ -13,6 +13,7 @@ Weapon::Weapon(Player* player, Level* level)
 	mOffset = Vector(30, 16);
 	setCooldown(0.55f);
 	setProjectileData(gScrap->basicProjectile);
+	setVisible(true);
 } 
 	
 Weapon::~Weapon()
@@ -27,8 +28,10 @@ void Weapon::update(float dt)
 
 void Weapon::draw(Vector playerPos, float rotation)
 {
-	gGraphics->drawTexture(mTexture, playerPos.x + cosf(rotation)*mOffset.x - sinf(rotation)*mOffset.y, 
-		playerPos.y + sinf(rotation)*mOffset.x + cosf(rotation)*mOffset.y, 40, 10, rotation);
+	if(isVisible()) {
+		gGraphics->drawTexture(mTexture, playerPos.x + cosf(rotation)*mOffset.x - sinf(rotation)*mOffset.y, 
+			playerPos.y + sinf(rotation)*mOffset.x + cosf(rotation)*mOffset.y, 40, 10, rotation);
+	}
 }
 
 void Weapon::fire(Vector playerPos, float rotation)
@@ -90,4 +93,14 @@ ProjectileData Weapon::getProjectileData()
 void Weapon::setTexture(string source)
 {
 	mTexture = gGraphics->loadTexture(source);
+}
+
+void Weapon::setVisible(bool visible)
+{
+	mVisible = visible;
+}
+	
+bool Weapon::isVisible()
+{
+	return mVisible;
 }

@@ -110,6 +110,7 @@
     <ClInclude Include="Inventory.h" />
     <ClInclude Include="Item.h" />
     <ClInclude Include="ItemHandler.h" />
+    <ClInclude Include="Knife.h" />
     <ClInclude Include="Level.h" />
     <ClInclude Include="Loot.h" />
     <ClInclude Include="Math.h" />
@@ -179,6 +180,7 @@
     <ClCompile Include="Inventory.cpp" />
     <ClCompile Include="Item.cpp" />
     <ClCompile Include="ItemHandler.cpp" />
+    <ClCompile Include="Knife.cpp" />
     <ClCompile Include="Level.cpp" />
     <ClCompile Include="Loot.cpp" />
     <ClCompile Include="Math.cpp" />

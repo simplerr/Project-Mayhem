@@ -31,7 +31,7 @@ public:
 	void update(float dt);
 	void draw();
 	void itemMoved(SlotItem* item, SlotId from, SlotId to);
-	void addItem(string itemName);
+	void addItem(string itemName, SlotId slotId = BAG);
 	void addGold(int gold = 1);
 	void removeItem(Item item);
 	ItemData getAllStats();

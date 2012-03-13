@@ -8,4 +8,5 @@
   <Item name="Health Potion" texture="Data/imgs/hp_potion.png"  slot="bag"></Item>
   <Item name="Energy Potion" texture="Data/imgs/energy_potion.png"  slot="bag"></Item>
   <Item name="Gold" texture="Data\\imgs\\gold_coin.png" slot="bag"></Item>
+  <Item name="Knife" texture="Data\\imgs\\kniv_ikon2.png" slot="weapon" damage="25"></Item>
 </Items>

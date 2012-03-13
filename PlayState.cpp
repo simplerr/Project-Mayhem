@@ -23,6 +23,7 @@ void PlayState::init(Game *game)
 	// :NOTE: Could instead lie in Level
 	mPlayer = new Player(SCREEN_WIDTH/2, SCREEN_HEIGHT/2);
 	mPlayer->setLevel(mLevel);
+	mPlayer->init();
 	mLevel->addPlayer(mPlayer);
 
 	// Load the background texture, temporary

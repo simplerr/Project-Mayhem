@@ -95,10 +95,14 @@ Editor::Editor()
 	mButtonContainer->setItemDimensions(40, 40);
 	mButtonContainer->setPadding(5, 5);
 	mWindowHandler->addWindow(mButtonContainer);
+
+	mTileLabel1 = NULL;
+	mTileLabel2 = NULL;
 }
 
 Editor::~Editor()
 {
+	DestroyWindow(mhInputBox);
 	delete mLevel;
 	delete mWindowHandler;
 }

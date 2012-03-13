@@ -20,11 +20,15 @@
 #include "StatusText.h"
 #include "HealthPotion.h"
 #include "EnergyPotion.h"
-	
-Player::Player(float x, float y) : Object (x, y, 40, 40, PLAYER,  "Data\\imgs\\spelaren2.png") //change width/heigth/pic
+#include "Knife.h"	
+
+Player::Player(float x, float y) : Object (x, y, 40, 40, PLAYER,  "Data\\imgs\\player.png") //change width/heigth/pic
 {
 	setCooldown(.1f);
 	setLayer(MIDDLE);
+
+	// No weapon to start with -TODODOODO
+	mWeapon = NULL;
 
 	mEnergy = mMaxEnergy = 100;
 	mHealth = mMaxHealth = 100;
@@ -39,15 +43,15 @@ Player::Player(float x, float y) : Object (x, y, 40, 40, PLAYER,  "Data\\imgs\\s
 	mInventory->addItem("Golden Helmet");
 	mInventory->addItem("Golden Chest");
 	mInventory->addItem("Golden Legs");
-	mAnimation = new Animation(200, 155, .1f, 3, 3);
+	
+	mAnimation = new Animation(200, 200, .1f, 3, 3);
 	mAnimation->setFrame(0);
 	mCounter = 0.0f;
 	mGui = new Gui(this);
 	mGui->setTexture("Data\\imgs\\gui_bkgd.png");
 	mStatusText = new StatusText("Data\\imgs\\level_up.png", SCREEN_WIDTH/2, 200, 400, 50);
 
-	// No weapon to start with -TODODOODO
-	mWeapon = NULL;
+	
 
 	// Experience per level
 	mExpPerLevel.push_back(50);
@@ -65,6 +69,11 @@ Player::~Player()
 
 	if(mWeapon != NULL)
 		delete mWeapon;
+}
+
+void Player::init()
+{
+	mInventory->addItem("Knife", WEAPON);
 }
 
 void Player::update(float dt)
@@ -180,6 +189,8 @@ void Player::itemEquipped(Item* item, bool equiped)
 				mWeapon = new Rifle(this, getLevel());
 				mWeapon->setCooldown(0.1f);
 			}
+			else if(item->getData().name == "Knife")
+				mWeapon = new Knife(this, getLevel());
 		}
 	}
 

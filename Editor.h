@@ -12,6 +12,7 @@ class wButton;
 class wDropDown;
 class wContainer;
 class wLabel;
+class Region;
 
 enum CommandResult
 {
@@ -60,6 +61,7 @@ private:
 	HWND			mhInputBox;
 
 	Vector			mClickedPos;
+	Region*			mSelectedRegion;
 };
 
 #endif

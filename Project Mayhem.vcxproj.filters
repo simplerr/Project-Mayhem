@@ -79,6 +79,12 @@
     <Filter Include="Header Files\Game objects\Weapons">
       <UniqueIdentifier>{4514c930-6b6f-4cf0-b85a-fa5277b78c6d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Skill">
+      <UniqueIdentifier>{7024126d-5380-4cb5-b58c-33593bae28b8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Skill">
+      <UniqueIdentifier>{423f2441-03cb-42b3-bef5-dbbb2b268d52}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Game.cpp">
@@ -207,9 +213,6 @@
     <ClCompile Include="Gold.cpp">
       <Filter>Source Files\Game objects</Filter>
     </ClCompile>
-    <ClCompile Include="Skill.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Gui.cpp">
       <Filter>Source Files\UI</Filter>
     </ClCompile>
@@ -234,15 +237,6 @@
     <ClCompile Include="AudioHandler.cpp">
       <Filter>Header Files</Filter>
     </ClCompile>
-    <ClCompile Include="Blink.cpp">
-      <Filter>Header Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Wrath.cpp">
-      <Filter>Header Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Trigger.cpp">
-      <Filter>Header Files</Filter>
-    </ClCompile>
     <ClCompile Include="Weapon.cpp">
       <Filter>Source Files\Game objects\Weapons</Filter>
     </ClCompile>
@@ -251,15 +245,6 @@
     </ClCompile>
     <ClCompile Include="Shotgun.cpp">
       <Filter>Source Files\Game objects\Weapons</Filter>
-    </ClCompile>
-    <ClCompile Include="FX.cpp">
-      <Filter>Header Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Mine.cpp">
-      <Filter>Header Files</Filter>
-    </ClCompile>
-    <ClCompile Include="SolarBolts.cpp">
-      <Filter>Header Files</Filter>
     </ClCompile>
     <ClCompile Include="GameOver.cpp">
       <Filter>Source Files\States</Filter>
@@ -281,6 +266,27 @@
     </ClCompile>
     <ClCompile Include="wLabel.cpp">
       <Filter>Source Files\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="Blink.cpp">
+      <Filter>Source Files\Skill</Filter>
+    </ClCompile>
+    <ClCompile Include="Mine.cpp">
+      <Filter>Source Files\Skill</Filter>
+    </ClCompile>
+    <ClCompile Include="Wrath.cpp">
+      <Filter>Source Files\Skill</Filter>
+    </ClCompile>
+    <ClCompile Include="SolarBolts.cpp">
+      <Filter>Source Files\Skill</Filter>
+    </ClCompile>
+    <ClCompile Include="Skill.cpp">
+      <Filter>Source Files\Skill</Filter>
+    </ClCompile>
+    <ClCompile Include="FX.cpp">
+      <Filter>Source Files\Game objects</Filter>
+    </ClCompile>
+    <ClCompile Include="Trigger.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -422,9 +428,6 @@
     <ClInclude Include="Gold.h">
       <Filter>Header Files\Game objects</Filter>
     </ClInclude>
-    <ClInclude Include="Skill.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Gui.h">
       <Filter>Header Files\UI</Filter>
     </ClInclude>
@@ -446,12 +449,6 @@
     <ClInclude Include="AudioHandler.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Blink.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Wrath.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Trigger.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -463,15 +460,6 @@
     </ClInclude>
     <ClInclude Include="Shotgun.h">
       <Filter>Header Files\Game objects\Weapons</Filter>
-    </ClInclude>
-    <ClInclude Include="FX.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Mine.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="SolarBolts.h">
-      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="GameOver.h">
       <Filter>Header Files\States</Filter>
@@ -493,6 +481,24 @@
     </ClInclude>
     <ClInclude Include="wLabel.h">
       <Filter>Header Files\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="Skill.h">
+      <Filter>Header Files\Skill</Filter>
+    </ClInclude>
+    <ClInclude Include="SolarBolts.h">
+      <Filter>Header Files\Skill</Filter>
+    </ClInclude>
+    <ClInclude Include="Mine.h">
+      <Filter>Header Files\Skill</Filter>
+    </ClInclude>
+    <ClInclude Include="Blink.h">
+      <Filter>Header Files\Skill</Filter>
+    </ClInclude>
+    <ClInclude Include="Wrath.h">
+      <Filter>Header Files\Skill</Filter>
+    </ClInclude>
+    <ClInclude Include="FX.h">
+      <Filter>Header Files\Game objects</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

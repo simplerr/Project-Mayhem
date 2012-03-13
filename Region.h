@@ -15,9 +15,13 @@ public:
 	void draw();
 	void update(float dt);
 
-	void setTrigger(Trigger trig);
-	Trigger* getTrigger()	{return &mTrigger;}
+	void setTrigger(Trigger *trig);
+	void initTrigger(Region* owner);
+	Trigger* getTrigger()		{return mTrigger;}
+	
+	void setSelected(bool b)	{mSelected = b;}
 private:
-	Trigger mTrigger;
+	bool mSelected;
+	Trigger* mTrigger;
 	float mCounter;
 };

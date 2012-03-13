@@ -55,6 +55,7 @@ void Level::init()
 	mTileHandler->loadTiles("Data\\tiles.xml");
 	mOffset = Vector(0, 0);
 	mCameraOffset = mOffset;
+	mChangeState = false;
 
 	mTileWidth = 40;
 	mTileHeight = 40;
@@ -76,8 +77,11 @@ void Level::update(float dt)
 	{
 		Object* objectA = mObjectList[i];
 		if(objectA->getAlive()) {
-			if(!isInEditor()) 
+			if(!isInEditor()) {
 				objectA->update(dt);
+				if(mChangeState)
+					return;
+			}
 		}
 		else	{
 			if(objectA->getType() == ENEMY)
@@ -389,6 +393,7 @@ void Level::loadFromFile(string file)
 		}
 		else if(type == ObjectType::REGION) {
 			Region* region = new Region(Rect(x,y,w,h,0));
+			region->initTrigger(region);
 			addObject(region);
 		}
 		// TODO: Add for different objects as well

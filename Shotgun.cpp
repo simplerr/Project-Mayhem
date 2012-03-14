@@ -22,10 +22,14 @@ void Shotgun::fire(Vector playerPos, float rotation)
 	// Mouse
 	Vector mousePos = gInput->mousePosition();
 	Vector offset(55, 15);
-	Vector pos = Vector(playerPos.x + cosf(rotation)*offset.x - sinf(rotation)*offset.y, 
+
+	for(int i = 0; i < 5; i++) {
+		Vector pos = Vector(playerPos.x + cosf(rotation)*offset.x - sinf(rotation)*offset.y, 
 		playerPos.y + sinf(rotation)*offset.x + cosf(rotation)*offset.y);
 
-	getLevel()->addProjectile(getPlayer(), pos, gInput->mousePosition(), getProjectileData());
+		getLevel()->addProjectile(getPlayer(), pos, gInput->mousePosition(), getProjectileData());
+	}
+	
 
 	setCounter(0.0f);
 }

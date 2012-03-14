@@ -2,48 +2,46 @@
 <Level>
     <Size width="2000" height="1500" />
     <Objects>
-        <Object rotation="0" type="9" x="540" y="217" w="0" h="0" collidable="0" texture="Data\imgs\standard_box.bmp" />
-        <Object rotation="0" type="9" x="373" y="219" w="0" h="0" collidable="0" texture="Data\imgs\standard_box.bmp" />
-        <Object rotation="0" type="9" x="373" y="219" w="0" h="0" collidable="0" texture="Data\imgs\standard_box.bmp" />
-        <Loot rotation="0" type="2" x="775" y="424" w="32" h="32" collidable="0" name="Gold" texture="Data/imgs/items/gold_coin.png" />
-        <Loot rotation="0" type="2" x="743" y="424" w="32" h="32" collidable="0" name="Gold" texture="Data/imgs/items/gold_coin.png" />
-        <Loot rotation="0" type="2" x="784" y="376" w="32" h="32" collidable="0" name="Gold" texture="Data/imgs/items/gold_coin.png" />
-        <Loot rotation="0" type="2" x="695" y="424" w="32" h="32" collidable="0" name="Gold" texture="Data/imgs/items/gold_coin.png" />
-        <Loot rotation="0" type="2" x="697" y="386" w="32" h="32" collidable="0" name="Knife" texture="Data/imgs/items/kniv_ikon2.png" />
-        <Object rotation="0" type="0" x="730" y="690" w="100" h="100" collidable="1" texture="Data/imgs/structures/tunna.png" />
-        <Object rotation="0" type="0" x="766" y="396" w="50" h="34" collidable="1" texture="Data/imgs/structures/bag1.png" />
-        <Object rotation="0" type="0" x="725" y="402" w="40" h="64" collidable="0" texture="Data/imgs/structures/skelett.png" />
-        <Object rotation="0" type="0" x="615" y="539" w="30" h="30" collidable="1" texture="Data/imgs/structures/tunna.png" />
-        <Object rotation="0" type="0" x="705" y="495" w="30" h="30" collidable="1" texture="Data/imgs/structures/tunna.png" />
-        <Object rotation="0" type="0" x="58" y="469" w="30" h="14" collidable="1" texture="Data/imgs/structures/bensindunk.png" />
-        <Object rotation="0" type="0" x="57" y="449" w="30" h="14" collidable="1" texture="Data/imgs/structures/bensindunk.png" />
-        <Object rotation="0" type="0" x="58" y="429" w="30" h="14" collidable="1" texture="Data/imgs/structures/bensindunk.png" />
-        <Object rotation="0" type="0" x="58" y="411" w="30" h="14" collidable="1" texture="Data/imgs/structures/bensindunk.png" />
-        <Object rotation="0" type="0" x="136" y="514" w="90" h="60" collidable="1" texture="Data/imgs/structures/prison.png" />
-        <Object rotation="0" type="0" x="320" y="244" w="80" h="8" collidable="1" texture="Data/imgs/structures/wall.png" />
-        <Object rotation="0" type="0" x="252" y="244" w="80" h="8" collidable="1" texture="Data/imgs/structures/wall.png" />
-        <Object rotation="0" type="0" x="160" y="244" w="80" h="8" collidable="1" texture="Data/imgs/structures/wall.png" />
-        <Object rotation="0" type="0" x="206" y="244" w="80" h="8" collidable="1" texture="Data/imgs/structures/wall.png" />
-        <Object rotation="0" type="0" x="509" y="372" w="18" h="24" collidable="0" texture="Data/imgs/structures/skull.png" />
-        <Object rotation="0" type="0" x="370" y="473" w="100" h="12" collidable="1" texture="Data/imgs/structures/fence.png" />
-        <Object rotation="0" type="0" x="352" y="395" w="40" h="64" collidable="0" texture="Data/imgs/structures/skelett.png" />
-        <Object rotation="0" type="0" x="330" y="426" w="10" h="4" collidable="0" texture="Data/imgs/structures/bullet.png" />
-        <Object rotation="0" type="0" x="357" y="433" w="10" h="4" collidable="0" texture="Data/imgs/structures/bullet.png" />
-        <Object rotation="0" type="0" x="373" y="419" w="10" h="4" collidable="0" texture="Data/imgs/structures/bullet.png" />
-        <Object rotation="0" type="0" x="372" y="449" w="10" h="4" collidable="0" texture="Data/imgs/structures/bullet.png" />
-        <Loot rotation="0" type="2" x="360" y="399" w="32" h="32" collidable="1" name="Sniper" texture="Data/imgs/items/sniper.png" />
-        <Object rotation="0" type="0" x="645" y="538" w="30" h="30" collidable="1" texture="Data/imgs/structures/tunna.png" />
+        <Object type="9" x="540" y="217" rotation="0" w="0" h="0" collidable="0" texture="Data\imgs\standard_box.bmp" />
+        <Object type="9" x="373" y="219" rotation="0" w="0" h="0" collidable="0" texture="Data\imgs\standard_box.bmp" />
+        <Object type="9" x="373" y="219" rotation="0" w="0" h="0" collidable="0" texture="Data\imgs\standard_box.bmp" />
+        <Loot type="2" x="775" y="424" rotation="0" w="32" h="32" collidable="1" name="Gold" texture="Data/imgs/items/gold_coin.png" />
+        <Loot type="2" x="501" y="298" rotation="-480" w="32" h="32" collidable="1" name="Gold" texture="Data/imgs/items/gold_coin.png" />
+        <Loot type="2" x="784" y="376" rotation="0" w="32" h="32" collidable="1" name="Gold" texture="Data/imgs/items/gold_coin.png" />
+        <Loot type="2" x="695" y="417" rotation="-4319" w="32" h="32" collidable="1" name="Gold" texture="Data/imgs/items/gold_coin.png" />
+        <Loot type="2" x="506" y="218" rotation="-4080" w="32" h="32" collidable="1" name="Knife" texture="Data/imgs/items/kniv_ikon2.png" />
+        <Object type="0" x="730" y="690" rotation="0" w="100" h="100" collidable="1" texture="Data/imgs/structures/tunna.png" />
+        <Object type="0" x="766" y="396" rotation="0" w="50" h="34" collidable="1" texture="Data/imgs/structures/bag1.png" />
+        <Object type="0" x="725" y="402" rotation="0" w="40" h="64" collidable="0" texture="Data/imgs/structures/skelett.png" />
+        <Object type="0" x="615" y="539" rotation="0" w="30" h="30" collidable="1" texture="Data/imgs/structures/tunna.png" />
+        <Object type="0" x="705" y="495" rotation="0" w="30" h="30" collidable="1" texture="Data/imgs/structures/tunna.png" />
+        <Object type="0" x="58" y="469" rotation="0" w="30" h="14" collidable="1" texture="Data/imgs/structures/bensindunk.png" />
+        <Object type="0" x="57" y="449" rotation="0" w="30" h="14" collidable="1" texture="Data/imgs/structures/bensindunk.png" />
+        <Object type="0" x="58" y="429" rotation="0" w="30" h="14" collidable="1" texture="Data/imgs/structures/bensindunk.png" />
+        <Object type="0" x="58" y="411" rotation="0" w="30" h="14" collidable="1" texture="Data/imgs/structures/bensindunk.png" />
+        <Object type="0" x="542" y="280" rotation="240" w="90" h="60" collidable="1" texture="Data/imgs/structures/prison.png" />
+        <Object type="0" x="320" y="244" rotation="0" w="80" h="8" collidable="1" texture="Data/imgs/structures/wall.png" />
+        <Object type="0" x="160" y="244" rotation="0" w="80" h="8" collidable="1" texture="Data/imgs/structures/wall.png" />
+        <Object type="0" x="238" y="243" rotation="-3120" w="80" h="8" collidable="1" texture="Data/imgs/structures/wall.png" />
+        <Object type="0" x="509" y="372" rotation="0" w="18" h="24" collidable="0" texture="Data/imgs/structures/skull.png" />
+        <Object type="0" x="370" y="473" rotation="0" w="100" h="12" collidable="1" texture="Data/imgs/structures/fence.png" />
+        <Object type="0" x="352" y="395" rotation="0" w="40" h="64" collidable="0" texture="Data/imgs/structures/skelett.png" />
+        <Object type="0" x="330" y="426" rotation="0" w="10" h="4" collidable="0" texture="Data/imgs/structures/bullet.png" />
+        <Object type="0" x="357" y="433" rotation="0" w="10" h="4" collidable="0" texture="Data/imgs/structures/bullet.png" />
+        <Object type="0" x="373" y="419" rotation="0" w="10" h="4" collidable="0" texture="Data/imgs/structures/bullet.png" />
+        <Object type="0" x="372" y="449" rotation="0" w="10" h="4" collidable="0" texture="Data/imgs/structures/bullet.png" />
+        <Loot type="2" x="360" y="399" rotation="0" w="32" h="32" collidable="1" name="Sniper" texture="Data/imgs/items/sniper.png" />
+        <Object type="0" x="645" y="538" rotation="0" w="30" h="30" collidable="1" texture="Data/imgs/structures/tunna.png" />
+        <Object type="0" x="528" y="225" rotation="-43680" w="80" h="8" collidable="1" texture="Data/imgs/structures/wall.png" />
     </Objects>
     <Tiles>
         <Tile name="Grass" x="140" y="260" />
-        <Tile name="Grass" x="260" y="260" />
         <Tile name="Grass" x="300" y="260" />
         <Tile name="Grass" x="340" y="260" />
         <Tile name="Grass" x="420" y="260" />
         <Tile name="Grass" x="460" y="260" />
         <Tile name="Grass" x="500" y="260" />
         <Tile name="Grass" x="540" y="260" />
-        <Tile name="Grass" x="180" y="300" />
         <Tile name="Grass" x="140" y="300" />
         <Tile name="Grass" x="100" y="300" />
         <Tile name="Grass" x="100" y="340" />
@@ -133,16 +131,8 @@
         <Tile name="Grass" x="540" y="140" />
         <Tile name="Grass" x="500" y="140" />
         <Tile name="Grass" x="460" y="140" />
-        <Tile name="Grass" x="420" y="140" />
-        <Tile name="Grass" x="380" y="140" />
-        <Tile name="Grass" x="340" y="140" />
-        <Tile name="Grass" x="300" y="140" />
-        <Tile name="Grass" x="300" y="180" />
         <Tile name="Grass" x="260" y="180" />
         <Tile name="Grass" x="220" y="180" />
-        <Tile name="Grass" x="220" y="220" />
-        <Tile name="Grass" x="260" y="220" />
-        <Tile name="Grass" x="300" y="220" />
         <Tile name="Grass" x="580" y="220" />
         <Tile name="Grass" x="540" y="220" />
         <Tile name="Grass" x="500" y="220" />
@@ -150,9 +140,6 @@
         <Tile name="Grass" x="420" y="220" />
         <Tile name="Grass" x="380" y="220" />
         <Tile name="Grass" x="340" y="220" />
-        <Tile name="Grass" x="340" y="180" />
-        <Tile name="Grass" x="380" y="180" />
-        <Tile name="Grass" x="420" y="180" />
         <Tile name="Grass" x="460" y="180" />
         <Tile name="Grass" x="500" y="180" />
         <Tile name="Grass" x="540" y="180" />
@@ -223,7 +210,6 @@
         <Tile name="wall4" x="300" y="460" />
         <Tile name="wall4" x="340" y="340" />
         <Tile name="wall4" x="380" y="340" />
-        <Tile name="wall4" x="420" y="340" />
         <Tile name="wall4" x="460" y="340" />
         <Tile name="wall4" x="500" y="340" />
         <Tile name="wall4" x="660" y="460" />
@@ -277,7 +263,6 @@
         <Tile name="Grass" x="500" y="660" />
         <Tile name="Grass" x="500" y="620" />
         <Tile name="Grass" x="500" y="580" />
-        <Tile name="Grass" x="500" y="500" />
         <Tile name="Grass" x="460" y="500" />
         <Tile name="wall4" x="60" y="580" />
         <Tile name="wall4" x="180" y="380" />
@@ -300,5 +285,20 @@
         <Tile name="wall4" x="540" y="460" />
         <Tile name="Grass" x="540" y="500" />
         <Tile name="Grass" x="420" y="420" />
+        <Tile name="Grass" x="740" y="140" />
+        <Tile name="wall5" x="300" y="140" />
+        <Tile name="wall5" x="340" y="140" />
+        <Tile name="wall5" x="420" y="140" />
+        <Tile name="wall3" x="300" y="180" />
+        <Tile name="wall3" x="340" y="180" />
+        <Tile name="wall3" x="380" y="180" />
+        <Tile name="wall3" x="420" y="180" />
+        <Tile name="Grass" x="500" y="500" />
+        <Tile name="Grass" x="380" y="140" />
+        <Tile name="Grass" x="260" y="260" />
+        <Tile name="Grass" x="260" y="220" />
+        <Tile name="Grass" x="300" y="220" />
+        <Tile name="Grass" x="420" y="340" />
+        <Tile name="Grass" x="220" y="220" />
     </Tiles>
 </Level>

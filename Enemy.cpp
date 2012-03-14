@@ -12,6 +12,8 @@
 #include "HealthPotion.h"
 #include "EnergyPotion.h"
 #include "Scrap.h"
+#include "Tile.h"
+#include "TileHandler.h"
 
 EnemyData::EnemyData(int w, int h, string n, string texture) 
 {
@@ -271,7 +273,7 @@ void Enemy::calcAI(float dt)
 	float vr = ai->getVisionRange();
 	float a = gMath->distance(targetPos, pos);
 	if(((a<vr) && (a < vr/2 || abs(v-getRotation())< 2*PI/3))) {
-		if(!ai->seenEnemy()) 
+		if(!ai->seenEnemy() && doVision()) 
 		{
 			ai->setSeenEnemy(true);
 			ai->setTarget(getLevel()->getPlayer());
@@ -293,4 +295,42 @@ void Enemy::initAI(AIdata data, Vector v)
 {
 	ai = new AI(data);
 	ai->setPatrolOrigin(v);
+}
+
+bool Enemy::doVision()
+{
+	float d = gMath->distance(getPos(), getLevel()->getPlayer()->getPos());
+	float v = gMath->calculateAngle(getPos(), getLevel()->getPlayer()->getPos());
+	cPolygon c(getPos());
+	c.addPoint(0,2);
+	c.addPoint(d,2);
+	c.addPoint(d,0);
+	gScrap->enemyCheck->setPolygon(c);
+	gScrap->enemyCheck->setRotation(v);
+	MTV mtv;
+	for(int j = 0; j < getLevel()->getTileList()->size(); j++)
+		{
+			Tile* tile = getLevel()->getTileList()->at(j);
+
+			// Collidable?
+			if(!tile->getData()->obstacle)
+				continue;
+			gScrap->tileObject->setPos(Vector(getLevel()->getOffset().x + tile->getPosition().x, getLevel()->getOffset().y + tile->getPosition().y));
+			// Players bounding box
+			Rect boundingBox = gScrap->enemyCheck->getBoundingBox();
+			gScrap->rect->setPos(Vector(tile->getPosition().x + getLevel()->getOffset().x, tile->getPosition().y + getLevel()->getOffset().y));
+
+			// Check bounding boxes
+			if(boundingBox.left > gScrap->rect->right || boundingBox.right < gScrap->rect->left || boundingBox.top > gScrap->rect->bottom || boundingBox.bottom < gScrap->rect->top)
+				continue;
+
+			// Get information about the collision
+			mtv = checkCollision(gScrap->enemyCheck->getPolygon(), gScrap->tileObject->getPolygon());
+
+			// Move the player out of the tile if there's a collision
+			if(mtv.collision)	{
+				return false;
+			}
+		}
+	return true;
 }

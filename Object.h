@@ -73,6 +73,8 @@ public:
 	void setOwnerId	(int id)			{mOwnerId = id;}
 	void setDetailedCollision(bool detailed) {mDetailedCollision = detailed;}
 	void setTexture(string source);
+	void setWidth(int w)				{mWidth = w;}
+	void setHeight(int h)				{mHeight = h;}
 
 	IDirect3DTexture9*	getTexture();
 	string				getTextureSource();

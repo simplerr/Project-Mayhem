@@ -86,7 +86,6 @@ Editor::Editor()
 	mDropDown->add("Props");
 	mDropDown->add("Enemies");
 	mDropDown->add("Loot");
-	mDropDown->add("SFX");
 	mDropDown->add("Regions");
 	mDropDown->setZ(2);
 	mDropDown->connect(&Editor::messageHandler, this);
@@ -304,7 +303,7 @@ bool Editor::messageHandler(wId id, wMessage msg)
 			mActiveObject.name = (*dataMap.begin()).second->name;
 			for(std::map<string, EnemyData*>::iterator iter = dataMap.begin(); iter != dataMap.end(); iter++)
 			{
-				wButton* button = new wButton(10, 10, 40, 40, iter->second->name, WID_OBJECT_BUTTON, iter->second->textureSource);
+				wButton* button = new wButton(10, 10, 40, 40, iter->second->name, WID_OBJECT_BUTTON, "Data\\imgs\\enemy_icon.png");
 				button->connect(&Editor::messageHandler, this);
 				mWindowHandler->addWindow(button);
 				mButtonContainer->arrangeObject(button);

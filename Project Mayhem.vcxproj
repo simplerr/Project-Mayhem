@@ -131,6 +131,7 @@
     <ClInclude Include="Shotgun.h" />
     <ClInclude Include="Skill.h" />
     <ClInclude Include="SlotItem.h" />
+    <ClInclude Include="Sniper.h" />
     <ClInclude Include="SolarBolts.h" />
     <ClInclude Include="Sound.h" />
     <ClInclude Include="Stackwalker.h" />
@@ -202,6 +203,7 @@
     <ClCompile Include="Shotgun.cpp" />
     <ClCompile Include="Skill.cpp" />
     <ClCompile Include="SlotItem.cpp" />
+    <ClCompile Include="Sniper.cpp" />
     <ClCompile Include="SolarBolts.cpp" />
     <ClCompile Include="Sound.cpp" />
     <ClCompile Include="Stackwalker.cpp" />

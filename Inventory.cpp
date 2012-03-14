@@ -66,6 +66,7 @@ void Inventory::update(float dt)
 					// NOTE: Hack code.. hope it doesn't break!
 					if(mSlotList[i].slotId == mSlotList[i].item->getSlotId()) {
 						Item* item = (Item*)mSlotList[i].item;
+						mPlayer->itemEquipped((Item*)mSlotList[i].item, false);
 						addItem(item->getData().name);
 						mSlotList[i].item = NULL;
 						mSlotList[i].taken = false;

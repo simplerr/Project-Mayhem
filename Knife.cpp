@@ -11,7 +11,7 @@ Knife::Knife(Player* player, Level* level) : Weapon(player, level)
 	pd.speed = 0;
 	pd.width = 50;
 	pd.height = 8;
-	pd.texturePath = "Data\\imgs\\kniv.png";
+	pd.texturePath = "Data\\imgs\\items\\knife_top.png";
 	pd.lifetime = 0.15f;
 	pd.followPlayer = true;
 	setProjectileData(pd);

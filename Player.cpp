@@ -21,6 +21,7 @@
 #include "HealthPotion.h"
 #include "EnergyPotion.h"
 #include "Knife.h"	
+#include "Sniper.h"
 
 Player::Player(float x, float y) : Object (x, y, 35, 35, PLAYER,  "Data\\imgs\\player.png") //change width/heigth/pic
 {
@@ -38,11 +39,18 @@ Player::Player(float x, float y) : Object (x, y, 35, 35, PLAYER,  "Data\\imgs\\p
 	mMoveSpeed = 5;
 	mInventory = new Inventory();
 	mInventory->setPlayer(this);
-	mInventory->addItem("Golden Sword");
-	mInventory->addItem("Golden Axe");
-	mInventory->addItem("Golden Helmet");
-	mInventory->addItem("Golden Chest");
-	mInventory->addItem("Golden Legs");
+	mInventory->addItem("Knife");
+	/*mInventory->addItem("Knife");
+	mInventory->addItem("Sniper");
+	mInventory->addItem("Shotgun");
+	mInventory->addItem("White Helmet");
+	mInventory->addItem("White Chest");
+	mInventory->addItem("White Legs");
+	mInventory->addItem("Black Chest");
+	mInventory->addItem("Black Legs");
+	mInventory->addItem("Health Potion");
+	mInventory->addItem("Energy Potion");
+	mInventory->addItem("Gold");*/
 	
 	mAnimation = new Animation(200, 200, .1f, 3, 3);
 	mAnimation->setFrame(0);
@@ -71,7 +79,7 @@ Player::~Player()
 
 void Player::init()
 {
-	mInventory->addItem("Knife", WEAPON);
+	mInventory->addItem("Rifle", WEAPON);
 }
 
 void Player::update(float dt)
@@ -185,22 +193,12 @@ void Player::itemEquipped(Item* item, bool equiped)
 
 		// Weapon equipped?
 		if(equiped)	{
-			if(item->getData().name == "Golden Sword")
+			if(item->getData().name == "Shotgun")
 				mWeapon = new Shotgun(this, getLevel());
-			else if(item->getData().name == "Golden Axe") {
+			else if(item->getData().name == "Rifle") 
 				mWeapon = new Rifle(this, getLevel());
-				mWeapon->setCooldown(0.1f);
-			}
-			else if(item->getData().name == "Sniper") {
-				mWeapon = new Weapon(this, getLevel());
-				ProjectileData pd = gScrap->basicProjectile;
-				pd.texturePath = "Data\\imgs\\sniper_bullet.png";
-				pd.width = 20;
-				pd.height = 8;
-				pd.speed = 30;
-				mWeapon->setProjectileData(pd);
-				mWeapon->setCooldown(0.8f);
-			}
+			else if(item->getData().name == "Sniper") 
+				mWeapon = new Sniper(this, getLevel());
 			else if(item->getData().name == "Knife")
 				mWeapon = new Knife(this, getLevel());
 		}

@@ -15,6 +15,8 @@ Weapon::Weapon(Player* player, Level* level)
 	setCooldown(0.55f);
 	setProjectileData(gScrap->basicProjectile);
 	setVisible(true);
+	setWidth(40);
+	setHeight(10);
 } 
 	
 Weapon::~Weapon()
@@ -31,7 +33,7 @@ void Weapon::draw(Vector playerPos, float rotation)
 {
 	if(isVisible()) {
 		gGraphics->drawTexture(mTexture, playerPos.x + cosf(rotation)*mOffset.x - sinf(rotation)*mOffset.y, 
-			playerPos.y + sinf(rotation)*mOffset.x + cosf(rotation)*mOffset.y, 40, 10, rotation);
+			playerPos.y + sinf(rotation)*mOffset.x + cosf(rotation)*mOffset.y, mWidth, mHeight, rotation);
 	}
 }
 
@@ -105,4 +107,14 @@ void Weapon::setVisible(bool visible)
 bool Weapon::isVisible()
 {
 	return mVisible;
+}
+
+void Weapon::setWidth(int width)
+{
+	mWidth = width;
+}
+	
+void Weapon::setHeight(int height)
+{
+	mHeight = height;
 }

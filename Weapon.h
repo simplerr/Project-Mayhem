@@ -25,6 +25,8 @@ public:
 	void setProjectileData(ProjectileData projectileData);
 	void setTexture(string source);
 	void setVisible(bool visible);
+	void setWidth(int width);
+	void setHeight(int height);
 	bool isVisible();
 	ProjectileData getProjectileData();
 private:
@@ -34,6 +36,7 @@ private:
 	Player* mPlayer;
 	Level* mLevel;
 	bool mVisible;
+	int mWidth, mHeight;
 	float mCooldown;
 	float mCounter;
 };

@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Items>
-  <Item name="Golden Sword" texture="Data/imgs/items/weapon1.png" slot="weapon" damage="20"></Item>
-  <Item name="Golden Axe" texture="Data/imgs/items/Machinegun.png"  slot="weapon" damage="25"></Item>
-  <Item name="Golden Helmet" texture="Data/imgs/items/helm1.png"  slot="head" armor="15"></Item>
-  <Item name="Golden Chest" texture="Data/imgs/items/chest1.png"  slot="chest" armor="10"></Item>
-  <Item name="Golden Legs" texture="Data/imgs/items/boots1.png"  slot="legs" armor="7"></Item>
-  <Item name="Knife" texture="Data/imgs/items/kniv_ikon2.png" slot="weapon" damage="25"></Item>
-  <Item name="Sniper" texture="Data/imgs/items/sniper.png" slot="weapon" damage="25"></Item>
+ 
+  <Item name="Rifle" texture="Data/imgs/items/rifle.png"  slot="weapon" damage="25"></Item>
+  <Item name="Knife" texture="Data/imgs/items/knife.png" slot="weapon" damage="25"></Item>
+  <Item name="Sniper" texture="Data/imgs/items/sniper.png" slot="weapon" damage="150"></Item>
   <Item name="Shotgun" texture="Data/imgs/items/shotgun.png" slot="weapon" damage="25"></Item>
-  <Item name="Health Potion" texture="Data/imgs/items/hp_potion.png"  slot="bag"></Item>i
+  <Item name="White Helmet" texture="Data/imgs/items/white_helm.png"  slot="head" armor="15"></Item>
+  <Item name="White Chest" texture="Data/imgs/items/white_chest.png"  slot="chest" armor="10"></Item>
+  <Item name="White Legs" texture="Data/imgs/items/white_boots.png"  slot="legs" armor="7"></Item>
+  <Item name="Black Chest" texture="Data/imgs/items/black_chest.png"  slot="chest" armor="15"></Item>
+  <Item name="Black Legs" texture="Data/imgs/items/black_boots.png"  slot="legs" armor="7"></Item>
+  <Item name="Health Potion" texture="Data/imgs/items/health_potion.png"  slot="bag"></Item>i
   <Item name="Energy Potion" texture="Data/imgs/items/energy_potion.png"  slot="bag"></Item>
   <Item name="Gold" texture="Data/imgs/items/gold_coin.png" slot="bag"></Item>
 </Items>

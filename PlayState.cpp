@@ -30,6 +30,7 @@ void PlayState::init(Game *game)
 	// Load the background texture, temporary
 	mBgkd = gGraphics->loadTexture("Data\\imgs\\dust_bkgd.bmp");
 	
+	gAudio->setVolume(0.1f);
 	gAudio->playMusic("Data\\sounds\\Retribution.ogg", true, false);
 
 	// Important when we later need to switch state

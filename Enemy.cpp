@@ -72,7 +72,7 @@ void Enemy::damage(float dHP)
 		int i = 0, distance = 0;
 		bool any = false;
 		for(auto iter = map.begin(); iter != map.end(); iter++, i++) {
-			if(i == loot) {
+			if(i == loot && iter->second.slot != BAG) {
 				float angle = (rand() % 340)/(float)100;
 				getLevel()->addObject(new Loot(iter->second.name, getPos().x + distance*cosf(angle), getPos().y + distance*sinf(angle)));
 				any = true;

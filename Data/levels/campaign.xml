@@ -2,8 +2,9 @@
 <Level>
   <Size width="2000" height="1500" />
   <Objects>
-    <Enemy type="3" x="746" y="204" w="32" h="32" class="spider" texture="Data\\imgs\\spider.png" />
-  </Objects>
-  <Tiles>
-  </Tiles>
+    </Objects>
+    
+    <Tiles>
+      
+    </Tiles>
 </Level>

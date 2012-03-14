@@ -97,12 +97,10 @@ Editor::Editor()
 	mButtonContainer->setPadding(5, 5);
 	mWindowHandler->addWindow(mButtonContainer);
 
-
 	mTileLabel1 = NULL;
 	mTileLabel2 = NULL;
-
 	mSelectedRegion = NULL;
-
+	mMovingObject = NULL;
 }
 
 Editor::~Editor()
@@ -118,46 +116,67 @@ void Editor::update(float dt)
 	mWindowHandler->update(dt);
 
 	Vector pos = gInput->mousePosition();
+	if(gInput->keyPressed(VK_LBUTTON))
+	{
+		Object* object = mLevel->getObjectAt(pos);
+
+		if(object != NULL) {
+			mMovingObject = object;
+			mMovingOffset = mMovingObject->getPos() - pos;
+		}
+		else
+			mMovingObject = NULL;
+	}
+
+	if(gInput->mouseDz() != 0 && mMovingObject != NULL)
+		mMovingObject->rotate(gInput->mouseDz()/500.0f);
+
+	if(gInput->keyDown(VK_LBUTTON) && mMovingObject != NULL)
+		mMovingObject->setPos(pos + mMovingOffset);
+
 	if(((gInput->keyDown(VK_LBUTTON) && mActiveObject.type == TILE) || (gInput->keyPressed(VK_LBUTTON) && mActiveObject.type != TILE)) && (pos.x < 824))
 	{
 		// TODO: Fix correct placement
-		if(mActiveObject.type == ENEMY) {
-			Enemy* enemy = new Enemy(pos.x, pos.y, gEnemies->getData(mActiveObject.name));
-			mLevel->addObject(enemy);
-		}
-		else if(mActiveObject.type == TILE) {
-			mLevel->addTile(pos.x - mLevel->getOffset().x, pos.y - mLevel->getOffset().y, mActiveObject.name);
-		}
-		else if(mActiveObject.type == LOOT) {
-			if(mActiveObject.name == "Health Potion")
-				mLevel->addObject(new HealthPotion(pos.x, pos.y));
-			else if(mActiveObject.name == "Energy Potion")
-				mLevel->addObject(new EnergyPotion(pos.x, pos.y));
-			else if(mActiveObject.name == "Gold")
-				mLevel->addObject(new Gold(pos.x, pos.y));
-			else
-				mLevel->addObject(new Loot(mActiveObject.name, pos.x, pos.y));
-		}
-		else if(mActiveObject.type == REGION) {
-			mSelectedRegion = dynamic_cast<Region*>(mLevel->getObjectAt(pos));
-			if(mSelectedRegion == NULL) 
-			{
-				mClickedPos = Vector(pos.x - mLevel->getOffset().x, pos.y - mLevel->getOffset().y);
-				//mClickedPos = Vector(pos.x - mLevel->getOffset().x, pos.y - mLevel->getOffset().y); //MINUS
-				mClickedPos = Vector(pos.x, pos.y);
-				gScrap->editingRegion=true;
-				gScrap->editorRect->setRect(mClickedPos.x, mClickedPos.x+1, mClickedPos.y, mClickedPos.y+1);
+		if(mLevel->getObjectAt(pos) == NULL)
+		{
+			if(mActiveObject.type == ENEMY) {
+				Enemy* enemy = new Enemy(pos.x, pos.y, gEnemies->getData(mActiveObject.name));
+				mLevel->addObject(enemy);
 			}
-			else 
-			{
-				SetWindowText(mhInputBox, mSelectedRegion->getTrigger()->getTriggerAsString().c_str());
+			else if(mActiveObject.type == TILE) {
+				mLevel->addTile(pos.x - mLevel->getOffset().x, pos.y - mLevel->getOffset().y, mActiveObject.name);
 			}
-		}
-		else if(mActiveObject.type == PROP) {
-			auto data = gObjectHandler->getData(mActiveObject.name);
-			Structure* structure = new Structure(pos.x, pos.y, data.width, data.height, data.textureSource);
-			structure->setCollidable(data.collides);
-			mLevel->addObject(structure);
+			else if(mActiveObject.type == LOOT) {
+				if(mActiveObject.name == "Health Potion")
+					mLevel->addObject(new HealthPotion(pos.x, pos.y));
+				else if(mActiveObject.name == "Energy Potion")
+					mLevel->addObject(new EnergyPotion(pos.x, pos.y));
+				else if(mActiveObject.name == "Gold")
+					mLevel->addObject(new Gold(pos.x, pos.y));
+				else
+					mLevel->addObject(new Loot(mActiveObject.name, pos.x, pos.y));
+			}
+			else if(mActiveObject.type == REGION) {
+				mSelectedRegion = dynamic_cast<Region*>(mLevel->getObjectAt(pos));
+				if(mSelectedRegion == NULL) 
+				{
+					mClickedPos = Vector(pos.x - mLevel->getOffset().x, pos.y - mLevel->getOffset().y);
+					//mClickedPos = Vector(pos.x - mLevel->getOffset().x, pos.y - mLevel->getOffset().y); //MINUS
+					mClickedPos = Vector(pos.x, pos.y);
+					gScrap->editingRegion=true;
+					gScrap->editorRect->setRect(mClickedPos.x, mClickedPos.x+1, mClickedPos.y, mClickedPos.y+1);
+				}
+				else 
+				{
+					SetWindowText(mhInputBox, mSelectedRegion->getTrigger()->getTriggerAsString().c_str());
+				}
+			}
+			else if(mActiveObject.type == PROP) {
+				auto data = gObjectHandler->getData(mActiveObject.name);
+				Structure* structure = new Structure(pos.x, pos.y, data.width, data.height, data.textureSource);
+				structure->setCollidable(data.collides);
+				mLevel->addObject(structure);
+			}
 		}
 	}
 	if(gScrap->editingRegion) {

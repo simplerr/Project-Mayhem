@@ -197,6 +197,8 @@ int Runnable::run()
 				mDeltaSum += dt;
 			}
 			else	{
+				gInput->poll();
+
 				// Update everything
 				if(mDeltaSum < .25) // FPS is capped - todo
 					update(time, mDeltaSum);

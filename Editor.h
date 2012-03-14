@@ -51,6 +51,8 @@ private:
 private:
 	Level			*mLevel;
 	ActiveObject	mActiveObject;
+	Object*			mMovingObject;
+	Vector			mMovingOffset;
 
 	// GUI stuff
 	WindowHandler*	mWindowHandler;

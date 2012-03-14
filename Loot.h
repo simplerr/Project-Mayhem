@@ -12,6 +12,7 @@ public:
 	void update(float dt);
 	virtual void draw();
 	void setLifetime(float lifetime);
+	virtual bool handleCollision(Object* collider, MTV* mtv);
 
 	string getName();
 private:

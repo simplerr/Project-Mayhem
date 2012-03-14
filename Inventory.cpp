@@ -11,7 +11,7 @@
 
 using namespace std;
 
-Inventory::Inventory() : Container(400, 300, 675, 400)
+Inventory::Inventory() : Container(SCREEN_WIDTH/2, SCREEN_HEIGHT/2, 675, 400)
 {
 	mGold = 0;
 	mHooverBkgd = gGraphics->loadTexture("Data\\imgs\\hoover_bkgd.png");
@@ -154,6 +154,8 @@ void Inventory::draw()
 				// TODO: Attack speed..
 			}
 		}
+
+		//gGraphics->drawRect(getPosition().x + 230, getPosition().y-7, 165, 275, 0xffffffff);
 
 		// Display gold amount
 		char buffer[256];

@@ -112,10 +112,21 @@ void Level::update(float dt)
 			// If there's a collision
 			if(mtv.collision)
 			{
-				if(objectA->handleCollision(objectB,&mtv) && objectB->getType() != PLAYER)
+				objectA->handleCollision(objectB,&mtv);
+				objectB->handleCollision(objectA,&mtv);
+
+				if(objectA->getType() == PLAYER && objectB->getType() != PROJECTILE)
+					moveObjects(mtv.pushX, mtv.pushY);
+				else if(objectA->getType() == ENEMY)
+					objectA->move(-mtv.pushX, -mtv.pushY);
+				else if(objectB->getType() == ENEMY)
+					objectB->move(mtv.pushX, mtv.pushY);
+				else if(objectB->getType() == PLAYER)
+					moveObjects(-mtv.pushX, -mtv.pushY);
+				/*if( && objectB->getType() != PLAYER)
 					objectA->move(-mtv.pushX/2, -mtv.pushY/2);
-				if(objectB->handleCollision(objectA,&mtv) && objectA->getType() != PLAYER)
-					objectB->move(mtv.pushX/2, mtv.pushY/2);
+				if( && objectA->getType() != PLAYER)
+					objectB->move(mtv.pushX/2, mtv.pushY/2);*/
 			}
 
 		}
@@ -330,9 +341,12 @@ void Level::saveToFile(string file)
 		object->SetAttribute("type", mObjectList[i]->getType());
 		object->SetAttribute("x", mObjectList[i]->getPos().x - mOffset.x);
 		object->SetAttribute("y", mObjectList[i]->getPos().y - mOffset.y);
+		object->SetAttribute("rotation", mObjectList[i]->getRotation()*1000);
+		mObjectList[i]->setRotation(0.0f);
 		object->SetAttribute("w", mObjectList[i]->getBoundingBox().getWidth());
 		object->SetAttribute("h", mObjectList[i]->getBoundingBox().getHeight());
 		object->SetAttribute("collidable", mObjectList[i]->getColides() ? 1 : 0);
+		
 		
 		if(mObjectList[i]->getType() == ENEMY) {
 			Enemy* enemy = dynamic_cast<Enemy*>(mObjectList[i]);
@@ -391,12 +405,14 @@ void Level::loadFromFile(string file)
 		int w = atoi(object->Attribute("w"));
 		int h = atoi(object->Attribute("h"));
 		bool collides = atoi(object->Attribute("collidable")) == 1 ? true : false;
+		float rotation = atof(object->Attribute("rotation")) / 1000;
 		string texture = object->Attribute("texture");
 
 		// Switch type and add the according object to the level
 		if(type == ObjectType::STRUCTURE) {
-			Structure* structure = new Structure(x, y, 100, 100, texture);
+			Structure* structure = new Structure(x, y, w, h, texture);
 			structure->setCollidable(collides);
+			structure->setRotation(rotation);
 			addObject(structure);
 		}
 		else if(type == ObjectType::ENEMY) {

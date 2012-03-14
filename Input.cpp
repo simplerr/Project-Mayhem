@@ -1,5 +1,6 @@
 #include "Input.h"
 #include "Graphics.h"
+#include "Game.h"
 
 //! Constructor.
 Input::Input()
@@ -8,11 +9,19 @@ Input::Input()
 	ZeroMemory(mLastKeyState, sizeof(mLastKeyState));
 	ZeroMemory(mKeyState, sizeof(mKeyState));
 
+	HR(DirectInput8Create(gGame->getAppInst(), DIRECTINPUT_VERSION, 
+		IID_IDirectInput8, (void**)&mDInput, 0));
+
 	// Get the cursor starting position.
 	POINT mousePosition;
 	GetCursorPos(&mousePosition);
 	mMousePosition.x = mousePosition.x;
 	mMousePosition.y = mousePosition.y;
+
+	HR(mDInput->CreateDevice(GUID_SysMouse, &mMouse, 0));
+	HR(mMouse->SetDataFormat(&c_dfDIMouse2));
+	HR(mMouse->SetCooperativeLevel(gGame->getMainWnd(), DISCL_NONEXCLUSIVE|DISCL_FOREGROUND));
+	HR(mMouse->Acquire());
 
 	// No delta movement to start with
 	mDx = mDy = 0.0f;
@@ -21,7 +30,9 @@ Input::Input()
 //! Destructor.
 Input::~Input()
 {
-
+	mMouse->Unacquire();
+	ReleaseCOM(mMouse);
+	ReleaseCOM(mDInput);
 }
 
 //! Update the key state.
@@ -136,11 +147,31 @@ void Input::setMousePosition(Vector pos)
 //! Returns horizontal delta movement.
 float Input::mouseDx()
 {
-	return mDx;
+	return (float)mMouseState.lX;
 }
 
 //! Returns vertical delta movement.
 float Input::mouseDy()
 {
-	return mDy;
+	return (float)mMouseState.lY;
+}
+
+float Input::mouseDz()
+{
+	return (float)mMouseState.lZ;
+}
+
+void Input::poll()
+{
+	// Poll mouse.
+	memcpy(&mLastMouseState, &mMouseState, sizeof(mMouseState));
+	HRESULT hr = mMouse->GetDeviceState(sizeof(DIMOUSESTATE2), (void**)&mMouseState); 
+	if( FAILED(hr) )
+	{
+		// Mouse lost, zero out mouse data structure.
+		ZeroMemory(&mMouseState, sizeof(mMouseState));
+
+		// Try to acquire for next time we poll.
+		hr = mMouse->Acquire(); 
+	}
 }

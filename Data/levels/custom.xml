@@ -31,7 +31,7 @@
         <Object rotation="0" type="0" x="357" y="433" w="10" h="4" collidable="0" texture="Data/imgs/structures/bullet.png" />
         <Object rotation="0" type="0" x="373" y="419" w="10" h="4" collidable="0" texture="Data/imgs/structures/bullet.png" />
         <Object rotation="0" type="0" x="372" y="449" w="10" h="4" collidable="0" texture="Data/imgs/structures/bullet.png" />
-        <Loot trotation="0" type="2" x="360" y="399" w="32" h="32" collidable="1" name="Sniper" texture="Data/imgs/items/sniper.png" />
+        <Loot rotation="0" type="2" x="360" y="399" w="32" h="32" collidable="1" name="Sniper" texture="Data/imgs/items/sniper.png" />
         <Object rotation="0" type="0" x="645" y="538" w="30" h="30" collidable="1" texture="Data/imgs/structures/tunna.png" />
     </Objects>
     <Tiles>

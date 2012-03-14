@@ -118,7 +118,7 @@ bool Runnable::initDiRectX()
 	md3dPP.BackBufferHeight           = 0;
 	md3dPP.BackBufferFormat           = D3DFMT_UNKNOWN;
 	md3dPP.BackBufferCount            = 1;
-	md3dPP.MultiSampleType            = D3DMULTISAMPLE_NONE;
+	md3dPP.MultiSampleType            = D3DMULTISAMPLE_8_SAMPLES;
 	md3dPP.MultiSampleQuality         = 0;
 	md3dPP.SwapEffect                 = D3DSWAPEFFECT_DISCARD; 
 	md3dPP.hDeviceWindow              = mhMainWindow;

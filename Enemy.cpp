@@ -37,7 +37,8 @@ Enemy::Enemy(float x, float y, EnemyData* type) : Object (x, y, type->width, typ
 	mAnimation->setFrame(0); 
 	setClass(type);
 	initAI(type->ai_data, Vector(x,y));
-	mLostSightTimer = 1;
+	mLostSightTimer = .5;
+	mTurns = false;
 
 	srand(time(0));
 
@@ -106,7 +107,7 @@ bool Enemy::handleCollision(Object* collider, MTV* mtv)
 			damage(dynamic_cast<Projectile*>(collider)->getDamage());
 		if(collider->getType() == ENEMY)
 			ai->flags.patrol = false;
-		if(collider->getType() == STRUCTURE) {
+		if(collider->getType() == STRUCTURE && !mTurns) {
 			ai->newTarget(false, getRotation());
 		}
 		if((collider->getType() == ENEMY || collider->getType() == STRUCTURE))
@@ -223,11 +224,16 @@ void Enemy::doAI(float dt)
 	case AI_PATROL: {
 		mAnimation->resume();
 		v = gMath->calculateAngle(getPos(), ai->getActionTarget());
-		setRotation(v);
-		/*float diff = v - getRotation();
-		if(abs(diff) > .1f)
-			setRotation(getRotation() + v/(float)30);
-		else*/ {
+		//setRotation(v);
+		float diff = v - getRotation();
+		
+		if(abs(diff) > .1f) {
+			mTurns = true;
+			rotate((diff/8.0f));
+		}
+		else {
+			if(turns())
+				mTurns = false;
 			if(gMath->distance(getPos(), ai->getActionTarget())>10) 
 			{
 				move((cos(v)*getSpeed()*10*dt), (sin(v)*getSpeed()*10*dt));
@@ -254,15 +260,16 @@ void Enemy::calcAI(float dt)
 {
 	Vector targetPos = getLevel()->getPlayer()->getPos();
 	Vector pos = getPos();
-	float v = ai->getVisionRange();
+	float v = gMath->calculateAngle(pos, targetPos);
+	float vr = ai->getVisionRange();
 	float a = gMath->distance(targetPos, pos);
-	if(a<v) {
+	if((a<vr) && (abs(v-getRotation())< PI)) {
 		if(!ai->seenEnemy()) 
 		{
 			ai->setSeenEnemy(true);
 			ai->setTarget(getLevel()->getPlayer());
 		}
-		mLostSightTimer = .7;//ai->Patience
+		mLostSightTimer = .5;//ai->Patience
 	}
 	else if (a>v && ai->seenEnemy()) {
 		mLostSightTimer-=dt;

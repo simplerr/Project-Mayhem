@@ -97,12 +97,12 @@ Editor::Editor()
 	mButtonContainer->setPadding(5, 5);
 	mWindowHandler->addWindow(mButtonContainer);
 
-<<<<<<< HEAD
+
 	mTileLabel1 = NULL;
 	mTileLabel2 = NULL;
-=======
+
 	mSelectedRegion = NULL;
->>>>>>> 6cccf03c0ddee810585c2cf05315fe100a7150e4
+
 }
 
 Editor::~Editor()

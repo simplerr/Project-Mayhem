@@ -341,9 +341,12 @@ void Level::saveToFile(string file)
 		object->SetAttribute("type", mObjectList[i]->getType());
 		object->SetAttribute("x", mObjectList[i]->getPos().x - mOffset.x);
 		object->SetAttribute("y", mObjectList[i]->getPos().y - mOffset.y);
+		object->SetAttribute("rotation", mObjectList[i]->getRotation()*1000);
+		mObjectList[i]->setRotation(0.0f);
 		object->SetAttribute("w", mObjectList[i]->getBoundingBox().getWidth());
 		object->SetAttribute("h", mObjectList[i]->getBoundingBox().getHeight());
 		object->SetAttribute("collidable", mObjectList[i]->getColides() ? 1 : 0);
+		
 		
 		if(mObjectList[i]->getType() == ENEMY) {
 			Enemy* enemy = dynamic_cast<Enemy*>(mObjectList[i]);
@@ -402,12 +405,14 @@ void Level::loadFromFile(string file)
 		int w = atoi(object->Attribute("w"));
 		int h = atoi(object->Attribute("h"));
 		bool collides = atoi(object->Attribute("collidable")) == 1 ? true : false;
+		float rotation = atof(object->Attribute("rotation")) / 1000;
 		string texture = object->Attribute("texture");
 
 		// Switch type and add the according object to the level
 		if(type == ObjectType::STRUCTURE) {
 			Structure* structure = new Structure(x, y, w, h, texture);
 			structure->setCollidable(collides);
+			structure->setRotation(rotation);
 			addObject(structure);
 		}
 		else if(type == ObjectType::ENEMY) {

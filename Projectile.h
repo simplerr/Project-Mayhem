@@ -22,7 +22,7 @@ struct ProjectileData
 		width = 20;
 		height = 7;
 		range = 250;
-		texturePath = "Data\\imgs\\standard_box.bmp";
+		texturePath = "Data\\imgs\\bullet.png";
 		lifetime = 9999999;
 		followPlayer = false;
 	}
@@ -31,7 +31,7 @@ struct ProjectileData
 class Projectile : public Object
 {
 public:
-	Projectile(float x, float y, int width, int height, float velocity, std::string textureSource = "Data\\imgs\\standard_box.bmp");
+	Projectile(float x, float y, int width, int height, float velocity, std::string textureSource = "Data\\imgs\\bullet.png"); //Data\\imgs\\standard_box.bmp
 	~Projectile();
 	void draw();
 	void update(float dt);

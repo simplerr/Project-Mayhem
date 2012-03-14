@@ -189,9 +189,6 @@
     <ClCompile Include="Font.cpp">
       <Filter>Source Files\Common</Filter>
     </ClCompile>
-    <ClCompile Include="Level.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Animation.cpp">
       <Filter>Source Files\Common</Filter>
     </ClCompile>
@@ -287,6 +284,9 @@
     </ClCompile>
     <ClCompile Include="ObjectHandler.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Level.cpp">
+      <Filter>Source Files\Game objects</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

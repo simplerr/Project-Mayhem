@@ -131,9 +131,6 @@ void Editor::update(float dt)
 	if(gInput->mouseDz() != 0 && mMovingObject != NULL)
 		mMovingObject->rotate(gInput->mouseDz()/500.0f);
 
-	//else if(gInput->keyReleased(VK_LBUTTON))
-	//	mMovingObject = NULL;
-
 	if(gInput->keyDown(VK_LBUTTON) && mMovingObject != NULL)
 		mMovingObject->setPos(pos + mMovingOffset);
 

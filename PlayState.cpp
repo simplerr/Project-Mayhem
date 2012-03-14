@@ -21,7 +21,7 @@ void PlayState::init(Game *game)
 
 	// Create and add player to the level
 	// :NOTE: Could instead lie in Level
-	mPlayer = new Player(SCREEN_WIDTH/2, SCREEN_HEIGHT/2);
+	mPlayer = new Player(80, 500);
 	mPlayer->setLevel(mLevel);
 	mPlayer->init();
 	mLevel->addPlayer(mPlayer);

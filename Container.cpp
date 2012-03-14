@@ -52,6 +52,7 @@ void Container::update(float dt)
 				{
 					mSlotList[i].taken = false;
 					mMovingItem = mSlotList[i].item;
+					selectedMovingItem(mMovingItem);
 					mMovedFrom = i;
 					break;
 				}
@@ -68,6 +69,7 @@ void Container::update(float dt)
 				if(gMath->pointInsideRect(gInput->mousePosition(), mSlotList[i].rect) && (mSlotList[i].slotId == BAG || mSlotList[i].slotId == mMovingItem->getSlotId()))
 				{
 					swapItems(&mSlotList[mMovedFrom], &mSlotList[i]);
+					releasedMovingItem(mMovingItem);
 					mMovingItem = NULL;
 					any = true;
 				}
@@ -116,7 +118,7 @@ void Container::draw()
 				gGraphics->drawTexture(mSlotList[i].item->getTexture(), rect.left + rect.getWidth()/2, rect.top + rect.getHeight()/2, rect.getWidth()-10, rect.getHeight()-10);
 
 			//Numbers
-			if(mSlotList[i].slotId == SKILL){
+			if(mSlotList[i].slotId == SKILL && mSlotList[i].taken){
 				string str = string(1, c[i]);
 				gGraphics->drawText(str, mSlotList[i].rect.right-10,mSlotList[i].rect.top-8,CUSTOM, 8, D3DCOLOR_RGBA(255, 128, 0, 255));
 				if(gMath->pointInsideRect(gInput->mousePosition(), rect) && mSlotList[i].item != NULL) 
@@ -125,6 +127,57 @@ void Container::draw()
 					gGraphics->drawText(dynamic_cast<Skill*>(mSlotList[i].item)->getName(), v.x+4, v.y-110,CUSTOM,9, D3DCOLOR_RGBA(255,128,0,255));
 				}
 			}
+		}
+
+		// The moving item
+		if(mMovingItem != NULL)
+		{
+			gGraphics->drawTexture(mMovingItem->getTexture(), gInput->mousePosition().x, gInput->mousePosition().y, 50, 50);
+		}
+	}
+}
+
+void Container::drawSlots()
+{
+	char c[9] = {'1','2','3','4','5','6','7'};
+	// Visible?
+	if(mVisible)
+	{
+		// Background
+		gGraphics->drawTexture(mBkgd, mPosition.x, mPosition.y, mWidth, mHeight);
+		// Loop through all slots
+		for(int i = 0; i < mSlotList.size(); i++)
+		{
+			Rect rect = mSlotList[i].rect;
+
+			IDirect3DTexture9* texture;
+
+			if(mSlotList[i].slotId == BAG)
+				texture = mBagSlot;
+			else if(mSlotList[i].slotId == SKILL)
+				texture = mSkillSlot;
+			else
+				texture = mEquipSlot;
+
+			gGraphics->drawTexture(texture, mSlotList[i].rect);
+		}
+	}
+}
+	
+void Container::drawItems()
+{
+	char c[9] = {'1','2','3','4','5','6','7'};
+	// Visible?
+	if(mVisible)
+	{
+		// Background
+		Vector v = gInput->mousePosition();
+		// Loop through all slots
+		for(int i = 0; i < mSlotList.size(); i++)
+		{	
+			Rect rect = mSlotList[i].rect;
+			if(mSlotList[i].taken)
+				gGraphics->drawTexture(mSlotList[i].item->getTexture(), rect.left + rect.getWidth()/2, rect.top + rect.getHeight()/2, rect.getWidth()-10, rect.getHeight()-10);
 		}
 
 		// The moving item
@@ -145,7 +198,7 @@ void Container::swapItems(Slot* from, Slot* to)
 		(*from).item = (*to).item;
 		(*from).taken = true;
 
-		itemMoved((*from).item, tmp.slotId, to->slotId);
+		itemMoved((tmp).item, tmp.slotId, to->slotId);
 		(*to).item = tmp.item;
 		(*to).taken = true;
 	}

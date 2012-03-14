@@ -34,8 +34,12 @@ public:
 
 	virtual void update(float dt);
 	virtual void draw();
+	void drawSlots();
+	void drawItems();
 	virtual void itemMoved(SlotItem* item, SlotId from, SlotId to){};
 	virtual void itemOutsideSlot(SlotItem* item);
+	virtual void selectedMovingItem(SlotItem* item) {};
+	virtual void releasedMovingItem(SlotItem* item) {};
 
 	//virtual void addItem(string itemName);
 	void addSlot(int x, int y, SlotId id);

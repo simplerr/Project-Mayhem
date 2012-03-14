@@ -30,6 +30,8 @@ public:
 	void setPlayer(Player* player);
 	void update(float dt);
 	void draw();
+	void selectedMovingItem(SlotItem* item);
+	void releasedMovingItem(SlotItem* item);
 	void itemMoved(SlotItem* item, SlotId from, SlotId to);
 	void addItem(string itemName, SlotId slotId = BAG);
 	void addGold(int gold = 1);
@@ -41,5 +43,6 @@ private:
 	IDirect3DTexture9*  mCloseTexture;
 	Rect				mCloseRect;
 	Player*				mPlayer;
+	Slot*				mCorrespondingSlot;
 	int					mGold;
 };

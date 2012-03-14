@@ -79,7 +79,8 @@ void Enemy::damage(float dHP)
 				break;
 			}
 		}
-
+		getLevel()->addObject(new EnergyPotion(getPos().x + distance*cosf(0), getPos().y + distance*sinf(0), 20));
+		getLevel()->addObject(new HealthPotion(getPos().x + distance*cosf(00), getPos().y + distance*sinf(0), 20));
 		if(!any) {
 			int x = rand() % 5;
 			float angle = (rand() % 340)/(float)100;
@@ -267,7 +268,7 @@ void Enemy::calcAI(float dt)
 	float v = gMath->calculateAngle(pos, targetPos);
 	float vr = ai->getVisionRange();
 	float a = gMath->distance(targetPos, pos);
-	if((a<vr) && (abs(v-getRotation())< PI)) {
+	if((a<vr) && (abs(v-getRotation())< 2*PI/3)) {
 		if(!ai->seenEnemy()) 
 		{
 			ai->setSeenEnemy(true);

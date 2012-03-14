@@ -16,7 +16,7 @@ Knife::Knife(Player* player, Level* level) : Weapon(player, level)
 	pd.followPlayer = true;
 	setProjectileData(pd);
 	setVisible(false);
-	setOffset(Vector(-20, 0));
+	setOffset(Vector(-20, -8));
 	setCooldown(.4f);
 }
 

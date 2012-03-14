@@ -23,4 +23,4 @@ private:
 	ISound*			bgSound;
 };
 
-extern AudioHandler* gAudio;
+//extern AudioHandler* gAudio;

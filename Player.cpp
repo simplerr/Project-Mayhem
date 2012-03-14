@@ -51,8 +51,6 @@ Player::Player(float x, float y) : Object (x, y, 35, 35, PLAYER,  "Data\\imgs\\p
 	mGui->setTexture("Data\\imgs\\gui_bkgd.png");
 	mStatusText = new StatusText("Data\\imgs\\level_up.png", SCREEN_WIDTH/2, 200, 400, 50);
 
-	
-
 	// Experience per level
 	mExpPerLevel.push_back(50);
 	mExpPerLevel.push_back(100);
@@ -192,6 +190,16 @@ void Player::itemEquipped(Item* item, bool equiped)
 				mWeapon = new Rifle(this, getLevel());
 				mWeapon->setCooldown(0.1f);
 			}
+			else if(item->getData().name == "Sniper") {
+				mWeapon = new Weapon(this, getLevel());
+				ProjectileData pd = gScrap->basicProjectile;
+				pd.texturePath = "Data\\imgs\\sniper_bullet.png";
+				pd.width = 20;
+				pd.height = 8;
+				pd.speed = 30;
+				mWeapon->setProjectileData(pd);
+				mWeapon->setCooldown(0.8f);
+			}
 			else if(item->getData().name == "Knife")
 				mWeapon = new Knife(this, getLevel());
 		}
@@ -218,13 +226,13 @@ void Player::addExperience(int experience)
 		mLevel++;
 
 		if(mLevel == 2)
-			mGui->addSkill(new Blink());
+			mGui->addSkill(new Mine());
 		else if(mLevel == 3)
 			mGui->addSkill(new Wrath());
 		else if(mLevel == 4)
-			mGui->addSkill(new Mine());
-		else if(mLevel == 5)
 			mGui->addSkill(new SolarBolts());
+		else if(mLevel == 5)
+			mGui->addSkill(new Blink());
 
 		mStatusText->show(2.0f);
 	}

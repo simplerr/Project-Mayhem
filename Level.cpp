@@ -187,6 +187,9 @@ void Level::draw()
 	for(int i = 0; i < mObjectList.size(); i++)
 		if(mObjectList[i]->getLayer()==TOP) mObjectList[i]->draw();
 
+	if(!isInEditor())
+		mPlayer->drawInventory();
+
 	// Print how many objects there is on the level
 	char buffer[256];
 	sprintf(buffer, "objects: %i", mObjectList.size());

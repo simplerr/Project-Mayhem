@@ -21,6 +21,7 @@ public:
 
 	void update(float dt);
 	void draw();
+	void drawInventory();
 	void init();
 
 	void handleInput();

@@ -1,7 +1,22 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Objects>
-  <Object name="Tunna" collides="1" texture="Data/imgs/tunna.png" width="100" height="100"></Object>
-  <Object name="Väska1" collides="1" texture="Data/imgs/bag1.png" width="100" height="50"></Object>
-  <Object name="Skelett" collides="0" texture="Data/imgs/skelett.png" width="100" height="100"></Object>
-  <Object name="Väska2" collides="1" texture="Data/imgs/bag2.png" width="100" height="100"></Object>
+  
+<Object name="Tunna" collides="1" texture="Data/imgs/structures/tunna.png" width="30" height="30"></Object>
+  
+<Object name="Väska1" collides="1" texture="Data/imgs/structures/bag1.png" width="50" height="35"></Object>
+<Object name="Väska2" collides="1" texture="Data/imgs/structures/bag2.png" width="50" height="35"></Object>
+<Object name="Väska3" collides="1" texture="Data/imgs/structures/bag3.png" width="50" height="12"></Object>
+  
+<Object name="Skelett" collides="0" texture="Data/imgs/structures/skelett.png" width="40" height="65"></Object>
+  
+<Object name="skull" collides="0" texture="Data/imgs/structures/skull.png" width="18" height="24"></Object>
+
+<Object name="bullet" collides="0" texture="Data/imgs/structures/bullet.png" width="11" height="5"></Object>
+<Object name="bensindunk" collides="1" texture="Data/imgs/structures/bensindunk.png" width="30" height="14"></Object>
+
+<Object name="wall" collides="1" texture="Data/imgs/structures/wall.png" width="80" height="8"></Object>
+<Object name="fence" collides="1" texture="Data/imgs/structures/fence.png" width="100" height="12"></Object>
+
+<Object name="prison" collides="1" texture="Data/imgs/structures/prison.png" width="90" height="60"></Object>
+
 </Objects>

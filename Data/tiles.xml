@@ -2,11 +2,23 @@
 <Tiles>
   <!-- All the different tiles are stored here -->
   <!-- Multiple tiles can't have the same name -->
-  <Tile name="Grass" texture="Data\\imgs\\tile_grass.png" obstacle="false" friction="1.0f"></Tile>
-  <Tile name="Green" texture="Data\\imgs\\tile_green.png" obstacle="false" friction="1.0f"></Tile>
-  <Tile name="Gray1" texture="Data\\imgs\\tile_gray.png" obstacle="false" friction="1.0f"></Tile>
-  <Tile name="Gray2" texture="Data\\imgs\\tile_gray1.png" obstacle="false" friction="1.0f"></Tile>
-  <Tile name="Wall1" texture="Data\\imgs\\tile_wall1.png"  obstacle="true"  friction ="0.7f"></Tile>
-  <Tile name="Wall2" texture="Data\\imgs\\tile_wall2.png"  obstacle="true"  friction ="0.7f"></Tile>
-  <Tile name="Bkgd"  texture="Data\\imgs\\black_tile.bmp" obstacle="false" friction ="1.0f"></Tile>
+  
+<Tile name="Grass" texture="Data\\imgs\\tiles\\tile_grass.png" obstacle="false" friction="1.0f"></Tile>
+ 
+<Tile name="Green" texture="Data\\imgs\\tiles\\tile_green.png" obstacle="false" friction="1.0f"></Tile>
+ 
+<Tile name="Gray1" texture="Data\\imgs\\tiles\\tile_gray.png" obstacle="false" friction="1.0f"></Tile>
+  
+<Tile name="Gray2" texture="Data\\imgs\\tiles\\tile_gray1.png" obstacle="false" friction="1.0f"></Tile>
+  
+<Tile name="Wall1" texture="Data\\imgs\\tiles\\tile_wall1.png"  obstacle="true"  friction ="0.7f"></Tile>
+  
+<Tile name="Wall2" texture="Data\\imgs\\tiles\\tile_wall2.png"  obstacle="true"  friction ="0.7f"></Tile>
+  
+<Tile name="Bkgd"  texture="Data\\imgs\\tiles\\black_tile.bmp" obstacle="false" friction ="1.0f"></Tile> 
+<Tile name="wall3"  texture="Data\\imgs\\tiles\\wall_block1.png" obstacle="true" friction ="1.0f"></Tile>
+<Tile name="wall4"  texture="Data\\imgs\\tiles\\wall_block2.png" obstacle="true" friction ="1.0f"></Tile>
+ 
+<Tile name="wall5"  texture="Data\\imgs\\tiles\\wall_block3.png" obstacle="true" friction ="1.0f"></Tile>
+<Tile name="tile"  texture="Data\\imgs\\tiles\\tile.jpg" obstacle="false" friction ="1.0f"></Tile>
 </Tiles>

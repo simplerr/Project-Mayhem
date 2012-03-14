@@ -13,6 +13,7 @@ public:
 	~Scrap();
 	
 	Object* tileObject; // Temporary test object, with position and dimensions of the tile
+	Object* enemyCheck;
 	Rect*	rect;
 	Rect*	editorRect;
 	bool	editingRegion;

@@ -50,6 +50,7 @@ public:
 	Object* getObjectAt(Vector pos);
 	Player* getPlayer();
 	std::vector<Object*>* getObjectList()	{return &mObjectList;}
+	std::vector<Tile*>*	getTileList()		{return &mTileList;}
 	string getSource() {return mSource;}
 	bool isInEditor() {return mEditorMode;}
 	void setInEditor(bool b)	{ mEditorMode = b;}

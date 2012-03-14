@@ -83,6 +83,7 @@ public:
 	void calcAI(float dt);
 	void initAI(AIdata data, Vector v);
 	bool turns()						{return mTurns;}
+	bool doVision();
 private:
 	bool mTurns;
 	EnemyData* mClass;

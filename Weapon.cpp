@@ -3,6 +3,7 @@
 #include "Input.h"
 #include "Level.h"
 #include "Player.h"
+#include "Sound.h"
 
 Weapon::Weapon(Player* player, Level* level)
 {
@@ -37,6 +38,7 @@ void Weapon::draw(Vector playerPos, float rotation)
 void Weapon::fire(Vector playerPos, float rotation)
 {
 	// Mouse
+	gAudio->playEffect("Data\\sounds\\fx\\Rifle2.wav");
 	Vector mousePos = gInput->mousePosition();
 	Vector offset(55, 15);
 	Vector pos = Vector(playerPos.x + cosf(rotation)*offset.x - sinf(rotation)*offset.y, 

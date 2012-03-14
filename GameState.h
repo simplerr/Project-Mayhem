@@ -3,6 +3,7 @@
 
 #include "Game.h"
 
+
 class Game;
 
 // Reference: http://gamedevgeek.com/tutorials/managing-game-states-in-c/
@@ -38,6 +39,7 @@ private:
 	bool mStateChanged;
 	Game *mGame;
 	bool mUsesCamera;
+	
 };	// Class
 
 extern GameState* gGameState;

@@ -66,13 +66,13 @@ void AI::newTarget(bool random, float rotation)
 	if(random)
 		v = gMath->random(0, 2*PI*360)/360;
 	else
-		v = rotation - PI + ((float)(gMath->random(0, (PI/10)*360)/360)-(PI/5));
+		v = rotation - PI + ((float)(gMath->random(0, (PI/20)*360)/360)-(PI/10));
 	
 	ai_actionTarget = Vector(cos(v), sin(v));
 	if(random)
 		ai_actionTarget.multiply(patrolSize);
 	else
-		ai_actionTarget.multiply(patrolSize/3);
+		ai_actionTarget.multiply(patrolSize/5);
 	ai_actionTarget.add(ai_patrolOrigin);
 	flags.patrol = true;
 }

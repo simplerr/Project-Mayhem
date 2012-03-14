@@ -7,7 +7,7 @@
 #include "PlayState.h"
 #include "EditorState.h"
 #include "Vector.h"
-#include "AudioHandler.h"
+#include "Sound.h"
 #include "enums.h"
 #include "GameOver.h"
 
@@ -29,7 +29,7 @@ void MenuState::init(Game *game)
 	mMenu->buildMenu2(256, 64);
 	mMenu->connect(&MenuState::menuHandler, this);
 
-	//gAudio->ambientPlay(false);
+	gAudio->playMusic("Data\\sounds\\Tranquil Feelings.ogg", true, false);
 
 	// Important when we later need to switch state
 	setGame(game);

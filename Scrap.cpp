@@ -10,6 +10,7 @@ Scrap::Scrap()
 	editorRect = new Rect(10,10,10,10,0);
 	editingRegion = false;
 	basicProjectile = ProjectileData();
+	shadow = gGraphics->loadTexture("Data\\imgs\\shadow.png");
 }
 
 Scrap::~Scrap() 

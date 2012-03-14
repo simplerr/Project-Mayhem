@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Projectile.h"
+#include "Graphics.h"
 
 class Object;
 class Rect;
@@ -16,6 +17,7 @@ public:
 	Rect*	editorRect;
 	bool	editingRegion;
 	ProjectileData basicProjectile;
+	IDirect3DTexture9* shadow;
 };
 
 extern Scrap* gScrap;

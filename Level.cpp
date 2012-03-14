@@ -213,6 +213,7 @@ void Level::addPlayer(Player* player)
 	// mPlayer is used for simplicity
 	mPlayer = player;
 	addObject(mPlayer);
+	mCameraOffset = mPlayer->getPos() -  Vector(SCREEN_WIDTH/2, SCREEN_HEIGHT/2);
 }
 
 void Level::removeObject(Object* object)

@@ -5,7 +5,7 @@
 
 Rifle::Rifle(Player* player, Level* level) : Weapon(player, level)
 {
-
+	setOffset(Vector(30, 13));
 }
 
 Rifle::~Rifle()

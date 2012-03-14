@@ -11,10 +11,10 @@
 
 using namespace std;
 
-Inventory::Inventory() : Container(SCREEN_WIDTH/2, SCREEN_HEIGHT/2, 675, 400)
+Inventory::Inventory() : Container(SCREEN_WIDTH/2, SCREEN_HEIGHT/2, 750, 400)
 {
 	mGold = 0;
-	mHooverBkgd = gGraphics->loadTexture("Data\\imgs\\hoover_bkgd.png");
+	mHooverBkgd = gGraphics->loadTexture("Data\\imgs\\SkillBG.png");
 	mCloseTexture = gGraphics->loadTexture("Data\\imgs\\close_button.png");
 
 	// Create the equip slots
@@ -23,8 +23,7 @@ Inventory::Inventory() : Container(SCREEN_WIDTH/2, SCREEN_HEIGHT/2, 675, 400)
 
 	mCloseRect = Rect(getPosition().x + getWidth()/2 - 20, getPosition().y - getHeight()/2 + 20, 30, 30, 1);
 	
-	addSlot(x + 50, y + 50, SlotId::WEAPON);
-	addSlot(x + 120, y + 50, SlotId::SHIELD);
+	addSlot(x + 85, y + 50, SlotId::WEAPON);
 	addSlot(x + 85, y + 130, SlotId::HEAD);
 	addSlot(x + 85, y + 200, SlotId::CHEST);
 	addSlot(x + 85, y + 270, SlotId::LEGS);
@@ -38,6 +37,8 @@ Inventory::Inventory() : Container(SCREEN_WIDTH/2, SCREEN_HEIGHT/2, 675, 400)
 
 	// Not visible to start with
 	hide();
+
+	mCorrespondingSlot = NULL;
 }
 	
 Inventory::~Inventory()
@@ -119,11 +120,44 @@ void Inventory::draw()
 	// Visible?
 	if(getVisible())
 	{
-		Container::draw();
+		drawSlots();
+		if(mCorrespondingSlot != NULL) {
+			Rect rect = mCorrespondingSlot->rect;
+			rect.left += 5;
+			rect.right -= 5;
+			rect.top += 5;
+			rect.bottom -= 5;
+			gGraphics->drawRect(rect, 0xff00ff00);
+		}
+		
+		drawItems();
+		char buffer[256];
+
+		sprintf(buffer, "Level: %i", mPlayer->getCharacterLevel());
+		gGraphics->drawText(buffer, getPosition().x + 160, getPosition().y - 140, CUSTOM, 10, D3DCOLOR_RGBA(255,128,0,255));
+
+		sprintf(buffer, "Experiece: %i/%i", mPlayer->getExperience(), mPlayer->getLevelExp());
+		gGraphics->drawText(buffer, getPosition().x + 160, getPosition().y - 120, CUSTOM, 10, D3DCOLOR_RGBA(255,128,0,255));
+
+		sprintf(buffer, "Gold: %i", mGold);
+		gGraphics->drawText(buffer, getPosition().x + 160, getPosition().y - 100, CUSTOM, 10, D3DCOLOR_RGBA(255,128,0,255));;
+
+		sprintf(buffer, "Health: %i", (int)mPlayer->getMaxHealth());
+		gGraphics->drawText(buffer, getPosition().x + 160, getPosition().y - 80, CUSTOM, 10, D3DCOLOR_RGBA(255,128,0,255));
+
+		sprintf(buffer, "MoveSpeed: %.2f", mPlayer->getMoveSpeed());
+		gGraphics->drawText(buffer, getPosition().x + 160, getPosition().y - 60, CUSTOM, 10, D3DCOLOR_RGBA(255,128,0,255));
+
+		sprintf(buffer, "Armor: %i", (int)mPlayer->getArmor());
+		gGraphics->drawText(buffer, getPosition().x + 160, getPosition().y - 40, CUSTOM, 10, D3DCOLOR_RGBA(255,128,0,255));
+
+		sprintf(buffer, "Energy: %i", (int)mPlayer->getMaxEnergy());
+		gGraphics->drawText(buffer, getPosition().x + 160, getPosition().y - 20, CUSTOM, 10, D3DCOLOR_RGBA(255,128,0,255));
+
+		gGraphics->drawTexture(mCloseTexture, mCloseRect);
 
 		// Draw the item information overlay
-
-		for(int i = 0; i < mSlotList.size() && 0; i++)
+		for(int i = 0; i < mSlotList.size(); i++)
 		{
 			Rect rect = mSlotList[i].rect;
 			// Show item information?
@@ -134,54 +168,26 @@ void Inventory::draw()
 				int x = pos.x - rect.getWidth()/2 + - 60;
 				int y = pos.y - rect.getHeight()/2 - 120;
 				ItemData attributes = ((Item*)mSlotList[i].item)->getData();
-				gGraphics->drawTexture(mHooverBkgd, pos.x, pos.y, 200, 250);
+				gGraphics->drawTexture(mHooverBkgd, pos.x, pos.y-75, 200, 100);
 
 				char buffer[256];
 				if(attributes.damage != 0)
 				{
 					sprintf(buffer, "Damage: %i", attributes.damage);
-					gGraphics->drawText(buffer, x, y+=30, SMALL_DX);
+					gGraphics->drawText(buffer, x, y+=30, CUSTOM, 10, D3DCOLOR_RGBA(255,128,0,255));
 				}
 				if(attributes.armor != 0)  
 				{
 					sprintf(buffer, "Armor: %i", attributes.armor);
-					gGraphics->drawText(buffer, x, y+=30, SMALL_DX);
+					gGraphics->drawText(buffer, x, y+=30, CUSTOM, 10, D3DCOLOR_RGBA(255,128,0,255));
 				}
 				
 				sprintf(buffer, "Weight: %i", attributes.weight);
-				gGraphics->drawText(buffer, x, y+=30, SMALL_DX);
+				gGraphics->drawText(buffer, x, y+=30, CUSTOM, 10, D3DCOLOR_RGBA(255,128,0,255));
 				// TODO: Slot..
 				// TODO: Attack speed..
 			}
 		}
-
-		//gGraphics->drawRect(getPosition().x + 230, getPosition().y-7, 165, 275, 0xffffffff);
-
-		// Display gold amount
-		char buffer[256];
-
-		sprintf(buffer, "Level: %i", mPlayer->getCharacterLevel());
-		gGraphics->drawText(buffer, getPosition().x + 160, getPosition().y - 140, SMALL_DX);
-
-		sprintf(buffer, "Experiece: %i/%i", mPlayer->getExperience(), mPlayer->getLevelExp());
-		gGraphics->drawText(buffer, getPosition().x + 160, getPosition().y - 120, SMALL_DX);
-
-		sprintf(buffer, "Gold: %i", mGold);
-		gGraphics->drawText(buffer, getPosition().x + 160, getPosition().y - 100, SMALL_DX);
-
-		sprintf(buffer, "Health: %i", (int)mPlayer->getMaxHealth());
-		gGraphics->drawText(buffer, getPosition().x + 160, getPosition().y - 80, SMALL_DX);
-
-		sprintf(buffer, "MoveSpeed: %.2f", mPlayer->getMoveSpeed());
-		gGraphics->drawText(buffer, getPosition().x + 160, getPosition().y - 60, SMALL_DX);
-
-		sprintf(buffer, "Armor: %i", (int)mPlayer->getArmor());
-		gGraphics->drawText(buffer, getPosition().x + 160, getPosition().y - 40, SMALL_DX);
-
-		sprintf(buffer, "Energy: %i", (int)mPlayer->getMaxEnergy());
-		gGraphics->drawText(buffer, getPosition().x + 160, getPosition().y - 20, SMALL_DX);
-
-		gGraphics->drawTexture(mCloseTexture, mCloseRect);
 	}
 }
 
@@ -271,4 +277,17 @@ ItemData Inventory::getAllStats()
 void Inventory::setPlayer(Player* player)
 {
 	mPlayer = player;
+}
+
+void Inventory::selectedMovingItem(SlotItem* item)
+{
+	if(item->getSlotId() != BAG)
+		for(int i = 0; i < mSlotList.size(); i++)
+			if(mSlotList[i].slotId == item->getSlotId())
+				mCorrespondingSlot = &mSlotList[i];
+}
+	
+void Inventory::releasedMovingItem(SlotItem* item)
+{
+	mCorrespondingSlot = NULL;
 }

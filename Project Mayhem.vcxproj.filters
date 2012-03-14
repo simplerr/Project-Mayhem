@@ -288,6 +288,9 @@
     <ClCompile Include="Level.cpp">
       <Filter>Source Files\Game objects</Filter>
     </ClCompile>
+    <ClCompile Include="Sound.cpp">
+      <Filter>Source Files\Common</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="d3dUtil.h">
@@ -505,6 +508,9 @@
     </ClInclude>
     <ClInclude Include="ObjectHandler.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Sound.h">
+      <Filter>Header Files\Common</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

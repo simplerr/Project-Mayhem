@@ -16,13 +16,14 @@
 #include <stdlib.h>
 #include <crtdbg.h>
 #include "ObjectHandler.h"
+#include "Sound.h"
 
 Graphics*			gGraphics		= NULL;
 GameState*			gGameState		= NULL;
 Input*				gInput			= NULL;
 Runnable*			gGame			= NULL;
 IDirect3DDevice9*	gd3dDevice		= NULL;
-AudioHandler*		gAudio			= NULL;
+Sound*				gAudio			= NULL;
 Math*				gMath			= NULL;
 Enemies*			gEnemies		= NULL;
 ItemHandler*		gItemHandler	= NULL;
@@ -70,7 +71,7 @@ Game::Game(HINSTANCE hInstance, std::string caption, int width, int height, D3DD
 	gObjectHandler = new ObjectHandler();
 	
 	mGameState = NULL;
-	gAudio = new AudioHandler();
+	gAudio = new Sound();
 	changeState(MenuState::Instance());
 	mGameState->init(this);
 	gGameState = mGameState;

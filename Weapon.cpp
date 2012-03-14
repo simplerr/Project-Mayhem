@@ -9,7 +9,7 @@ Weapon::Weapon(Player* player, Level* level)
 	mPlayer = player;
 	mLevel = level;
 	mCounter = 0.0f;
-	setTexture("Data\\imgs\\vapen1.png");
+	setTexture("Data/imgs/items/sniper_top.png");
 	mOffset = Vector(30, 16);
 	setCooldown(0.55f);
 	setProjectileData(gScrap->basicProjectile);

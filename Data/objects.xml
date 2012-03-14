@@ -17,6 +17,6 @@
 <Object name="wall" collides="1" texture="Data/imgs/structures/wall.png" width="80" height="8"></Object>
 <Object name="fence" collides="1" texture="Data/imgs/structures/fence.png" width="100" height="12"></Object>
 
-<Object name="prison" collides="1" texture="Data/imgs/structures/prison.png" width="90" height="60"></Object>
+<Object name="prison" collides="1" texture="Data/imgs/structures/prison.png" width="75" height="60"></Object>
 
 </Objects>

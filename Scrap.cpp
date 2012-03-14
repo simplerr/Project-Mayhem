@@ -10,6 +10,7 @@ Scrap::Scrap()
 	editorRect = new Rect(10,10,10,10,0);
 	editingRegion = false;
 	basicProjectile = ProjectileData();
+	enemyCheck = new Object(0, 0, 40, 40, STRUCTURE, "Data\\imgs\\standard_box.bmp");
 	shadow = gGraphics->loadTexture("Data\\imgs\\shadow.png");
 }
 

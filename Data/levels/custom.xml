@@ -586,6 +586,5 @@
         <Tile name="wall4" x="1140" y="500" />
         <Tile name="wall4" x="1180" y="500" />
         <Tile name="wall4" x="1220" y="500" />
-        <Tile 
     </Tiles>
 </Level>

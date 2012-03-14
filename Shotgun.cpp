@@ -31,6 +31,5 @@ void Shotgun::fire(Vector playerPos, float rotation)
 		getLevel()->addProjectile(getPlayer(), pos, gInput->mousePosition(), getProjectileData());
 	}
 	
-
 	setCounter(0.0f);
 }

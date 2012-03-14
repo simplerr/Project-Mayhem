@@ -90,6 +90,7 @@ void Player::update(float dt)
 
 void Player::draw()
 {
+	gGraphics->drawTexturedPolygon(getPolygon(), gScrap->shadow);
 	gGraphics->drawTexturedPolygon(getPolygon(), getTexture(), &mAnimation->getSourceRect());
 	if(mWeapon != NULL)
 		mWeapon->draw(getPos(), getRotation());

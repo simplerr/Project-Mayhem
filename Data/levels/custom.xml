@@ -27,7 +27,6 @@
         <Object type="0" x="645" y="538" rotation="0" w="30" h="30" collidable="1" texture="Data/imgs/structures/tunna.png" />
         <Loot type="2" x="570" y="121" rotation="0" w="32" h="32" collidable="1" name="Sniper" texture="Data/imgs/items/sniper.png" />
         <Object type="0" x="71" y="437" rotation="-1600" w="74" h="60" collidable="1" texture="Data/imgs/structures/prison.png" />
-        <Object type="9" x="1359" y="177" rotation="0" w="148" h="106" collidable="0" texture="Data\imgs\standard_box.bmp" />
         <Enemy type="3" x="311" y="274" rotation="0" w="32" h="32" collidable="1" class="spider" texture="Data\\imgs\\spider.png" />
         <Enemy type="3" x="359" y="501" rotation="0" w="32" h="32" collidable="1" class="spider" texture="Data\\imgs\\spider.png" />
         <Enemy type="3" x="576" y="644" rotation="0" w="32" h="32" collidable="1" class="spider" texture="Data\\imgs\\spider.png" />
@@ -60,6 +59,7 @@
         <Object type="0" x="1293" y="436" rotation="0" w="40" h="64" collidable="0" texture="Data/imgs/structures/skelett.png" />
         <Object type="0" x="1224" y="331" rotation="-1600" w="100" h="12" collidable="1" texture="Data/imgs/structures/fence.png" />
         <Object type="0" x="1226" y="386" rotation="-1599" w="100" h="12" collidable="1" texture="Data/imgs/structures/fence.png" />
+        <Object type="9" x="1358" y="179" rotation="0" w="152" h="108" collidable="0" texture="Data\imgs\standard_box.bmp" />
     </Objects>
     <Tiles>
         <Tile name="Grass" x="140" y="260" />
@@ -170,7 +170,6 @@
         <Tile name="Grass" x="620" y="180" />
         <Tile name="Grass" x="620" y="220" />
         <Tile name="Grass" x="660" y="220" />
-        <Tile name="wall4" x="700" y="340" />
         <Tile name="wall4" x="700" y="300" />
         <Tile name="wall4" x="700" y="260" />
         <Tile name="wall4" x="700" y="220" />
@@ -586,5 +585,29 @@
         <Tile name="wall4" x="1140" y="500" />
         <Tile name="wall4" x="1180" y="500" />
         <Tile name="wall4" x="1220" y="500" />
+        <Tile name="wall4" x="1260" y="500" />
+        <Tile name="wall4" x="1300" y="500" />
+        <Tile name="wall4" x="1340" y="500" />
+        <Tile name="wall4" x="1340" y="460" />
+        <Tile name="wall4" x="1340" y="420" />
+        <Tile name="wall4" x="1340" y="380" />
+        <Tile name="wall4" x="1340" y="340" />
+        <Tile name="wall4" x="1420" y="260" />
+        <Tile name="wall4" x="1380" y="260" />
+        <Tile name="wall4" x="1340" y="260" />
+        <Tile name="wall4" x="1300" y="260" />
+        <Tile name="Grass" x="1340" y="300" />
+        <Tile name="wall4" x="1260" y="260" />
+        <Tile name="wall4" x="1220" y="260" />
+        <Tile name="wall4" x="1180" y="260" />
+        <Tile name="wall4" x="1180" y="220" />
+        <Tile name="wall4" x="1180" y="180" />
+        <Tile name="wall4" x="1220" y="180" />
+        <Tile name="wall4" x="1260" y="180" />
+        <Tile name="wall4" x="1220" y="220" />
+        <Tile name="wall4" x="1260" y="220" />
+        <Tile name="wall4" x="980" y="380" />
+        <Tile name="wall4" x="660" y="660" />
+        <Tile name="Grass" x="700" y="340" />
     </Tiles>
 </Level>

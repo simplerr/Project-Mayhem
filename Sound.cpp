@@ -10,6 +10,7 @@ Sound::Sound()
 	// should read from a text file
 	mMusicMuted = false;
 	mEffectsMuted = false;
+	mVolume = .8;
 }
 
 Sound::~Sound()
@@ -50,7 +51,9 @@ irrklang::ISound* Sound::playEffect(std::string source)
 {
 	//irrklang::ISound *effect;
 	if(!mEffectsMuted)	{
-		irrklang::ISound* soundEffect = mEngine->play2D(source.c_str(), false, false, false);
+		irrklang::ISound* soundEffect = mEngine->play2D(source.c_str(), false, true, true);
+		soundEffect->setVolume(0.3f);
+		soundEffect->setIsPaused(false);
 	}
 
 	return NULL;

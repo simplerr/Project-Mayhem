@@ -2,6 +2,7 @@
 #include "Player.h"
 #include "Level.h"
 #include "Input.h"
+#include "Sound.h"
 
 Shotgun::Shotgun(Player* player, Level* level) : Weapon(player, level)
 {
@@ -20,6 +21,7 @@ Shotgun::~Shotgun()
 
 void Shotgun::fire(Vector playerPos, float rotation)
 {
+	gAudio->playEffect("Data\\sounds\\fx\\Rifle.wav");
 	// Mouse
 	Vector mousePos = gInput->mousePosition();
 	Vector offset(55, 15);

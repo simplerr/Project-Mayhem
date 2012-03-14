@@ -11,6 +11,7 @@
 #include "Gold.h"
 #include "HealthPotion.h"
 #include "EnergyPotion.h"
+#include "Scrap.h"
 
 EnemyData::EnemyData(int w, int h, string n, string texture) 
 {
@@ -61,6 +62,8 @@ Enemy::~Enemy()
 void Enemy::damage(float dHP) 
 {
 	modHP(-dHP);
+	ai->setSeenEnemy(true);
+	ai->setTarget(getLevel()->getPlayer());
 	if(mHp<=0) {
 		setAlive(false);
 
@@ -104,7 +107,7 @@ void Enemy::damage(float dHP)
 
 bool Enemy::handleCollision(Object* collider, MTV* mtv)
 {
-	if (collider->getOwnerId() != getID()) 
+	if (collider->getOwnerId() != getID() && collider->getType() != LOOT) 
 	{
 		if(collider->getType() == PROJECTILE)
 			damage(dynamic_cast<Projectile*>(collider)->getDamage());
@@ -186,6 +189,7 @@ void Enemy::update(float dt)
 
 void Enemy::draw()
 {
+	gGraphics->drawTexturedPolygon(getPolygon(), gScrap->shadow);
 	gGraphics->drawTexturedPolygon(getPolygon(), getTexture(), &mAnimation->getSourceRect());
 }
 
@@ -266,7 +270,7 @@ void Enemy::calcAI(float dt)
 	float v = gMath->calculateAngle(pos, targetPos);
 	float vr = ai->getVisionRange();
 	float a = gMath->distance(targetPos, pos);
-	if((a<vr) && (abs(v-getRotation())< 2*PI/3)) {
+	if(((a<vr) && (a < vr/2 || abs(v-getRotation())< 2*PI/3))) {
 		if(!ai->seenEnemy()) 
 		{
 			ai->setSeenEnemy(true);

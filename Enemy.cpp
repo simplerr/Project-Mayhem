@@ -79,8 +79,6 @@ void Enemy::damage(float dHP)
 				break;
 			}
 		}
-		getLevel()->addObject(new EnergyPotion(getPos().x + distance*cosf(0), getPos().y + distance*sinf(0), 20));
-		getLevel()->addObject(new HealthPotion(getPos().x + distance*cosf(00), getPos().y + distance*sinf(0), 20));
 		if(!any) {
 			int x = rand() % 5;
 			float angle = (rand() % 340)/(float)100;

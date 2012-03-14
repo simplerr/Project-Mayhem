@@ -95,7 +95,10 @@ void Player::draw()
 	gGraphics->drawTexturedPolygon(getPolygon(), getTexture(), &mAnimation->getSourceRect());
 	if(mWeapon != NULL)
 		mWeapon->draw(getPos(), getRotation());
+}
 
+void Player::drawInventory()
+{
 	mStatusText->draw();
 	mInventory->draw();
 	mGui->draw();
@@ -109,9 +112,9 @@ void Player::handleInput()
 		Object* object = getLevel()->getObjectAt(gInput->mousePosition());
 		if(object != NULL && object->getType() == LOOT) {
 			Loot* loot = dynamic_cast<Loot*>(object);
-			if(loot->getName() == "Health potion") 
+			if(loot->getName() == "Health Potion") 
 				setHealth(getHealth() + dynamic_cast<HealthPotion*>(object)->getHp());	
-			else if(loot->getName() == "Energy potion") 
+			else if(loot->getName() == "Energy Potion") 
 				setEnergy(getEnergy() + dynamic_cast<EnergyPotion*>(object)->getEnergy());
 			else if(loot->getName() == "Gold")
 				mInventory->addGold(dynamic_cast<Gold*>(object)->getAmount());
@@ -138,7 +141,7 @@ void Player::handleInput()
 	else if(gInput->keyDown('D'))	
 		getLevel()->moveObjects(-mMoveSpeed, 0);
 
-	if(gInput->keyDown(VK_LBUTTON))	{
+	if(gInput->keyDown(VK_LBUTTON) && !mInventory->getVisible())	{
 		if(mWeapon != NULL && mWeapon->isReady())
 			mWeapon->fire(getPos(), getRotation());
 	}

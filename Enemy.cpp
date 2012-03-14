@@ -40,16 +40,14 @@ Enemy::Enemy(float x, float y, EnemyData* type) : Object (x, y, type->width, typ
 	mLostSightTimer = .5;
 	mTurns = false;
 
-	srand(time(0));
-
 	string texture = "Data\\imgs\\enemy1.png";
-	int z = rand() % 2;
+	int z = rand() % 4;
 	if(z == 1)
 		texture = "Data\\imgs\\enemy2.png";
-	/*if(x == 2)
+	if(x == 2)
 		texture = "Data\\imgs\\enemy3.png";
 	if(x == 3)
-		texture = "Data\\imgs\\enemy4.png";*/
+		texture = "Data\\imgs\\enemy4.png";
 
 	setTexture(texture);
 
@@ -82,20 +80,26 @@ void Enemy::damage(float dHP)
 			}
 		}
 
-		if(!any || 1) {
+		if(!any) {
 			int x = rand() % 5;
 			float angle = (rand() % 340)/(float)100;
-			if(x == 0 || 1) 
+			if(x == 0) 
 				getLevel()->addObject(new HealthPotion(getPos().x + distance*cosf(angle), getPos().y + distance*sinf(angle), 20));
 			else if(x == 1) 
 				getLevel()->addObject(new EnergyPotion(getPos().x + distance*cosf(angle), getPos().y + distance*sinf(angle), 20));
 		}
 		
-
-		getLevel()->addObject(new Gold(getPos().x, getPos().y+15));
-		getLevel()->addObject(new Gold(getPos().x-15, getPos().y));
-		getLevel()->addObject(new Gold(getPos().x-15, getPos().y-15));
-		getLevel()->addObject(new Gold(getPos().x+15, getPos().y));
+		int x = rand() % 2;
+		if(x == 1) {
+			getLevel()->addObject(new Gold(getPos().x, getPos().y+15));
+			getLevel()->addObject(new Gold(getPos().x-15, getPos().y));
+			getLevel()->addObject(new Gold(getPos().x-15, getPos().y-15));
+			getLevel()->addObject(new Gold(getPos().x+15, getPos().y));
+		}
+		else {
+			getLevel()->addObject(new Gold(getPos().x, getPos().y+15));
+			getLevel()->addObject(new Gold(getPos().x-15, getPos().y));
+		}
 	}
 }
 

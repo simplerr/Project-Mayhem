@@ -2,13 +2,12 @@
 <Level>
     <Size width="2000" height="1500" />
     <Objects>
-        <Object type="0" x="304" y="292" rotation="-6479" w="80" h="114" collidable="1" texture="Data/imgs/bag1.png" />
-        <Object type="0" x="603" y="330" rotation="-1680" w="100" h="100" collidable="0" texture="Data/imgs/skelett.png" />
-        <Object type="0" x="280" y="355" rotation="-960" w="98" h="110" collidable="1" texture="Data/imgs/bag1.png" />
-        <Object type="0" x="274" y="362" rotation="-10798" w="100" h="50" collidable="1" texture="Data/imgs/bag1.png" />
-        <Object type="0" x="540" y="455" rotation="-1199" w="100" h="100" collidable="1" texture="Data/imgs/bag2.png" />
-        <Object type="0" x="387" y="519" rotation="-1199" w="100" h="100" collidable="1" texture="Data/imgs/bag2.png" />
-        <Object type="0" x="159" y="469" rotation="960" w="100" h="100" collidable="1" texture="Data/imgs/bag2.png" />
+        <Object type="9" x="518" y="316" rotation="0" w="0" h="0" collidable="0" texture="Data\imgs\standard_box.bmp" />
+        <Object type="9" x="823" y="317" rotation="0" w="0" h="0" collidable="0" texture="Data\imgs\standard_box.bmp" />
+        <Object type="9" x="267" y="341" rotation="0" w="0" h="0" collidable="0" texture="Data\imgs\standard_box.bmp" />
+        <Enemy type="3" x="158" y="184" rotation="0" w="32" h="32" collidable="1" class="spider" texture="Data\\imgs\\spider.png" />
+        <Enemy type="3" x="137" y="250" rotation="0" w="32" h="32" collidable="1" class="spider" texture="Data\\imgs\\spider.png" />
+        <Enemy type="3" x="217" y="194" rotation="0" w="32" h="32" collidable="1" class="spider" texture="Data\\imgs\\spider.png" />
     </Objects>
     <Tiles>
         <Tile name="Grass" x="300" y="220" />
@@ -29,7 +28,6 @@
         <Tile name="Grass" x="300" y="180" />
         <Tile name="Grass" x="340" y="180" />
         <Tile name="Grass" x="420" y="220" />
-        <Tile name="Grass" x="580" y="420" />
         <Tile name="Grass" x="460" y="220" />
         <Tile name="Grass" x="540" y="220" />
         <Tile name="Grass" x="500" y="220" />
@@ -44,23 +42,19 @@
         <Tile name="Grass" x="340" y="580" />
         <Tile name="Grass" x="300" y="580" />
         <Tile name="Grass" x="260" y="460" />
-        <Tile name="Grass" x="220" y="380" />
         <Tile name="Grass" x="180" y="260" />
         <Tile name="Grass" x="300" y="540" />
         <Tile name="Grass" x="300" y="500" />
         <Tile name="Grass" x="300" y="340" />
         <Tile name="Grass" x="220" y="340" />
-        <Tile name="Grass" x="180" y="380" />
         <Tile name="Grass" x="180" y="420" />
         <Tile name="Grass" x="180" y="460" />
         <Tile name="Grass" x="180" y="500" />
         <Tile name="Grass" x="220" y="500" />
         <Tile name="Grass" x="220" y="420" />
-        <Tile name="Grass" x="260" y="380" />
         <Tile name="Grass" x="380" y="260" />
         <Tile name="Grass" x="340" y="260" />
         <Tile name="Grass" x="300" y="300" />
-        <Tile name="Grass" x="300" y="380" />
         <Tile name="Grass" x="300" y="420" />
         <Tile name="Grass" x="300" y="460" />
         <Tile name="Grass" x="420" y="260" />
@@ -136,14 +130,26 @@
         <Tile name="Grass" x="460" y="500" />
         <Tile name="Grass" x="420" y="500" />
         <Tile name="Grass" x="700" y="300" />
-        <Tile name="Grass" x="500" y="460" />
         <Tile name="Grass" x="540" y="460" />
         <Tile name="Grass" x="540" y="500" />
-        <Tile name="Grass" x="500" y="500" />
         <Tile name="Grass" x="460" y="460" />
         <Tile name="Grass" x="300" y="260" />
         <Tile name="Grass" x="260" y="300" />
         <Tile name="Grass" x="220" y="300" />
         <Tile name="Grass" x="380" y="340" />
+        <Tile name="Grass" x="500" y="500" />
+        <Tile name="Wall2" x="180" y="380" />
+        <Tile name="Wall2" x="220" y="380" />
+        <Tile name="Wall2" x="260" y="380" />
+        <Tile name="Wall2" x="300" y="380" />
+        <Tile name="Wall2" x="340" y="380" />
+        <Tile name="Wall2" x="380" y="380" />
+        <Tile name="Wall2" x="420" y="380" />
+        <Tile name="Wall2" x="460" y="380" />
+        <Tile name="Wall2" x="500" y="380" />
+        <Tile name="Wall2" x="540" y="380" />
+        <Tile name="Wall2" x="540" y="420" />
+        <Tile name="Wall2" x="580" y="420" />
+        <Tile name="Grass" x="500" y="460" />
     </Tiles>
 </Level>

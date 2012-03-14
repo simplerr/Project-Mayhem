@@ -22,7 +22,7 @@
 #include "EnergyPotion.h"
 #include "Knife.h"	
 
-Player::Player(float x, float y) : Object (x, y, 40, 40, PLAYER,  "Data\\imgs\\player.png") //change width/heigth/pic
+Player::Player(float x, float y) : Object (x, y, 35, 35, PLAYER,  "Data\\imgs\\player.png") //change width/heigth/pic
 {
 	setCooldown(.1f);
 	setLayer(MIDDLE);

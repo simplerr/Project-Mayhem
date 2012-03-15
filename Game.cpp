@@ -122,7 +122,7 @@ void Game::draw()
 {
 	mGameState->draw();
 	//gInput->draw();
-	mGfxStats->display();
+	//mGfxStats->display();
 }
 
 //! The starting msgProc function.

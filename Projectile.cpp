@@ -52,8 +52,8 @@ bool Projectile::handleCollision(Object* collider, MTV* mtv)
 			f->rotate(getRotation()+PI);
 			getLevel()->addObject(f);
 		}
-		if(collider->getType() == ENEMY)
-			collider->handleCollision(this, mtv);
+		//if(collider->getType() == ENEMY)
+		//	collider->handleCollision(this, mtv);
 		
 	}
 	return false;

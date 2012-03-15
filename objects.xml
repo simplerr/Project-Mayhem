@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<Objects>
-  <Object name="Tunna" texture="Data/imgs/tunna.png" width="100" height="100"></Object>
-  <Object name="Väska1" texture="Data/imgs/väska1.png" width="100" height="50"></Object>
-</Objects>

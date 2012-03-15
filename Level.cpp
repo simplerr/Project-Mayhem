@@ -58,6 +58,7 @@ void Level::init()
 	mOffset = Vector(0, 0);
 	mCameraOffset = mOffset;
 	mChangeState = false;
+	mEditorMode = false;
 
 	mTileWidth = 40;
 	mTileHeight = 40;
@@ -98,6 +99,7 @@ void Level::update(float dt)
 		for(int j = i+1; j < mObjectList.size(); j++)
 		{
 			Object* objectB = mObjectList[j];
+
 			if(objectA->getType() == PROJECTILE && objectB->getType() == PROJECTILE)
 				continue;
 
@@ -123,12 +125,7 @@ void Level::update(float dt)
 					objectB->move(mtv.pushX, mtv.pushY);
 				else if(objectB->getType() == PLAYER)
 					moveObjects(-mtv.pushX, -mtv.pushY);
-				/*if( && objectB->getType() != PLAYER)
-					objectA->move(-mtv.pushX/2, -mtv.pushY/2);
-				if( && objectA->getType() != PLAYER)
-					objectB->move(mtv.pushX/2, mtv.pushY/2);*/
 			}
-
 		}
 
 		for(int j = 0; j < mTileList.size(); j++)
@@ -189,11 +186,6 @@ void Level::draw()
 
 	if(!isInEditor())
 		mPlayer->drawInventory();
-
-	// Print how many objects there is on the level
-	char buffer[256];
-	sprintf(buffer, "objects: %i", mObjectList.size());
-	gGraphics->drawText(buffer, 10, 300);
 }
 
 void Level::addObject(Object* object)
@@ -213,7 +205,8 @@ void Level::addPlayer(Player* player)
 	// mPlayer is used for simplicity
 	mPlayer = player;
 	addObject(mPlayer);
-	mCameraOffset = mPlayer->getPos() -  Vector(SCREEN_WIDTH/2, SCREEN_HEIGHT/2);
+	mCameraOffset.x = mPlayer->getPos().x -  SCREEN_WIDTH/2;
+	mCameraOffset.y = SCREEN_HEIGHT/2 - mPlayer->getPos().y;
 }
 
 void Level::removeObject(Object* object)

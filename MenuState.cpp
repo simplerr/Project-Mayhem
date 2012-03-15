@@ -28,7 +28,7 @@ void MenuState::init(Game *game)
 	
 	mMenu->buildMenu2(256, 64);
 	mMenu->connect(&MenuState::menuHandler, this);
-	gAudio->setVolume(0.8f);
+	gAudio->setVolume(0.5f);
 	gAudio->playMusic("Data\\sounds\\Tranquil Feelings.ogg", true, false);
 
 	// Important when we later need to switch state

@@ -6,6 +6,7 @@
 Scrap::Scrap() 
 {
 	tileObject = new Object(0, 0, 40, 40, STRUCTURE, "Data\\imgs\\standard_box.bmp");
+	tileObject->setID(-1337);
 	rect = new Rect(10,10,40,40,0);
 	editorRect = new Rect(10,10,10,10,0);
 	editingRegion = false;

@@ -273,7 +273,7 @@ void Enemy::calcAI(float dt)
 	float vr = ai->getVisionRange();
 	float a = gMath->distance(targetPos, pos);
 	if(((a<vr) && (a < vr/2 || abs(v-getRotation())< 2*PI/3))) {
-		if(!ai->seenEnemy() && doVision()) 
+		if(!ai->seenEnemy()  && doVision())
 		{
 			ai->setSeenEnemy(true);
 			ai->setTarget(getLevel()->getPlayer());

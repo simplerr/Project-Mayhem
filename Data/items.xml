@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Items>
- 
   <Item name="Rifle" texture="Data/imgs/items/rifle.png"  slot="weapon" damage="25"></Item>
   <Item name="Knife" texture="Data/imgs/items/knife.png" slot="weapon" damage="25"></Item>
   <Item name="Sniper" texture="Data/imgs/items/sniper.png" slot="weapon" damage="150"></Item>

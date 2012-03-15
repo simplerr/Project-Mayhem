@@ -10,7 +10,7 @@ Sound::Sound()
 	// should read from a text file
 	mMusicMuted = false;
 	mEffectsMuted = false;
-	mVolume = .8;
+	mVolume = .5;
 }
 
 Sound::~Sound()

@@ -21,6 +21,8 @@ Object::Object(float x, float y, int width, int height, ObjectType type, std::st
 	setType(type);
 	setLayer(MIDDLE);
 	setDetailedCollision(true);
+	setOwnerId(-1);
+	setCollidable(true);
 }
 
 Object::~Object()
